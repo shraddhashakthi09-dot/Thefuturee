@@ -258,6 +258,41 @@ body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;f
   .compat-charts-grid{grid-template-columns:1fr}
 }
 footer{text-align:center;padding:2rem;color:var(--muted);font-size:.78rem;border-top:1px solid var(--border);margin-top:2rem}
+
+/* ── PDF MODAL ── */
+#pdf-modal-overlay{
+  display:none;position:fixed;inset:0;z-index:99999;
+  background:rgba(10,10,20,0.72);backdrop-filter:blur(4px);
+  align-items:center;justify-content:center;
+}
+#pdf-modal-overlay.active{display:flex}
+#pdf-modal{
+  background:#fff;border-radius:20px;padding:2.6rem 2.2rem 2.2rem;
+  max-width:380px;width:90%;text-align:center;
+  box-shadow:0 24px 64px rgba(0,0,0,0.28);
+  animation:pdfModalIn .28s cubic-bezier(.34,1.36,.64,1) both;
+}
+@keyframes pdfModalIn{from{opacity:0;transform:scale(.88) translateY(12px)}to{opacity:1;transform:none}}
+.pm-icon{font-size:2.4rem;margin-bottom:.9rem;display:none}
+.pm-title{font-family:'DM Serif Display',serif;font-size:1.25rem;color:var(--ink);font-style:italic;margin-bottom:.55rem;line-height:1.3}
+.pm-msg{font-size:.84rem;color:var(--muted);line-height:1.6;margin-bottom:1.4rem}
+.pdf-spinner{width:44px;height:44px;margin:0 auto 1.4rem;border-radius:50%;
+  border:3px solid #e8e4dc;border-top-color:var(--accent);
+  animation:pdfSpin .8s linear infinite;display:block}
+@keyframes pdfSpin{to{transform:rotate(360deg)}}
+#pdf-modal.state-success .pdf-spinner,
+#pdf-modal.state-error .pdf-spinner{display:none}
+#pdf-modal.state-success .pm-icon,
+#pdf-modal.state-error .pm-icon{display:block}
+.pm-close-btn{
+  margin-top:.4rem;padding:.55rem 1.6rem;background:var(--ink);color:#f4f1ea;
+  border:none;border-radius:9px;font-family:'DM Sans',sans-serif;font-size:.84rem;
+  cursor:pointer;transition:opacity .18s;display:none;
+}
+.pm-close-btn:hover{opacity:.82}
+#pdf-modal.state-success .pm-close-btn,
+#pdf-modal.state-error .pm-close-btn{display:inline-block}
+
 @media(max-width:480px){
   .row2{grid-template-columns:1fr}
   .loshu{grid-template-columns:repeat(3,64px)}
@@ -358,6 +393,17 @@ footer{text-align:center;padding:2rem;color:var(--muted);font-size:.78rem;border
 </div>
 <section id="report"></section>
 <footer id="footer-txt">TheFuturee · Chaldean Numerology · For guidance purposes only</footer>
+
+<!-- ── PDF LOADING MODAL ── -->
+<div id="pdf-modal-overlay">
+  <div id="pdf-modal">
+    <div class="pdf-spinner"></div>
+    <span class="pm-icon" id="pm-icon">📄</span>
+    <div class="pm-title" id="pm-title">Preparing Your Personal Report</div>
+    <div class="pm-msg" id="pm-msg">Please wait while we generate your personalised numerology consultation report.</div>
+    <button class="pm-close-btn" onclick="closePdfModal()">Close</button>
+  </div>
+</div>
 <script>
 // ── DAYS DROPDOWN ──
 const ddEl=document.getElementById('dd');
@@ -3177,22 +3223,292 @@ function gen(){
   R.scrollIntoView({behavior:'smooth'});
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   PDF EXPORT  v7  —  Deep-walk atomic renderer
+   Walks the DOM tree recursively. At each node, decides:
+     ATOMIC  → capture as one unit; bump to next page if it won't fit
+     FLOW    → descend into children and render each separately
+   This guarantees zero mid-card splits while maximising page density.
+   ═══════════════════════════════════════════════════════════════ */
+
+let _pdfBusy=false;
+
 function downloadPDF(){
-  const s=document.createElement('script');
-  s.src='https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
-  s.onload=function(){
-    const el=document.getElementById('report');
-    const btn=el.querySelector('.pdf-btn-wrap');
-    if(btn)btn.style.display='none';
-    const nm=(document.getElementById('fn').value+' '+document.getElementById('ln').value).trim().replace(/\s+/g,'_');
-    html2pdf().set({
-      margin:[10,8,10,8],filename:nm+'_Numerology_TheFuturee.pdf',
-      image:{type:'jpeg',quality:.97},html2canvas:{scale:2,useCORS:true},
-      jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}
-    }).from(el).save().then(()=>{if(btn)btn.style.display='block';});
-  };
-  document.head.appendChild(s);
+  if(_pdfBusy) return;
+  const rpt=document.getElementById('report');
+  if(!rpt||rpt.style.display==='none'){_pdfModal('error');return;}
+  _pdfBusy=true;
+  _pdfModal('loading');
+  const nm=(document.getElementById('fn').value||'Numerology').trim().replace(/\s+/g,'_');
+  Promise.all([
+    _pdfLib('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js',
+            ()=>typeof html2canvas!=='undefined'),
+    _pdfLib('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js',
+            ()=>typeof window.jspdf!=='undefined')
+  ]).then(()=>_pdfRun(nm+'_Numerology_Report.pdf'))
+    .catch(()=>{_pdfBusy=false;_pdfModal('error');});
 }
+function _pdfLib(src,ok){
+  return new Promise((res,rej)=>{
+    if(ok()){res();return;}
+    const s=document.createElement('script');
+    s.src=src; s.onload=res; s.onerror=rej;
+    document.head.appendChild(s);
+  });
+}
+
+const _PW=210,_PH=297,_MX=13,_MY=15;
+const _PW2=_PW-_MX*2;
+const _PH2=_PH-_MY*2;
+const _RW=820;
+const _SC=2;
+
+const _P={
+  bg:'#FFFFFF', coverBg:'#212842',
+  text:'#212842', muted:'#6B7280',
+  border:'#E5E7EB', tagBg:'#F9FAFB',
+};
+const _V='--ink:#212842;--paper:#FFFFFF;--cream:#F9FAFB;--gold:#374151;'+
+  '--gold-light:#E5E7EB;--border:#E5E7EB;--muted:#6B7280;'+
+  '--red:#991B1B;--green:#166534;--accent:#212842;--warn:#92400E;';
+
+/* Atomic: these elements are NEVER split; bumped whole to next page */
+const _ATOMIC=[
+  'titem','str-card','weak-card','weak-dc-card','rem-card',
+  'km-card','masterbox','karmicbox','mitem','repcard',
+  'obs-box','enemy-warning','gayatri-box',
+  'name-verdict-premium-good','name-verdict-premium-bad',
+  'dcbox','compat-charts-grid','compat-chart-box',
+  'loshu','card','prof-section','plane-wrap','str-grid'
+];
+/* Flow: containers whose children are walked individually */
+const _FLOW=['subsec-body','tl','cards','profs','nnums'];
+
+const _isAtomic=el=>_ATOMIC.some(c=>el.classList.contains(c));
+const _isFlow  =el=>_FLOW.some(c=>el.classList.contains(c));
+
+let _pdf,_cy,_wrap;
+const _paint=()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
+
+async function _cap(html,bg){
+  bg=bg||_P.bg;
+  _wrap.innerHTML='<div style="width:'+_RW+'px;background:'+bg+';'+_V+
+    'font-family:\'DM Sans\',Arial,sans-serif;font-size:14px;line-height:1.65;'+
+    'color:'+_P.text+';box-sizing:border-box;">'+html+'</div>';
+  await _paint();
+  return html2canvas(_wrap.firstElementChild,{
+    scale:_SC,useCORS:true,allowTaint:true,
+    backgroundColor:bg,logging:false,
+    windowWidth:_RW,scrollX:0,scrollY:0
+  });
+}
+
+function _addImg(c,y,w,h){
+  _pdf.addImage(c.toDataURL('image/jpeg',.95),'JPEG',_MX,y,w,h,'','FAST');
+}
+
+function _place(c,atomic){
+  if(!c||c.width<4) return;
+  const ppm=c.width/_PW2, h=c.height/ppm, gap=2;
+  if(atomic){
+    if(_cy+h>_PH-_MY){_pdf.addPage();_cy=_MY;}
+    _addImg(c,_cy,_PW2,Math.min(h,_PH2));
+    _cy+=Math.min(h,_PH2)+gap;
+  } else {
+    let rem=c.height,off=0;
+    while(rem>0){
+      const spH=_PH-_MY-_cy, spPx=Math.round(spH*ppm);
+      if(spPx<8){_pdf.addPage();_cy=_MY;continue;}
+      const sPx=Math.min(spPx,rem), sH=sPx/ppm;
+      const s=document.createElement('canvas');
+      s.width=c.width; s.height=sPx;
+      s.getContext('2d').drawImage(c,0,off,c.width,sPx,0,0,c.width,sPx);
+      _addImg(s,_cy,_PW2,sH);
+      _cy+=sH; off+=sPx; rem-=sPx;
+      if(rem>0){_pdf.addPage();_cy=_MY;}
+    }
+    _cy+=gap;
+  }
+}
+
+function _stamp(live,clone){
+  if(live.nodeType!==1) return;
+  const cs=window.getComputedStyle(live);
+  ['color','background-color','border-top-color','border-right-color',
+   'border-bottom-color','border-left-color'].forEach(p=>{
+    const v=cs.getPropertyValue(p);
+    if(v&&v!=='rgba(0, 0, 0, 0)'&&v!=='transparent') clone.style.setProperty(p,v);
+  });
+  const lk=Array.from(live.children),ck=Array.from(clone.children);
+  lk.forEach((c,i)=>{if(ck[i])_stamp(c,ck[i]);});
+}
+
+function _deWarm(node){
+  if(node.nodeType!==1) return;
+  const bg=node.style.backgroundColor;
+  if(bg){
+    const m=bg.match(/(\d+),\s*(\d+),\s*(\d+)/);
+    if(m){const[r,g,b]=[+m[1],+m[2],+m[3]];if(r>220&&g>200&&b>155&&r>b+20)node.style.backgroundColor=_P.bg;}
+  }
+  Array.from(node.children).forEach(_deWarm);
+}
+
+async function _head(label){
+  if(_cy>_MY+5&&_cy>_PH-_MY-35){_pdf.addPage();_cy=_MY;}
+  const c=await _cap('<div style="display:flex;align-items:center;gap:12px;padding:5px 0 11px;'+
+    'font-size:9px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:'+_P.muted+';display:flex;">'+
+    '<span style="flex:1;height:1px;background:'+_P.border+';display:block"></span>'+
+    '<span>'+label+'</span>'+
+    '<span style="flex:1;height:1px;background:'+_P.border+';display:block"></span></div>');
+  _place(c,true);
+}
+
+async function _subTitle(live){
+  if(_cy>_PH-_MY-25){_pdf.addPage();_cy=_MY;}
+  const cl=live.cloneNode(true); _stamp(live,cl);
+  cl.style.cssText+=';font-family:Georgia,serif;font-size:16px;color:'+_P.text+
+    ';font-style:italic;margin:0 0 8px 0;padding-bottom:7px;border-bottom:1px solid '+_P.border+';';
+  const c=await _cap(cl.outerHTML);
+  _place(c,true);
+}
+
+async function _render(el){
+  if(!el||el.nodeType!==1) return;
+  const t=el.tagName;
+  if(t==='SCRIPT'||t==='STYLE') return;
+
+  if(_isAtomic(el)){
+    const cl=el.cloneNode(true); _stamp(el,cl); _deWarm(cl);
+    cl.style.marginTop='0'; cl.style.marginBottom='0';
+    _place(await _cap(cl.outerHTML),true);
+    return;
+  }
+
+  if(el.classList.contains('subsec')){
+    const ti=el.querySelector(':scope > .subsec-title');
+    const bo=el.querySelector(':scope > .subsec-body');
+    if(ti) await _subTitle(ti);
+    if(bo){
+      if(bo.children.length>0){
+        for(const ch of Array.from(bo.children)) await _render(ch);
+      } else if(bo.textContent.trim()){
+        const bc=bo.cloneNode(true); _stamp(bo,bc); _deWarm(bc);
+        _place(await _cap(bc.outerHTML),false);
+      }
+    }
+    _cy+=3;
+    return;
+  }
+
+  if(_isFlow(el)){
+    for(const ch of Array.from(el.children)) await _render(ch);
+    return;
+  }
+
+  const cl=el.cloneNode(true); _stamp(el,cl); _deWarm(cl);
+  cl.style.marginTop='0'; cl.style.marginBottom='0';
+  _place(await _cap(cl.outerHTML),false);
+}
+
+async function _pdfRun(fileName){
+  _wrap=document.createElement('div');
+  _wrap.style.cssText='position:fixed;top:0;left:-9999px;width:'+_RW+'px;'+
+    'background:'+_P.bg+';font-family:\'DM Sans\',Arial,sans-serif;'+
+    'font-size:14px;line-height:1.65;color:'+_P.text+';z-index:-1;pointer-events:none;';
+  document.body.appendChild(_wrap);
+
+  const live=document.getElementById('report');
+  _pdf=new window.jspdf.jsPDF({unit:'mm',format:'a4',orientation:'portrait'});
+  _cy=_MY;
+
+  try{
+    /* COVER */
+    const cov=live.querySelector('.cover-page');
+    if(cov){
+      const cc=cov.cloneNode(true); _stamp(cov,cc);
+      cc.style.cssText+=';background:'+_P.coverBg+';border-radius:0;margin:0;'+
+        'padding:60px 48px;width:'+_RW+'px;box-sizing:border-box;';
+      const c=await _cap(cc.outerHTML,_P.coverBg);
+      if(c&&c.width>4){const ppm=c.width/_PW2;_addImg(c,_cy,_PW2,Math.min(c.height/ppm,_PH2));}
+    }
+
+    /* BIRTH CHART — own page */
+    _pdf.addPage(); _cy=_MY;
+    await _head(LANG==='hi'?'जन्म चार्ट और मुख्य अंक':LANG==='te'?'జన్మ చార్ట్ మరియు ప్రధాన అంకాలు':'Birth Chart & Core Numbers');
+    const loEl=live.querySelector('.loshu-outer');
+    const mxEl=live.querySelector('.matrix-wrap');
+    if(loEl||mxEl){
+      const lc=loEl?loEl.cloneNode(true):null;
+      const mc=mxEl?mxEl.cloneNode(true):null;
+      if(loEl&&lc)_stamp(loEl,lc);
+      if(mxEl&&mc){_stamp(mxEl,mc);_deWarm(mc);}
+      const h='<div style="display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap;padding:2px 0;">'+
+        (lc?'<div style="flex:0 0 auto">'+lc.outerHTML+'</div>':'')+
+        (mc?'<div style="flex:1;min-width:240px">'+mc.outerHTML+'</div>':'')+
+        '</div>';
+      _place(await _cap(h),true);
+    }
+
+    /* ALL OTHER CHILDREN */
+    const skip=new Set(['cover-page','loshu-outer','matrix-wrap','pdf-btn-wrap','compat-toggle-wrap','compat-panel']);
+    for(const el of Array.from(live.children)){
+      if([...el.classList].some(c=>skip.has(c))) continue;
+      if(el.classList.contains('sec')){await _head(el.textContent.trim());continue;}
+      await _render(el);
+    }
+
+    /* COMPAT */
+    const cp=live.querySelector('.compat-panel.open');
+    if(cp){
+      _pdf.addPage(); _cy=_MY;
+      await _head(LANG==='hi'?'रिश्ते की अनुकूलता':LANG==='te'?'సంబంధ అనుకూలత':'Relationship Compatibility');
+      for(const ch of Array.from(cp.children)) await _render(ch);
+    }
+
+    /* DOWNLOAD */
+    const bytes=_pdf.output('arraybuffer');
+    const blob=new Blob([bytes],{type:'application/pdf'});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url; a.download=fileName; a.style.display='none';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(()=>URL.revokeObjectURL(url),15000);
+    _pdfBusy=false; _pdfModal('success');
+
+  }catch(e){
+    _pdfBusy=false; _pdfModal('error');
+  }finally{
+    if(document.body.contains(_wrap))document.body.removeChild(_wrap);
+  }
+}
+
+function _pdfModal(state){
+  const ov=document.getElementById('pdf-modal-overlay');
+  const mo=document.getElementById('pdf-modal');
+  const ic=document.getElementById('pm-icon');
+  const ti=document.getElementById('pm-title');
+  const ms=document.getElementById('pm-msg');
+  if(!mo) return;
+  mo.classList.remove('state-success','state-error');
+  if(state==='loading'){
+    ic.textContent=''; ti.textContent='Preparing Your Personal Report';
+    ms.textContent='Please wait while we generate your personalised numerology consultation report.';
+  } else if(state==='success'){
+    mo.classList.add('state-success');
+    ic.textContent='\u2705'; ti.textContent='Report Ready';
+    ms.textContent='Your report has been downloaded successfully.';
+  } else {
+    mo.classList.add('state-error');
+    ic.textContent='\u26a0\ufe0f'; ti.textContent='Unable to Generate Report';
+    ms.textContent='We were unable to generate your PDF report. Please try again.';
+  }
+  if(ov) ov.classList.add('active');
+}
+function closePdfModal(){
+  const ov=document.getElementById('pdf-modal-overlay');
+  if(ov) ov.classList.remove('active');
+}
+
 </script>
 </body>
 </html>
