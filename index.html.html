@@ -1096,6 +1096,250 @@ const KARMIC={
   },
 };
 
+// ── DRIVER STRENGTHS (NEW) ──
+const DRV_STR_NEW={
+  1:{
+    en:[
+      'You often choose to do things differently from others.',
+      'You have strong self-belief, but it is important to understand the difference between self-respect and ego.',
+      'You prefer quality and often have high standards in life.',
+      'Leadership qualities are naturally present in you.',
+    ],
+    hi:[
+      'आप अक्सर दूसरों से अलग तरीके से काम करना पसंद करते हैं।',
+      'आपमें आत्मविश्वास मजबूत होता है, लेकिन आत्मसम्मान और अहंकार के बीच का अंतर समझना ज़रूरी है।',
+      'आपको अच्छी गुणवत्ता वाली चीज़ें पसंद होती हैं और आप जीवन में ऊँचे मानक रखते हैं।',
+      'नेतृत्व के गुण आपके अंदर स्वाभाविक रूप से मौजूद होते हैं।',
+    ],
+    te:[
+      'మీరు తరచుగా ఇతరులకంటే భిన్నంగా పనులు చేయడానికి ఇష్టపడతారు.',
+      'మీలో ఆత్మవిశ్వాసం బలంగా ఉంటుంది, కానీ ఆత్మగౌరవం మరియు అహంకారం మధ్య తేడాను తెలుసుకోవడం ముఖ్యం.',
+      'మీరు మంచి నాణ్యత కలిగిన విషయాలను ఇష్టపడతారు మరియు జీవితంలో ఉన్నత ప్రమాణాలు కలిగి ఉంటారు.',
+      'నాయకత్వ లక్షణాలు మీలో సహజంగా ఉంటాయి.',
+    ],
+    // no special note, no areas
+  },
+  2:{
+    en:[
+      'You have a charming personality and can easily attract people towards you.',
+      'You are sensitive by nature and may get hurt easily by the words or actions of others.',
+      'You have a gentle nature and prefer peace over unnecessary conflicts.',
+      'You usually take your time before making decisions and moving forward with things.',
+    ],
+    hi:[
+      'आपका व्यक्तित्व आकर्षक होता है और लोग आपकी ओर आसानी से आकर्षित हो सकते हैं।',
+      'आप स्वभाव से संवेदनशील होते हैं और दूसरों की बातों या व्यवहार से जल्दी आहत हो सकते हैं।',
+      'आपका स्वभाव कोमल होता है और आप बेवजह के झगड़ों से दूर रहना पसंद करते हैं।',
+      'आप किसी भी निर्णय को लेने से पहले अपना समय लेना पसंद करते हैं।',
+    ],
+    te:[
+      'మీ వ్యక్తిత్వం ఆకర్షణీయంగా ఉంటుంది మరియు ఇతరులను సులభంగా ఆకర్షించగలరు.',
+      'మీరు సహజంగా సున్నితమైన స్వభావం కలిగి ఉంటారు మరియు ఇతరుల మాటలు లేదా ప్రవర్తన వల్ల సులభంగా బాధపడవచ్చు.',
+      'మీ స్వభావం మృదువుగా ఉంటుంది మరియు అవసరం లేని గొడవలకు దూరంగా ఉండటానికి ఇష్టపడతారు.',
+      'ఏ నిర్ణయం తీసుకునే ముందు మీరు మీ సమయాన్ని తీసుకోవడానికి ఇష్టపడతారు.',
+    ],
+    // special note: only when birth day === 29
+    specialNote:{
+      condition:d=>d===29,
+      en:'There may be a higher chance of challenges in your married life.',
+      hi:'आपके वैवाहिक जीवन में चुनौतियाँ आने की संभावना अधिक हो सकती है।',
+      te:'మీ వైవాహిక జీవితంలో సవాళ్లు ఎదురయ్యే అవకాశాలు ఎక్కువగా ఉండవచ్చు.',
+    },
+  },
+  3:{
+    en:[
+      'You are knowledgeable and enjoy learning new things.',
+      'You have a strong imagination and can often think beyond what others see.',
+      'You are creative and can come up with new ideas and different solutions.',
+      'You can be a good counsellor and may guide others when they need advice.',
+      'You can also do well in healing professions such as counselling or healthcare.',
+    ],
+    hi:[
+      'आप ज्ञानवान होते हैं और नई चीजें सीखना पसंद करते हैं।',
+      'आपकी कल्पनाशक्ति अच्छी होती है और आप अक्सर दूसरों से आगे सोच सकते हैं।',
+      'आप रचनात्मक होते हैं और नए विचार तथा नए समाधान खोज सकते हैं।',
+      'आप एक अच्छे सलाहकार बन सकते हैं और जरूरत पड़ने पर दूसरों का मार्गदर्शन कर सकते हैं।',
+      'काउंसलिंग या स्वास्थ्य सेवा जैसे उपचार से जुड़े क्षेत्रों में भी आप अच्छा कर सकते हैं।',
+    ],
+    te:[
+      'మీరు జ్ఞానం కలిగిన వ్యక్తి మరియు కొత్త విషయాలు నేర్చుకోవడం ఇష్టపడతారు.',
+      'మీ ఊహాశక్తి బలంగా ఉంటుంది మరియు మీరు తరచుగా ఇతరులకంటే ముందుగా ఆలోచించగలరు.',
+      'మీరు సృజనాత్మకంగా ఉంటారు మరియు కొత్త ఆలోచనలు, కొత్త పరిష్కారాలను కనుగొనగలరు.',
+      'మీరు మంచి సలహాదారుగా ఉండగలరు మరియు అవసరమైనప్పుడు ఇతరులకు మార్గనిర్దేశం చేయగలరు.',
+      'కౌన్సెలింగ్ లేదా ఆరోగ్య సేవలకు సంబంధించిన వృత్తుల్లో కూడా మీరు మంచి ఫలితాలు సాధించగలరు.',
+    ],
+    areas:{
+      en:'Avoid non-vegetarian food, alcohol and smoking.',
+      hi:'मांसाहार, शराब और धूम्रपान से बचें।',
+      te:'మాంసాహారం, మద్యం మరియు ధూమపానాన్ని నివారించండి.',
+    },
+  },
+  4:{
+    en:[
+      'You are courageous and are not afraid to take bold steps in life.',
+      'Your mind works differently from most people and you often start thinking where others stop thinking.',
+      'You are highly logical and prefer to understand things clearly before accepting them.',
+      'You can be impulsive and may take decisions without thinking about their consequences.',
+      'At times, your anger can make your words harsh and hurtful.',
+    ],
+    hi:[
+      'आप साहसी होते हैं और जीवन में बड़े कदम उठाने से नहीं डरते।',
+      'आपकी सोच दूसरों से अलग होती है और जहाँ दूसरों की सोच रुक जाती है, वहाँ आपकी सोच शुरू होती है।',
+      'आप बहुत तार्किक होते हैं और किसी भी बात को स्वीकार करने से पहले उसे अच्छी तरह समझना पसंद करते हैं।',
+      'आप आवेग में आकर निर्णय ले सकते हैं और कभी-कभी उसके परिणामों के बारे में सोचे बिना फैसला कर सकते हैं।',
+      'कभी-कभी आपका गुस्सा आपकी बातों को कठोर और आहत करने वाला बना सकता है।',
+    ],
+    te:[
+      'మీరు ధైర్యవంతులు మరియు జీవితంలో పెద్ద అడుగులు వేయడానికి భయపడరు.',
+      'మీ ఆలోచనా విధానం ఇతరులకంటే భిన్నంగా ఉంటుంది, మరియు ఇతరుల ఆలోచన ఆగిపోయే చోట మీ ఆలోచన ప్రారంభమవుతుంది.',
+      'మీరు చాలా తార్కికంగా ఆలోచిస్తారు మరియు ఏ విషయాన్నైనా అంగీకరించే ముందు పూర్తిగా అర్థం చేసుకోవడానికి ఇష్టపడతారు.',
+      'మీరు తొందరపడి నిర్ణయాలు తీసుకునే అవకాశం ఉంటుంది మరియు కొన్నిసార్లు వాటి ఫలితాల గురించి ఆలోచించకుండా నిర్ణయం తీసుకోవచ్చు.',
+      'కొన్నిసార్లు మీ కోపం మీ మాటలను కఠినంగా మరియు బాధపెట్టే విధంగా మార్చవచ్చు.',
+    ],
+    // special note: only when birth day === 13
+    specialNote:{
+      condition:d=>d===13,
+      en:'Success may come to you, but you may have to work much harder than others to achieve it.',
+      hi:'सफलता आपको मिल सकती है, लेकिन उसके लिए आपको दूसरों की तुलना में कहीं अधिक मेहनत करनी पड़ सकती है।',
+      te:'విజయం మీకు రావచ్చు, కానీ దానిని సాధించడానికి మీరు ఇతరుల కంటే చాలా ఎక్కువ కష్టపడాల్సి రావచ్చు.',
+    },
+    areas:{
+      en:'It is strongly recommended that you stay away from the stock market.',
+      hi:'आपके लिए शेयर बाज़ार से पूरी तरह दूर रहना बेहतर रहेगा।',
+      te:'మీ కోసం స్టాక్ మార్కెట్‌కు పూర్తిగా దూరంగా ఉండటం మంచిది.',
+    },
+  },
+  5:{
+    en:[
+      'You have a charming personality and can easily attract people towards you.',
+      'You have a youthful nature and often carry a young energy regardless of your age.',
+      'You are romantic by nature and value love and affection in your relationships.',
+      'You are brainy and have a naturally intelligent mind.',
+      'Laziness can become your biggest obstacle, but if you overcome it, you can achieve far more than most people expect.',
+    ],
+    hi:[
+      'आपका व्यक्तित्व आकर्षक होता है और लोग आसानी से आपकी ओर आकर्षित हो सकते हैं।',
+      'आपके अंदर एक युवा ऊर्जा बनी रहती है और आपकी सोच में अक्सर युवापन दिखाई देता है।',
+      'आप स्वभाव से रोमांटिक होते हैं और रिश्तों में प्रेम और अपनापन को महत्व देते हैं।',
+      'आप बुद्धिमान होते हैं और आपका दिमाग स्वाभाविक रूप से तेज होता है।',
+      'आलस्य आपकी सबसे बड़ी बाधा बन सकता है, लेकिन यदि आप इसे छोड़ दें तो आप अपनी क्षमता से कहीं अधिक हासिल कर सकते हैं।',
+    ],
+    te:[
+      'మీ వ్యక్తిత్వం ఆకర్షణీయంగా ఉంటుంది మరియు ఇతరులను సులభంగా ఆకర్షించగలరు.',
+      'మీలో యవ్వన ఉత్సాహం ఉంటుంది మరియు మీ ఆలోచనల్లో తరచుగా యువత కనిపిస్తుంది.',
+      'మీరు సహజంగా రొమాంటిక్ స్వభావం కలిగి ఉంటారు మరియు సంబంధాల్లో ప్రేమ మరియు ఆప్యాయతకు విలువ ఇస్తారు.',
+      'మీరు తెలివైనవారు మరియు మీ మేధస్సు సహజంగా బలంగా ఉంటుంది.',
+      'బద్ధకం మీకు అతిపెద్ద అడ్డంకిగా మారవచ్చు, కానీ మీరు దానిని అధిగమిస్తే మీ సామర్థ్యానికి మించిన విజయాలను సాధించగలరు.',
+    ],
+    // no special note, no areas
+  },
+  6:{
+    en:[
+      'You are highly protective of the people you love and always want to keep them safe.',
+      'You can be possessive at times and may find it difficult to share your loved ones with others.',
+      'At times, you can be manipulative and know how to turn situations in your favour.',
+      'You love luxury and comfort in life, and often attract them naturally.',
+      'You are highly romantic and have a charming personality.',
+    ],
+    hi:[
+      'आप अपने प्रिय लोगों के प्रति बहुत सुरक्षात्मक होते हैं और उन्हें हमेशा सुरक्षित रखना चाहते हैं।',
+      'आप कभी-कभी अधिकार जताने वाले हो सकते हैं और अपने प्रिय लोगों को दूसरों के साथ साझा करना पसंद नहीं करते।',
+      'कभी-कभी आप परिस्थितियों को अपने पक्ष में मोड़ना अच्छी तरह जानते हैं।',
+      'आपको जीवन में विलासिता और सुख-सुविधाएँ पसंद होती हैं, और आप अक्सर उन्हें स्वाभाविक रूप से आकर्षित करते हैं।',
+      'आप बहुत रोमांटिक होते हैं और आपका व्यक्तित्व आकर्षक होता है।',
+    ],
+    te:[
+      'మీరు ప్రేమించే వారిని చాలా రక్షణగా చూసుకుంటారు మరియు వారిని ఎల్లప్పుడూ సురక్షితంగా ఉంచాలని కోరుకుంటారు.',
+      'కొన్నిసార్లు మీరు అధిక స్వాధీన భావం చూపవచ్చు మరియు మీ ప్రియమైన వారిని ఇతరులతో పంచుకోవడం కష్టంగా అనిపించవచ్చు.',
+      'కొన్నిసార్లు మీరు పరిస్థితులను మీకు అనుకూలంగా మార్చుకోవడం బాగా తెలుసు.',
+      'మీరు జీవితంలో విలాసవంతమైన మరియు సౌకర్యవంతమైన విషయాలను ఇష్టపడతారు, అలాగే వాటిని సహజంగా ఆకర్షిస్తారు.',
+      'మీరు చాలా రొమాంటిక్ స్వభావం కలిగి ఉంటారు మరియు ఆకర్షణీయమైన వ్యక్తిత్వాన్ని కలిగి ఉంటారు.',
+    ],
+    // special note: only when birth day === 24
+    specialNote:{
+      condition:d=>d===24,
+      en:'Pay special attention to your relationships, as challenges may arise in this area of life.',
+      hi:'अपने रिश्तों पर विशेष ध्यान दें, क्योंकि इस क्षेत्र में चुनौतियाँ आ सकती हैं।',
+      te:'మీ సంబంధాలపై ప్రత్యేక శ్రద్ధ పెట్టండి, ఎందుకంటే ఈ విషయంలో సవాళ్లు ఎదురయ్యే అవకాశం ఉంది.',
+    },
+  },
+  7:{
+    en:[
+      'You are innocent by nature and often see the good in people.',
+      'You are highly trustworthy and people may find it easy to trust you.',
+      'You are kind-hearted and genuinely care about others.',
+      'You should avoid blindly trusting people, as this can sometimes lead to disappointment or betrayal.',
+    ],
+    hi:[
+      'आप स्वभाव से भोले होते हैं और अक्सर लोगों में अच्छाई देखना पसंद करते हैं।',
+      'आप बहुत भरोसेमंद होते हैं और लोग आप पर आसानी से विश्वास कर सकते हैं।',
+      'आपका दिल दयालु होता है और आप सच में दूसरों की परवाह करते हैं।',
+      'आपको किसी पर भी आँख बंद करके भरोसा नहीं करना चाहिए, क्योंकि इससे कभी-कभी निराशा या धोखा मिल सकता है।',
+    ],
+    te:[
+      'మీరు సహజంగా అమాయక స్వభావం కలిగి ఉంటారు మరియు తరచుగా మనుషులలో మంచి విషయాలనే చూస్తారు.',
+      'మీరు చాలా నమ్మకమైన వ్యక్తి, అందువల్ల ఇతరులు మీపై సులభంగా నమ్మకం ఉంచగలరు.',
+      'మీ హృదయం దయతో నిండి ఉంటుంది మరియు మీరు నిజంగా ఇతరుల గురించి శ్రద్ధ చూపుతారు.',
+      'మీరు ఎవరినైనా అంధంగా నమ్మకూడదు, ఎందుకంటే అది కొన్నిసార్లు నిరాశ లేదా మోసానికి దారితీయవచ్చు.',
+    ],
+    // no special note, no areas
+  },
+  8:{
+    en:[
+      'You are naturally good with money and often have a strong understanding of finances.',
+      'You do not like spending money unnecessarily and prefer to think carefully before using your money.',
+      'You are hardworking, and even if you try to avoid hard work, life may push you towards it.',
+      'You like things to happen your way and may find it difficult when others do not agree with you.',
+      'You have an authoritative nature and like to stay in control of situations.',
+    ],
+    hi:[
+      'आपको पैसों की अच्छी समझ होती है और वित्तीय मामलों में आपकी पकड़ मजबूत हो सकती है।',
+      'आप बिना वजह पैसा खर्च करना पसंद नहीं करते और अपने पैसे का उपयोग सोच-समझकर करना पसंद करते हैं।',
+      'आप मेहनती होते हैं, और यदि आप मेहनत से बचने की कोशिश भी करें, तो जीवन आपको मेहनत करने पर मजबूर कर सकता है।',
+      'आप चाहते हैं कि चीज़ें आपके अनुसार हों और जब लोग आपकी बात से सहमत न हों तो आपको कठिनाई महसूस हो सकती है।',
+      'आपका स्वभाव अधिकारपूर्ण होता है और आप परिस्थितियों पर नियंत्रण रखना पसंद करते हैं।',
+    ],
+    te:[
+      'మీకు డబ్బు విషయాల్లో మంచి అవగాహన ఉంటుంది మరియు ఆర్థిక విషయాలను బాగా అర్థం చేసుకోగలరు.',
+      'మీరు అవసరం లేకుండా డబ్బు ఖర్చు చేయడం ఇష్టపడరు మరియు డబ్బు ఉపయోగించే ముందు బాగా ఆలోచిస్తారు.',
+      'మీరు కష్టపడి పనిచేసే వ్యక్తి, మరియు మీరు కష్టపడకూడదని అనుకున్నా జీవితం మిమ్మల్ని కష్టపడేలా చేయవచ్చు.',
+      'విషయాలు మీకు నచ్చిన విధంగా జరగాలని కోరుకుంటారు మరియు ఇతరులు మీతో ఏకీభవించకపోతే అసౌకర్యంగా అనిపించవచ్చు.',
+      'మీలో అధికార స్వభావం ఉంటుంది మరియు పరిస్థితులను నియంత్రణలో ఉంచుకోవడం ఇష్టపడతారు.',
+    ],
+    // special note: only when birth day === 26
+    specialNote:{
+      condition:d=>d===26,
+      en:'You may face challenges in your relationships and married life.',
+      hi:'आपको रिश्तों और वैवाहिक जीवन में चुनौतियों का सामना करना पड़ सकता है।',
+      te:'మీ సంబంధాలు మరియు వైవాహిక జీవితంలో సవాళ్లు ఎదురయ్యే అవకాశం ఉంది.',
+    },
+  },
+  9:{
+    en:[
+      'You may not always express your emotions openly, but you deeply care about the people you love.',
+      'You can be unpredictable, and people may not always know what to expect from you.',
+      'You can be egoistic at times and may find it difficult to let go of your pride.',
+      'You are courageous and know how to bounce back from difficult situations.',
+      'You enjoy helping others and are often willing to support people when they need it.',
+    ],
+    hi:[
+      'हो सकता है कि आप अपनी भावनाओं को हमेशा खुलकर व्यक्त न करें, लेकिन जिनसे आप प्रेम करते हैं उनकी आप दिल से परवाह करते हैं।',
+      'आपका स्वभाव अप्रत्याशित हो सकता है और लोग हमेशा यह नहीं समझ पाते कि आप आगे क्या करेंगे।',
+      'आप कभी-कभी अहंकारी हो सकते हैं और अपने स्वाभिमान को छोड़ना आपके लिए कठिन हो सकता है।',
+      'आप साहसी होते हैं और कठिन परिस्थितियों से दोबारा उठकर आगे बढ़ना जानते हैं।',
+      'आपको दूसरों की मदद करना पसंद होता है और जरूरत पड़ने पर आप उनका साथ देने के लिए तैयार रहते हैं।',
+    ],
+    te:[
+      'మీరు మీ భావాలను ఎల్లప్పుడూ బహిరంగంగా వ్యక్తం చేయకపోవచ్చు, కానీ మీరు ప్రేమించే వారిని హృదయపూర్వకంగా శ్రద్ధగా చూసుకుంటారు.',
+      'మీ స్వభావం ఊహించలేనిదిగా ఉండవచ్చు మరియు మీరు తర్వాత ఏమి చేస్తారో ఇతరులు ఎల్లప్పుడూ అర్థం చేసుకోలేకపోవచ్చు.',
+      'కొన్నిసార్లు మీలో అహంకారం కనిపించవచ్చు మరియు మీ గర్వాన్ని వదిలేయడం మీకు కష్టంగా అనిపించవచ్చు.',
+      'మీరు ధైర్యవంతులు మరియు కష్టమైన పరిస్థితుల నుంచి మళ్లీ లేచి ముందుకు సాగడం తెలుసు.',
+      'ఇతరులకు సహాయం చేయడం మీకు ఇష్టం మరియు అవసరమైనప్పుడు వారికి అండగా నిలవడానికి సిద్ధంగా ఉంటారు.',
+    ],
+    // no special note, no areas
+  },
+};
+
 // ── DRIVER WEAKNESSES ──
 const DRV_WEAK={
   1:{en:'Ego and pride may become challenges when things do not go as expected. There can be a tendency toward dominating or controlling behaviour without fully realising it, and stubbornness may create friction in relationships at times. The strong desire to lead can occasionally become a need to control. Learning to receive guidance as well as give it is an important growth area for this energy.',
@@ -1340,115 +1584,175 @@ const PLANES=[
 
 // ── DC COMBINATION STRENGTHS (from reference notes) ──
 const DC_STR={
-  '1-1':{en:'You have one of the strongest combinations for entrepreneurship and independent ventures. Excellent business potential is a defining quality of this pairing. You work best when you set your own direction and build something that is truly your own.',
-    hi:'आपके पास उद्यमिता और स्वतंत्र व्यावसायिक उद्यमों के लिए सबसे मजबूत संयोजनों में से एक है। स्वतंत्र रूप से काम करने पर आप सर्वश्रेष्ठ प्रदर्शन करते हैं।',
-    te:'మీకు వ్యవస్థాపకత మరియు స్వతంత్ర వ్యాపార ప్రయత్నాలకు అత్యంత బలమైన సమ్మేళనాలలో ఒకటి ఉంది.'},
-  '1-3':{en:'This combination brings strong suitability for numerology, astrology and educational fields. You have good knowledge-sharing abilities, and roles where you guide, teach or consult others align well with this pairing.',
-    hi:'यह संयोजन अंक ज्योतिष, ज्योतिष और शैक्षिक क्षेत्रों के लिए मजबूत उपयुक्तता लाता है। ज्ञान साझा करने की अच्छी क्षमता है।',
-    te:'ఈ సమ్మేళనం అంకశాస్త్రం, జ్యోతిషం మరియు విద్యా రంగాలకు బలమైన అనుకూలతను తీసుకువస్తుంది.'},
-  '1-4':{en:'You carry strong business and leadership potential. This combination is well-suited for administration, public-facing roles and any field that rewards both authority and drive.',
-    hi:'आपके पास मजबूत व्यावसायिक और नेतृत्व क्षमता है। यह संयोजन प्रशासन और सार्वजनिक-सामना करने वाली भूमिकाओं के लिए उपयुक्त है।',
-    te:'మీకు బలమైన వ్యాపార మరియు నాయకత్వ సామర్థ్యం ఉంది. ఈ సమ్మేళనం పరిపాలన మరియు సాధారణ పాత్రలకు బాగా సరిపోతుంది.'},
-  '1-5':{en:'This combination brings a strong business mindset. Luxury sectors and commercial ventures can be particularly favourable for you.',
-    hi:'यह संयोजन एक मजबूत व्यावसायिक मानसिकता लाता है। लग्जरी क्षेत्र और वाणिज्यिक उद्यम आपके लिए अनुकूल हो सकते हैं।',
-    te:'ఈ సమ్మేళనం బలమైన వ్యాపార మనోభావాన్ని తీసుకువస్తుంది. లగ్జరీ రంగాలు మరియు వాణిజ్య ప్రయత్నాలు అనుకూలంగా ఉండవచ్చు.'},
-  '1-6':{en:'This is one of the top-rated combinations. Strong business potential is present, and luxury, hospitality and lifestyle-related industries can be particularly favourable. This pairing combines leadership drive with an appreciation for quality and comfort.',
-    hi:'यह शीर्ष-रेटेड संयोजनों में से एक है। मजबूत व्यावसायिक क्षमता मौजूद है। लग्जरी, आतिथ्य और जीवनशैली उद्योग अनुकूल हो सकते हैं।',
-    te:'ఇది అత్యధిక రేటింగ్ పొందిన సమ్మేళనాలలో ఒకటి. బలమైన వ్యాపార సామర్థ్యం ఉంది. లగ్జరీ, ఆతిథ్యం అనుకూలంగా ఉండవచ్చు.'},
-  '1-7':{en:'This combination brings good potential in numerology, astrology and spiritual consultation. The depth of Ketu combined with the drive of Sun creates a person well-suited for knowledge-based and investigative fields.',
-    hi:'यह संयोजन अंक ज्योतिष, ज्योतिष और आध्यात्मिक परामर्श में अच्छी क्षमता लाता है।',
-    te:'ఈ సమ్మేళనం అంకశాస్త్రం, జ్యోతిషం మరియు ఆధ్యాత్మిక సలహాలో మంచి సామర్థ్యాన్ని తీసుకువస్తుంది.'},
-  '1-9':{en:'This is one of the highest-rated combinations in the system. You carry strong potential for success, leadership and influence. Sun leads and Mars executes, creating a person who both commands and delivers. This pairing is marked as one of the top combinations.',
-    hi:'यह सिस्टम में सर्वोच्च रेटेड संयोजनों में से एक है। सफलता, नेतृत्व और प्रभाव के लिए मजबूत क्षमता है।',
-    te:'ఇది సిస్టమ్‌లో అత్యధిక రేటింగ్ పొందిన సమ్మేళనాలలో ఒకటి. విజయం, నాయకత్వం మరియు ప్రభావానికి బలమైన సామర్థ్యం ఉంది.'},
-  '2-3':{en:'This combination brings good educational abilities. Learning and teaching environments can be favourable for you, and roles that involve sharing knowledge or guiding others suit this pairing well.',
-    hi:'यह संयोजन अच्छी शैक्षिक क्षमताएं लाता है। शिक्षण और शिक्षा वातावरण आपके लिए अनुकूल हो सकते हैं।',
-    te:'ఈ సమ్మేళనం మంచి విద్యా సామర్థ్యాలను తీసుకువస్తుంది. నేర్చుకోవడం మరియు బోధన వాతావరణాలు అనుకూలంగా ఉండవచ్చు.'},
-  '2-4':{en:'This combination brings strong property and real-estate potential. Your combination of Moon sensitivity and Rahu drive creates a natural instinct for identifying value in land and property.',
-    hi:'यह संयोजन संपत्ति और रियल एस्टेट में मजबूत क्षमता लाता है। भूमि और संपत्ति में मूल्य पहचानने की स्वाभाविक प्रवृत्ति है।',
-    te:'ఈ సమ్మేళనం ఆస్తి మరియు రియల్ ఎస్టేట్‌లో బలమైన సామర్థ్యాన్ని తీసుకువస్తుంది.'},
-  '2-5':{en:'This combination brings good potential in water-related, dairy-related or general business activities. Your Moon energy combined with Mercury adaptability creates a versatile and people-oriented business mindset.',
-    hi:'यह संयोजन जल-संबंधित, डेयरी-संबंधित या सामान्य व्यावसायिक गतिविधियों में अच्छी क्षमता लाता है।',
-    te:'ఈ సమ్మేళనం నీటి-సంబంధిత, పాడి-సంబంధిత లేదా సాధారణ వ్యాపార కార్యకలాపాలలో మంచి సామర్థ్యాన్ని తీసుకువస్తుంది.'},
-  '2-6':{en:'This combination brings strong business potential and can perform well in commercial ventures. Your Moon intuition combined with Venus harmony creates a natural ability to build trust and lasting business relationships.',
-    hi:'यह संयोजन मजबूत व्यावसायिक क्षमता लाता है और वाणिज्यिक उद्यमों में अच्छा प्रदर्शन कर सकता है।',
-    te:'ఈ సమ్మేళనం బలమైన వ్యాపార సామర్థ్యాన్ని తీసుకువస్తుంది మరియు వాణిజ్య ప్రయత్నాలలో బాగా పనిచేయగలదు.'},
-  '3-1':{en:'This combination brings strong communication skills and logic-oriented thinking. You are well-suited for fields that require both knowledge and the ability to express it with authority.',
-    hi:'यह संयोजन मजबूत संचार कौशल और तर्क-उन्मुखी सोच लाता है।',
-    te:'ఈ సమ్మేళనం బలమైన కమ్యూనికేషన్ నైపుణ్యాలు మరియు తర్కం-ఆధారిత ఆలోచనను తీసుకువస్తుంది.'},
-  '3-3':{en:'This combination brings strong strategic abilities. You can generate ideas easily, and your Jupiter double energy makes you particularly well-suited for planning, consulting and creative fields.',
-    hi:'यह संयोजन मजबूत रणनीतिक क्षमताएं लाता है। आप आसानी से विचार उत्पन्न कर सकते हैं।',
-    te:'ఈ సమ్మేళనం బలమైన వ్యూహాత్మక సామర్థ్యాలను తీసుకువస్తుంది. మీరు సులభంగా ఆలోచనలు ఉత్పన్నం చేయగలరు.'},
-  '3-5':{en:'This combination brings good educational and healing-related potential. Jupiter wisdom combined with Mercury balance creates a natural aptitude for teaching, counselling and any field where knowledge meets care.',
-    hi:'यह संयोजन शैक्षिक और उपचार-संबंधित क्षेत्रों में अच्छी क्षमता लाता है।',
-    te:'ఈ సమ్మేళనం విద్యా మరియు వైద్య-సంబంధిత రంగాలలో మంచి సామర్థ్యాన్ని తీసుకువస్తుంది.'},
-  '3-9':{en:'This combination brings strong suitability for defence, military or disciplined leadership roles. Jupiter\'s knowledge combined with Mars courage creates a person well-suited for structured authority and service.',
-    hi:'यह संयोजन रक्षा, सैन्य या अनुशासित नेतृत्व भूमिकाओं के लिए मजबूत उपयुक्तता लाता है।',
-    te:'ఈ సమ్మేళనం రక్షణ, సైన్యం లేదా క్రమశిక్షణతో కూడిన నాయకత్వ పాత్రలకు బలమైన అనుకూలతను తీసుకువస్తుంది.'},
-  '4-1':{en:'This combination is excellent for sales and marketing. Rahu drive combined with Sun authority creates a natural persuader and high-performance professional in commercial, promotional and people-facing roles.',
-    hi:'यह संयोजन बिक्री और विपणन के लिए उत्कृष्ट है। राहु की महत्वाकांक्षा और सन के अधिकार का संयोजन एक स्वाभाविक समझाने वाले को बनाता है।',
-    te:'ఈ సమ్మేళనం అమ్మకాలు మరియు మార్కెటింగ్‌కు అద్భుతంగా ఉంది.'},
-  '4-6':{en:'This combination brings good potential in hospitality, luxury and lifestyle industries. Rahu ambition combined with Venus aesthetics creates a natural strength in building premium experiences and customer-focused businesses.',
-    hi:'यह संयोजन आतिथ्य, लग्जरी और जीवनशैली उद्योगों में अच्छी क्षमता लाता है।',
-    te:'ఈ సమ్మేళనం ఆతిథ్యం, లగ్జరీ మరియు జీవనశైలి పరిశ్రమలలో మంచి సామర్థ్యాన్ని తీసుకువస్తుంది.'},
-  '4-7':{en:'This combination brings strong suitability for law, education and knowledge-based professions. The analytical depth of both Rahu and Ketu creates a person who excels in research, investigation and structured intellectual work.',
-    hi:'यह संयोजन कानून, शिक्षा और ज्ञान-आधारित व्यवसायों के लिए मजबूत उपयुक्तता लाता है।',
-    te:'ఈ సమ్మేళనం న్యాయం, విద్య మరియు జ్ఞాన-ఆధారిత వృత్తులకు బలమైన అనుకూలతను తీసుకువస్తుంది.'},
-  '4-8':{en:'This combination can perform well in law, police, military or authority-based professions. The Rahu-Saturn pairing creates strong discipline and the capacity to work within structured systems of power.',
-    hi:'यह संयोजन कानून, पुलिस, सैन्य या प्राधिकरण-आधारित व्यवसायों में अच्छा प्रदर्शन कर सकता है।',
-    te:'ఈ సమ్మేళనం న్యాయం, పోలీసు, సైన్యం లేదా అధికార-ఆధారిత వృత్తులలో బాగా పనిచేయగలదు.'},
-  '5-1':{en:'This is a strong overall combination with good business judgement. Mercury adaptability combined with Sun leadership creates a versatile person who can succeed across a wide range of fields.',
-    hi:'यह एक मजबूत समग्र संयोजन है जिसमें अच्छी व्यावसायिक समझ है। बुध की अनुकूलनशीलता और सन के नेतृत्व का संयोजन।',
-    te:'ఇది మంచి వ్యాపార తీర్పుతో బలమైన మొత్తం సమ్మేళనం.'},
-  '5-2':{en:'This combination brings strong potential in property and real estate. Mercury\'s adaptability combined with Moon\'s intuition creates a natural ability to identify and work with valuable assets.',
-    hi:'यह संयोजन संपत्ति और रियल एस्टेट में मजबूत क्षमता लाता है।',
-    te:'ఈ సమ్మేళనం ఆస్తి మరియు రియల్ ఎస్టేట్‌లో బలమైన సామర్థ్యాన్ని తీసుకువస్తుంది.'},
-  '5-3':{en:'This combination brings good healing and educational abilities. Mercury balance combined with Jupiter wisdom creates a natural capacity for both learning and helping others to grow.',
-    hi:'यह संयोजन अच्छी उपचार और शैक्षिक क्षमताएं लाता है।',
-    te:'ఈ సమ్మేళనం మంచి వైద్య మరియు విద్యా సామర్థ్యాలను తీసుకువస్తుంది.'},
-  '5-5':{en:'This combination brings very sharp mental abilities, fast thinking and strong adaptability. Double Mercury creates exceptional intellectual agility. You can navigate almost any situation with intelligence and ease.',
-    hi:'यह संयोजन बहुत तेज मानसिक क्षमताएं, तेज सोच और मजबूत अनुकूलनशीलता लाता है।',
-    te:'ఈ సమ్మేళనం చాలా పదునైన మేధో సామర్థ్యాలు, వేగమైన ఆలోచన మరియు బలమైన అనుకూలతను తీసుకువస్తుంది.'},
-  '5-6':{en:'This is one of the strongest combinations in the system, marked as comparable to the top-rated combinations. Your Mercury balance combined with Venus harmony creates a rare blend of adaptability and devotion that makes you effective in almost any field you choose.',
-    hi:'यह सिस्टम में सबसे मजबूत संयोजनों में से एक है, शीर्ष-रेटेड संयोजनों के बराबर चिह्नित है।',
-    te:'ఇది సిస్టమ్‌లో అత్యంత బలమైన సమ్మేళనాలలో ఒకటి, అత్యధిక రేటింగ్ పొందిన సమ్మేళనాలతో సమానంగా గుర్తించబడింది.'},
-  '6-5':{en:'This is one of the strongest combinations in the system. Strong teaching ability and good luxury and glamour potential are both present. Venus glamour combined with Mercury balance creates a powerful combination of grace, adaptability and influence.',
-    hi:'यह सिस्टम में सबसे मजबूत संयोजनों में से एक है। मजबूत शिक्षण क्षमता और लग्जरी क्षमता दोनों मौजूद हैं।',
-    te:'ఇది సిస్టమ్‌లో అత్యంత బలమైన సమ్మేళనాలలో ఒకటి. బలమైన బోధన సామర్థ్యం మరియు లగ్జరీ సామర్థ్యం రెండూ ఉన్నాయి.'},
-  '6-6':{en:'This combination brings strong influence, attraction and public appeal. Double Venus creates an exceptional presence that draws people naturally. This is one of the top combinations, marked for its powerful social and commercial influence.',
-    hi:'यह संयोजन मजबूत प्रभाव, आकर्षण और सार्वजनिक अपील लाता है। डबल शुक्र एक असाधारण उपस्थिति बनाता है।',
-    te:'ఈ సమ్మేళనం బలమైన ప్రభావం, ఆకర్షణ మరియు సాధారణ అందాన్ని తీసుకువస్తుంది. డబుల్ శుక్రుడు అసాధారణ ఉనికిని సృష్టిస్తుంది.'},
-  '7-4':{en:'This combination brings strong research and analytical abilities. Ketu depth combined with Rahu drive creates a person who excels at digging beneath the surface to find truth and build real understanding.',
-    hi:'यह संयोजन मजबूत शोध और विश्लेषणात्मक क्षमताएं लाता है।',
-    te:'ఈ సమ్మేళనం బలమైన పరిశోధన మరియు విశ్లేషణ సామర్థ్యాలను తీసుకువస్తుంది.'},
-  '7-6':{en:'This is specifically marked as a good combination in the notes. It is strong for research, healing and education. Ketu spirituality combined with Venus harmony creates a person with both depth and warmth.',
-    hi:'यह विशेष रूप से नोट्स में एक अच्छे संयोजन के रूप में चिह्नित है। शोध, उपचार और शिक्षा के लिए मजबूत।',
-    te:'ఇది నోట్స్‌లో ప్రత్యేకంగా మంచి సమ్మేళనంగా గుర్తించబడింది. పరిశోధన, వైద్యం మరియు విద్యకు బలంగా ఉంది.'},
-  '8-3':{en:'This combination brings good suitability for law and communication-related fields. Saturn discipline combined with Jupiter knowledge creates a person well-suited for structured, knowledge-based professions.',
-    hi:'यह संयोजन कानून और संचार-संबंधित क्षेत्रों के लिए अच्छी उपयुक्तता लाता है।',
-    te:'ఈ సమ్మేళనం న్యాయం మరియు కమ్యూనికేషన్-సంబంధిత రంగాలకు మంచి అనుకూలతను తీసుకువస్తుంది.'},
-  '8-5':{en:'This combination brings strong property and real-estate potential. Saturn stability combined with Mercury adaptability creates a natural strength in asset building and long-term investment.',
-    hi:'यह संयोजन संपत्ति और रियल एस्टेट में मजबूत क्षमता लाता है।',
-    te:'ఈ సమ్మేళనం ఆస్తి మరియు రియల్ ఎస్టేట్‌లో బలమైన సామర్థ్యాన్ని తీసుకువస్తుంది.'},
-  '8-6':{en:'This combination brings strong luxury and lifestyle potential. Saturn\'s long-term thinking combined with Venus aesthetics creates a person who builds enduring value in premium and lifestyle-oriented fields.',
-    hi:'यह संयोजन मजबूत लग्जरी और जीवनशैली क्षमता लाता है।',
-    te:'ఈ సమ్మేళనం బలమైన లగ్జరీ మరియు జీవనశైలి సామర్థ్యాన్ని తీసుకువస్తుంది.'},
-  '8-7':{en:'This combination brings good suitability for numerology, astrology and law. Saturn\'s structured thinking combined with Ketu\'s depth creates a person who excels in detailed, research-based and authority-driven professions.',
-    hi:'यह संयोजन अंक ज्योतिष, ज्योतिष और कानून के लिए अच्छी उपयुक्तता लाता है।',
-    te:'ఈ సమ్మేళనం అంకశాస్త్రం, జ్యోతిషం మరియు న్యాయానికి మంచి అనుకూలతను తీసుకువస్తుంది.'},
-  '9-1':{en:'This combination brings strong business and political potential. Mars courage combined with Sun authority creates a natural leader who is driven to build, influence and make a lasting impact.',
-    hi:'यह संयोजन मजबूत व्यावसायिक और राजनीतिक क्षमता लाता है।',
-    te:'ఈ సమ్మేళనం బలమైన వ్యాపార మరియు రాజకీయ సామర్థ్యాన్ని తీసుకువస్తుంది.'},
-  '9-3':{en:'This combination brings good healing, education and numerology potential. Mars drive combined with Jupiter wisdom creates a person well-suited for service-oriented, knowledge-based and consultative roles.',
-    hi:'यह संयोजन उपचार, शिक्षा और अंक ज्योतिष में अच्छी क्षमता लाता है।',
-    te:'ఈ సమ్మేళనం వైద్యం, విద్య మరియు అంకశాస్త్రంలో మంచి సామర్థ్యాన్ని తీసుకువస్తుంది.'},
+  '1-1':{
+    en:['Excellent business potential','One of the strongest combinations for entrepreneurship and independent ventures'],
+    hi:['बेहतरीन व्यावसायिक क्षमता','उद्यमिता और स्वतंत्र व्यावसायिक उद्यमों के लिए सबसे मजबूत संयोजनों में से एक'],
+    te:['అద్భుతమైన వ్యాపార సామర్థ్యం','వ్యవస్థాపకత మరియు స్వతంత్ర వ్యాపార ప్రయత్నాలకు అత్యంత బలమైన సమ్మేళనాలలో ఒకటి'],
+  },
+  '1-3':{
+    en:['Strong suitability for educational fields','Good knowledge-sharing abilities'],
+    hi:['शैक्षिक क्षेत्रों के लिए मजबूत उपयुक्तता','ज्ञान साझा करने की अच्छी क्षमता'],
+    te:['విద్యా రంగాలకు బలమైన అనుకూలత','మంచి జ్ఞాన-పంచుకోవడపు సామర్థ్యాలు'],
+  },
+  '1-4':{
+    en:['Strong business and leadership potential','Suitable for administration and public-facing roles'],
+    hi:['मजबूत व्यावसायिक और नेतृत्व क्षमता','प्रशासन और सार्वजनिक-सामना करने वाली भूमिकाओं के लिए उपयुक्त'],
+    te:['బలమైన వ్యాపార మరియు నాయకత్వ సామర్థ్యం','పరిపాలన మరియు ప్రజాముఖ పాత్రలకు అనుకూలం'],
+  },
+  '1-5':{
+    en:['Strong business mindset','Luxury and commercial sectors can be favourable'],
+    hi:['मजबूत व्यावसायिक मानसिकता','लग्जरी और वाणिज्यिक क्षेत्र अनुकूल हो सकते हैं'],
+    te:['బలమైన వ్యాపార మనోభావం','లగ్జరీ మరియు వాణిజ్య రంగాలు అనుకూలంగా ఉండవచ్చు'],
+  },
+  '1-6':{
+    en:['Strong business potential','Luxury, hospitality and lifestyle-related industries can be favourable'],
+    hi:['मजबूत व्यावसायिक क्षमता','लग्जरी, आतिथ्य और जीवनशैली उद्योग अनुकूल हो सकते हैं'],
+    te:['బలమైన వ్యాపార సామర్థ్యం','లగ్జరీ, ఆతిథ్యం మరియు జీవనశైలి పరిశ్రమలు అనుకూలంగా ఉండవచ్చు'],
+  },
+  '1-9':{
+    en:['One of the highest-rated combinations','Strong potential for success, leadership and influence'],
+    hi:['सर्वोच्च रेटेड संयोजनों में से एक','सफलता, नेतृत्व और प्रभाव के लिए मजबूत क्षमता'],
+    te:['అత్యధిక రేటింగ్ పొందిన సమ్మేళనాలలో ఒకటి','విజయం, నాయకత్వం మరియు ప్రభావానికి బలమైన సామర్థ్యం'],
+  },
+  '2-3':{
+    en:['Good educational abilities','Learning and teaching environments can be favourable'],
+    hi:['अच्छी शैक्षिक क्षमताएं','शिक्षण और शिक्षा वातावरण अनुकूल हो सकते हैं'],
+    te:['మంచి విద్యా సామర్థ్యాలు','నేర్చుకోవడం మరియు బోధన వాతావరణాలు అనుకూలంగా ఉండవచ్చు'],
+  },
+  '2-4':{
+    en:['Strong property and real-estate potential'],
+    hi:['संपत्ति और रियल एस्टेट में मजबूत क्षमता'],
+    te:['ఆస్తి మరియు రియల్ ఎస్టేట్‌లో బలమైన సామర్థ్యం'],
+  },
+  '2-5':{
+    en:['Good potential in water-related, dairy-related or business activities'],
+    hi:['जल-संबंधित, डेयरी-संबंधित या व्यावसायिक गतिविधियों में अच्छी क्षमता'],
+    te:['నీటి-సంబంధిత, పాడి-సంబంధిత లేదా వ్యాపార కార్యకలాపాలలో మంచి సామర్థ్యం'],
+  },
+  '2-6':{
+    en:['Strong business potential','Can perform well in commercial ventures'],
+    hi:['मजबूत व्यावसायिक क्षमता','वाणिज्यिक उद्यमों में अच्छा प्रदर्शन कर सकते हैं'],
+    te:['బలమైన వ్యాపార సామర్థ్యం','వాణిజ్య ప్రయత్నాలలో బాగా పనిచేయగలరు'],
+  },
+  '3-1':{
+    en:['Strong communication skills','Logic and knowledge-oriented thinking'],
+    hi:['मजबूत संचार कौशल','तर्क और ज्ञान-उन्मुखी सोच'],
+    te:['బలమైన కమ్యూనికేషన్ నైపుణ్యాలు','తర్కం మరియు జ్ఞాన-ఆధారిత ఆలోచన'],
+  },
+  '3-3':{
+    en:['Strong strategic abilities','Can generate ideas easily'],
+    hi:['मजबूत रणनीतिक क्षमताएं','आसानी से विचार उत्पन्न कर सकते हैं'],
+    te:['బలమైన వ్యూహాత్మక సామర్థ్యాలు','సులభంగా ఆలోచనలు ఉత్పన్నం చేయగలరు'],
+  },
+  '3-5':{
+    en:['Good educational and healing-related potential'],
+    hi:['शैक्षिक और उपचार-संबंधित क्षेत्रों में अच्छी क्षमता'],
+    te:['విద్యా మరియు వైద్య-సంబంధిత రంగాలలో మంచి సామర్థ్యం'],
+  },
+  '3-9':{
+    en:['Strong suitability for defence, military or disciplined leadership roles'],
+    hi:['रक्षा, सैन्य या अनुशासित नेतृत्व भूमिकाओं के लिए मजबूत उपयुक्तता'],
+    te:['రక్షణ, సైన్యం లేదా క్రమశిక్షణతో కూడిన నాయకత్వ పాత్రలకు బలమైన అనుకూలత'],
+  },
+  '4-1':{
+    en:['Excellent for sales and marketing'],
+    hi:['बिक्री और विपणन के लिए उत्कृष्ट'],
+    te:['అమ్మకాలు మరియు మార్కెటింగ్‌కు అద్భుతంగా ఉంది'],
+  },
+  '4-6':{
+    en:['Good potential in hospitality, luxury and lifestyle industries'],
+    hi:['आतिथ्य, लग्जरी और जीवनशैली उद्योगों में अच्छी क्षमता'],
+    te:['ఆతిథ్యం, లగ్జరీ మరియు జీవనశైలి పరిశ్రమలలో మంచి సామర్థ్యం'],
+  },
+  '4-7':{
+    en:['Strong suitability for law, education and knowledge-based professions'],
+    hi:['कानून, शिक्षा और ज्ञान-आधारित व्यवसायों के लिए मजबूत उपयुक्तता'],
+    te:['న్యాయం, విద్య మరియు జ్ఞాన-ఆధారిత వృత్తులకు బలమైన అనుకూలత'],
+  },
+  '4-8':{
+    en:['Can perform well in law, police, military or authority-based professions'],
+    hi:['कानून, पुलिस, सैन्य या प्राधिकरण-आधारित व्यवसायों में अच्छा प्रदर्शन कर सकते हैं'],
+    te:['న్యాయం, పోలీసు, సైన్యం లేదా అధికార-ఆధారిత వృత్తులలో బాగా పనిచేయగలరు'],
+  },
+  '5-1':{
+    en:['Strong overall combination','Good business judgement'],
+    hi:['मजबूत समग्र संयोजन','अच्छी व्यावसायिक समझ'],
+    te:['బలమైన మొత్తం సమ్మేళనం','మంచి వ్యాపార తీర్పు'],
+  },
+  '5-2':{
+    en:['Strong property and real-estate potential'],
+    hi:['संपत्ति और रियल एस्टेट में मजबूत क्षमता'],
+    te:['ఆస్తి మరియు రియల్ ఎస్టేట్‌లో బలమైన సామర్థ్యం'],
+  },
+  '5-3':{
+    en:['Good healing and educational abilities'],
+    hi:['अच्छी उपचार और शैक्षिक क्षमताएं'],
+    te:['మంచి వైద్య మరియు విద్యా సామర్థ్యాలు'],
+  },
+  '5-5':{
+    en:['Very sharp mental abilities','Fast thinking and strong adaptability'],
+    hi:['बहुत तेज मानसिक क्षमताएं','तेज सोच और मजबूत अनुकूलनशीलता'],
+    te:['చాలా పదునైన మేధో సామర్థ్యాలు','వేగమైన ఆలోచన మరియు బలమైన అనుకూలత'],
+  },
+  '5-6':{
+    en:['One of the strongest combinations comparable to top-rated combinations'],
+    hi:['शीर्ष-रेटेड संयोजनों के बराबर सबसे मजबूत संयोजनों में से एक'],
+    te:['అత్యధిక రేటింగ్ పొందిన సమ్మేళనాలతో సమానమైన అత్యంత బలమైన సమ్మేళనాలలో ఒకటి'],
+  },
+  '6-5':{
+    en:['One of the strongest combinations','Strong teaching ability','Good luxury and glamour potential'],
+    hi:['सबसे मजबूत संयोजनों में से एक','मजबूत शिक्षण क्षमता','अच्छी लग्जरी और ग्लैमर क्षमता'],
+    te:['అత్యంత బలమైన సమ్మేళనాలలో ఒకటి','బలమైన బోధన సామర్థ్యం','మంచి లగ్జరీ మరియు గ్లామర్ సామర్థ్యం'],
+  },
+  '6-6':{
+    en:['Strong influence, attraction and public appeal'],
+    hi:['मजबूत प्रभाव, आकर्षण और सार्वजनिक अपील'],
+    te:['బలమైన ప్రభావం, ఆకర్షణ మరియు ప్రజా అందం'],
+  },
+  '7-4':{
+    en:['Strong research and analytical abilities'],
+    hi:['मजबूत शोध और विश्लेषणात्मक क्षमताएं'],
+    te:['బలమైన పరిశోధన మరియు విశ్లేషణ సామర్థ్యాలు'],
+  },
+  '7-6':{
+    en:['Good combination','Strong potential in research, healing and education'],
+    hi:['अच्छा संयोजन','शोध, उपचार और शिक्षा में मजबूत क्षमता'],
+    te:['మంచి సమ్మేళనం','పరిశోధన, వైద్యం మరియు విద్యలో బలమైన సామర్థ్యం'],
+  },
+  '8-3':{
+    en:['Good suitability for law and communication-related fields'],
+    hi:['कानून और संचार-संबंधित क्षेत्रों के लिए अच्छी उपयुक्तता'],
+    te:['న్యాయం మరియు కమ్యూనికేషన్-సంబంధిత రంగాలకు మంచి అనుకూలత'],
+  },
+  '8-5':{
+    en:['Strong property and real-estate potential'],
+    hi:['संपत्ति और रियल एस्टेट में मजबूत क्षमता'],
+    te:['ఆస్తి మరియు రియల్ ఎస్టేట్‌లో బలమైన సామర్థ్యం'],
+  },
+  '8-6':{
+    en:['Strong luxury and lifestyle potential'],
+    hi:['मजबूत लग्जरी और जीवनशैली क्षमता'],
+    te:['బలమైన లగ్జరీ మరియు జీవనశైలి సామర్థ్యం'],
+  },
+  '8-7':{
+    en:['Good suitability for law'],
+    hi:['कानून के लिए अच्छी उपयुक्तता'],
+    te:['న్యాయానికి మంచి అనుకూలత'],
+  },
+  '9-1':{
+    en:['Strong business and political potential'],
+    hi:['मजबूत व्यावसायिक और राजनीतिक क्षमता'],
+    te:['బలమైన వ్యాపార మరియు రాజకీయ సామర్థ్యం'],
+  },
+  '9-3':{
+    en:['Good healing, education and numerology potential'],
+    hi:['उपचार, शिक्षा और अंक ज्योतिष में अच्छी क्षमता'],
+    te:['వైద్యం, విద్య మరియు అంకశాస్త్రంలో మంచి సామర్థ్యం'],
+  },
 };
 function getDCStr(d,c){
-  return DC_STR[`${d}-${c}`]||DC_STR[`${c}-${d}`]||{
-    en:'Your Driver and Conductor combination creates a unique personal energy. Work consciously with both numbers to make the most of this pairing.',
-    hi:'आपका चालक और संचालक संयोजन एक अनूठी व्यक्तिगत ऊर्जा बनाता है।',
-    te:'మీ చాలక మరియు నిర్వాహక సమ్మేళనం ఒక ప్రత్యేక వ్యక్తిగత శక్తిని సృష్టిస్తుంది.'
-  };
+  // Only return data for exact approved combinations — no fallback, no reverse lookup
+  return DC_STR[`${d}-${c}`]||null;
 }
 
 // ── YOGA DATA ──
@@ -2675,24 +2979,213 @@ function gen(){
 
   // ── STRENGTHS SECTION ──
 
-  // SUB 1: Driver strengths
-  const driverTraits=txArr(NC[driver]||{});
+  // SUB 1: Driver strengths (new content)
+  const _drvStr=DRV_STR_NEW[driver]||{};
+  const _drvStrTraits=(LANG==='hi'?_drvStr.hi:LANG==='te'?_drvStr.te:_drvStr.en)||[];
+  const _drvSpecial=_drvStr.specialNote||null;
+  const _drvAreas=_drvStr.areas||null;
+  const _showSpecial=_drvSpecial&&_drvSpecial.condition&&_drvSpecial.condition(day);
+
+  // "Additional Insight" — driver-specific conditional note, placed immediately after Strengths From Your Driver Number
+  const _addInsightTitle=LANG==='hi'?'अतिरिक्त अंतर्दृष्टि':LANG==='te'?'అదనపు అంతర్దృష్టి':'Additional Insight';
+  const additionalInsightHTML=_showSpecial?`<div class="subsec">
+    <div class="subsec-title">${_addInsightTitle}</div>
+    <div class="subsec-body"><p>${LANG==='hi'?_drvSpecial.hi:LANG==='te'?_drvSpecial.te:_drvSpecial.en}</p></div>
+  </div>`:'';
+
+  // "Important Guidance" — warnings/cautions/lifestyle recommendations, placed after Challenges From Your Chart Numbers
+  const _impGuidanceTitle=LANG==='hi'?'महत्वपूर्ण मार्गदर्शन':LANG==='te'?'ముఖ్యమైన మార్గదర్శనం':'Important Guidance';
+  const importantGuidanceHTML=_drvAreas?`<div class="subsec">
+    <div class="subsec-title">${_impGuidanceTitle}</div>
+    <div class="subsec-body"><div class="obs-box" style="background:#fff9e6;border-color:#e8c840;color:#7a6200"><p>${LANG==='hi'?_drvAreas.hi:LANG==='te'?_drvAreas.te:_drvAreas.en}</p></div></div>
+  </div>`:'';
+
   const sub1HTML=`<div class="subsec">
-    <div class="subsec-title">${t('sub1')}</div>
+    <div class="subsec-title">${LANG==='hi'?'आपके चालक अंक से मिली शक्तियां':LANG==='te'?'మీ చాలక అంకం నుండి వచ్చిన బలాలు':'Strengths From Your Driver Number'}</div>
     <div class="subsec-body">
-      ${driverTraits.map(tr=>`<p>${tr}</p>`).join('')}
-      <!-- Master Numbers handled in dedicated section after Weaknesses -->
-      <!-- Karmic Numbers handled in dedicated section after Weaknesses -->
+      ${_drvStrTraits.map(tr=>`<p>${tr}</p>`).join('')}
     </div>
   </div>`;
 
-  // SUB 2: DC combination strengths — always show unless enemy combination
+  // SUB 2: Strengths From Your Birth Number Combination
+  // Only renders for EXACTLY matching approved Driver-Conductor combinations.
+  // If no match: section is completely hidden — no heading, no placeholder, nothing.
+  const DC_STR_APPROVED={
+    '1-1':{
+      en:'You have excellent business potential and can perform very well in entrepreneurship and independent ventures.',
+      hi:'आपके अंदर बेहतरीन व्यापारिक क्षमता है और आप उद्यमिता तथा स्वतंत्र व्यवसायों में बहुत अच्छा प्रदर्शन कर सकते हैं।',
+      te:'మీలో అద్భుతమైన వ్యాపార సామర్థ్యం ఉంది మరియు మీరు వ్యాపార వ్యవస్థాపన మరియు స్వతంత్ర వ్యాపారాలలో చాలా బాగా రాణించగలరు.',
+    },
+    '1-3':{
+      en:'You have strong educational abilities and can effectively share knowledge with others.',
+      hi:'आपकी शैक्षणिक क्षमताएँ मजबूत हैं और आप दूसरों के साथ ज्ञान प्रभावी रूप से साझा कर सकते हैं।',
+      te:'మీ విద్యా సామర్థ్యాలు బలంగా ఉన్నాయి మరియు మీరు మీ జ్ఞానాన్ని ఇతరులతో సమర్థవంతంగా పంచుకోగలరు.',
+    },
+    '1-4':{
+      en:'You possess strong leadership and business qualities. Administrative and public-facing roles can suit you well.',
+      hi:'आपके अंदर मजबूत नेतृत्व और व्यावसायिक गुण हैं। प्रशासनिक और जनसंपर्क से जुड़े कार्य आपके लिए उपयुक्त हो सकते हैं।',
+      te:'మీలో బలమైన నాయకత్వ మరియు వ్యాపార లక్షణాలు ఉన్నాయి. పరిపాలన మరియు ప్రజలతో సంబంధం ఉన్న బాధ్యతలు మీకు అనుకూలంగా ఉండవచ్చు.',
+    },
+    '1-5':{
+      en:'You have a strong business mindset. Luxury and commercial sectors can be favourable for you.',
+      hi:'आपकी व्यावसायिक सोच मजबूत है। लग्ज़री और वाणिज्यिक क्षेत्र आपके लिए अनुकूल हो सकते हैं।',
+      te:'మీ వ్యాపార ఆలోచనా విధానం బలంగా ఉంది. లగ్జరీ మరియు వాణిజ్య రంగాలు మీకు అనుకూలంగా ఉండవచ్చు.',
+    },
+    '1-6':{
+      en:'You have strong business potential. Hospitality, luxury and lifestyle industries can bring good opportunities.',
+      hi:'आपके अंदर मजबूत व्यापारिक क्षमता है। आतिथ्य, लग्ज़री और लाइफस्टाइल उद्योग आपके लिए अच्छे अवसर ला सकते हैं।',
+      te:'మీలో బలమైన వ్యాపార సామర్థ్యం ఉంది. హాస్పిటాలిటీ, లగ్జరీ మరియు లైఫ్‌స్టైల్ రంగాలు మీకు మంచి అవకాశాలను అందించవచ్చు.',
+    },
+    '1-9':{
+      en:'This is one of the strongest combinations, indicating high potential for success, leadership and influence.',
+      hi:'यह सबसे शक्तिशाली संयोजनों में से एक है, जो सफलता, नेतृत्व और प्रभाव की उच्च संभावना दर्शाता है।',
+      te:'ఇది అత్యంత శక్తివంతమైన కలయికలలో ఒకటి. ఇది విజయం, నాయకత్వం మరియు ప్రభావానికి అధిక అవకాశాలను సూచిస్తుంది.',
+    },
+    '2-3':{
+      en:'You have good learning and teaching abilities. Educational environments can help you grow and succeed.',
+      hi:'आपकी सीखने और सिखाने की क्षमता अच्छी है। शैक्षणिक वातावरण में आप अच्छी प्रगति और सफलता प्राप्त कर सकते हैं।',
+      te:'మీకు నేర్చుకునే మరియు బోధించే సామర్థ్యం మంచి స్థాయిలో ఉంది. విద్యా సంబంధిత వాతావరణంలో మీరు మంచి పురోగతి మరియు విజయాన్ని సాధించగలరు.',
+    },
+    '2-4':{
+      en:'You have strong potential in property and real-estate related activities.',
+      hi:'संपत्ति और रियल एस्टेट से जुड़े कार्यों में आपके लिए मजबूत संभावनाएँ हैं।',
+      te:'ఆస్తి మరియు రియల్ ఎస్టేట్‌కు సంబంధించిన కార్యకలాపాలలో మీకు బలమైన అవకాశాలు ఉన్నాయి.',
+    },
+    '2-5':{
+      en:'You can perform well in water-related, dairy-related and business activities.',
+      hi:'जल, डेयरी और व्यापार से जुड़े कार्यों में आप अच्छा प्रदर्शन कर सकते हैं।',
+      te:'నీరు, పాల ఉత్పత్తులు మరియు వ్యాపార సంబంధిత రంగాలలో మీరు మంచి ఫలితాలు సాధించగలరు.',
+    },
+    '2-6':{
+      en:'You have strong business potential and can perform successfully in commercial ventures.',
+      hi:'आपके अंदर मजबूत व्यापारिक क्षमता है और आप व्यावसायिक कार्यों में सफलता प्राप्त कर सकते हैं।',
+      te:'మీలో బలమైన వ్యాపార సామర్థ్యం ఉంది మరియు వాణిజ్య కార్యక్రమాలలో విజయవంతంగా రాణించగలరు.',
+    },
+    '3-1':{
+      en:'You have strong communication skills and a logical, knowledge-oriented way of thinking.',
+      hi:'आपकी संवाद क्षमता मजबूत है और आपकी सोच तार्किक तथा ज्ञान-केंद्रित है।',
+      te:'మీ కమ్యూనికేషన్ నైపుణ్యాలు బలంగా ఉన్నాయి మరియు మీ ఆలోచనా విధానం తార్కికంగా, జ్ఞాన ఆధారితంగా ఉంటుంది.',
+    },
+    '3-3':{
+      en:'You have strong strategic abilities and can easily generate new ideas and plans.',
+      hi:'आपकी रणनीतिक क्षमता मजबूत है और आप आसानी से नए विचार तथा योजनाएँ बना सकते हैं।',
+      te:'మీ వ్యూహాత్మక సామర్థ్యం బలంగా ఉంది మరియు మీరు సులభంగా కొత్త ఆలోచనలు మరియు ప్రణాళికలను రూపొందించగలరు.',
+    },
+    '3-5':{
+      en:'You have good potential in educational and healing-related fields.',
+      hi:'शिक्षा और उपचार से जुड़े क्षेत्रों में आपके लिए अच्छी संभावनाएँ हैं।',
+      te:'విద్య మరియు హీలింగ్‌కు సంబంధించిన రంగాలలో మీకు మంచి అవకాశాలు ఉన్నాయి.',
+    },
+    '3-9':{
+      en:'Defence, military and disciplined leadership roles can be highly suitable for you.',
+      hi:'रक्षा, सेना और अनुशासित नेतृत्व से जुड़ी भूमिकाएँ आपके लिए अत्यंत उपयुक्त हो सकती हैं।',
+      te:'రక్షణ, సైన్యం మరియు క్రమశిక్షణతో కూడిన నాయకత్వ బాధ్యతలు మీకు చాలా అనుకూలంగా ఉండవచ్చు.',
+    },
+    '4-1':{
+      en:'You have strong potential in sales and marketing-related fields.',
+      hi:'बिक्री और विपणन से जुड़े क्षेत्रों में आपके लिए मजबूत संभावनाएँ हैं।',
+      te:'సేల్స్ మరియు మార్కెటింగ్ రంగాలలో మీకు బలమైన అవకాశాలు ఉన్నాయి.',
+    },
+    '4-6':{
+      en:'Hospitality, luxury and lifestyle industries can be favourable for your growth and success.',
+      hi:'आतिथ्य, लग्ज़री और लाइफस्टाइल उद्योग आपकी प्रगति और सफलता के लिए अनुकूल हो सकते हैं।',
+      te:'హాస్పిటాలిటీ, లగ్జరీ మరియు లైఫ్‌స్టైల్ రంగాలు మీ అభివృద్ధి మరియు విజయానికి అనుకూలంగా ఉండవచ్చు.',
+    },
+    '4-7':{
+      en:'Law, education and knowledge-based professions can be highly suitable for you.',
+      hi:'कानून, शिक्षा और ज्ञान-आधारित व्यवसाय आपके लिए अत्यंत उपयुक्त हो सकते हैं।',
+      te:'న్యాయం, విద్య మరియు జ్ఞాన ఆధారిత వృత్తులు మీకు చాలా అనుకూలంగా ఉండవచ్చు.',
+    },
+    '4-8':{
+      en:'You can perform well in law, police, military and authority-based roles.',
+      hi:'कानून, पुलिस, सेना और अधिकार से जुड़ी भूमिकाओं में आप अच्छा प्रदर्शन कर सकते हैं।',
+      te:'న్యాయం, పోలీస్, సైన్యం మరియు అధికార సంబంధిత బాధ్యతలలో మీరు మంచి ఫలితాలు సాధించగలరు.',
+    },
+    '5-1':{
+      en:'You have strong business judgment and the ability to make practical decisions. This is considered a powerful combination for success.',
+      hi:'आपके पास मजबूत व्यावसायिक निर्णय क्षमता है और आप व्यावहारिक निर्णय लेने में सक्षम हैं। यह सफलता के लिए एक शक्तिशाली संयोजन माना जाता है।',
+      te:'మీకు బలమైన వ్యాపార నిర్ణయ సామర్థ్యం ఉంది మరియు మీరు ఆచరణాత్మక నిర్ణయాలు తీసుకోగలరు. ఇది విజయానికి శక్తివంతమైన కలయికగా పరిగణించబడుతుంది.',
+    },
+    '5-2':{
+      en:'You have strong potential in property and real-estate related activities.',
+      hi:'संपत्ति और रियल एस्टेट से जुड़े कार्यों में आपके लिए मजबूत संभावनाएँ हैं।',
+      te:'ఆస్తి మరియు రియల్ ఎస్టేట్‌కు సంబంధించిన కార్యకలాపాలలో మీకు బలమైన అవకాశాలు ఉన్నాయి.',
+    },
+    '5-3':{
+      en:'You have good abilities in educational and healing-related fields and can help others through your knowledge.',
+      hi:'शिक्षा और उपचार से जुड़े क्षेत्रों में आपकी अच्छी क्षमता है और आप अपने ज्ञान से दूसरों की सहायता कर सकते हैं।',
+      te:'విద్య మరియు హీలింగ్ రంగాలలో మీకు మంచి సామర్థ్యం ఉంది మరియు మీ జ్ఞానంతో ఇతరులకు సహాయం చేయగలరు.',
+    },
+    '5-5':{
+      en:'You possess a sharp mind, quick thinking ability and excellent adaptability. You can adjust well to changing situations.',
+      hi:'आपके पास तेज़ बुद्धि, त्वरित सोचने की क्षमता और उत्कृष्ट अनुकूलन क्षमता है। आप बदलती परिस्थितियों के अनुसार आसानी से स्वयं को ढाल सकते हैं।',
+      te:'మీకు పదునైన మేధస్సు, వేగంగా ఆలోచించే సామర్థ్యం మరియు అద్భుతమైన అనుకూలత ఉంది. మారుతున్న పరిస్థితులకు మీరు సులభంగా అలవాటు పడగలరు.',
+    },
+    '5-6':{
+      en:'This is one of the strongest combinations. It indicates strong potential for achievement, growth and success.',
+      hi:'यह सबसे शक्तिशाली संयोजनों में से एक है। यह उपलब्धि, विकास और सफलता की मजबूत संभावनाओं को दर्शाता है।',
+      te:'ఇది అత్యంత శక్తివంతమైన కలయికలలో ఒకటి. ఇది సాధన, అభివృద్ధి మరియు విజయానికి బలమైన అవకాశాలను సూచిస్తుంది.',
+    },
+    '6-5':{
+      en:'This is a highly powerful combination. You have strong teaching abilities and good potential in luxury and glamour-related fields.',
+      hi:'यह एक अत्यंत शक्तिशाली संयोजन है। आपके अंदर सिखाने की मजबूत क्षमता है और लग्ज़री तथा ग्लैमर से जुड़े क्षेत्रों में भी अच्छी संभावनाएँ हैं।',
+      te:'ఇది అత్యంత శక్తివంతమైన కలయిక. మీకు బోధించే సామర్థ్యం బలంగా ఉంది మరియు లగ్జరీ, గ్లామర్ రంగాలలో కూడా మంచి అవకాశాలు ఉన్నాయి.',
+    },
+    '6-6':{
+      en:'You have strong influence, natural attraction and the ability to gain public recognition and popularity.',
+      hi:'आपके अंदर मजबूत प्रभाव, प्राकृतिक आकर्षण और जनमानस में पहचान तथा लोकप्रियता प्राप्त करने की क्षमता है।',
+      te:'మీలో బలమైన ప్రభావం, సహజ ఆకర్షణ మరియు ప్రజాదరణ పొందే సామర్థ్యం ఉంది.',
+    },
+    '7-4':{
+      en:'You possess strong research and analytical abilities. You can understand complex subjects in depth.',
+      hi:'आपके पास मजबूत शोध और विश्लेषणात्मक क्षमताएँ हैं। आप जटिल विषयों को गहराई से समझ सकते हैं।',
+      te:'మీకు బలమైన పరిశోధనా మరియు విశ్లేషణాత్మక సామర్థ్యాలు ఉన్నాయి. క్లిష్టమైన విషయాలను లోతుగా అర్థం చేసుకోగలరు.',
+    },
+    '7-6':{
+      en:'Research, healing and educational fields can be highly favourable for your growth and success.',
+      hi:'शोध, उपचार और शिक्षा से जुड़े क्षेत्र आपकी प्रगति और सफलता के लिए अत्यंत अनुकूल हो सकते हैं।',
+      te:'పరిశోధన, హీలింగ్ మరియు విద్యా రంగాలు మీ అభివృద్ధి మరియు విజయానికి చాలా అనుకూలంగా ఉండవచ్చు.',
+    },
+    '8-3':{
+      en:'Law and communication-related fields can be suitable for you, and you may perform well in such professions.',
+      hi:'कानून और संचार से जुड़े क्षेत्र आपके लिए उपयुक्त हो सकते हैं और आप उनमें अच्छा प्रदर्शन कर सकते हैं।',
+      te:'న్యాయం మరియు కమ్యూనికేషన్ రంగాలు మీకు అనుకూలంగా ఉండవచ్చు మరియు మీరు వాటిలో మంచి ఫలితాలు సాధించగలరు.',
+    },
+    '8-5':{
+      en:'You have strong potential in property and real-estate related activities.',
+      hi:'संपत्ति और रियल एस्टेट से जुड़े कार्यों में आपके लिए मजबूत संभावनाएँ हैं।',
+      te:'ఆస్తి మరియు రియల్ ఎస్టేట్‌కు సంబంధించిన కార్యకలాపాలలో మీకు బలమైన అవకాశాలు ఉన్నాయి.',
+    },
+    '8-6':{
+      en:'You have strong potential in luxury, lifestyle and comfort-related industries. These areas can bring good opportunities and growth.',
+      hi:'लग्ज़री, लाइफस्टाइल और आराम से जुड़े उद्योगों में आपके लिए मजबूत संभावनाएँ हैं। ये क्षेत्र आपके लिए अच्छे अवसर और विकास ला सकते हैं।',
+      te:'లగ్జరీ, లైఫ్‌స్టైల్ మరియు సౌకర్యాలకు సంబంధించిన రంగాలలో మీకు బలమైన అవకాశాలు ఉన్నాయి. ఈ రంగాలు మీకు మంచి అవకాశాలు మరియు అభివృద్ధిని అందించవచ్చు.',
+    },
+    '8-7':{
+      en:'Law-related fields can be favourable for you, and you may perform well in legal and justice-oriented professions.',
+      hi:'कानून से जुड़े क्षेत्र आपके लिए अनुकूल हो सकते हैं और आप कानूनी तथा न्याय-संबंधित व्यवसायों में अच्छा प्रदर्शन कर सकते हैं।',
+      te:'న్యాయానికి సంబంధించిన రంగాలు మీకు అనుకూలంగా ఉండవచ్చు మరియు మీరు న్యాయ వృత్తుల్లో మంచి ఫలితాలు సాధించగలరు.',
+    },
+    '9-1':{
+      en:'You have strong business and leadership potential. You may also possess qualities that support political influence and authority.',
+      hi:'आपके अंदर मजबूत व्यापारिक और नेतृत्व क्षमता है। आपके पास राजनीतिक प्रभाव और अधिकार से जुड़ी विशेषताएँ भी हो सकती हैं।',
+      te:'మీలో బలమైన వ్యాపార మరియు నాయకత్వ సామర్థ్యం ఉంది. రాజకీయ ప్రభావం మరియు అధికారానికి సంబంధించిన లక్షణాలు కూడా మీలో ఉండవచ్చు.',
+    },
+    '9-3':{
+      en:'You have good potential in education, healing and numerology-related fields. You can guide and support others through your knowledge and insight.',
+      hi:'शिक्षा, उपचार और अंक ज्योतिष से जुड़े क्षेत्रों में आपके लिए अच्छी संभावनाएँ हैं। आप अपने ज्ञान और समझ के माध्यम से दूसरों का मार्गदर्शन और सहयोग कर सकते हैं।',
+      te:'విద్య, హీలింగ్ మరియు సంఖ్యాశాస్త్రానికి సంబంధించిన రంగాలలో మీకు మంచి అవకాశాలు ఉన్నాయి. మీ జ్ఞానం మరియు అవగాహన ద్వారా ఇతరులకు మార్గదర్శనం మరియు సహాయం చేయగలరు.',
+    },
+  };
+  const _dcKey=`${driver}-${conductor}`;
+  const _dcStrMatch=DC_STR_APPROVED[_dcKey]||null;
   let sub2HTML='';
-  if(!enemyDC){
-    const dcText=dcStrData?tx(dcStrData):(LANG==='hi'?'यह संयोजन आपके जीवन में एक विशेष ऊर्जा लाता है जो आपके चालक और संचालक अंकों के मेल से बनती है।':LANG==='te'?'ఈ సమ్మేళనం మీ జీవితంలో ఒక ప్రత్యేక శక్తిని తీసుకువస్తుంది, ఇది మీ చాలక మరియు నిర్వాహక అంకాల సమ్మేళనం నుండి ఏర్పడుతుంది.':'This combination brings a distinct energy into your life, shaped by the interaction of your Driver and Conductor numbers.');
+  if(_dcStrMatch){
+    const _dcText=LANG==='hi'?_dcStrMatch.hi:LANG==='te'?_dcStrMatch.te:_dcStrMatch.en;
+    const _sub2Title=LANG==='hi'?'आपकी जन्म संख्या संयोजन से मिली शक्तियां':LANG==='te'?'మీ జన్మ సంఖ్య కలయిక నుండి వచ్చిన బలాలు':'Strengths From Your Birth Number Combination';
     sub2HTML=`<div class="subsec">
-      <div class="subsec-title">${t('sub2')}</div>
-      <div class="subsec-body"><p>${dcText}</p></div>
+      <div class="subsec-title">${_sub2Title}</div>
+      <div class="subsec-body"><p>${_dcText}</p></div>
     </div>`;
   }
 
@@ -2793,6 +3286,7 @@ function gen(){
   <!-- ── SECTION 1: STRENGTHS ── -->
   ${sec('secStrengths')}
   ${sub1HTML}
+  ${additionalInsightHTML}
   ${sub2HTML}
   ${sub2bHTML}
   ${sub3HTML}
@@ -2849,6 +3343,9 @@ function gen(){
       <div class="subsec-body">${repWeakItems}</div>
     </div>`;
   })()}
+
+  <!-- Important Guidance — driver-specific warnings/cautions/recommendations -->
+  ${importantGuidanceHTML}
 
   <!-- Special observation — emotional concentration risk -->
   ${(()=>{
@@ -2946,7 +3443,12 @@ function gen(){
   ${sec('secProf')}
   ${(()=>{
     const L=LANG==='hi'?'hi':LANG==='te'?'te':'en';
-    const driverProfs=(PROF_DRIVER[driver]||{})[L]||PROF_DRIVER[driver]?.en||[];
+    const driverProfs=[...((PROF_DRIVER[driver]||{})[L]||PROF_DRIVER[driver]?.en||[])];
+    // Engineering Rule: add only when BOTH 3 and 7 are present anywhere in the final birth chart
+    if(presMap[3]&&presMap[7]){
+      const _engWord=LANG==='hi'?'इंजीनियरिंग':LANG==='te'?'ఇంజినీరింగ్':'Engineering';
+      if(!driverProfs.some(p=>p.toLowerCase()==='engineering'||p===_engWord))driverProfs.push(_engWord);
+    }
     const dcKey=`${driver}-${conductor}`;
     const dcKeyRev=`${conductor}-${driver}`;
     const dcProfs=(PROF_DC[dcKey]||PROF_DC[dcKeyRev]||{})[L]||(PROF_DC[dcKey]||PROF_DC[dcKeyRev])?.en||null;
