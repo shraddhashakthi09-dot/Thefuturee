@@ -3436,15 +3436,15 @@ function gen(){
   ${sec('secProf')}
   ${(()=>{
     const L=LANG==='hi'?'hi':LANG==='te'?'te':'en';
-    const driverProfs=[...((PROF_DRIVER[driver]||{})[L]||PROF_DRIVER[driver]?.en||[])];
+    // PROFESSION NAMES: always English — headings/notes may be translated
+    const driverProfs=[...(PROF_DRIVER[driver]?.en||[])];
     // Engineering Rule: add only when BOTH 3 and 7 are present anywhere in the final birth chart
     if(presMap[3]&&presMap[7]){
-      const _engWord=LANG==='hi'?'इंजीनियरिंग':LANG==='te'?'ఇంజినీరింగ్':'Engineering';
-      if(!driverProfs.some(p=>p.toLowerCase()==='engineering'||p===_engWord))driverProfs.push(_engWord);
+      if(!driverProfs.some(p=>p.toLowerCase()==='engineering'))driverProfs.push('Engineering');
     }
     const dcKey=`${driver}-${conductor}`;
     const dcKeyRev=`${conductor}-${driver}`;
-    const dcProfs=(PROF_DC[dcKey]||PROF_DC[dcKeyRev]||{})[L]||(PROF_DC[dcKey]||PROF_DC[dcKeyRev])?.en||null;
+    const dcProfs=(PROF_DC[dcKey]||PROF_DC[dcKeyRev])?.en||null;
 
     // Professions to avoid — based on enemy numbers
     // Driver hierarchy: if profession is in driver list, never place in avoid
