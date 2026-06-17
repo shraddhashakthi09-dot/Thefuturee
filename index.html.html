@@ -3303,8 +3303,12 @@ function gen(){
   })()}
 
   <!-- Repetitive number weaknesses -->
+  <!-- Rule: frequency=1 → Challenges, frequency=2 → Strengths (sub5), frequency≥3 → Challenges -->
   ${(()=>{
-    const repWeakItems=presentNums.map(n=>{
+    const repWeakItems=presentNums.filter(n=>{
+      const cnt=presMap[n]||0;
+      return cnt!==2; // exclude exactly-2: those go to "What Each Number Brings To Your Life"
+    }).map(n=>{
       const cnt=presMap[n]||1;
       const maxKey=OCC_WEAK[n]?Math.max(...Object.keys(OCC_WEAK[n]).map(Number)):0;
       const lookupCnt=Math.min(cnt,maxKey||cnt);
