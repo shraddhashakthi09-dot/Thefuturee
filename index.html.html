@@ -3549,17 +3549,107 @@ function gen(){
     const fullLabel='Full Name';
     const assessLabel='Name Alignment Assessment';
 
-    const goodBody=LANG==='hi'
-      ?'यह वर्तनी आपके चालक अंक, संचालक अंक और समग्र जन्म चार्ट के साथ अच्छी संख्यात्मक संरेखण दर्शाती है। कोई महत्वपूर्ण टकराव नहीं है।'
-      :LANG==='te'
-      ?'ఈ స్పెల్లింగ్ మీ చాలక అంకం, నిర్వాహక అంకం మరియు మొత్తం జన్మ చార్ట్‌తో మంచి సంఖ్యాత్మక సమలేఖనాన్ని చూపిస్తుంది. ముఖ్యమైన వైరుధ్యాలు ఏమీ లేవు.'
-      :'This spelling shows strong numerical alignment with your birth chart. There are no significant conflicts between your name vibration and your core chart numbers.';
+    // Determine chart strength: challenging if karmic numbers OR enemy DC OR DC_WEAK entry exists
+    const _dcwKey=`${driver}-${conductor}`;
+    const _dcwKeyRev=`${conductor}-${driver}`;
+    const _hasDCWeak=!!(DC_WEAK[_dcwKey]||DC_WEAK[_dcwKeyRev]);
+    const isChallengingChart=karmicList.length>0||enemyDC||_hasDCWeak;
 
-    const badBody=LANG==='hi'
-      ?'यह वर्तनी आपके जन्म चार्ट के साथ कुछ संख्यात्मक टकराव दर्शाती है। ये टकराव देरी, गलतफहमियों, असंगत परिणामों या टाले जा सकने वाले बाहरी अवरोधों में योगदान दे सकते हैं।'
-      :LANG==='te'
-      ?'ఈ స్పెల్లింగ్ మీ జన్మ చార్ట్‌తో కొన్ని సంఖ్యాత్మక వైరుధ్యాలను చూపిస్తుంది. ఈ వైరుధ్యాలు ఆలస్యాలు, అపార్థాలు, అస్థిర ఫలితాలు లేదా నివారించగలిగే బాహ్య అడ్డంకులకు దోహదపడవచ్చు.'
-      :'This spelling shows certain numerical conflicts with your birth chart. These conflicts may contribute to delays, misunderstandings, inconsistent outcomes or avoidable external obstacles.';
+    // 4-case interpretation
+    // Case 1: Strong Chart + Name NOT Aligned
+    const case1={
+      en:`<ul>
+        <li>Your chart is naturally strong and has the ability to bring good opportunities into your life.</li>
+        <li>However, your current name spelling is not fully supporting this strength.</li>
+        <li>Because of this, you may face unnecessary struggles and delays from time to time.</li>
+        <li>A better name alignment can help you make better use of the strengths already present in your chart.</li>
+      </ul>`,
+      hi:`<ul>
+        <li>आपका Chart स्वाभाविक रूप से मजबूत है और आपके लिए अच्छे अवसर ला सकता है।</li>
+        <li>लेकिन आपकी वर्तमान Name Spelling उसका पूरा साथ नहीं दे रही है।</li>
+        <li>इसी वजह से आपको कभी-कभी ऐसे संघर्षों और देरी का सामना करना पड़ सकता है जिनसे बचा जा सकता था।</li>
+        <li>बेहतर Name Alignment आपके Chart में मौजूद अच्छी बातों का पूरा लाभ उठाने में मदद कर सकता है।</li>
+      </ul>`,
+      te:`<ul>
+        <li>మీ Chart సహజంగానే బలంగా ఉంది మరియు మీ జీవితంలో మంచి అవకాశాలను తీసుకురాగలదు.</li>
+        <li>అయితే మీ ప్రస్తుత Name Spelling దానికి పూర్తిగా మద్దతు ఇవ్వడం లేదు.</li>
+        <li>అందువల్ల కొన్ని సందర్భాల్లో అవసరం లేని కష్టాలు లేదా ఆలస్యాలను ఎదుర్కోవాల్సి రావచ్చు.</li>
+        <li>సరైన Name Alignment మీ Chart‌లో ఉన్న మంచి అంశాలను పూర్తిగా ఉపయోగించుకోవడంలో సహాయపడుతుంది.</li>
+      </ul>`,
+    };
+    // Case 2: Challenging Chart + Name NOT Aligned
+    const case2={
+      en:`<ul>
+        <li>Your chart already carries some challenges.</li>
+        <li>Your current name spelling is adding to these challenges instead of supporting them.</li>
+        <li>Because of this, struggles, delays and obstacles may become more noticeable in life.</li>
+        <li>Improving the name alignment may help reduce some of this pressure.</li>
+      </ul>`,
+      hi:`<ul>
+        <li>आपके Chart में पहले से ही कुछ चुनौतियां दिखाई देती हैं।</li>
+        <li>इसके साथ आपकी वर्तमान Name Spelling भी आपका पूरा साथ नहीं दे रही है।</li>
+        <li>इसी वजह से जीवन में संघर्ष, देरी और रुकावटें कुछ ज्यादा महसूस हो सकती हैं।</li>
+        <li>बेहतर Name Alignment इन परेशानियों को कम करने में मदद कर सकता है।</li>
+      </ul>`,
+      te:`<ul>
+        <li>మీ Chart‌లో ఇప్పటికే కొన్ని సవాళ్లు కనిపిస్తున్నాయి.</li>
+        <li>అదనంగా మీ ప్రస్తుత Name Spelling కూడా మీకు పూర్తిగా సహకరించడం లేదు.</li>
+        <li>అందువల్ల జీవితంలో కష్టాలు, ఆలస్యాలు మరియు అడ్డంకులు మరింతగా అనిపించవచ్చు.</li>
+        <li>మెరుగైన Name Alignment ఈ భారాన్ని కొంతవరకు తగ్గించడంలో సహాయపడుతుంది.</li>
+      </ul>`,
+    };
+    // Case 3: Strong Chart + Name Aligned
+    const case3={
+      en:`<ul>
+        <li>Your chart and name spelling are supporting each other.</li>
+        <li>This is one of the most positive situations to have in a chart.</li>
+        <li>It can help bring better opportunities, smoother progress and stronger support.</li>
+        <li>Overall, this combination allows you to make better use of your natural strengths.</li>
+      </ul>`,
+      hi:`<ul>
+        <li>आपका Chart और Name Spelling दोनों एक-दूसरे का अच्छा साथ दे रहे हैं।</li>
+        <li>यह एक बहुत अच्छा और सकारात्मक संकेत माना जाता है।</li>
+        <li>इससे जीवन में बेहतर अवसर और आगे बढ़ने के मौके बढ़ सकते हैं।</li>
+        <li>कुल मिलाकर, यह संयोजन आपके लिए काफी सहायक साबित हो सकता है।</li>
+      </ul>`,
+      te:`<ul>
+        <li>మీ Chart మరియు Name Spelling రెండూ ఒకదానికొకటి మంచి మద్దతు ఇస్తున్నాయి.</li>
+        <li>ఇది చాలా మంచి మరియు సానుకూల సంకేతంగా పరిగణించబడుతుంది.</li>
+        <li>దీని వల్ల మంచి అవకాశాలు మరియు ముందుకు వెళ్లే అవకాశాలు పెరగవచ్చు.</li>
+        <li>మొత్తంగా, ఈ కలయిక మీకు అనేక విధాలుగా సహాయకరంగా ఉండవచ్చు.</li>
+      </ul>`,
+    };
+    // Case 4: Challenging Chart + Name Aligned
+    const case4={
+      en:`<ul>
+        <li>Your chart may bring a few challenges in life.</li>
+        <li>However, your name spelling is working in your favour.</li>
+        <li>This can help you handle difficulties more effectively and move forward with greater confidence.</li>
+        <li>Despite the challenges, there is still strong potential for success and achievement.</li>
+      </ul>`,
+      hi:`<ul>
+        <li>आपका Chart जीवन में कुछ चुनौतियां जरूर ला सकता है।</li>
+        <li>लेकिन आपकी Name Spelling आपके पक्ष में काम कर रही है।</li>
+        <li>यह आपके लिए एक मजबूत सहारे की तरह काम कर सकती है और मुश्किल समय में आगे बढ़ने में मदद कर सकती है।</li>
+        <li>चुनौतियों के बावजूद, आपके पास सफलता हासिल करने की अच्छी संभावना बनी रहती है।</li>
+      </ul>`,
+      te:`<ul>
+        <li>మీ Chart జీవితంలో కొన్ని సవాళ్లను తీసుకురావచ్చు.</li>
+        <li>అయితే మీ Name Spelling మీకు అనుకూలంగా పనిచేస్తోంది.</li>
+        <li>ఇది మీకు ఒక బలమైన మద్దతులా నిలబడి కష్టకాలంలో ముందుకు సాగడంలో సహాయపడుతుంది.</li>
+        <li>సవాళ్లు ఉన్నప్పటికీ, విజయాన్ని సాధించే మంచి అవకాశాలు మీకు కొనసాగుతాయి.</li>
+      </ul>`,
+    };
+
+    // Pick the correct case
+    let _nameCase;
+    if(!isChallengingChart && !isGood) _nameCase=case1;
+    else if(isChallengingChart && !isGood) _nameCase=case2;
+    else if(!isChallengingChart && isGood) _nameCase=case3;
+    else _nameCase=case4; // isChallengingChart && isGood
+
+    const goodBody=_nameCase[LANG]||_nameCase.en;
+    const badBody=goodBody; // body is now always from case — isGood controls which case was picked
 
     return `<div class="name-section">
 
