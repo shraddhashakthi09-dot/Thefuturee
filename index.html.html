@@ -119,8 +119,8 @@ body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;f
 .weak-dc-card{background:#fff8f5;border:1px solid #f0c8b8;border-radius:10px;padding:.85rem 1.1rem;margin-bottom:.5rem}
 .weak-dc-title{font-size:.7rem;font-weight:600;color:var(--red);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.3rem}
 .weak-dc-body{font-size:.86rem;color:#555;line-height:1.65}
-.obs-box{background:#fff9e6;border:1px solid #e8c840;border-radius:10px;padding:.9rem 1.1rem;margin-bottom:.6rem;font-size:.86rem;color:#7a6200;line-height:1.65}
-.obs-box strong{color:#5c4800}
+.obs-box{background:#fff5f5;border:1px solid #f5b8b8;border-radius:10px;padding:.9rem 1.1rem;margin-bottom:.6rem;font-size:.86rem;color:#7a2020;line-height:1.65}
+.obs-box strong{color:#8b1a1a}
 .enemy-warning{background:#fff0f0;border:1px solid #f0b8b8;border-radius:10px;padding:.85rem 1rem;margin-top:.6rem;font-size:.86rem;color:var(--red);line-height:1.6}
 .gayatri-box{background:#f0fff4;border:2px solid #2d8a50;border-radius:12px;padding:1rem 1.2rem;margin-top:.7rem}
 .gayatri-box p{font-size:.9rem;color:#1a5c35;font-weight:700;line-height:1.7}
@@ -1285,8 +1285,8 @@ const DRV_STR_NEW={
   9:{
     en:[
       'You may not always express your emotions openly, but you deeply care about the people you love.',
-      'You can be unpredictable, and people may not always know what to expect from you.',
-      'You can be egoistic at times and may find it difficult to let go of your pride.',
+      'You can be unpredictable at times, and people may not always be able to predict your next move.',
+      'You can be egoistic at times and may find it difficult to change your views once your mind is made up.',
       'You are courageous and know how to bounce back from difficult situations.',
       'You enjoy helping others and are often willing to support people when they need it.',
     ],
@@ -2275,9 +2275,9 @@ const PROF_DRIVER={
     te:['పాడి పరిశ్రమ','నీటి సంబంధిత వ్యాపారం','ఆతిథ్యం','నావికా దళం','కౌన్సెలింగ్ మరియు సహాయ పాత్రలు'],
   },
   3:{
-    en:['Interior Designing','Consultancy','Education','Healing','Motivational Speaking','Writing','Media'],
-    hi:['इंटीरियर डिजाइनिंग','परामर्श','शिक्षा','उपचार','प्रेरक वक्ता','लेखन','मीडिया'],
-    te:['ఇంటీరియర్ డిజైనింగ్','సలహా','విద్య','వైద్యం','మోటివేషనల్ స్పీకింగ్','రచన','మీడియా'],
+    en:['Interior Designing','Consultancy','Education','Counsellor','Motivational Speaking','Writing','Media'],
+    hi:['Interior Designing','Consultancy','Education','Counsellor','Motivational Speaking','Writing','Media'],
+    te:['Interior Designing','Consultancy','Education','Counsellor','Motivational Speaking','Writing','Media'],
   },
   4:{
     en:['Sales & Marketing','Natural Science','Singing','Sports','Law','Engineering','Leadership Positions'],
@@ -2295,9 +2295,9 @@ const PROF_DRIVER={
     te:['రెడీమేడ్ దుస్తులు','ఆభరణాలు','ఫ్యాషన్ డిజైనింగ్','మీడియా','అందం పరిశ్రమ','లగ్జరీ పరిశ్రమ','వినోద పరిశ్రమ'],
   },
   7:{
-    en:['Consultancy','Education','Healing','Research','Administrative Roles','Motivational Speaking'],
-    hi:['परामर्श','शिक्षा','उपचार','अनुसंधान','प्रशासनिक भूमिकाएं','प्रेरक वक्ता'],
-    te:['సలహా','విద్య','వైద్యం','పరిశోధన','పరిపాలనా పాత్రలు','మోటివేషనల్ స్పీకింగ్'],
+    en:['Consultancy','Education','Researcher','Research','Administrative Roles','Motivational Speaking'],
+    hi:['Consultancy','Education','Researcher','Research','Administrative Roles','Motivational Speaking'],
+    te:['Consultancy','Education','Researcher','Research','Administrative Roles','Motivational Speaking'],
   },
   8:{
     en:['Financial Management','Judiciary','Leather Industry','Iron Industry','Law','Banking','Footwear Industry','Sports'],
@@ -2305,48 +2305,48 @@ const PROF_DRIVER={
     te:['ఆర్థిక నిర్వహణ','న్యాయవ్యవస్థ','చర్మ పరిశ్రమ','ఇనుము పరిశ్రమ','న్యాయం','బ్యాంకింగ్','పాదరక్షల పరిశ్రమ','క్రీడలు'],
   },
   9:{
-    en:['Education','Healing','Police','Army','NGO & Social Service','Consultancy'],
-    hi:['शिक्षा','उपचार','पुलिस','सेना','एनजीओ और सामाजिक सेवा','परामर्श'],
-    te:['విద్య','వైద్యం','పోలీసు','సైన్యం','ఎన్జీఓ మరియు సామాజిక సేవ','సలహా'],
+    en:['Education','Psychologist','Police','Army','NGO & Social Service','Consultancy'],
+    hi:['Education','Psychologist','Police','Army','NGO & Social Service','Consultancy'],
+    te:['Education','Psychologist','Police','Army','NGO & Social Service','Consultancy'],
   },
 };
 
 // Driver-Conductor special profession indicators
 const PROF_DC={
-  '1-3':{en:['Education','Numerology','Astrology'],hi:['शिक्षा','अंक ज्योतिष','ज्योतिष'],te:['విద్య','అంకశాస్త్రం','జ్యోతిషం']},
+  '1-3':{en:['Education','Teacher','Academic Professional'],hi:['Education','Teacher','Academic Professional'],te:['Education','Teacher','Academic Professional']},
   '1-4':{en:['Business','Politics'],hi:['व्यवसाय','राजनीति'],te:['వ్యాపారం','రాజకీయాలు']},
   '1-6':{en:['Business','Luxury Industry'],hi:['व्यवसाय','लग्जरी उद्योग'],te:['వ్యాపారం','లగ్జరీ పరిశ్రమ']},
-  '1-7':{en:['Numerology','Astrology'],hi:['अंक ज्योतिष','ज्योतिष'],te:['అంకశాస్త్రం','జ్యోతిషం']},
+  '1-7':{en:['Researcher','Consultant','Analyst'],hi:['Researcher','Consultant','Analyst'],te:['Researcher','Consultant','Analyst']},
   '2-3':{en:['Education'],hi:['शिक्षा'],te:['విద్య']},
   '2-4':{en:['Property Business','Grocery Business','Dairy Business'],hi:['संपत्ति व्यवसाय','किराना व्यवसाय','डेयरी व्यवसाय'],te:['ఆస్తి వ్యాపారం','కిరాణా వ్యాపారం','పాడి వ్యాపారం']},
   '2-6':{en:['Beauty Industry'],hi:['सौंदर्य उद्योग'],te:['అందం పరిశ్రమ']},
-  '3-6':{en:['Education','Healing'],hi:['शिक्षा','उपचार'],te:['విద్య','వైద్యం']},
+  '3-6':{en:['Education','Counsellor'],hi:['Education','Counsellor'],te:['Education','Counsellor']},
   '4-6':{en:['Hotel Industry','Luxury Industry'],hi:['होटल उद्योग','लग्जरी उद्योग'],te:['హోటల్ పరిశ్రమ','లగ్జరీ పరిశ్రమ']},
   '4-7':{en:['Law','Education'],hi:['कानून','शिक्षा'],te:['న్యాయం','విద్య']},
   '4-8':{en:['Law','Army','Police'],hi:['कानून','सेना','पुलिस'],te:['న్యాయం','సైన్యం','పోలీసు']},
   '5-2':{en:['Real Estate','Property'],hi:['रियल एस्टेट','संपत्ति'],te:['రియల్ ఎస్టేట్','ఆస్తి']},
-  '5-3':{en:['Healing','Education'],hi:['उपचार','शिक्षा'],te:['వైద్యం','విద్య']},
+  '5-3':{en:['Counsellor','Education'],hi:['Counsellor','Education'],te:['Counsellor','Education']},
   '5-6':{en:['Real Estate','Property'],hi:['रियल एस्टेट','संपत्ति'],te:['రియల్ ఎస్టేట్','ఆస్తి']},
   '6-5':{en:['Teaching','Luxury Industry','Glamour Industry'],hi:['शिक्षण','लग्जरी उद्योग','ग्लैमर उद्योग'],te:['బోధన','లగ్జరీ పరిశ్రమ','గ్లామర్ పరిశ్రమ']},
-  '7-6':{en:['Research','Healing','Education'],hi:['अनुसंधान','उपचार','शिक्षा'],te:['పరిశోధన','వైద్యం','విద్య']},
+  '7-6':{en:['Research','Researcher','Education'],hi:['Research','Researcher','Education'],te:['Research','Researcher','Education']},
   '8-3':{en:['Law','Planning'],hi:['कानून','योजना'],te:['న్యాయం','ప్రణాళిక']},
   '8-5':{en:['Real Estate','Property'],hi:['रियल एस्टेट','संपत्ति'],te:['రియల్ ఎస్టేట్','ఆస్తి']},
-  '8-8':{en:['Numerology','Astrology','Law'],hi:['अंक ज्योतिष','ज्योतिष','कानून'],te:['అంకశాస్త్రం','జ్యోతిషం','న్యాయం']},
+  '8-8':{en:['Law','Legal Professional','Investigator'],hi:['Law','Legal Professional','Investigator'],te:['Law','Legal Professional','Investigator']},
   '9-1':{en:['Business','Politics'],hi:['व्यवसाय','राजनीति'],te:['వ్యాపారం','రాజకీయాలు']},
-  '9-3':{en:['Healing','Education','Numerology'],hi:['उपचार','शिक्षा','अंक ज्योतिष'],te:['వైద్యం','విద్య','అంకశాస్త్రం']},
+  '9-3':{en:['Counsellor','Education','Trainer'],hi:['Counsellor','Education','Trainer'],te:['Counsellor','Education','Trainer']},
 };
 
 // Profession categories by number (for avoid logic)
 const PROF_BY_NUM={
   1:['Luxury Industry','Glamour Industry','Leadership Roles','Government Positions','Administrative Roles','Fire-related Industries','Restaurant Business'],
   2:['Dairy Industry','Water-related Business','Hospitality','Navy','Counselling & Support Roles'],
-  3:['Interior Designing','Consultancy','Education','Healing','Motivational Speaking','Writing','Media'],
+  3:['Interior Designing','Consultancy','Education','Counsellor','Motivational Speaking','Writing','Media'],
   4:['Sales & Marketing','Natural Science','Singing','Sports','Law','Engineering','Leadership Positions'],
   5:['Real Estate','Finance','Administrative Work','Government Sector'],
   6:['Ready-made Garments','Jewellery','Fashion Designing','Media','Beauty Industry','Luxury Industry','Entertainment Industry'],
-  7:['Consultancy','Education','Healing','Research','Administrative Roles','Motivational Speaking'],
+  7:['Consultancy','Education','Researcher','Research','Administrative Roles','Motivational Speaking'],
   8:['Financial Management','Judiciary','Leather Industry','Iron Industry','Law','Banking','Footwear Industry','Sports'],
-  9:['Education','Healing','Police','Army','NGO & Social Service','Consultancy'],
+  9:['Education','Psychologist','Police','Army','NGO & Social Service','Consultancy'],
 };
 
 // ── REMEDIES — PER MISSING NUMBER ──
@@ -2560,7 +2560,7 @@ function buildPresenceMap(day,mon,year){
   return pm;
 }
 
-function calcCompat(myDriver,myMissing,myPresence,partnerDay,partnerMon,partnerYear,partnerName,L){
+function calcCompat(myDriver,myConductor,myMissing,myPresence,partnerDay,partnerMon,partnerYear,partnerName,L){
   // Build partner chart
   // ── PARTNER CHART CALCULATION (Steps 1–6 per spec) ──
 
@@ -2608,12 +2608,14 @@ function calcCompat(myDriver,myMissing,myPresence,partnerDay,partnerMon,partnerY
   const pMissing=[1,2,3,4,5,6,7,8,9].filter(n=>!pPresenceSet.has(n));
 
 
-  // ── CHECKLIST 1: Driver vs Driver ──
+  // ── CHECKLIST 1: Driver vs Driver — symmetric (conflict if EITHER sees the other as enemy) ──
   const myEnemies=REL_ENEMY[myDriver]||[];
-  const driverConflict=myEnemies.includes(pDriver);
-  const extremeConflict=REL_EXTREME[myDriver]&&REL_EXTREME[myDriver][pDriver];
+  const pEnemies=REL_ENEMY[pDriver]||[];
+  const driverConflict=myEnemies.includes(pDriver)||pEnemies.includes(myDriver);
+  const extremeConflict=(REL_EXTREME[myDriver]&&REL_EXTREME[myDriver][pDriver])||
+                        (REL_EXTREME[pDriver]&&REL_EXTREME[pDriver][myDriver]);
 
-  // ── CHECKLIST 2: Number sharing ──
+  // ── CHECKLIST 2: Number sharing — already symmetric (both fills counted) ──
   const myMissingSet=new Set(myMissing);
   const partnerFills=pPresent.filter(n=>myMissingSet.has(n));
   const myPresArr=Object.keys(myPresence).map(Number);
@@ -2621,15 +2623,26 @@ function calcCompat(myDriver,myMissing,myPresence,partnerDay,partnerMon,partnerY
   const iAlsoFill=myPresArr.filter(n=>partnerMissingSet.has(n));
   const totalFills=partnerFills.length+iAlsoFill.length;
 
-  // ── CHECKLIST 3: Line/Plane completion ──
+  // ── CHECKLIST 3: Line/Plane completion — symmetric (new lines for EITHER person) ──
   const combined=new Set([...myPresArr,...pPresent]);
   const completedLines=CHART_LINES.filter(line=>line.every(n=>combined.has(n)));
-  const alreadyCompleteLines=CHART_LINES.filter(line=>line.every(n=>myPresArr.includes(n)));
-  const newlyCompletedLines=completedLines.filter(l=>!alreadyCompleteLines.find(al=>al.join()===l.join()));
+  const alreadyCompleteByMe=CHART_LINES.filter(line=>line.every(n=>myPresArr.includes(n)));
+  const alreadyCompleteByPartner=CHART_LINES.filter(line=>line.every(n=>pPresent.includes(n)));
+  const alreadyCompleteKeys=new Set([
+    ...alreadyCompleteByMe.map(l=>l.join()),
+    ...alreadyCompleteByPartner.map(l=>l.join())
+  ]);
+  const newlyCompletedLines=completedLines.filter(l=>!alreadyCompleteKeys.has(l.join()));
 
-  // ── CHECKLIST 4: Partner chart quality ──
+  // ── CHECKLIST 4: Chart DC quality — symmetric (both charts evaluated) ──
   const pEnemyDC=(REL_ENEMY[pDriver]||[]).includes(pConductor);
+  const myEnemyDC=(REL_ENEMY[myDriver]||[]).includes(myConductor);
+  // goodPartnerDC: symmetric — neither chart has an enemy DC
+  const bothDCGood=!pEnemyDC&&!myEnemyDC;
+  // 5 or 6 present in EITHER chart — symmetric
   const partnerHas5or6=pPresent.includes(5)||pPresent.includes(6);
+  const myHas5or6=myPresArr.includes(5)||myPresArr.includes(6);
+  const eitherHas5or6=partnerHas5or6||myHas5or6;
 
   // ── VERDICT ENGINE — criteria-based, never shown to client ──
   const hasDriverConflict  = driverConflict;
@@ -2638,8 +2651,8 @@ function calcCompat(myDriver,myMissing,myPresence,partnerDay,partnerMon,partnerY
   const someSharing        = (partnerFills.length + iAlsoFill.length) >= 1;
   const hasLineCompletion  = newlyCompletedLines.length >= 1;
   const strongLineCompletion = newlyCompletedLines.length >= 2;
-  const goodPartnerDC      = !pEnemyDC;
-  const has5or6            = partnerHas5or6;
+  const goodPartnerDC      = bothDCGood;   // symmetric: neither chart has enemy DC
+  const has5or6            = eitherHas5or6; // either chart has 5 or 6
 
   let positives = 0;
   if(!hasDriverConflict)   positives++;
@@ -2653,7 +2666,7 @@ function calcCompat(myDriver,myMissing,myPresence,partnerDay,partnerMon,partnerY
   let negatives = 0;
   if(hasDriverConflict)    negatives++;
   if(hasExtremeConflict)   negatives++;
-  if(pEnemyDC)             negatives++;
+  if(pEnemyDC||myEnemyDC) negatives++;   // symmetric: either chart has enemy DC
   if(!has5or6)             negatives++;
   if(!someSharing)         negatives++;
   if(!hasLineCompletion)   negatives += 0.5;
@@ -2661,8 +2674,8 @@ function calcCompat(myDriver,myMissing,myPresence,partnerDay,partnerMon,partnerY
   let verdictKey;
   const multipleWarnings = negatives >= 3;
 
-  // HIGH-RISK: enemy drivers + weak sharing + no lines + (bad partner DC or no 5or6 or multiple warnings)
-  if(hasDriverConflict && !someSharing && !hasLineCompletion && (pEnemyDC || !has5or6 || multipleWarnings)){
+  // HIGH-RISK: enemy drivers + weak sharing + no lines + (bad DC on either side or no 5or6 or multiple warnings)
+  if(hasDriverConflict && !someSharing && !hasLineCompletion && ((pEnemyDC||myEnemyDC) || !has5or6 || multipleWarnings)){
     verdictKey='risk';
   }
   // HIGH-RISK: extreme conflict + multiple negatives + few positives
@@ -2973,7 +2986,7 @@ function gen(){
   const _impGuidanceTitle='Important Guidance';
   const importantGuidanceHTML=_drvAreas?`<div class="subsec">
     <div class="subsec-title">${_impGuidanceTitle}</div>
-    <div class="subsec-body"><div class="obs-box" style="background:#fff9e6;border-color:#e8c840;color:#7a6200"><p>${LANG==='hi'?_drvAreas.hi:LANG==='te'?_drvAreas.te:_drvAreas.en}</p></div></div>
+    <div class="subsec-body"><div class="obs-box"><p>${LANG==='hi'?_drvAreas.hi:LANG==='te'?_drvAreas.te:_drvAreas.en}</p></div></div>
   </div>`:'';
 
   const sub1HTML=`<div class="subsec">
@@ -3281,7 +3294,16 @@ function gen(){
         <div class="weak-card-title">Driver ${driver} · ${NC[driver]?.p||''}</div>
         <div class="weak-card-body">${tx(DRV_WEAK[driver]||{})}</div>
       </div>
-      ${(driver===1&&conductor===8)||(driver===8&&conductor===1)?`<div class="weak-dc-card"><div class="weak-dc-title">Special Note — Father Relationship</div><div class="weak-dc-body">A 1-8 or 8-1 Driver-Conductor combination is associated with father-related conflicts or emotional distance from the father figure.</div></div>`:''}
+      ${(()=>{
+        const _showFather=(driver===1&&conductor===8)||(driver===8&&conductor===1)||cRaw===18||day===18;
+        if(!_showFather) return '';
+        const _fatherText=LANG==='hi'
+          ?'आपका Chart यह संकेत देता है कि आपके पिता के साथ आपके रिश्ते में चुनौतियां, गलतफहमियां या दूरी के दौर आ सकते हैं।'
+          :LANG==='te'
+          ?'మీ Chart మీ తండ్రితో ఉన్న సంబంధంలో సవాళ్లు, అపార్థాలు లేదా దూరం ఏర్పడే పరిస్థితులను సూచించవచ్చు.'
+          :'Your birth chart suggests that your relationship with your father may experience challenges, misunderstandings or periods of distance.';
+        return `<div class="weak-dc-card"><div class="weak-dc-title">Special Note — Father Relationship</div><div class="weak-dc-body">${_fatherText}</div></div>`;
+      })()}
     </div>
   </div>
 
@@ -3336,9 +3358,9 @@ function gen(){
     const triggered=riskNums.filter(n=>presMap[n]&&presMap[n]>=3);
     if(!triggered.length) return '';
     const numList=triggered.join(', ');
-    const en=`A high concentration of Number${triggered.length>1?'s':''} ${numList} has been identified in your birth chart. When a single energy appears more than three times, it can increase the likelihood of emotional extremes, mental pressure, emotional burnout, anxiety or depressive phases during life. These phases may occur once or may repeat across different stages of life, depending on circumstances and personal choices. Being aware of this pattern is the first and most important step toward managing it consciously.`;
-    const hi=`आपके जन्म चार्ट में अंक ${numList} की उच्च सांद्रता पाई गई है। जब कोई एक ऊर्जा तीन से अधिक बार उपस्थित होती है, तो यह जीवन में भावनात्मक अतिवाद, मानसिक दबाव, भावनात्मक थकान, चिंता या अवसाद के दौर की संभावना बढ़ा सकती है। ये दौर एक बार आ सकते हैं या परिस्थितियों और व्यक्तिगत विकल्पों के आधार पर जीवन के अलग-अलग चरणों में दोहरा सकते हैं। इस पैटर्न के बारे में जागरूक होना इसे सचेत रूप से संभालने की दिशा में पहला और सबसे महत्वपूर्ण कदम है।`;
-    const te=`మీ జన్మ చార్ట్‌లో అంక${triggered.length>1?'లు':''} ${numList} యొక్క అధిక సాంద్రత గుర్తించబడింది. ఒకే శక్తి మూడు కంటే ఎక్కువసార్లు కనిపించినప్పుడు, అది జీవితంలో భావోద్వేగ తీవ్రతలు, మానసిక ఒత్తిడి, భావోద్వేగ అలసట, ఆందోళన లేదా నిరాశ దశల సాధ్యతను పెంచవచ్చు. ఈ దశలు ఒకసారి సంభవించవచ్చు లేదా పరిస్థితులు మరియు వ్యక్తిగత ఎంపికలను బట్టి జీవితంలోని వివిధ దశలలో పునరావృతం కావచ్చు. ఈ నమూనా గురించి అవగాహన కలిగి ఉండటం దాన్ని స్పృహతో నిర్వహించడానికి మొదటి మరియు అత్యంత ముఖ్యమైన అడుగు.`;
+    const en=`A high concentration of Number${triggered.length>1?'s':''} ${numList} has been identified in your birth chart. When a single energy appears more than three times, it can increase the likelihood of emotional extremes, mental pressure, emotional burnout, anxiety or depressive phases during life. These phases may occur once or may repeat across different stages of life, depending on circumstances and personal choices.`;
+    const hi=`आपके जन्म चार्ट में अंक ${numList} की उच्च सांद्रता पाई गई है। जब कोई एक ऊर्जा तीन से अधिक बार उपस्थित होती है, तो यह जीवन में भावनात्मक अतिवाद, मानसिक दबाव, भावनात्मक थकान, चिंता या अवसाद के दौर की संभावना बढ़ा सकती है। ये दौर एक बार आ सकते हैं या परिस्थितियों और व्यक्तिगत विकल्पों के आधार पर जीवन के अलग-अलग चरणों में दोहरा सकते हैं।`;
+    const te=`మీ జన్మ చార్ట్‌లో అంక${triggered.length>1?'లు':''} ${numList} యొక్క అధిక సాంద్రత గుర్తించబడింది. ఒకే శక్తి మూడు కంటే ఎక్కువసార్లు కనిపించినప్పుడు, అది జీవితంలో భావోద్వేగ తీవ్రతలు, మానసిక ఒత్తిడి, భావోద్వేగ అలసట, ఆందోళన లేదా నిరాశ దశల సాధ్యతను పెంచవచ్చు. ఈ దశలు ఒకసారి సంభవించవచ్చు లేదా పరిస్థితులు మరియు వ్యక్తిగత ఎంపికలను బట్టి జీవితంలోని వివిధ దశలలో పునరావృతం కావచ్చు.`;
     return `<div class="obs-box">
       <strong>Special Observation</strong><br><br>
       ${LANG==='hi'?hi:LANG==='te'?te:en}
@@ -3480,15 +3502,18 @@ function gen(){
       ?'ఈ వృత్తులు శత్రు అంకాల శక్తితో అనుసంధానించబడి ఉన్నాయి. వీటిలో ముందుకు సాగడం అసాధ్యం కాదు, కానీ అదనపు కృషి మరియు అనుకూలత అవసరమవుతుంది.'
       :'These fields are aligned with your enemy number energies. They are not impossible, but they are likely to require significantly more effort and adaptation than fields aligned with your Driver.';
 
+    // Merge DC profs at top of driver list, then driver profs (no duplicate)
+    const dcProfSet=new Set((dcProfs||[]).map(p=>p.toLowerCase()));
+    const mergedProfs=[
+      ...(dcProfs||[]),
+      ...driverProfs.filter(p=>!dcProfSet.has(p.toLowerCase()))
+    ];
+
     return `
     <div class="prof-section">
       <div class="prof-section-title">${t('profDriverTitle')}</div>
-      <div class="profs">${driverProfs.map(p=>`<div class="prof highlight">${p}</div>`).join('')}</div>
+      <div class="profs">${mergedProfs.map(p=>`<div class="prof highlight">${p}</div>`).join('')}</div>
     </div>
-    ${dcProfs&&dcProfs.length?`<div class="prof-section">
-      <div class="prof-section-title">${t('profDCTitle')}</div>
-      <div class="profs">${dcProfs.map(p=>`<div class="prof">${p}</div>`).join('')}</div>
-    </div>`:''}
     ${uniqueAvoid.length?`<div class="prof-section">
       <div class="prof-section-title">${t('profAvoidTitle')}</div>
       <div class="profs">${uniqueAvoid.map(({prof})=>`<div class="prof avoid">${prof}</div>`).join('')}</div>
@@ -3553,7 +3578,7 @@ function gen(){
     const _dcwKey=`${driver}-${conductor}`;
     const _dcwKeyRev=`${conductor}-${driver}`;
     const _hasDCWeak=!!(DC_WEAK[_dcwKey]||DC_WEAK[_dcwKeyRev]);
-    const isChallengingChart=karmicList.length>0||enemyDC||_hasDCWeak;
+    const isChallengingChart=enemyDC||_hasDCWeak;
 
     // 4-case interpretation
     // Case 1: Strong Chart + Name NOT Aligned
@@ -3795,7 +3820,7 @@ function gen(){
       compatContent=`<div style="padding:.8rem 0;font-size:.88rem;color:var(--muted);line-height:1.6">${noPartnerMsg}</div>`;
     } else {
       const myPM=presMap;
-      compatContent=calcCompat(driver,missing,myPM,pDay,pMon,pYear,pName,LANG);
+      compatContent=calcCompat(driver,conductor,missing,myPM,pDay,pMon,pYear,pName,LANG);
     }
     return sec('secLucky')+compatContent;
   })()}
