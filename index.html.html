@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TheFuturee — Your Numbers, Your Destiny</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -15,8 +15,8 @@ body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;f
 
 /* ── HERO ── */
 .hero{background:var(--ink);color:#F4F1EC;padding:2.5rem 1.5rem 2.8rem;text-align:center}
-.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(2rem,5vw,3rem);font-style:italic;color:#B9B9B9;margin-bottom:.2rem}
-.tagline{color:#8a8798;font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.2rem}
+.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(2rem,5vw,3rem);font-style:italic;color:#B9B9B9;margin-bottom:.18rem}
+.tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;color:#D9D5C9;font-size:min(4.7vw,calc(1.05rem * 0.95));line-height:1.5;letter-spacing:.015em;text-transform:none;white-space:nowrap;margin:0 -1.5rem 1.2rem;padding:0 28px;text-align:center}
 .lang-btns{display:flex;justify-content:center;gap:.5rem}
 .lang-select-wrap{display:flex;flex-direction:column;align-items:center;gap:.55rem;margin-bottom:0}
 .lang-select-heading{font-family:'DM Serif Display',serif;font-style:italic;font-size:1.05rem;color:#C8B8A6;letter-spacing:.02em;margin-bottom:.15rem}
@@ -200,6 +200,27 @@ body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;f
 .ttitle{font-family:'DM Serif Display',serif;font-size:1.05rem;color:var(--accent);margin-bottom:.18rem}
 .tcompat{font-size:.77rem;color:var(--green);font-weight:500;margin-bottom:.15rem}
 .tdesc{font-size:.86rem;color:#444;line-height:1.65}
+.py-roadmap{display:flex;flex-direction:column}
+.py-item{padding-left:1.4rem;border-left:1.5px solid var(--border);margin-bottom:2.6rem}
+.py-item:last-child{margin-bottom:0}
+.py-item-year{font-family:'Playfair Display',serif;font-style:normal;font-weight:400;font-size:1.72rem;letter-spacing:.01em;line-height:1;color:var(--ink);margin-bottom:.3rem}
+.py-item-label{font-family:'DM Sans',sans-serif;font-size:.84rem;font-weight:500;letter-spacing:.05em;margin-bottom:1rem}
+.py-item-desc{font-size:.9rem;line-height:1.9;color:#3a3a3a;max-width:34rem}
+.py-item.py-good{border-left-color:#8bb096}
+.py-item.py-good .py-item-label{color:#527b5e}
+.py-item.py-mod{border-left-color:#b8b2a5}
+.py-item.py-mod .py-item-label{color:#867f70}
+.py-item.py-bad{border-left-color:#c48d89}
+.py-item.py-bad .py-item-label{color:#a56a65}
+.py-special{border-radius:11px;padding:.85rem 1.1rem;margin-top:.6rem}
+.py-special.py-good-note{background:#e6f2e8;border:1px solid rgba(74,140,87,.28)}
+.py-special.py-mod-note{background:#fdf5d8;border:1px solid rgba(180,148,50,.28)}
+.py-special.py-bad-note{background:#fcecea;border:1px solid rgba(176,80,72,.22)}
+.py-special-heading{font-size:.87rem;font-weight:700;margin-bottom:.32rem}
+.py-special.py-good-note .py-special-heading{color:#2d6e3c}
+.py-special.py-mod-note .py-special-heading{color:#7a6020}
+.py-special.py-bad-note .py-special-heading{color:#8c3e38}
+.py-special-text{font-size:.84rem;line-height:1.7;color:#3a3a3a}
 .chips{display:flex;flex-wrap:wrap;gap:.45rem;margin:.3rem 0 .5rem}
 .chip{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-size:1rem;border:1px solid var(--border);background:var(--cream);color:var(--accent)}
 .chip.bad{background:#fff0f0;border-color:#f0b8b8;color:var(--red)}
@@ -313,7 +334,7 @@ footer{text-align:center;padding:2rem;color:var(--muted);font-size:.78rem;border
 <body>
 <div class="hero">
   <h1>TheFuturee</h1>
-  <p class="tagline">Your Numbers. Your Nature. Your Destiny.</p>
+  <p class="tagline">Helping You Discover Your True Potential.</p>
   <div class="lang-select-wrap">
     <div class="lang-select-heading">Select Report Language</div>
     <div class="lang-btns">
@@ -349,8 +370,8 @@ footer{text-align:center;padding:2rem;color:var(--muted);font-size:.78rem;border
     <div class="compat-toggle-wrap">
       <div class="compat-toggle-row">
         <div class="compat-toggle-text-col">
-          <div class="compat-toggle-title" id="lbl-compat-title">♡ Relationship Compatibility Analysis</div>
-          <div class="compat-toggle-sub" id="lbl-compat-sub">Discover strengths, challenges and long-term relationship potential through advanced numerology matching.</div>
+          <div class="compat-toggle-title" id="lbl-compat-title">Relationship Compatibility Analysis ♡</div>
+          <div class="compat-toggle-sub" id="lbl-compat-sub">Discover your relationship strengths, challenges and long-term relationship potential through advanced numerology matching.</div>
         </div>
         <button class="compat-switch" id="compat-switch" onclick="toggleCompat()" role="switch" aria-checked="false" aria-label="Enable Relationship Compatibility">
           <span class="compat-switch-thumb"></span>
@@ -431,7 +452,7 @@ const TL={
     driver:'Driver',conductor:'Conductor',kua:'KUA',nameVib:'Name',male:'Male',female:'Female',
     secCover:'Birth Chart & Core Numbers',
     secStrengths:'Your Strengths',
-    secWeaknesses:'Areas To Be Aware Of',
+    secWeaknesses:'Your Weaknesses',
     secMiss:'Areas For Growth',
     secKarmic:'Karmic Numbers',
     karmicIntro:'According to Numerology, a Karmic Number may influence certain experiences and recurring patterns in your life. The information below highlights the possible effects associated with your Karmic Number.',
@@ -447,7 +468,7 @@ const TL={
     nameStep2:'First Name Calculation',
     nameStep3:'Full Name Calculation',
     nameStep4:'Alignment Analysis',
-    secPY:'Personal Year Roadmap',
+    secPY:'Your Next Five Years',
     secLucky:'Relationship Compatibility',
     secRem:'Remedies',
     secProf:'Career & Profession',
@@ -483,7 +504,7 @@ const TL={
     driver:'Driver',conductor:'Conductor',kua:'KUA',nameVib:'Name',male:'पुरुष',female:'महिला',
     secCover:'Birth Chart & Core Numbers',
     secStrengths:'Your Strengths',
-    secWeaknesses:'Areas To Be Aware Of',
+    secWeaknesses:'Your Weaknesses',
     secMiss:'Areas For Growth',
     secKarmic:'Karmic Numbers',
     karmicIntro:'अंक ज्योतिष के अनुसार, कर्मिक अंक आपके जीवन में कुछ खास अनुभवों और बार-बार आने वाले पैटर्न को प्रभावित कर सकता है। नीचे दी गई जानकारी आपके कर्मिक अंक से जुड़े संभावित प्रभावों को बताती है।',
@@ -499,7 +520,7 @@ const TL={
     nameStep2:'First Name Calculation',
     nameStep3:'Full Name Calculation',
     nameStep4:'Alignment Analysis',
-    secPY:'Personal Year Roadmap',
+    secPY:'Your Next Five Years',
     secLucky:'Relationship Compatibility',
     secRem:'Remedies',
     secProf:'Career & Profession',
@@ -535,7 +556,7 @@ const TL={
     driver:'Driver',conductor:'Conductor',kua:'KUA',nameVib:'Name',male:'పురుషుడు',female:'స్త్రీ',
     secCover:'Birth Chart & Core Numbers',
     secStrengths:'Your Strengths',
-    secWeaknesses:'Areas To Be Aware Of',
+    secWeaknesses:'Your Weaknesses',
     secMiss:'Areas For Growth',
     secKarmic:'Karmic Numbers',
     karmicIntro:'అంకశాస్త్రం ప్రకారం, కార్మిక్ అంకం మీ జీవితంలో కొన్ని నిర్దిష్ట అనుభవాలను మరియు పదే పదే వచ్చే నమూనాలను ప్రభావితం చేయవచ్చు. మీ కార్మిక్ అంకానికి సంబంధించిన సాధ్యమైన ప్రభావాలను దిగువ వివరించారు.',
@@ -551,7 +572,7 @@ const TL={
     nameStep2:'First Name Calculation',
     nameStep3:'Full Name Calculation',
     nameStep4:'Alignment Analysis',
-    secPY:'Personal Year Roadmap',
+    secPY:'Your Next Five Years',
     secLucky:'Relationship Compatibility',
     secRem:'Remedies',
     secProf:'Career & Profession',
@@ -785,9 +806,9 @@ const PERSONALITY_DB={
       te:['కొన్నిసార్లు ఇతరులు మీ మాటలను లేదా ఉద్దేశాలను తప్పుగా అర్థం చేసుకోవచ్చు.','మీరు సరైనవారినని బలంగా నమ్మితే, మీ అభిప్రాయాన్ని గట్టిగా సమర్థిస్తూ వాదించడానికి కూడా వెనుకాడరు.','ఎవరి ఆలోచనా విధానం మీకు అర్థవంతంగా అనిపించకపోతే, వారి అభిప్రాయాన్ని అర్థం చేసుకోవడం లేదా అంగీకరించడం మీకు కష్టంగా అనిపించవచ్చు. దీనివల్ల కొన్నిసార్లు విభేదాలు లేదా వాదనలు ఏర్పడే అవకాశం ఉంటుంది.'],
     },
     5:{
-      en:['Misunderstandings may become a recurring part of your life if communication is not handled carefully.','Your words or actions may sometimes attract controversies or unwanted attention.','This combination also carries strong potential for recognition, popularity or public fame.'],
-      hi:['अगर आप बातचीत में सावधानी नहीं बरतेंगे, तो गलतफहमियां आपके जीवन का एक हिस्सा बन सकती हैं।','आपकी बातें या आपके काम कभी-कभी आपको विवादों या बिना वजह की चर्चाओं में ला सकते हैं।','हालांकि, इस नंबर के साथ आपको समाज में बड़ी पहचान, लोकप्रियता या प्रसिद्धि मिलने की भी बहुत मजबूत संभावना होती है।'],
-      te:['మీరు మాట్లాడేటప్పుడు జాగ్రత్తగా ఉండకపోతే, మీ జీవితంలో అపార్థాలు అనేవి ఒక భాగం అయిపోతాయి.','మీ మాటలు లేదా పనులు కొన్నిసార్లు అనవసరమైన గొడవల్లోకి లేదా వివాదాల్లోకి లాగుతాయి.','అయితే, ఈ నంబర్ వల్ల మీకు సమాజంలో మంచి గుర్తింపు, పాపులారిటీ వచ్చే ఛాన్స్ కూడా చాలా బలంగా ఉంది.'],
+      en:['Misunderstandings may become a recurring part of your life if communication is not handled carefully.','Your words or actions may sometimes attract controversies or unwanted attention.','You have strong potential to gain recognition, popularity, and even public fame.'],
+      hi:['अगर आप बातचीत में सावधानी नहीं बरतेंगे, तो गलतफहमियां आपके जीवन का एक हिस्सा बन सकती हैं।','आपकी बातें या आपके काम कभी-कभी आपको विवादों या बिना वजह की चर्चाओं में ला सकते हैं।','आपमें पहचान, लोकप्रियता और यहाँ तक कि सार्वजनिक प्रसिद्धि हासिल करने की प्रबल क्षमता है।'],
+      te:['మీరు మాట్లాడేటప్పుడు జాగ్రత్తగా ఉండకపోతే, మీ జీవితంలో అపార్థాలు అనేవి ఒక భాగం అయిపోతాయి.','మీ మాటలు లేదా పనులు కొన్నిసార్లు అనవసరమైన గొడవల్లోకి లేదా వివాదాల్లోకి లాగుతాయి.','మీకు గుర్తింపు, ప్రజాదరణ మరియు ప్రజల్లో మంచి పేరు సంపాదించే బలమైన సామర్థ్యం ఉంది.'],
     },
   },
   2:{
@@ -1063,16 +1084,13 @@ const DRV_STR_NEW={
       'You have a charming personality and can easily attract people towards you.',
       'You are sensitive by nature and may get hurt easily by the words or actions of others.',
       'You have a gentle nature and prefer peace over unnecessary conflicts.',
-      'You usually take your time before making decisions and moving forward with things.',
+      'You are usually slow when making decisions and moving forward with things.',
     ],
     hi:[
-      'आपका स्वभाव बहुत आकर्षक और शांत है, जिससे लोग आपकी तरफ खिंचे चले आते हैं। आप लड़ाई-झगड़े से दूर रहते हैं और हर काम सोच-समझकर आराम से करते हैं। आप दिल के बहुत भावुक (सेंसिटिव) हैं, इसलिए दूसरों की बातें आपको जल्दी चुभ सकती हैं।',
+      'आपका व्यक्तित्व लोगों को अपनी ओर आकर्षित करता है। आप दिल से नरम होते हैं, इसलिए कई बार छोटी-छोटी बातें भी आपको प्रभावित कर सकती हैं। आपको शांति और सुकून पसंद है, इसलिए आप बेकार के झगड़ों से दूर रहना पसंद करते हैं। आप किसी भी काम या फैसले में दूसरों के मुकाबले थोड़ा ज़्यादा समय लेते हैं।',
     ],
     te:[
-      'మీ వ్యక్తిత్వం ఆకర్షణీయంగా ఉంటుంది మరియు ఇతరులను సులభంగా ఆకర్షించగలరు.',
-      'మీరు సహజంగా సున్నితమైన స్వభావం కలిగి ఉంటారు మరియు ఇతరుల మాటలు లేదా ప్రవర్తన వల్ల సులభంగా బాధపడవచ్చు.',
-      'మీ స్వభావం మృదువుగా ఉంటుంది మరియు అవసరం లేని గొడవలకు దూరంగా ఉండటానికి ఇష్టపడతారు.',
-      'ఏ నిర్ణయం తీసుకునే ముందు మీరు మీ సమయాన్ని తీసుకోవడానికి ఇష్టపడతారు.',
+      'మీ వ్యక్తిత్వం సహజంగానే ఇతరులను మీ వైపు ఆకర్షిస్తుంది. మీరు మనసు మృదువుగా ఉండే వ్యక్తి కాబట్టి, చిన్న చిన్న విషయాలు కూడా మిమ్మల్ని సులభంగా ప్రభావితం చేయవచ్చు. మీకు ప్రశాంతత మరియు మనశ్శాంతి ఇష్టం కాబట్టి, అవసరం లేని గొడవలకు దూరంగా ఉండాలని ఇష్టపడతారు. ఏ పని లేదా నిర్ణయం విషయంలోనైనా మీరు ఇతరులతో పోలిస్తే కొంచెం ఎక్కువ సమయం తీసుకుంటారు.',
     ],
     specialNote:{
       condition:d=>d===29,
@@ -1215,14 +1233,10 @@ const DRV_STR_NEW={
       'Your romantic side depends a lot on your mood. At times you may be very affectionate, while at other times you may not express your feelings at all.',
     ],
     hi:[
-      'आप ऊपर से भले ही अपनी भावनाएं न दिखाएं, लेकिन अंदर से अपनों की बहुत परवाह करते हैं। आपका मूड थोड़ा अंदाजा न लगाने योग्य (unpredictable) हो सकता है। आप बहुत हिम्मती हैं और मुश्किलों से कभी हार नहीं मानते। दूसरों की मदद करना आपको बहुत अच्छा लगता है, बस आपको अपने गुस्से या अहंकार (ईगो) पर थोड़ा काबू रखना चाहिए।',
+      'ज़िंदगी में चाहे कितनी भी मुश्किलें आएँ, आप हार मानने वालों में से नहीं होते। ज़रूरत पड़ने पर आप हमेशा दूसरों का साथ देने की कोशिश करते हैं। आप अपनी भावनाएँ हमेशा खुलकर व्यक्त नहीं करते, लेकिन जिन लोगों से आप प्यार करते हैं, उनकी आपको हमेशा परवाह रहती है।',
     ],
     te:[
-      'మీరు మీ భావాలను ఎల్లప్పుడూ బహిరంగంగా వ్యక్తం చేయకపోవచ్చు, కానీ మీరు ప్రేమించే వారిని హృదయపూర్వకంగా శ్రద్ధగా చూసుకుంటారు.',
-      'మీ స్వభావం ఊహించలేనిదిగా ఉండవచ్చు మరియు మీరు తర్వాత ఏమి చేస్తారో ఇతరులు ఎల్లప్పుడూ అర్థం చేసుకోలేకపోవచ్చు.',
-      'కొన్నిసార్లు మీలో అహంకారం కనిపించవచ్చు మరియు మీ గర్వాన్ని వదిలేయడం మీకు కష్టంగా అనిపించవచ్చు.',
-      'మీరు ధైర్యవంతులు మరియు కష్టమైన పరిస్థితుల నుంచి మళ్లీ లేచి ముందుకు సాగడం తెలుసు.',
-      'ఇతరులకు సహాయం చేయడం మీకు ఇష్టం మరియు అవసరమైనప్పుడు వారికి అండగా నిలవడానికి సిద్ధంగా ఉంటారు.',
+      'జీవితంలో ఎన్ని కష్టాలు వచ్చినా, మీరు సులభంగా ఓటమిని అంగీకరించే వారిలో ఉండరు. అవసరం వచ్చినప్పుడు మీరు ఎప్పుడూ ఇతరులకు తోడుగా ఉండేందుకు ప్రయత్నిస్తారు. మీరు మీ భావాలను ఎప్పుడూ బహిరంగంగా వ్యక్తం చేయకపోయినా, మీరు ప్రేమించే వారి గురించి ఎల్లప్పుడూ శ్రద్ధ చూపుతారు.',
     ],
   },
 };
@@ -1609,7 +1623,115 @@ const PY_CAUTION_DESC={
   te:'ఈ సంవత్సరం మీరు ఎక్కువ సవాళ్లను ఎదుర్కొనవచ్చు. ఎంత కష్టపడ్డా, మీ కృషి మీకు రావలసిన ఫలితాలు తీసుకురావడం లేదని అనిపించవచ్చు. ఈ సంవత్సరం ఆర్థిక నష్టాలు, ఆరోగ్య సమస్యలు, ప్రమాదాలు, గాయాలు, భావోద్వేగ ఒత్తిడి లేదా అనుకోని సమస్యలు వచ్చే అవకాశాలు ఎక్కువగా ఉండవచ్చు. కొత్తగా ఏదైనా మొదలుపెట్టకండి, అనవసరమైన రిస్కులకు దూరంగా ఉండండి, ఇప్పటికే చేస్తున్న పనిపై దృష్టి కొనసాగించండి మరియు ఈ సంవత్సరం మొత్తం మీ శారీరక మరియు మానసిక ఆరోగ్యాన్ని అదనపు శ్రద్ధతో చూసుకోండి.',
 };
 
+// ── NEW PERSONAL YEAR DESCRIPTIONS (driver-specific) ──
+const PY_NEW_DESC={
+  1:{
+    1:{rating:"good",en:"This year can bring fresh beginnings, exciting opportunities, and steady progress. It is the right time to start new projects, make important decisions, and confidently work towards your goals. Stay focused and make the most of every opportunity, as your efforts this year can lay the foundation for long-term success.",hi:"यह साल आपके लिए नई शुरुआत और अच्छे मौके लेकर आ सकता है। नए काम शुरू करने, ज़रूरी फैसले लेने और अपने सपनों की तरफ पूरे आत्मविश्वास के साथ आगे बढ़ने का यह सही समय है। इस साल की गई आपकी मेहनत आने वाले समय में बड़ी सफलता की नींव बन सकती है।",te:"ఈ సంవత్సరం మీకు కొత్త ప్రారంభాలు, మంచి అవకాశాలు మరియు మంచి పురోగతిని తీసుకురావచ్చు. కొత్త పనులు ప్రారంభించడానికి, ముఖ్యమైన నిర్ణయాలు తీసుకోవడానికి మరియు మీ లక్ష్యాల వైపు ఆత్మవిశ్వాసంతో ముందుకు సాగడానికి ఇది సరైన సమయం. ఈ సంవత్సరం మీరు చేసే కృషి భవిష్యత్తులో గొప్ప విజయాలకు బలమైన పునాది వేయగలదు.\n\n---"},
+    2:{rating:"good",en:"This year can bring fresh beginnings, exciting opportunities, and steady progress. It is the right time to start new projects, make important decisions, and confidently work towards your goals. Stay focused and make the most of every opportunity, as your efforts this year can lay the foundation for long-term success.",hi:"यह साल आपके लिए नई शुरुआत और अच्छे मौके लेकर आ सकता है। नए काम शुरू करने, ज़रूरी फैसले लेने और अपने सपनों की तरफ पूरे आत्मविश्वास के साथ आगे बढ़ने का यह सही समय है। इस साल की गई आपकी मेहनत आने वाले समय में बड़ी सफलता की नींव बन सकती है।",te:"ఈ సంవత్సరం మీకు కొత్త ప్రారంభాలు, మంచి అవకాశాలు మరియు మంచి పురోగతిని తీసుకురావచ్చు. కొత్త పనులు ప్రారంభించడానికి, ముఖ్యమైన నిర్ణయాలు తీసుకోవడానికి మరియు మీ లక్ష్యాల వైపు ఆత్మవిశ్వాసంతో ముందుకు సాగడానికి ఇది సరైన సమయం. ఈ సంవత్సరం మీరు చేసే కృషి భవిష్యత్తులో గొప్ప విజయాలకు బలమైన పునాది వేయగలదు.\n\n---"},
+    3:{rating:"good",en:"This year can bring fresh beginnings, exciting opportunities, and steady progress. It is the right time to start new projects, make important decisions, and confidently work towards your goals. Stay focused and make the most of every opportunity, as your efforts this year can lay the foundation for long-term success.",hi:"यह साल आपके लिए नई शुरुआत और अच्छे मौके लेकर आ सकता है। नए काम शुरू करने, ज़रूरी फैसले लेने और अपने सपनों की तरफ पूरे आत्मविश्वास के साथ आगे बढ़ने का यह सही समय है। इस साल की गई आपकी मेहनत आने वाले समय में बड़ी सफलता की नींव बन सकती है।",te:"ఈ సంవత్సరం మీకు కొత్త ప్రారంభాలు, మంచి అవకాశాలు మరియు మంచి పురోగతిని తీసుకురావచ్చు. కొత్త పనులు ప్రారంభించడానికి, ముఖ్యమైన నిర్ణయాలు తీసుకోవడానికి మరియు మీ లక్ష్యాల వైపు ఆత్మవిశ్వాసంతో ముందుకు సాగడానికి ఇది సరైన సమయం. ఈ సంవత్సరం మీరు చేసే కృషి భవిష్యత్తులో గొప్ప విజయాలకు బలమైన పునాది వేయగలదు.\n\n---"},
+    4:{rating:"good",en:"This year can bring fresh beginnings, exciting opportunities, and steady progress. It is the right time to start new projects, make important decisions, and confidently work towards your goals. Stay focused and make the most of every opportunity, as your efforts this year can lay the foundation for long-term success.",hi:"यह साल आपके लिए नई शुरुआत और अच्छे मौके लेकर आ सकता है। नए काम शुरू करने, ज़रूरी फैसले लेने और अपने सपनों की तरफ पूरे आत्मविश्वास के साथ आगे बढ़ने का यह सही समय है। इस साल की गई आपकी मेहनत आने वाले समय में बड़ी सफलता की नींव बन सकती है।",te:"ఈ సంవత్సరం మీకు కొత్త ప్రారంభాలు, మంచి అవకాశాలు మరియు మంచి పురోగతిని తీసుకురావచ్చు. కొత్త పనులు ప్రారంభించడానికి, ముఖ్యమైన నిర్ణయాలు తీసుకోవడానికి మరియు మీ లక్ష్యాల వైపు ఆత్మవిశ్వాసంతో ముందుకు సాగడానికి ఇది సరైన సమయం. ఈ సంవత్సరం మీరు చేసే కృషి భవిష్యత్తులో గొప్ప విజయాలకు బలమైన పునాది వేయగలదు.\n\n---"},
+    5:{rating:"good",en:"This year can bring fresh beginnings, exciting opportunities, and steady progress. It is the right time to start new projects, make important decisions, and confidently work towards your goals. Stay focused and make the most of every opportunity, as your efforts this year can lay the foundation for long-term success.",hi:"यह साल आपके लिए नई शुरुआत और अच्छे मौके लेकर आ सकता है। नए काम शुरू करने, ज़रूरी फैसले लेने और अपने सपनों की तरफ पूरे आत्मविश्वास के साथ आगे बढ़ने का यह सही समय है। इस साल की गई आपकी मेहनत आने वाले समय में बड़ी सफलता की नींव बन सकती है।",te:"ఈ సంవత్సరం మీకు కొత్త ప్రారంభాలు, మంచి అవకాశాలు మరియు మంచి పురోగతిని తీసుకురావచ్చు. కొత్త పనులు ప్రారంభించడానికి, ముఖ్యమైన నిర్ణయాలు తీసుకోవడానికి మరియు మీ లక్ష్యాల వైపు ఆత్మవిశ్వాసంతో ముందుకు సాగడానికి ఇది సరైన సమయం. ఈ సంవత్సరం మీరు చేసే కృషి భవిష్యత్తులో గొప్ప విజయాలకు బలమైన పునాది వేయగలదు.\n\n---"},
+    6:{rating:"good",en:"This year can bring fresh beginnings, exciting opportunities, and steady progress. It is the right time to start new projects, make important decisions, and confidently work towards your goals. Stay focused and make the most of every opportunity, as your efforts this year can lay the foundation for long-term success.",hi:"यह साल आपके लिए नई शुरुआत और अच्छे मौके लेकर आ सकता है। नए काम शुरू करने, ज़रूरी फैसले लेने और अपने सपनों की तरफ पूरे आत्मविश्वास के साथ आगे बढ़ने का यह सही समय है। इस साल की गई आपकी मेहनत आने वाले समय में बड़ी सफलता की नींव बन सकती है।",te:"ఈ సంవత్సరం మీకు కొత్త ప్రారంభాలు, మంచి అవకాశాలు మరియు మంచి పురోగతిని తీసుకురావచ్చు. కొత్త పనులు ప్రారంభించడానికి, ముఖ్యమైన నిర్ణయాలు తీసుకోవడానికి మరియు మీ లక్ష్యాల వైపు ఆత్మవిశ్వాసంతో ముందుకు సాగడానికి ఇది సరైన సమయం. ఈ సంవత్సరం మీరు చేసే కృషి భవిష్యత్తులో గొప్ప విజయాలకు బలమైన పునాది వేయగలదు.\n\n---"},
+    7:{rating:"good",en:"This year can bring fresh beginnings, exciting opportunities, and steady progress. It is the right time to start new projects, make important decisions, and confidently work towards your goals. Stay focused and make the most of every opportunity, as your efforts this year can lay the foundation for long-term success.",hi:"यह साल आपके लिए नई शुरुआत और अच्छे मौके लेकर आ सकता है। नए काम शुरू करने, ज़रूरी फैसले लेने और अपने सपनों की तरफ पूरे आत्मविश्वास के साथ आगे बढ़ने का यह सही समय है। इस साल की गई आपकी मेहनत आने वाले समय में बड़ी सफलता की नींव बन सकती है।",te:"ఈ సంవత్సరం మీకు కొత్త ప్రారంభాలు, మంచి అవకాశాలు మరియు మంచి పురోగతిని తీసుకురావచ్చు. కొత్త పనులు ప్రారంభించడానికి, ముఖ్యమైన నిర్ణయాలు తీసుకోవడానికి మరియు మీ లక్ష్యాల వైపు ఆత్మవిశ్వాసంతో ముందుకు సాగడానికి ఇది సరైన సమయం. ఈ సంవత్సరం మీరు చేసే కృషి భవిష్యత్తులో గొప్ప విజయాలకు బలమైన పునాది వేయగలదు.\n\n---"},
+    8:{rating:"bad",en:"This year may not go the way you expect. This year may bring a higher chance of accidents, health problems, or even an operation. You may also feel mentally exhausted or emotionally low at times, so take extra care of both your physical and mental well-being throughout the year.",hi:"यह साल आपके लिए काफी चुनौतीपूर्ण रह सकता है। इस साल दुर्घटना, सेहत से जुड़ी परेशानियाँ या ऑपरेशन तक की नौबत आ सकती है। कई बार आपका मन भी ज़्यादा परेशान रह सकता है, इसलिए पूरे साल अपनी सेहत और अपने मन — दोनों का अच्छे से ध्यान रखें।",te:"ఈ సంవత్సరం మీకు చాలా సవాళ్లతో కూడుకున్నదిగా ఉండవచ్చు. ఈ సంవత్సరం ప్రమాదాలు, ఆరోగ్య సమస్యలు లేదా ఆపరేషన్ చేయించుకోవాల్సిన పరిస్థితి రావచ్చు. కొన్నిసార్లు మానసికంగా కూడా ఎక్కువ ఒత్తిడిగా అనిపించవచ్చు. కాబట్టి ఈ సంవత్సరం మొత్తం మీ శారీరక మరియు మానసిక ఆరోగ్యాన్ని జాగ్రత్తగా చూసుకోండి."},
+    9:{rating:"good",en:"This year can bring fresh beginnings, exciting opportunities, and steady progress. It is the right time to start new projects, make important decisions, and confidently work towards your goals. Stay focused and make the most of every opportunity, as your efforts this year can lay the foundation for long-term success.",hi:"यह साल आपके लिए नई शुरुआत और अच्छे मौके लेकर आ सकता है। नए काम शुरू करने, ज़रूरी फैसले लेने और अपने सपनों की तरफ पूरे आत्मविश्वास के साथ आगे बढ़ने का यह सही समय है। इस साल की गई आपकी मेहनत आने वाले समय में बड़ी सफलता की नींव बन सकती है।",te:"ఈ సంవత్సరం మీకు కొత్త ప్రారంభాలు, మంచి అవకాశాలు మరియు మంచి పురోగతిని తీసుకురావచ్చు. కొత్త పనులు ప్రారంభించడానికి, ముఖ్యమైన నిర్ణయాలు తీసుకోవడానికి మరియు మీ లక్ష్యాల వైపు ఆత్మవిశ్వాసంతో ముందుకు సాగడానికి ఇది సరైన సమయం. ఈ సంవత్సరం మీరు చేసే కృషి భవిష్యత్తులో గొప్ప విజయాలకు బలమైన పునాది వేయగలదు.\n\n---"},
+  },
+  2:{
+    1:{rating:"good",en:"This year can bring steady progress and meaningful opportunities. The effort you put in now is more likely to give positive results, making it a good time to strengthen your plans and move forward with confidence. Stay focused and make the most of every opportunity that comes your way.",hi:"यह साल आपके लिए अच्छी प्रगति लेकर आ सकता है। इस साल की गई मेहनत का अच्छा फल मिलने की संभावना ज़्यादा रहेगी। अपने काम पर पूरा ध्यान दें, सही फैसले लें और जो भी अच्छे मौके मिलें, उनका पूरा फायदा उठाएँ।",te:"ఈ సంవత్సరం మీకు మంచి పురోగతి మరియు కొత్త అవకాశాలను తీసుకురావచ్చు. ఈ సమయంలో చేసే కృషికి మంచి ఫలితాలు వచ్చే అవకాశం ఎక్కువగా ఉంటుంది. మీ పనిపై దృష్టి పెట్టి, సరైన నిర్ణయాలు తీసుకుని, వచ్చే ప్రతి మంచి అవకాశాన్ని సద్వినియోగం చేసుకోండి.\n\n---"},
+    2:{rating:"mod",en:"This year will bring both good opportunities and a few challenges. Some things may take longer than expected, so don't rush important decisions or lose patience too quickly. Stay consistent, keep improving, and trust that your efforts will gradually pay off.",hi:"यह साल अच्छे मौके भी लेकर आएगा और कुछ चुनौतियाँ भी। हर काम जल्दी पूरा हो, ऐसा ज़रूरी नहीं है, इसलिए धैर्य रखें और बिना सोचे-समझे कोई बड़ा फैसला न लें। अगर आप लगातार मेहनत करते रहेंगे, तो धीरे-धीरे अच्छे नतीजे मिलने शुरू हो जाएँगे।",te:"ఈ సంవత్సరం మంచి అవకాశాలతో పాటు కొన్ని సవాళ్లను కూడా తీసుకురావచ్చు. ప్రతి పని వెంటనే పూర్తవుతుందని ఆశించకండి. ఓపికతో ముందుకు సాగండి, ఆలోచించి నిర్ణయాలు తీసుకోండి మరియు నిరంతరం కృషి చేస్తే మంచి ఫలితాలు తప్పకుండా కనిపిస్తాయి."},
+    3:{rating:"mod",en:"This year will bring both good opportunities and a few challenges. Some things may take longer than expected, so don't rush important decisions or lose patience too quickly. Stay consistent, keep improving, and trust that your efforts will gradually pay off.",hi:"यह साल अच्छे मौके भी लेकर आएगा और कुछ चुनौतियाँ भी। हर काम जल्दी पूरा हो, ऐसा ज़रूरी नहीं है, इसलिए धैर्य रखें और बिना सोचे-समझे कोई बड़ा फैसला न लें। अगर आप लगातार मेहनत करते रहेंगे, तो धीरे-धीरे अच्छे नतीजे मिलने शुरू हो जाएँगे।",te:"ఈ సంవత్సరం మంచి అవకాశాలతో పాటు కొన్ని సవాళ్లను కూడా తీసుకురావచ్చు. ప్రతి పని వెంటనే పూర్తవుతుందని ఆశించకండి. ఓపికతో ముందుకు సాగండి, ఆలోచించి నిర్ణయాలు తీసుకోండి మరియు నిరంతరం కృషి చేస్తే మంచి ఫలితాలు తప్పకుండా కనిపిస్తాయి."},
+    4:{rating:"mod",en:"This year will bring both good opportunities and a few challenges. Some things may take longer than expected, so don't rush important decisions or lose patience too quickly. Stay consistent, keep improving, and trust that your efforts will gradually pay off.",hi:"यह साल अच्छे मौके भी लेकर आएगा और कुछ चुनौतियाँ भी। हर काम जल्दी पूरा हो, ऐसा ज़रूरी नहीं है, इसलिए धैर्य रखें और बिना सोचे-समझे कोई बड़ा फैसला न लें। अगर आप लगातार मेहनत करते रहेंगे, तो धीरे-धीरे अच्छे नतीजे मिलने शुरू हो जाएँगे।",te:"ఈ సంవత్సరం మంచి అవకాశాలతో పాటు కొన్ని సవాళ్లను కూడా తీసుకురావచ్చు. ప్రతి పని వెంటనే పూర్తవుతుందని ఆశించకండి. ఓపికతో ముందుకు సాగండి, ఆలోచించి నిర్ణయాలు తీసుకోండి మరియు నిరంతరం కృషి చేస్తే మంచి ఫలితాలు తప్పకుండా కనిపిస్తాయి."},
+    5:{rating:"mod",en:"This year will bring both good opportunities and a few challenges. Some things may take longer than expected, so don't rush important decisions or lose patience too quickly. Stay consistent, keep improving, and trust that your efforts will gradually pay off.",hi:"यह साल अच्छे मौके भी लेकर आएगा और कुछ चुनौतियाँ भी। हर काम जल्दी पूरा हो, ऐसा ज़रूरी नहीं है, इसलिए धैर्य रखें और बिना सोचे-समझे कोई बड़ा फैसला न लें। अगर आप लगातार मेहनत करते रहेंगे, तो धीरे-धीरे अच्छे नतीजे मिलने शुरू हो जाएँगे।",te:"ఈ సంవత్సరం మంచి అవకాశాలతో పాటు కొన్ని సవాళ్లను కూడా తీసుకురావచ్చు. ప్రతి పని వెంటనే పూర్తవుతుందని ఆశించకండి. ఓపికతో ముందుకు సాగండి, ఆలోచించి నిర్ణయాలు తీసుకోండి మరియు నిరంతరం కృషి చేస్తే మంచి ఫలితాలు తప్పకుండా కనిపిస్తాయి."},
+    6:{rating:"mod",en:"This year will bring both good opportunities and a few challenges. Some things may take longer than expected, so don't rush important decisions or lose patience too quickly. Stay consistent, keep improving, and trust that your efforts will gradually pay off.",hi:"यह साल अच्छे मौके भी लेकर आएगा और कुछ चुनौतियाँ भी। हर काम जल्दी पूरा हो, ऐसा ज़रूरी नहीं है, इसलिए धैर्य रखें और बिना सोचे-समझे कोई बड़ा फैसला न लें। अगर आप लगातार मेहनत करते रहेंगे, तो धीरे-धीरे अच्छे नतीजे मिलने शुरू हो जाएँगे।",te:"ఈ సంవత్సరం మంచి అవకాశాలతో పాటు కొన్ని సవాళ్లను కూడా తీసుకురావచ్చు. ప్రతి పని వెంటనే పూర్తవుతుందని ఆశించకండి. ఓపికతో ముందుకు సాగండి, ఆలోచించి నిర్ణయాలు తీసుకోండి మరియు నిరంతరం కృషి చేస్తే మంచి ఫలితాలు తప్పకుండా కనిపిస్తాయి."},
+    7:{rating:"mod",en:"This year will bring both good opportunities and a few challenges. Some things may take longer than expected, so don't rush important decisions or lose patience too quickly. Stay consistent, keep improving, and trust that your efforts will gradually pay off.",hi:"यह साल अच्छे मौके भी लेकर आएगा और कुछ चुनौतियाँ भी। हर काम जल्दी पूरा हो, ऐसा ज़रूरी नहीं है, इसलिए धैर्य रखें और बिना सोचे-समझे कोई बड़ा फैसला न लें। अगर आप लगातार मेहनत करते रहेंगे, तो धीरे-धीरे अच्छे नतीजे मिलने शुरू हो जाएँगे।",te:"ఈ సంవత్సరం మంచి అవకాశాలతో పాటు కొన్ని సవాళ్లను కూడా తీసుకురావచ్చు. ప్రతి పని వెంటనే పూర్తవుతుందని ఆశించకండి. ఓపికతో ముందుకు సాగండి, ఆలోచించి నిర్ణయాలు తీసుకోండి మరియు నిరంతరం కృషి చేస్తే మంచి ఫలితాలు తప్పకుండా కనిపిస్తాయి."},
+    8:{rating:"bad",en:"This year may not go the way you expect. The chances of accidents or physical injuries are higher than usual. Be extra careful while travelling, driving, or doing anything that involves risk. A little extra caution can help you avoid unnecessary problems. You may also feel mentally exhausted or emotionally low at times",hi:"यह साल आपके लिए थोड़ा मुश्किल रह सकता है। इस साल दुर्घटना, सेहत से जुड़ी परेशानियाँ या ऑपरेशन तक की नौबत आ सकती है। कई बार आपका मन भी ज़्यादा परेशान रह सकता है, इसलिए पूरे साल अपनी सेहत और अपने मन — दोनों का अच्छे से ध्यान रखें।",te:"ఈ సంవత్సరం ప్రమాదాలు లేదా గాయాలు అయ్యే అవకాశం సాధారణం కంటే ఎక్కువగా ఉండవచ్చు. ప్రయాణం చేసే సమయంలో, వాహనం నడిపేటప్పుడు మరియు ప్రమాదం జరిగే అవకాశం ఉన్న పనుల్లో ప్రత్యేక జాగ్రత్త వహించండి. చిన్న నిర్లక్ష్యం కూడా పెద్ద సమస్యకు దారితీయవచ్చు."},
+    9:{rating:"mod",en:"This year will bring both good opportunities and a few challenges. Some things may take longer than expected, so don't rush important decisions or lose patience too quickly. Stay consistent, keep improving, and trust that your efforts will gradually pay off.",hi:"यह साल अच्छे मौके भी लेकर आएगा और कुछ चुनौतियाँ भी। हर काम जल्दी पूरा हो, ऐसा ज़रूरी नहीं है, इसलिए धैर्य रखें और बिना सोचे-समझे कोई बड़ा फैसला न लें। अगर आप लगातार मेहनत करते रहेंगे, तो धीरे-धीरे अच्छे नतीजे मिलने शुरू हो जाएँगे।",te:"ఈ సంవత్సరం మంచి అవకాశాలతో పాటు కొన్ని సవాళ్లను కూడా తీసుకురావచ్చు. ప్రతి పని వెంటనే పూర్తవుతుందని ఆశించకండి. ఓపికతో ముందుకు సాగండి, ఆలోచించి నిర్ణయాలు తీసుకోండి మరియు నిరంతరం కృషి చేస్తే మంచి ఫలితాలు తప్పకుండా కనిపిస్తాయి."},
+  },
+  3:{
+    1:{rating:"good",en:"If you are a student or preparing for an important examination, this can be one of your best years for education. Excellent academic results are strongly supported. If your focus is career or business, this year is also favorable for career growth, recognition, promotion opportunities, and healthy financial growth.",hi:"अगर आप स्टूडेंट हैं या किसी महत्वपूर्ण परीक्षा की तैयारी कर रहे हैं, तो पढ़ाई के लिए यह आपके सबसे अच्छे सालों में से एक है। बेहतरीन सफलता मिलने की पूरी संभावना है। अगर आपका ध्यान करियर या बिज़नेस पर है, तो करियर में अच्छी प्रगति, पहचान, प्रमोशन के मौके और पैसों में अच्छी बढ़ोतरी देखने को मिल सकती है।",te:"మీరు విద్యార్థి అయినా లేదా ఏదైనా ముఖ్యమైన పరీక్షకు సిద్ధమవుతున్నా, చదువు కోసం ఇది మీ అత్యుత్తమ సంవత్సరాలలో ఒకటి. అద్భుతమైన ఫలితాలు సాధించే అవకాశం చాలా ఎక్కువ. మీ దృష్టి కెరీర్ లేదా వ్యాపారంపై ఉంటే, కెరీర్‌లో మంచి పురోగతి, గుర్తింపు, ప్రమోషన్ అవకాశాలు మరియు ఆర్థిక వృద్ధి కనిపించవచ్చు."},
+    2:{rating:"mod",en:"If you are a student or preparing for an important examination, this is a very good year for education and learning new skills. If your focus is career or business, career growth and financial progress are likely to remain moderate during this year.",hi:"अगर आप स्टूडेंट हैं या किसी महत्वपूर्ण परीक्षा की तैयारी कर रहे हैं, तो पढ़ाई और नई स्किल्स सीखने के लिए यह बहुत अच्छा साल रहेगा। अगर आपका ध्यान करियर या बिज़नेस पर है, तो करियर और पैसों के मामले में इस साल प्रगति सामान्य रहने की संभावना है।",te:"మీరు విద్యార్థి అయినా లేదా ఏదైనా ముఖ్యమైన పరీక్షకు సిద్ధమవుతున్నా, చదువు మరియు కొత్త నైపుణ్యాలు నేర్చుకోవడానికి ఇది చాలా మంచి సంవత్సరం. మీ దృష్టి కెరీర్ లేదా వ్యాపారంపై ఉంటే, కెరీర్ మరియు ఆర్థిక పురోగతి ఈ సంవత్సరం సాధారణంగా ఉండే అవకాశం ఉంది."},
+    3:{rating:"mod",en:"If you are a student or preparing for an important examination, this can be one of your best years for education. Excellent academic results and recognition are strongly supported. If your focus is career or business, good progress and recognition are also supported, although education is likely to remain the strongest area this year.",hi:"अगर आप स्टूडेंट हैं या किसी महत्वपूर्ण परीक्षा की तैयारी कर रहे हैं, तो पढ़ाई के लिए यह आपके सबसे अच्छे सालों में से एक है। बेहतरीन सफलता और पहचान मिलने की पूरी संभावना है। अगर आपका ध्यान करियर या बिज़नेस पर है, तो अच्छी प्रगति और पहचान मिलने के योग हैं, लेकिन इस साल सबसे अच्छे नतीजे पढ़ाई के क्षेत्र में मिलने की संभावना है।",te:"మీరు విద్యార్థి అయినా లేదా ఏదైనా ముఖ్యమైన పరీక్షకు సిద్ధమవుతున్నా, చదువు కోసం ఇది మీ అత్యుత్తమ సంవత్సరాలలో ఒకటి. అద్భుతమైన ఫలితాలు మరియు గుర్తింపు పొందే అవకాశం చాలా ఎక్కువ. మీ దృష్టి కెరీర్ లేదా వ్యాపారంపై ఉంటే, మంచి పురోగతి మరియు గుర్తింపు లభించవచ్చు, అయితే ఈ సంవత్సరం అత్యుత్తమ ఫలితాలు చదువులోనే కనిపించే అవకాశం ఉంది."},
+    4:{rating:"mod",en:"If you are a student or preparing for an important examination, this is a good year for education and developing new skills. If your focus is career or business, career growth and financial progress may remain comparatively weaker during this year.",hi:"अगर आप स्टूडेंट हैं या किसी महत्वपूर्ण परीक्षा की तैयारी कर रहे हैं, तो पढ़ाई और नई स्किल्स सीखने के लिए यह अच्छा साल रहेगा। अगर आपका ध्यान करियर या बिज़नेस पर है, तो करियर और पैसों के मामले में यह साल थोड़ा कमजोर रह सकता है।",te:"మీరు విద్యార్థి అయినా లేదా ఏదైనా ముఖ్యమైన పరీక్షకు సిద్ధమవుతున్నా, చదువు మరియు కొత్త నైపుణ్యాలు నేర్చుకోవడానికి ఇది మంచి సంవత్సరం. మీ దృష్టి కెరీర్ లేదా వ్యాపారంపై ఉంటే, కెరీర్ మరియు ఆర్థిక పురోగతి ఈ సంవత్సరం కొంత బలహీనంగా ఉండవచ్చు."},
+    5:{rating:"mod",en:"If you are a student or preparing for an important examination, this can be one of your best years for education. Excellent academic results are strongly supported. If your focus is career or business, career growth and financial progress are likely to remain moderate during this year.",hi:"अगर आप स्टूडेंट हैं या किसी महत्वपूर्ण परीक्षा की तैयारी कर रहे हैं, तो पढ़ाई के लिए यह आपके सबसे अच्छे सालों में से एक है। बेहतरीन सफलता मिलने की पूरी संभावना है। अगर आपका ध्यान करियर या बिज़नेस पर है, तो करियर और पैसों के मामले में इस साल प्रगति सामान्य रहने की संभावना है।",te:"మీరు విద్యార్థి అయినా లేదా ఏదైనా ముఖ్యమైన పరీక్షకు సిద్ధమవుతున్నా, చదువు కోసం ఇది మీ అత్యుత్తమ సంవత్సరాలలో ఒకటి. అద్భుతమైన ఫలితాలు సాధించే అవకాశం చాలా ఎక్కువ. మీ దృష్టి కెరీర్ లేదా వ్యాపారంపై ఉంటే, కెరీర్ మరియు ఆర్థిక పురోగతి ఈ సంవత్సరం సాధారణంగా ఉండే అవకాశం ఉంది."},
+    6:{rating:"bad",en:"This is not a favorable year for you. Education, career, and financial matters may remain challenging despite your efforts. Emotional stress, health concerns, or unexpected setbacks may also arise, making this a year that requires extra care while making important decisions.",hi:"यह साल आपके लिए ज़्यादा अच्छा नहीं रहेगा। पढ़ाई, करियर और पैसों के मामलों में मेहनत के बाद भी मनचाहे नतीजे मिलना मुश्किल हो सकता है। मानसिक तनाव, सेहत से जुड़ी परेशानियाँ या अचानक आने वाली रुकावटों का भी सामना करना पड़ सकता है।",te:"ఈ సంవత్సరం మీకు అంతగా అనుకూలంగా ఉండదు. చదువు, కెరీర్ మరియు ఆర్థిక విషయాల్లో కష్టపడినా ఆశించిన ఫలితాలు రావడం కష్టంగా ఉండవచ్చు. మానసిక ఒత్తిడి, ఆరోగ్య సమస్యలు లేదా అనుకోని అడ్డంకులు కూడా ఎదురయ్యే అవకాశం ఉంది."},
+    7:{rating:"mod",en:"If you are a student or preparing for an important examination, this can be one of your best years for education. Excellent academic results are strongly supported. If your focus is career or business, career growth and financial progress may remain comparatively weaker during this year.",hi:"अगर आप स्टूडेंट हैं या किसी महत्वपूर्ण परीक्षा की तैयारी कर रहे हैं, तो पढ़ाई के लिए यह आपके सबसे अच्छे सालों में से एक है। बेहतरीन सफलता मिलने की पूरी संभावना है। अगर आपका ध्यान करियर या बिज़नेस पर है, तो करियर और पैसों के मामले में यह साल थोड़ा कमजोर रह सकता है।",te:"మీరు విద్యార్థి అయినా లేదా ఏదైనా ముఖ్యమైన పరీక్షకు సిద్ధమవుతున్నా, చదువు కోసం ఇది మీ అత్యుత్తమ సంవత్సరాలలో ఒకటి. అద్భుతమైన ఫలితాలు సాధించే అవకాశం చాలా ఎక్కువ. మీ దృష్టి కెరీర్ లేదా వ్యాపారంపై ఉంటే, కెరీర్ మరియు ఆర్థిక పురోగతి ఈ సంవత్సరం కొంత బలహీనంగా ఉండవచ్చు."},
+    8:{rating:"mod",en:"If you are a student or preparing for an important examination, this is a good year for education, learning, and developing new skills. If your focus is career or business, this year is comparatively weaker for career growth and financial progress.",hi:"अगर आप स्टूडेंट हैं या किसी महत्वपूर्ण परीक्षा की तैयारी कर रहे हैं, तो पढ़ाई, नई चीज़ें सीखने और अपनी स्किल्स बढ़ाने के लिए यह अच्छा साल रहेगा। अगर आपका ध्यान करियर या बिज़नेस पर है, तो करियर और पैसों के मामले में यह साल थोड़ा कमजोर रह सकता है।",te:"మీరు విద్యార్థి అయినా లేదా ఏదైనా ముఖ్యమైన పరీక్షకు సిద్ధమవుతున్నా, చదువు, కొత్త విషయాలు నేర్చుకోవడం మరియు మీ నైపుణ్యాలను అభివృద్ధి చేసుకోవడానికి ఇది మంచి సంవత్సరం. మీ దృష్టి కెరీర్ లేదా వ్యాపారంపై ఉంటే, కెరీర్ మరియు ఆర్థిక పురోగతి ఈ సంవత్సరం కొంత బలహీనంగా ఉండవచ్చు."},
+    9:{rating:"mod",en:"If you are a student or preparing for an important examination, this is a good year for education, learning, and developing new skills. If your focus is career or business, this year is comparatively weaker for career growth and financial progress.",hi:"अगर आप स्टूडेंट हैं या किसी महत्वपूर्ण परीक्षा की तैयारी कर रहे हैं, तो पढ़ाई, नई चीज़ें सीखने और अपनी स्किल्स बढ़ाने के लिए यह अच्छा साल रहेगा। अगर आपका ध्यान करियर या बिज़नेस पर है, तो करियर और पैसों के मामले में यह साल थोड़ा कमजोर रह सकता है।",te:"మీరు విద్యార్థి అయినా లేదా ఏదైనా ముఖ్యమైన పరీక్షకు సిద్ధమవుతున్నా, చదువు, కొత్త విషయాలు నేర్చుకోవడం మరియు మీ నైపుణ్యాలను అభివృద్ధి చేసుకోవడానికి ఇది మంచి సంవత్సరం. మీ దృష్టి కెరీర్ లేదా వ్యాపారంపై ఉంటే, కెరీర్ మరియు ఆర్థిక పురోగతి ఈ సంవత్సరం కొంత బలహీనంగా ఉండవచ్చు."},
+  },
+  4:{
+    1:{rating:"good",en:"This can become one of your best years if you stay disciplined from day one. Set clear goals early, work relentlessly, and don't stop halfway. The effort you put in now is highly likely to reward you with major achievements by the end of the year.",hi:"अगर आप साल की शुरुआत से ही अपना लक्ष्य तय करके पूरी मेहनत करेंगे, तो यह साल आपकी ज़िंदगी के सबसे अच्छे सालों में से एक बन सकता है। बीच में हार मत मानिए, क्योंकि साल के अंत तक आपकी मेहनत बड़ा फल दे सकती है।",te:"సంవత్సరం ప్రారంభం నుంచే స్పష్టమైన లక్ష్యంతో క్రమశిక్షణగా పనిచేస్తే, ఇది మీ జీవితంలోని అత్యుత్తమ సంవత్సరాలలో ఒకటిగా మారవచ్చు. మధ్యలో ఆగిపోకుండా చివరి వరకు కష్టపడితే, సంవత్సరం చివరికి పెద్ద విజయాలు సాధించే అవకాశం చాలా ఎక్కువ.\n\n---"},
+    2:{rating:"bad",en:"This can be one of the toughest years for you. Progress may feel painfully slow, pressure can keep increasing, and your mental strength will be tested throughout the year. Keep moving forward one step at a time, because giving up will only make this year even harder.",hi:"यह साल आपके लिए सबसे मुश्किल सालों में से एक हो सकता है। हर चीज़ धीरे-धीरे आगे बढ़ेगी और मानसिक दबाव भी बढ़ सकता है। हार मत मानिए, क्योंकि इस साल सिर्फ लगातार मेहनत करने वाले लोग ही अंत में जीतते हैं।",te:"ఈ సంవత్సరం మీకు అత్యంత కఠినమైన సంవత్సరాలలో ఒకటిగా అనిపించవచ్చు. పనులు చాలా నెమ్మదిగా సాగవచ్చు మరియు మానసిక ఒత్తిడి కూడా పెరగవచ్చు. మధ్యలో వదిలేయకుండా చివరి వరకు నిలబడితేనే మంచి ఫలితం పొందగలరు."},
+    3:{rating:"mod",en:"This year won't be easy, but it won't be disappointing either. You will have to earn every result through discipline and consistent effort. Don't expect shortcuts, because steady work is the only thing that will move you forward.",hi:"यह साल न बहुत आसान रहेगा और न बहुत मुश्किल। जो मिलेगा, अपनी मेहनत से मिलेगा। शॉर्टकट ढूँढने की बजाय लगातार मेहनत करते रहिए, तभी धीरे-धीरे अच्छे नतीजे मिलेंगे।",te:"ఈ సంవత్సరం చాలా సులభం కాదు, కానీ పూర్తిగా చెడ్డదీ కాదు. ప్రతి ఫలితాన్ని మీ కష్టంతోనే సంపాదించాలి. షార్ట్‌కట్‌లపై ఆధారపడకుండా క్రమశిక్షణతో పనిచేస్తే ముందుకు వెళ్తారు."},
+    4:{rating:"good",en:"This can become one of your best years if you stay disciplined from day one. Set clear goals early, work relentlessly, and don't stop halfway. The effort you put in now is highly likely to reward you with major achievements by the end of the year.",hi:"अगर आप साल की शुरुआत से ही अपना लक्ष्य तय करके पूरी मेहनत करेंगे, तो यह साल आपकी ज़िंदगी के सबसे अच्छे सालों में से एक बन सकता है। बीच में हार मत मानिए, क्योंकि साल के अंत तक आपकी मेहनत बड़ा फल दे सकती है।",te:"సంవత్సరం ప్రారంభం నుంచే స్పష్టమైన లక్ష్యంతో క్రమశిక్షణగా పనిచేస్తే, ఇది మీ జీవితంలోని అత్యుత్తమ సంవత్సరాలలో ఒకటిగా మారవచ్చు. మధ్యలో ఆగిపోకుండా చివరి వరకు కష్టపడితే, సంవత్సరం చివరికి పెద్ద విజయాలు సాధించే అవకాశం చాలా ఎక్కువ.\n\n---"},
+    5:{rating:"good",en:"This can become one of your best years if you stay disciplined from day one. Set clear goals early, work relentlessly, and don't stop halfway. The effort you put in now is highly likely to reward you with major achievements by the end of the year.",hi:"अगर आप साल की शुरुआत से ही अपना लक्ष्य तय करके पूरी मेहनत करेंगे, तो यह साल आपकी ज़िंदगी के सबसे अच्छे सालों में से एक बन सकता है। बीच में हार मत मानिए, क्योंकि साल के अंत तक आपकी मेहनत बड़ा फल दे सकती है।",te:"సంవత్సరం ప్రారంభం నుంచే స్పష్టమైన లక్ష్యంతో క్రమశిక్షణగా పనిచేస్తే, ఇది మీ జీవితంలోని అత్యుత్తమ సంవత్సరాలలో ఒకటిగా మారవచ్చు. మధ్యలో ఆగిపోకుండా చివరి వరకు కష్టపడితే, సంవత్సరం చివరికి పెద్ద విజయాలు సాధించే అవకాశం చాలా ఎక్కువ.\n\n---"},
+    6:{rating:"good",en:"This can become one of your best years if you stay disciplined from day one. Set clear goals early, work relentlessly, and don't stop halfway. The effort you put in now is highly likely to reward you with major achievements by the end of the year.",hi:"अगर आप साल की शुरुआत से ही अपना लक्ष्य तय करके पूरी मेहनत करेंगे, तो यह साल आपकी ज़िंदगी के सबसे अच्छे सालों में से एक बन सकता है। बीच में हार मत मानिए, क्योंकि साल के अंत तक आपकी मेहनत बड़ा फल दे सकती है।",te:"సంవత్సరం ప్రారంభం నుంచే స్పష్టమైన లక్ష్యంతో క్రమశిక్షణగా పనిచేస్తే, ఇది మీ జీవితంలోని అత్యుత్తమ సంవత్సరాలలో ఒకటిగా మారవచ్చు. మధ్యలో ఆగిపోకుండా చివరి వరకు కష్టపడితే, సంవత్సరం చివరికి పెద్ద విజయాలు సాధించే అవకాశం చాలా ఎక్కువ.\n\n---"},
+    7:{rating:"good",en:"This can become one of your best years if you stay disciplined from day one. Set clear goals early, work relentlessly, and don't stop halfway. The effort you put in now is highly likely to reward you with major achievements by the end of the year.",hi:"अगर आप साल की शुरुआत से ही अपना लक्ष्य तय करके पूरी मेहनत करेंगे, तो यह साल आपकी ज़िंदगी के सबसे अच्छे सालों में से एक बन सकता है। बीच में हार मत मानिए, क्योंकि साल के अंत तक आपकी मेहनत बड़ा फल दे सकती है।",te:"సంవత్సరం ప్రారంభం నుంచే స్పష్టమైన లక్ష్యంతో క్రమశిక్షణగా పనిచేస్తే, ఇది మీ జీవితంలోని అత్యుత్తమ సంవత్సరాలలో ఒకటిగా మారవచ్చు. మధ్యలో ఆగిపోకుండా చివరి వరకు కష్టపడితే, సంవత్సరం చివరికి పెద్ద విజయాలు సాధించే అవకాశం చాలా ఎక్కువ.\n\n---"},
+    8:{rating:"good",en:"This can become one of your best years if you stay disciplined from day one. Set clear goals early, work relentlessly, and don't stop halfway. The effort you put in now is highly likely to reward you with major achievements by the end of the year.",hi:"अगर आप साल की शुरुआत से ही अपना लक्ष्य तय करके पूरी मेहनत करेंगे, तो यह साल आपकी ज़िंदगी के सबसे अच्छे सालों में से एक बन सकता है। बीच में हार मत मानिए, क्योंकि साल के अंत तक आपकी मेहनत बड़ा फल दे सकती है।",te:"సంవత్సరం ప్రారంభం నుంచే స్పష్టమైన లక్ష్యంతో క్రమశిక్షణగా పనిచేస్తే, ఇది మీ జీవితంలోని అత్యుత్తమ సంవత్సరాలలో ఒకటిగా మారవచ్చు. మధ్యలో ఆగిపోకుండా చివరి వరకు కష్టపడితే, సంవత్సరం చివరికి పెద్ద విజయాలు సాధించే అవకాశం చాలా ఎక్కువ.\n\n---"},
+    9:{rating:"mod",en:"This year won't be easy, but it won't be disappointing either. You will have to earn every result through discipline and consistent effort. Don't expect shortcuts, because steady work is the only thing that will move you forward.",hi:"यह साल न बहुत आसान रहेगा और न बहुत मुश्किल। जो मिलेगा, अपनी मेहनत से मिलेगा। शॉर्टकट ढूँढने की बजाय लगातार मेहनत करते रहिए, तभी धीरे-धीरे अच्छे नतीजे मिलेंगे।",te:"ఈ సంవత్సరం చాలా సులభం కాదు, కానీ పూర్తిగా చెడ్డదీ కాదు. ప్రతి ఫలితాన్ని మీ కష్టంతోనే సంపాదించాలి. షార్ట్‌కట్‌లపై ఆధారపడకుండా క్రమశిక్షణతో పనిచేస్తే ముందుకు వెళ్తారు."},
+  },
+  5:{
+    1:{rating:"good",en:"This is one of the most exciting years for positive changes and new opportunities. Long-awaited wishes can start becoming reality, and unexpected events may open doors you never imagined. Stay open to change, because the decisions you make this year can completely transform your future.",hi:"यह साल आपकी ज़िंदगी में अच्छे बदलाव और नए मौके लेकर आ सकता है। आपकी कोई पुरानी इच्छा पूरी हो सकती है और अचानक मिलने वाला कोई मौका आपकी ज़िंदगी बदल सकता है। बदलाव से मत डरिए, क्योंकि इस साल लिया गया सही फैसला आपका भविष्य बेहतर बना सकता है।",te:"ఈ సంవత్సరం మంచి మార్పులు మరియు కొత్త అవకాశాలతో నిండివుంటుంది. చాలా కాలంగా ఎదురుచూస్తున్న మీ కోరిక నెరవేరే అవకాశం ఉంది. అకస్మాత్తుగా వచ్చే ఒక అవకాశం మీ జీవితాన్ని పూర్తిగా మార్చగలదు. మార్పును స్వీకరించండి, ఎందుకంటే ఈ సంవత్సరం తీసుకునే సరైన నిర్ణయాలు మీ భవిష్యత్తును మరింత మెరుగుపరుస్తాయి.\n\n---"},
+    2:{rating:"good",en:"This is one of the most exciting years for positive changes and new opportunities. Long-awaited wishes can start becoming reality, and unexpected events may open doors you never imagined. Stay open to change, because the decisions you make this year can completely transform your future.",hi:"यह साल आपकी ज़िंदगी में अच्छे बदलाव और नए मौके लेकर आ सकता है। आपकी कोई पुरानी इच्छा पूरी हो सकती है और अचानक मिलने वाला कोई मौका आपकी ज़िंदगी बदल सकता है। बदलाव से मत डरिए, क्योंकि इस साल लिया गया सही फैसला आपका भविष्य बेहतर बना सकता है।",te:"ఈ సంవత్సరం మంచి మార్పులు మరియు కొత్త అవకాశాలతో నిండివుంటుంది. చాలా కాలంగా ఎదురుచూస్తున్న మీ కోరిక నెరవేరే అవకాశం ఉంది. అకస్మాత్తుగా వచ్చే ఒక అవకాశం మీ జీవితాన్ని పూర్తిగా మార్చగలదు. మార్పును స్వీకరించండి, ఎందుకంటే ఈ సంవత్సరం తీసుకునే సరైన నిర్ణయాలు మీ భవిష్యత్తును మరింత మెరుగుపరుస్తాయి.\n\n---"},
+    3:{rating:"good",en:"This is one of the most exciting years for positive changes and new opportunities. Long-awaited wishes can start becoming reality, and unexpected events may open doors you never imagined. Stay open to change, because the decisions you make this year can completely transform your future.",hi:"यह साल आपकी ज़िंदगी में अच्छे बदलाव और नए मौके लेकर आ सकता है। आपकी कोई पुरानी इच्छा पूरी हो सकती है और अचानक मिलने वाला कोई मौका आपकी ज़िंदगी बदल सकता है। बदलाव से मत डरिए, क्योंकि इस साल लिया गया सही फैसला आपका भविष्य बेहतर बना सकता है।",te:"ఈ సంవత్సరం మంచి మార్పులు మరియు కొత్త అవకాశాలతో నిండివుంటుంది. చాలా కాలంగా ఎదురుచూస్తున్న మీ కోరిక నెరవేరే అవకాశం ఉంది. అకస్మాత్తుగా వచ్చే ఒక అవకాశం మీ జీవితాన్ని పూర్తిగా మార్చగలదు. మార్పును స్వీకరించండి, ఎందుకంటే ఈ సంవత్సరం తీసుకునే సరైన నిర్ణయాలు మీ భవిష్యత్తును మరింత మెరుగుపరుస్తాయి.\n\n---"},
+    4:{rating:"good",en:"This is one of the most exciting years for positive changes and new opportunities. Long-awaited wishes can start becoming reality, and unexpected events may open doors you never imagined. Stay open to change, because the decisions you make this year can completely transform your future.",hi:"यह साल आपकी ज़िंदगी में अच्छे बदलाव और नए मौके लेकर आ सकता है। आपकी कोई पुरानी इच्छा पूरी हो सकती है और अचानक मिलने वाला कोई मौका आपकी ज़िंदगी बदल सकता है। बदलाव से मत डरिए, क्योंकि इस साल लिया गया सही फैसला आपका भविष्य बेहतर बना सकता है।",te:"ఈ సంవత్సరం మంచి మార్పులు మరియు కొత్త అవకాశాలతో నిండివుంటుంది. చాలా కాలంగా ఎదురుచూస్తున్న మీ కోరిక నెరవేరే అవకాశం ఉంది. అకస్మాత్తుగా వచ్చే ఒక అవకాశం మీ జీవితాన్ని పూర్తిగా మార్చగలదు. మార్పును స్వీకరించండి, ఎందుకంటే ఈ సంవత్సరం తీసుకునే సరైన నిర్ణయాలు మీ భవిష్యత్తును మరింత మెరుగుపరుస్తాయి.\n\n---"},
+    5:{rating:"good",en:"This is one of the most exciting years for positive changes and new opportunities. Long-awaited wishes can start becoming reality, and unexpected events may open doors you never imagined. Stay open to change, because the decisions you make this year can completely transform your future.",hi:"यह साल आपकी ज़िंदगी में अच्छे बदलाव और नए मौके लेकर आ सकता है। आपकी कोई पुरानी इच्छा पूरी हो सकती है और अचानक मिलने वाला कोई मौका आपकी ज़िंदगी बदल सकता है। बदलाव से मत डरिए, क्योंकि इस साल लिया गया सही फैसला आपका भविष्य बेहतर बना सकता है।",te:"ఈ సంవత్సరం మంచి మార్పులు మరియు కొత్త అవకాశాలతో నిండివుంటుంది. చాలా కాలంగా ఎదురుచూస్తున్న మీ కోరిక నెరవేరే అవకాశం ఉంది. అకస్మాత్తుగా వచ్చే ఒక అవకాశం మీ జీవితాన్ని పూర్తిగా మార్చగలదు. మార్పును స్వీకరించండి, ఎందుకంటే ఈ సంవత్సరం తీసుకునే సరైన నిర్ణయాలు మీ భవిష్యత్తును మరింత మెరుగుపరుస్తాయి.\n\n---"},
+    6:{rating:"good",en:"This is one of the most exciting years for positive changes and new opportunities. Long-awaited wishes can start becoming reality, and unexpected events may open doors you never imagined. Stay open to change, because the decisions you make this year can completely transform your future.",hi:"यह साल आपकी ज़िंदगी में अच्छे बदलाव और नए मौके लेकर आ सकता है। आपकी कोई पुरानी इच्छा पूरी हो सकती है और अचानक मिलने वाला कोई मौका आपकी ज़िंदगी बदल सकता है। बदलाव से मत डरिए, क्योंकि इस साल लिया गया सही फैसला आपका भविष्य बेहतर बना सकता है।",te:"ఈ సంవత్సరం మంచి మార్పులు మరియు కొత్త అవకాశాలతో నిండివుంటుంది. చాలా కాలంగా ఎదురుచూస్తున్న మీ కోరిక నెరవేరే అవకాశం ఉంది. అకస్మాత్తుగా వచ్చే ఒక అవకాశం మీ జీవితాన్ని పూర్తిగా మార్చగలదు. మార్పును స్వీకరించండి, ఎందుకంటే ఈ సంవత్సరం తీసుకునే సరైన నిర్ణయాలు మీ భవిష్యత్తును మరింత మెరుగుపరుస్తాయి.\n\n---"},
+    7:{rating:"good",en:"This is one of the most exciting years for positive changes and new opportunities. Long-awaited wishes can start becoming reality, and unexpected events may open doors you never imagined. Stay open to change, because the decisions you make this year can completely transform your future.",hi:"यह साल आपकी ज़िंदगी में अच्छे बदलाव और नए मौके लेकर आ सकता है। आपकी कोई पुरानी इच्छा पूरी हो सकती है और अचानक मिलने वाला कोई मौका आपकी ज़िंदगी बदल सकता है। बदलाव से मत डरिए, क्योंकि इस साल लिया गया सही फैसला आपका भविष्य बेहतर बना सकता है।",te:"ఈ సంవత్సరం మంచి మార్పులు మరియు కొత్త అవకాశాలతో నిండివుంటుంది. చాలా కాలంగా ఎదురుచూస్తున్న మీ కోరిక నెరవేరే అవకాశం ఉంది. అకస్మాత్తుగా వచ్చే ఒక అవకాశం మీ జీవితాన్ని పూర్తిగా మార్చగలదు. మార్పును స్వీకరించండి, ఎందుకంటే ఈ సంవత్సరం తీసుకునే సరైన నిర్ణయాలు మీ భవిష్యత్తును మరింత మెరుగుపరుస్తాయి.\n\n---"},
+    8:{rating:"good",en:"This is one of the most exciting years for positive changes and new opportunities. Long-awaited wishes can start becoming reality, and unexpected events may open doors you never imagined. Stay open to change, because the decisions you make this year can completely transform your future.",hi:"यह साल आपकी ज़िंदगी में अच्छे बदलाव और नए मौके लेकर आ सकता है। आपकी कोई पुरानी इच्छा पूरी हो सकती है और अचानक मिलने वाला कोई मौका आपकी ज़िंदगी बदल सकता है। बदलाव से मत डरिए, क्योंकि इस साल लिया गया सही फैसला आपका भविष्य बेहतर बना सकता है।",te:"ఈ సంవత్సరం మంచి మార్పులు మరియు కొత్త అవకాశాలతో నిండివుంటుంది. చాలా కాలంగా ఎదురుచూస్తున్న మీ కోరిక నెరవేరే అవకాశం ఉంది. అకస్మాత్తుగా వచ్చే ఒక అవకాశం మీ జీవితాన్ని పూర్తిగా మార్చగలదు. మార్పును స్వీకరించండి, ఎందుకంటే ఈ సంవత్సరం తీసుకునే సరైన నిర్ణయాలు మీ భవిష్యత్తును మరింత మెరుగుపరుస్తాయి.\n\n---"},
+    9:{rating:"good",en:"This is one of the most exciting years for positive changes and new opportunities. Long-awaited wishes can start becoming reality, and unexpected events may open doors you never imagined. Stay open to change, because the decisions you make this year can completely transform your future.",hi:"यह साल आपकी ज़िंदगी में अच्छे बदलाव और नए मौके लेकर आ सकता है। आपकी कोई पुरानी इच्छा पूरी हो सकती है और अचानक मिलने वाला कोई मौका आपकी ज़िंदगी बदल सकता है। बदलाव से मत डरिए, क्योंकि इस साल लिया गया सही फैसला आपका भविष्य बेहतर बना सकता है।",te:"ఈ సంవత్సరం మంచి మార్పులు మరియు కొత్త అవకాశాలతో నిండివుంటుంది. చాలా కాలంగా ఎదురుచూస్తున్న మీ కోరిక నెరవేరే అవకాశం ఉంది. అకస్మాత్తుగా వచ్చే ఒక అవకాశం మీ జీవితాన్ని పూర్తిగా మార్చగలదు. మార్పును స్వీకరించండి, ఎందుకంటే ఈ సంవత్సరం తీసుకునే సరైన నిర్ణయాలు మీ భవిష్యత్తును మరింత మెరుగుపరుస్తాయి.\n\n---"},
+  },
+  6:{
+    1:{rating:"good",en:"This is an excellent year for building new relationships and strengthening existing ones. Family life can become happier, and you may spend more quality time with your loved ones. This year can also bring exciting travel opportunities and many joyful memories.",hi:"यह साल नए रिश्ते बनाने और पुराने रिश्तों को मज़बूत करने के लिए बहुत अच्छा है। परिवार में खुशियाँ बढ़ सकती हैं और अपने लोगों के साथ अच्छा समय बिताने का मौका मिलेगा। इस साल आपको ज़्यादा घूमने-फिरने के मौके भी मिल सकते हैं।",te:"ఈ సంవత్సరం కొత్త సంబంధాలను ప్రారంభించడానికి మరియు ఇప్పటికే ఉన్న బంధాలను మరింత బలపరచడానికి చాలా మంచిది. కుటుంబంలో ఆనందం పెరుగుతుంది మరియు మీకు ఇష్టమైన వారితో మంచి సమయం గడిపే అవకాశం ఉంటుంది. ఈ సంవత్సరం మీకు ఎక్కువ ప్రయాణ అవకాశాలు కూడా లభించవచ్చు.\n\n---"},
+    2:{rating:"mod",en:"This year can bring positive changes in your personal life, but everything may not happen as quickly as you expect. Relationships and family matters can improve with patience, and you may also get more opportunities to travel. Stay balanced and let things progress naturally.",hi:"यह साल आपकी निजी ज़िंदगी में अच्छे बदलाव ला सकता है, लेकिन हर चीज़ तुरंत नहीं होगी। रिश्ते और परिवार से जुड़ी बातें धीरे-धीरे बेहतर हो सकती हैं और आपको ज़्यादा घूमने-फिरने के मौके भी मिल सकते हैं। धैर्य रखिए और समय के साथ आगे बढ़िए।",te:"ఈ సంవత్సరం మీ వ్యక్తిగత జీవితంలో మంచి మార్పులు రావచ్చు, కానీ ప్రతిదీ వెంటనే జరగకపోవచ్చు. కుటుంబం మరియు సంబంధాలు క్రమంగా మెరుగుపడవచ్చ, అలాగే ఎక్కువ ప్రయాణ అవకాశాలు కూడా రావచ్చు. ఓర్పుతో ముందుకు సాగండి."},
+    3:{rating:"bad",en:"This year may bring a higher chance of injuries, health problems, or depression. Don't ignore your physical or mental health, as small issues can become bigger if neglected. Slow down, take care of yourself, and avoid unnecessary risks throughout the year.",hi:"यह साल चोट लगने, सेहत की परेशानी या मानसिक तनाव लेकर आ सकता है। अपनी सेहत को बिल्कुल भी हल्के में मत लीजिए, क्योंकि छोटी समस्या भी बड़ी बन सकती है। इस साल अपना खास ध्यान रखिए और बिना वजह जोखिम लेने से बचिए।",te:"ఈ సంవత్సరం గాయాలు, ఆరోగ్య సమస్యలు లేదా మానసిక ఒత్తిడి వచ్చే అవకాశం ఎక్కువగా ఉంటుంది. చిన్న సమస్యలను కూడా నిర్లక్ష్యం చేయకండి, ఎందుకంటే అవి పెద్దవిగా మారవచ్చు. ఈ సంవత్సరం మీ ఆరోగ్యాన్ని జాగ్రత్తగా చూసుకోండి మరియు అవసరం లేని రిస్క్‌లకు దూరంగా ఉండండి."},
+    4:{rating:"good",en:"This is an excellent year for building new relationships and strengthening existing ones. Family life can become happier, and you may spend more quality time with your loved ones. This year can also bring exciting travel opportunities and many joyful memories.",hi:"यह साल नए रिश्ते बनाने और पुराने रिश्तों को मज़बूत करने के लिए बहुत अच्छा है। परिवार में खुशियाँ बढ़ सकती हैं और अपने लोगों के साथ अच्छा समय बिताने का मौका मिलेगा। इस साल आपको ज़्यादा घूमने-फिरने के मौके भी मिल सकते हैं।",te:"ఈ సంవత్సరం కొత్త సంబంధాలను ప్రారంభించడానికి మరియు ఇప్పటికే ఉన్న బంధాలను మరింత బలపరచడానికి చాలా మంచిది. కుటుంబంలో ఆనందం పెరుగుతుంది మరియు మీకు ఇష్టమైన వారితో మంచి సమయం గడిపే అవకాశం ఉంటుంది. ఈ సంవత్సరం మీకు ఎక్కువ ప్రయాణ అవకాశాలు కూడా లభించవచ్చు.\n\n---"},
+    5:{rating:"good",en:"This is an excellent year for building new relationships and strengthening existing ones. Family life can become happier, and you may spend more quality time with your loved ones. This year can also bring exciting travel opportunities and many joyful memories.",hi:"यह साल नए रिश्ते बनाने और पुराने रिश्तों को मज़बूत करने के लिए बहुत अच्छा है। परिवार में खुशियाँ बढ़ सकती हैं और अपने लोगों के साथ अच्छा समय बिताने का मौका मिलेगा। इस साल आपको ज़्यादा घूमने-फिरने के मौके भी मिल सकते हैं।",te:"ఈ సంవత్సరం కొత్త సంబంధాలను ప్రారంభించడానికి మరియు ఇప్పటికే ఉన్న బంధాలను మరింత బలపరచడానికి చాలా మంచిది. కుటుంబంలో ఆనందం పెరుగుతుంది మరియు మీకు ఇష్టమైన వారితో మంచి సమయం గడిపే అవకాశం ఉంటుంది. ఈ సంవత్సరం మీకు ఎక్కువ ప్రయాణ అవకాశాలు కూడా లభించవచ్చు.\n\n---"},
+    6:{rating:"good",en:"This is an excellent year for building new relationships and strengthening existing ones. Family life can become happier, and you may spend more quality time with your loved ones. This year can also bring exciting travel opportunities and many joyful memories.",hi:"यह साल नए रिश्ते बनाने और पुराने रिश्तों को मज़बूत करने के लिए बहुत अच्छा है। परिवार में खुशियाँ बढ़ सकती हैं और अपने लोगों के साथ अच्छा समय बिताने का मौका मिलेगा। इस साल आपको ज़्यादा घूमने-फिरने के मौके भी मिल सकते हैं।",te:"ఈ సంవత్సరం కొత్త సంబంధాలను ప్రారంభించడానికి మరియు ఇప్పటికే ఉన్న బంధాలను మరింత బలపరచడానికి చాలా మంచిది. కుటుంబంలో ఆనందం పెరుగుతుంది మరియు మీకు ఇష్టమైన వారితో మంచి సమయం గడిపే అవకాశం ఉంటుంది. ఈ సంవత్సరం మీకు ఎక్కువ ప్రయాణ అవకాశాలు కూడా లభించవచ్చు.\n\n---"},
+    7:{rating:"good",en:"This is an excellent year for building new relationships and strengthening existing ones. Family life can become happier, and you may spend more quality time with your loved ones. This year can also bring exciting travel opportunities and many joyful memories.",hi:"यह साल नए रिश्ते बनाने और पुराने रिश्तों को मज़बूत करने के लिए बहुत अच्छा है। परिवार में खुशियाँ बढ़ सकती हैं और अपने लोगों के साथ अच्छा समय बिताने का मौका मिलेगा। इस साल आपको ज़्यादा घूमने-फिरने के मौके भी मिल सकते हैं।",te:"ఈ సంవత్సరం కొత్త సంబంధాలను ప్రారంభించడానికి మరియు ఇప్పటికే ఉన్న బంధాలను మరింత బలపరచడానికి చాలా మంచిది. కుటుంబంలో ఆనందం పెరుగుతుంది మరియు మీకు ఇష్టమైన వారితో మంచి సమయం గడిపే అవకాశం ఉంటుంది. ఈ సంవత్సరం మీకు ఎక్కువ ప్రయాణ అవకాశాలు కూడా లభించవచ్చు.\n\n---"},
+    8:{rating:"mod",en:"This year can bring positive changes in your personal life, but everything may not happen as quickly as you expect. Relationships and family matters can improve with patience, and you may also get more opportunities to travel. Stay balanced and let things progress naturally.",hi:"यह साल आपकी निजी ज़िंदगी में अच्छे बदलाव ला सकता है, लेकिन हर चीज़ तुरंत नहीं होगी। रिश्ते और परिवार से जुड़ी बातें धीरे-धीरे बेहतर हो सकती हैं और आपको ज़्यादा घूमने-फिरने के मौके भी मिल सकते हैं। धैर्य रखिए और समय के साथ आगे बढ़िए।",te:"ఈ సంవత్సరం మీ వ్యక్తిగత జీవితంలో మంచి మార్పులు రావచ్చు, కానీ ప్రతిదీ వెంటనే జరగకపోవచ్చు. కుటుంబం మరియు సంబంధాలు క్రమంగా మెరుగుపడవచ్చ, అలాగే ఎక్కువ ప్రయాణ అవకాశాలు కూడా రావచ్చు. ఓర్పుతో ముందుకు సాగండి."},
+    9:{rating:"mod",en:"This year can bring positive changes in your personal life, but everything may not happen as quickly as you expect. Relationships and family matters can improve with patience, and you may also get more opportunities to travel. Stay balanced and let things progress naturally.",hi:"यह साल आपकी निजी ज़िंदगी में अच्छे बदलाव ला सकता है, लेकिन हर चीज़ तुरंत नहीं होगी। रिश्ते और परिवार से जुड़ी बातें धीरे-धीरे बेहतर हो सकती हैं और आपको ज़्यादा घूमने-फिरने के मौके भी मिल सकते हैं। धैर्य रखिए और समय के साथ आगे बढ़िए।",te:"ఈ సంవత్సరం మీ వ్యక్తిగత జీవితంలో మంచి మార్పులు రావచ్చు, కానీ ప్రతిదీ వెంటనే జరగకపోవచ్చు. కుటుంబం మరియు సంబంధాలు క్రమంగా మెరుగుపడవచ్చ, అలాగే ఎక్కువ ప్రయాణ అవకాశాలు కూడా రావచ్చు. ఓర్పుతో ముందుకు సాగండి."},
+  },
+  7:{
+    1:{rating:"mod",en:"This is a good year for education, making it highly favorable for students and anyone preparing for an important examination. Career and business are also well supported, with good opportunities for progress, recognition, promotions, and financial improvement.",hi:"यह साल पढ़ाई के लिए अच्छा रहेगा। अगर आप स्टूडेंट हैं या किसी महत्वपूर्ण परीक्षा की तैयारी कर रहे हैं, तो अच्छे नतीजे मिलने की पूरी संभावना है। करियर और बिज़नेस में भी अच्छी प्रगति, पहचान, प्रमोशन के मौके और पैसों में सुधार देखने को मिल सकता है।",te:"ఈ సంవత్సరం చదువుకు మంచి సమయం. మీరు విద్యార్థి అయినా లేదా ఏదైనా ముఖ్యమైన పరీక్షకు సిద్ధమవుతున్నా, మంచి ఫలితాలు సాధించే అవకాశం ఉంది. కెరీర్ లేదా వ్యాపారంలో కూడా మంచి పురోగతి, గుర్తింపు, ప్రమోషన్ అవకాశాలు మరియు ఆర్థిక మెరుగుదల కనిపించవచ్చు."},
+    2:{rating:"mod",en:"This is a good year for education, making it favorable for students and anyone preparing for an important examination. Career and financial matters may remain comparatively weaker this year, and financial growth is likely to remain moderate.",hi:"यह साल पढ़ाई के लिए अच्छा रहेगा। अगर आप स्टूडेंट हैं या किसी महत्वपूर्ण परीक्षा की तैयारी कर रहे हैं, तो अच्छे नतीजे मिलने की पूरी संभावना है। करियर और पैसों के मामले में यह साल थोड़ा कमजोर रह सकता है और आर्थिक प्रगति सामान्य रहने की संभावना है।",te:"ఈ సంవత్సరం చదువుకు మంచి సమయం. మీరు విద్యార్థి అయినా లేదా ఏదైనా ముఖ్యమైన పరీక్షకు సిద్ధమవుతున్నా, మంచి ఫలితాలు సాధించే అవకాశం ఉంది. కెరీర్ మరియు ఆర్థిక విషయాల్లో ఈ సంవత్సరం కొంత బలహీనంగా ఉండవచ్చు మరియు ఆర్థిక పురోగతి సాధారణంగా ఉండే అవకాశం ఉంది."},
+    3:{rating:"mod",en:"This is one of the best years for education, making it highly favorable for students and anyone preparing for an important examination. Career and business are also supported, although education is likely to bring the strongest results during this year.",hi:"यह साल पढ़ाई के लिए आपके सबसे अच्छे सालों में से एक है। अगर आप स्टूडेंट हैं या किसी महत्वपूर्ण परीक्षा की तैयारी कर रहे हैं, तो बेहतरीन सफलता मिलने की पूरी संभावना है। करियर और बिज़नेस में भी अच्छे मौके मिल सकते हैं, लेकिन इस साल सबसे अच्छे नतीजे पढ़ाई के क्षेत्र में मिलने की संभावना है।",te:"ఈ సంవత్సరం చదువుకు మీ అత్యుత్తమ సంవత్సరాలలో ఒకటి. మీరు విద్యార్థి అయినా లేదా ఏదైనా ముఖ్యమైన పరీక్షకు సిద్ధమవుతున్నా, అద్భుతమైన ఫలితాలు సాధించే అవకాశం చాలా ఎక్కువ. కెరీర్ లేదా వ్యాపారంలో కూడా మంచి అవకాశాలు ఉండవచ్చు, అయితే ఈ సంవత్సరం అత్యుత్తమ ఫలితాలు చదువులోనే కనిపించే అవకాశం ఉంది."},
+    4:{rating:"mod",en:"This is one of the best years for education, making it highly favorable for students and anyone preparing for an important examination. Career and business are also well supported, with good opportunities for progress, recognition, promotions, and financial improvement.",hi:"यह साल पढ़ाई के लिए आपके सबसे अच्छे सालों में से एक है। अगर आप स्टूडेंट हैं या किसी महत्वपूर्ण परीक्षा की तैयारी कर रहे हैं, तो बेहतरीन सफलता मिलने की पूरी संभावना है। करियर और बिज़नेस में भी अच्छी प्रगति, पहचान, प्रमोशन के मौके और पैसों में सुधार देखने को मिल सकता है।",te:"ఈ సంవత్సరం చదువుకు మీ అత్యుత్తమ సంవత్సరాలలో ఒకటి. మీరు విద్యార్థి అయినా లేదా ఏదైనా ముఖ్యమైన పరీక్షకు సిద్ధమవుతున్నా, అద్భుతమైన ఫలితాలు సాధించే అవకాశం చాలా ఎక్కువ. కెరీర్ లేదా వ్యాపారంలో కూడా మంచి పురోగతి, గుర్తింపు, ప్రమోషన్ అవకాశాలు మరియు ఆర్థిక మెరుగుదల కనిపించవచ్చు."},
+    5:{rating:"mod",en:"This is a good year for education, making it favorable for students and anyone preparing for an important examination. Career and business are also supported, although financial growth is likely to remain moderate compared to education.",hi:"यह साल पढ़ाई के लिए अच्छा रहेगा। अगर आप स्टूडेंट हैं या किसी महत्वपूर्ण परीक्षा की तैयारी कर रहे हैं, तो अच्छे नतीजे मिलने की पूरी संभावना है। करियर और बिज़नेस में भी आगे बढ़ने के मौके मिल सकते हैं, लेकिन पैसों के मामले में प्रगति सामान्य रहने की संभावना है।",te:"ఈ సంవత్సరం చదువుకు మంచి సమయం. మీరు విద్యార్థి అయినా లేదా ఏదైనా ముఖ్యమైన పరీక్షకు సిద్ధమవుతున్నా, మంచి ఫలితాలు సాధించే అవకాశం ఉంది. కెరీర్ లేదా వ్యాపారంలో కూడా ముందుకు వెళ్లే అవకాశాలు ఉండవచ్చు, అయితే ఆర్థిక పురోగతి సాధారణంగా ఉండే అవకాశం ఉంది."},
+    6:{rating:"good",en:"This year is not among the stronger years for education. If you are a student or preparing for an important examination, achieving your desired results may require extra effort. Career growth and financial progress are well supported, making this a favorable year for professional growth, recognition, promotions, and financial improvement.",hi:"यह साल पढ़ाई के लिए ज़्यादा अच्छा नहीं रहेगा। अगर आप स्टूडेंट हैं या किसी महत्वपूर्ण परीक्षा की तैयारी कर रहे हैं, तो मनचाहे नतीजे पाने के लिए ज़्यादा मेहनत करनी पड़ सकती है। करियर और पैसों के मामले में यह साल अच्छा रहेगा। अच्छी प्रगति, पहचान, प्रमोशन के मौके और आर्थिक सुधार मिलने की संभावना है।",te:"ఈ సంవత్సరం చదువుకు అంతగా అనుకూలంగా ఉండదు. మీరు విద్యార్థి అయినా లేదా ఏదైనా ముఖ్యమైన పరీక్షకు సిద్ధమవుతున్నా, మంచి ఫలితాల కోసం ఎక్కువ శ్రమ అవసరం కావచ్చు. కెరీర్ మరియు ఆర్థిక విషయాల్లో ఈ సంవత్సరం మంచి పురోగతి, గుర్తింపు, ప్రమోషన్ అవకాశాలు మరియు ఆర్థిక మెరుగుదల కనిపించే అవకాశం ఉంది."},
+    7:{rating:"mod",en:"This is one of the best years for education, making it highly favorable for students and anyone preparing for an important examination. Career growth and financial progress are not among the strongest areas this year and may remain comparatively weaker.",hi:"यह साल पढ़ाई के लिए आपके सबसे अच्छे सालों में से एक है। अगर आप स्टूडेंट हैं या किसी महत्वपूर्ण परीक्षा की तैयारी कर रहे हैं, तो बेहतरीन सफलता मिलने की पूरी संभावना है। करियर और पैसों के मामले में यह साल ज़्यादा मजबूत नहीं रहेगा और प्रगति सामान्य रह सकती है।",te:"ఈ సంవత్సరం చదువుకు మీ అత్యుత్తమ సంవత్సరాలలో ఒకటి. మీరు విద్యార్థి అయినా లేదా ఏదైనా ముఖ్యమైన పరీక్షకు సిద్ధమవుతున్నా, అద్భుతమైన ఫలితాలు సాధించే అవకాశం చాలా ఎక్కువ. కెరీర్ మరియు ఆర్థిక విషయాల్లో ఈ సంవత్సరం అంతగా బలంగా ఉండకపోవచ్చు మరియు పురోగతి సాధారణంగా ఉండే అవకాశం ఉంది."},
+    8:{rating:"mod",en:"This is a good year for education, making it favorable for students and anyone preparing for an important examination. Career growth and financial progress may remain comparatively weaker during this year.",hi:"यह साल पढ़ाई के लिए अच्छा रहेगा। अगर आप स्टूडेंट हैं या किसी महत्वपूर्ण परीक्षा की तैयारी कर रहे हैं, तो अच्छे नतीजे मिलने की पूरी संभावना है। करियर और पैसों के मामले में यह साल थोड़ा कमजोर रह सकता है और प्रगति सामान्य रहने की संभावना है।",te:"ఈ సంవత్సరం చదువుకు మంచి సమయం. మీరు విద్యార్థి అయినా లేదా ఏదైనా ముఖ్యమైన పరీక్షకు సిద్ధమవుతున్నా, మంచి ఫలితాలు సాధించే అవకాశం ఉంది. కెరీర్ మరియు ఆర్థిక విషయాల్లో ఈ సంవత్సరం కొంత బలహీనంగా ఉండవచ్చు మరియు పురోగతి సాధారణంగా ఉండే అవకాశం ఉంది."},
+    9:{rating:"mod",en:"This is a good year for education, making it favorable for students and anyone preparing for an important examination. Career growth and financial progress may remain comparatively weaker throughout this year.",hi:"यह साल पढ़ाई के लिए अच्छा रहेगा। अगर आप स्टूडेंट हैं या किसी महत्वपूर्ण परीक्षा की तैयारी कर रहे हैं, तो अच्छे नतीजे मिलने की पूरी संभावना है। करियर और पैसों के मामले में यह साल थोड़ा कमजोर रह सकता है और प्रगति सामान्य रहने की संभावना है।",te:"ఈ సంవత్సరం చదువుకు మంచి సమయం. మీరు విద్యార్థి అయినా లేదా ఏదైనా ముఖ్యమైన పరీక్షకు సిద్ధమవుతున్నా, మంచి ఫలితాలు సాధించే అవకాశం ఉంది. కెరీర్ మరియు ఆర్థిక విషయాల్లో ఈ సంవత్సరం కొంత బలహీనంగా ఉండవచ్చు మరియు పురోగతి సాధారణంగా ఉండే అవకాశం ఉంది."},
+  },
+  8:{
+    1:{rating:"bad",en:"You are entering one of the most difficult years of your cycle. This year may bring a higher chance of accidents, health problems, financial pressure, or even an operation. Progress may feel extremely slow, and repeated obstacles can test your patience. Stay away from unnecessary risks and handle every important decision with extra care.",hi:"आप एक ऐसे साल में प्रवेश कर रहे हैं जो काफी मुश्किल साबित हो सकता है। इस साल दुर्घटना, सेहत की परेशानी, पैसों का दबाव या ऑपरेशन तक की नौबत आने की संभावना बढ़ सकती है। हर काम बहुत धीरे-धीरे आगे बढ़ सकता है और बार-बार रुकावटें आ सकती हैं। बिना सोचे-समझे कोई बड़ा फैसला बिल्कुल न लें।",te:"మీరు చాలా కఠినమైన సంవత్సరంలోకి అడుగుపెడుతున్నారు. ఈ సంవత్సరం ప్రమాదాలు, ఆరోగ్య సమస్యలు, ఆర్థిక ఒత్తిడి లేదా ఆపరేషన్ వరకు వెళ్లే పరిస్థితులు ఎదురయ్యే అవకాశం ఉంది. ప్రతి పని చాలా నెమ్మదిగా సాగుతున్నట్లు అనిపించవచ్చు మరియు అనేక అడ్డంకులు ఎదురుకావచ్చు. అవసరం లేని రిస్క్‌లు తీసుకోకుండా ప్రతి నిర్ణయాన్ని చాలా జాగ్రత్తగా తీసుకోండి."},
+    2:{rating:"bad",en:"You are entering one of the most difficult years of your cycle. This year may bring a higher chance of accidents, health problems, financial pressure, or even an operation. Progress may feel extremely slow, and repeated obstacles can test your patience. Stay away from unnecessary risks and handle every important decision with extra care.",hi:"आप एक ऐसे साल में प्रवेश कर रहे हैं जो काफी मुश्किल साबित हो सकता है। इस साल दुर्घटना, सेहत की परेशानी, पैसों का दबाव या ऑपरेशन तक की नौबत आने की संभावना बढ़ सकती है। हर काम बहुत धीरे-धीरे आगे बढ़ सकता है और बार-बार रुकावटें आ सकती हैं। बिना सोचे-समझे कोई बड़ा फैसला बिल्कुल न लें।",te:"మీరు చాలా కఠినమైన సంవత్సరంలోకి అడుగుపెడుతున్నారు. ఈ సంవత్సరం ప్రమాదాలు, ఆరోగ్య సమస్యలు, ఆర్థిక ఒత్తిడి లేదా ఆపరేషన్ వరకు వెళ్లే పరిస్థితులు ఎదురయ్యే అవకాశం ఉంది. ప్రతి పని చాలా నెమ్మదిగా సాగుతున్నట్లు అనిపించవచ్చు మరియు అనేక అడ్డంకులు ఎదురుకావచ్చు. అవసరం లేని రిస్క్‌లు తీసుకోకుండా ప్రతి నిర్ణయాన్ని చాలా జాగ్రత్తగా తీసుకోండి."},
+    3:{rating:"good",en:"You are entering a powerful year where hard work can finally bring meaningful rewards. This is an excellent time to clear debts, settle legal matters, manage loans wisely, and make important property-related decisions. Stay disciplined, as the efforts you make this year can create long-term financial stability.",hi:"आप एक ऐसे साल में प्रवेश कर रहे हैं जहाँ आपकी मेहनत का अच्छा फल मिल सकता है। कर्ज़ चुकाने, कोर्ट के मामलों को सुलझाने, लोन से जुड़े फैसले लेने और प्रॉपर्टी खरीदने या बेचने के लिए यह अच्छा समय हो सकता है। मेहनत और अनुशासन बनाए रखें, क्योंकि यही साल आपकी आर्थिक स्थिति को मज़बूत बना सकता है।",te:"మీరు మీ కష్టానికి మంచి ఫలితం ఇచ్చే శక్తివంతమైన సంవత్సరంలోకి అడుగుపెడుతున్నారు. అప్పులు తీర్చడం, కోర్టు వ్యవహారాలను పరిష్కరించడం, రుణాలకు సంబంధించిన నిర్ణయాలు తీసుకోవడం మరియు ఆస్తి కొనుగోలు లేదా విక్రయానికి ఇది మంచి సమయం కావచ్చు. క్రమశిక్షణతో ముందుకు సాగితే ఈ సంవత్సరం మీ ఆర్థిక స్థిరత్వానికి బలమైన పునాది వేస్తుంది.\n\n---"},
+    4:{rating:"good",en:"You are entering a powerful year where hard work can finally bring meaningful rewards. This is an excellent time to clear debts, settle legal matters, manage loans wisely, and make important property-related decisions. Stay disciplined, as the efforts you make this year can create long-term financial stability.",hi:"आप एक ऐसे साल में प्रवेश कर रहे हैं जहाँ आपकी मेहनत का अच्छा फल मिल सकता है। कर्ज़ चुकाने, कोर्ट के मामलों को सुलझाने, लोन से जुड़े फैसले लेने और प्रॉपर्टी खरीदने या बेचने के लिए यह अच्छा समय हो सकता है। मेहनत और अनुशासन बनाए रखें, क्योंकि यही साल आपकी आर्थिक स्थिति को मज़बूत बना सकता है।",te:"మీరు మీ కష్టానికి మంచి ఫలితం ఇచ్చే శక్తివంతమైన సంవత్సరంలోకి అడుగుపెడుతున్నారు. అప్పులు తీర్చడం, కోర్టు వ్యవహారాలను పరిష్కరించడం, రుణాలకు సంబంధించిన నిర్ణయాలు తీసుకోవడం మరియు ఆస్తి కొనుగోలు లేదా విక్రయానికి ఇది మంచి సమయం కావచ్చు. క్రమశిక్షణతో ముందుకు సాగితే ఈ సంవత్సరం మీ ఆర్థిక స్థిరత్వానికి బలమైన పునాది వేస్తుంది.\n\n---"},
+    5:{rating:"good",en:"You are entering a powerful year where hard work can finally bring meaningful rewards. This is an excellent time to clear debts, settle legal matters, manage loans wisely, and make important property-related decisions. Stay disciplined, as the efforts you make this year can create long-term financial stability.",hi:"आप एक ऐसे साल में प्रवेश कर रहे हैं जहाँ आपकी मेहनत का अच्छा फल मिल सकता है। कर्ज़ चुकाने, कोर्ट के मामलों को सुलझाने, लोन से जुड़े फैसले लेने और प्रॉपर्टी खरीदने या बेचने के लिए यह अच्छा समय हो सकता है। मेहनत और अनुशासन बनाए रखें, क्योंकि यही साल आपकी आर्थिक स्थिति को मज़बूत बना सकता है।",te:"మీరు మీ కష్టానికి మంచి ఫలితం ఇచ్చే శక్తివంతమైన సంవత్సరంలోకి అడుగుపెడుతున్నారు. అప్పులు తీర్చడం, కోర్టు వ్యవహారాలను పరిష్కరించడం, రుణాలకు సంబంధించిన నిర్ణయాలు తీసుకోవడం మరియు ఆస్తి కొనుగోలు లేదా విక్రయానికి ఇది మంచి సమయం కావచ్చు. క్రమశిక్షణతో ముందుకు సాగితే ఈ సంవత్సరం మీ ఆర్థిక స్థిరత్వానికి బలమైన పునాది వేస్తుంది.\n\n---"},
+    6:{rating:"good",en:"You are entering a powerful year where hard work can finally bring meaningful rewards. This is an excellent time to clear debts, settle legal matters, manage loans wisely, and make important property-related decisions. Stay disciplined, as the efforts you make this year can create long-term financial stability.",hi:"आप एक ऐसे साल में प्रवेश कर रहे हैं जहाँ आपकी मेहनत का अच्छा फल मिल सकता है। कर्ज़ चुकाने, कोर्ट के मामलों को सुलझाने, लोन से जुड़े फैसले लेने और प्रॉपर्टी खरीदने या बेचने के लिए यह अच्छा समय हो सकता है। मेहनत और अनुशासन बनाए रखें, क्योंकि यही साल आपकी आर्थिक स्थिति को मज़बूत बना सकता है।",te:"మీరు మీ కష్టానికి మంచి ఫలితం ఇచ్చే శక్తివంతమైన సంవత్సరంలోకి అడుగుపెడుతున్నారు. అప్పులు తీర్చడం, కోర్టు వ్యవహారాలను పరిష్కరించడం, రుణాలకు సంబంధించిన నిర్ణయాలు తీసుకోవడం మరియు ఆస్తి కొనుగోలు లేదా విక్రయానికి ఇది మంచి సమయం కావచ్చు. క్రమశిక్షణతో ముందుకు సాగితే ఈ సంవత్సరం మీ ఆర్థిక స్థిరత్వానికి బలమైన పునాది వేస్తుంది.\n\n---"},
+    7:{rating:"good",en:"You are entering a powerful year where hard work can finally bring meaningful rewards. This is an excellent time to clear debts, settle legal matters, manage loans wisely, and make important property-related decisions. Stay disciplined, as the efforts you make this year can create long-term financial stability.",hi:"आप एक ऐसे साल में प्रवेश कर रहे हैं जहाँ आपकी मेहनत का अच्छा फल मिल सकता है। कर्ज़ चुकाने, कोर्ट के मामलों को सुलझाने, लोन से जुड़े फैसले लेने और प्रॉपर्टी खरीदने या बेचने के लिए यह अच्छा समय हो सकता है। मेहनत और अनुशासन बनाए रखें, क्योंकि यही साल आपकी आर्थिक स्थिति को मज़बूत बना सकता है।",te:"మీరు మీ కష్టానికి మంచి ఫలితం ఇచ్చే శక్తివంతమైన సంవత్సరంలోకి అడుగుపెడుతున్నారు. అప్పులు తీర్చడం, కోర్టు వ్యవహారాలను పరిష్కరించడం, రుణాలకు సంబంధించిన నిర్ణయాలు తీసుకోవడం మరియు ఆస్తి కొనుగోలు లేదా విక్రయానికి ఇది మంచి సమయం కావచ్చు. క్రమశిక్షణతో ముందుకు సాగితే ఈ సంవత్సరం మీ ఆర్థిక స్థిరత్వానికి బలమైన పునాది వేస్తుంది.\n\n---"},
+    8:{rating:"good",en:"You are entering a powerful year where hard work can finally bring meaningful rewards. This is an excellent time to clear debts, settle legal matters, manage loans wisely, and make important property-related decisions. Stay disciplined, as the efforts you make this year can create long-term financial stability.",hi:"आप एक ऐसे साल में प्रवेश कर रहे हैं जहाँ आपकी मेहनत का अच्छा फल मिल सकता है। कर्ज़ चुकाने, कोर्ट के मामलों को सुलझाने, लोन से जुड़े फैसले लेने और प्रॉपर्टी खरीदने या बेचने के लिए यह अच्छा समय हो सकता है। मेहनत और अनुशासन बनाए रखें, क्योंकि यही साल आपकी आर्थिक स्थिति को मज़बूत बना सकता है।",te:"మీరు మీ కష్టానికి మంచి ఫలితం ఇచ్చే శక్తివంతమైన సంవత్సరంలోకి అడుగుపెడుతున్నారు. అప్పులు తీర్చడం, కోర్టు వ్యవహారాలను పరిష్కరించడం, రుణాలకు సంబంధించిన నిర్ణయాలు తీసుకోవడం మరియు ఆస్తి కొనుగోలు లేదా విక్రయానికి ఇది మంచి సమయం కావచ్చు. క్రమశిక్షణతో ముందుకు సాగితే ఈ సంవత్సరం మీ ఆర్థిక స్థిరత్వానికి బలమైన పునాది వేస్తుంది.\n\n---"},
+    9:{rating:"good",en:"You are entering a powerful year where hard work can finally bring meaningful rewards. This is an excellent time to clear debts, settle legal matters, manage loans wisely, and make important property-related decisions. Stay disciplined, as the efforts you make this year can create long-term financial stability.",hi:"आप एक ऐसे साल में प्रवेश कर रहे हैं जहाँ आपकी मेहनत का अच्छा फल मिल सकता है। कर्ज़ चुकाने, कोर्ट के मामलों को सुलझाने, लोन से जुड़े फैसले लेने और प्रॉपर्टी खरीदने या बेचने के लिए यह अच्छा समय हो सकता है। मेहनत और अनुशासन बनाए रखें, क्योंकि यही साल आपकी आर्थिक स्थिति को मज़बूत बना सकता है।",te:"మీరు మీ కష్టానికి మంచి ఫలితం ఇచ్చే శక్తివంతమైన సంవత్సరంలోకి అడుగుపెడుతున్నారు. అప్పులు తీర్చడం, కోర్టు వ్యవహారాలను పరిష్కరించడం, రుణాలకు సంబంధించిన నిర్ణయాలు తీసుకోవడం మరియు ఆస్తి కొనుగోలు లేదా విక్రయానికి ఇది మంచి సమయం కావచ్చు. క్రమశిక్షణతో ముందుకు సాగితే ఈ సంవత్సరం మీ ఆర్థిక స్థిరత్వానికి బలమైన పునాది వేస్తుంది.\n\n---"},
+  },
+  9:{
+    1:{rating:"mod",en:"You are entering a year that is best used for closing old chapters rather than starting new ones. Be extra careful before trusting people or accepting new opportunities because not everything will be as genuine as it appears. Finish your pending work, clear unfinished responsibilities, and prepare yourself for a fresh beginning next year.",hi:"आप ऐसे साल में प्रवेश कर रहे हैं जहाँ पुराने काम पूरे करना ज़्यादा ज़रूरी है, नई शुरुआत करना नहीं। किसी पर जल्दी भरोसा मत कीजिए और हर नए मौके को अच्छी तरह समझकर ही आगे बढ़िए, क्योंकि हर चीज़ वैसी नहीं होगी जैसी दिखती है। पहले अधूरे काम खत्म कीजिए और अगले साल की नई शुरुआत के लिए खुद को तैयार रखिए।",te:"మీరు కొత్త ప్రారంభాల కంటే పాత పనులను పూర్తి చేయడానికి అనుకూలమైన సంవత్సరంలోకి అడుగుపెడుతున్నారు. కొత్త అవకాశాలను లేదా వ్యక్తులను వెంటనే నమ్మకండి, ఎందుకంటే కనిపించే ప్రతి విషయం నిజం కాకపోవచ్చు. పెండింగ్ పనులను పూర్తి చేసి, వచ్చే సంవత్సరం కొత్త ప్రారంభాలకు సిద్ధంగా ఉండండి."},
+    2:{rating:"bad",en:"You are entering a difficult year where delays, confusion, and disappointments can test your patience. Avoid starting anything new, be careful of false promises, and think twice before making any major decision. The smarter you act this year, the fewer problems you will carry into the next cycle.",hi:"आप ऐसे साल में प्रवेश कर रहे हैं जहाँ रुकावटें, उलझनें और निराशा का सामना करना पड़ सकता है। इस साल कोई नई शुरुआत करने से बचिए, किसी की बातों पर जल्दी भरोसा मत कीजिए और बड़ा फैसला लेने से पहले दो बार सोचिए। जितनी समझदारी से काम लेंगे, अगले साल उतना हल्का महसूस करेंगे।",te:"మీరు ఆలస్యాలు, గందరగోళం మరియు నిరాశలను ఎదుర్కొనే అవకాశాలు ఉన్న సంవత్సరంలోకి అడుగుపెడుతున్నారు. ఈ సంవత్సరం కొత్త పనులు ప్రారంభించకుండా ఉండండి, ఎవరి మాటనైనా వెంటనే నమ్మకండి మరియు పెద్ద నిర్ణయాలు తీసుకునే ముందు రెండుసార్లు ఆలోచించండి. ఈ సంవత్సరం ఎంత జాగ్రత్తగా వ్యవహరిస్తే, వచ్చే సంవత్సరం అంత మంచి ప్రారంభం లభిస్తుంది."},
+    3:{rating:"mod",en:"You are entering a year that is best used for closing old chapters rather than starting new ones. Be extra careful before trusting people or accepting new opportunities because not everything will be as genuine as it appears. Finish your pending work, clear unfinished responsibilities, and prepare yourself for a fresh beginning next year.",hi:"आप ऐसे साल में प्रवेश कर रहे हैं जहाँ पुराने काम पूरे करना ज़्यादा ज़रूरी है, नई शुरुआत करना नहीं। किसी पर जल्दी भरोसा मत कीजिए और हर नए मौके को अच्छी तरह समझकर ही आगे बढ़िए, क्योंकि हर चीज़ वैसी नहीं होगी जैसी दिखती है। पहले अधूरे काम खत्म कीजिए और अगले साल की नई शुरुआत के लिए खुद को तैयार रखिए।",te:"మీరు కొత్త ప్రారంభాల కంటే పాత పనులను పూర్తి చేయడానికి అనుకూలమైన సంవత్సరంలోకి అడుగుపెడుతున్నారు. కొత్త అవకాశాలను లేదా వ్యక్తులను వెంటనే నమ్మకండి, ఎందుకంటే కనిపించే ప్రతి విషయం నిజం కాకపోవచ్చు. పెండింగ్ పనులను పూర్తి చేసి, వచ్చే సంవత్సరం కొత్త ప్రారంభాలకు సిద్ధంగా ఉండండి."},
+    4:{rating:"bad",en:"You are entering a difficult year where delays, confusion, and disappointments can test your patience. Avoid starting anything new, be careful of false promises, and think twice before making any major decision. The smarter you act this year, the fewer problems you will carry into the next cycle.",hi:"आप ऐसे साल में प्रवेश कर रहे हैं जहाँ रुकावटें, उलझनें और निराशा का सामना करना पड़ सकता है। इस साल कोई नई शुरुआत करने से बचिए, किसी की बातों पर जल्दी भरोसा मत कीजिए और बड़ा फैसला लेने से पहले दो बार सोचिए। जितनी समझदारी से काम लेंगे, अगले साल उतना हल्का महसूस करेंगे।",te:"మీరు ఆలస్యాలు, గందరగోళం మరియు నిరాశలను ఎదుర్కొనే అవకాశాలు ఉన్న సంవత్సరంలోకి అడుగుపెడుతున్నారు. ఈ సంవత్సరం కొత్త పనులు ప్రారంభించకుండా ఉండండి, ఎవరి మాటనైనా వెంటనే నమ్మకండి మరియు పెద్ద నిర్ణయాలు తీసుకునే ముందు రెండుసార్లు ఆలోచించండి. ఈ సంవత్సరం ఎంత జాగ్రత్తగా వ్యవహరిస్తే, వచ్చే సంవత్సరం అంత మంచి ప్రారంభం లభిస్తుంది."},
+    5:{rating:"mod",en:"You are entering a year that is best used for closing old chapters rather than starting new ones. Be extra careful before trusting people or accepting new opportunities because not everything will be as genuine as it appears. Finish your pending work, clear unfinished responsibilities, and prepare yourself for a fresh beginning next year.",hi:"आप ऐसे साल में प्रवेश कर रहे हैं जहाँ पुराने काम पूरे करना ज़्यादा ज़रूरी है, नई शुरुआत करना नहीं। किसी पर जल्दी भरोसा मत कीजिए और हर नए मौके को अच्छी तरह समझकर ही आगे बढ़िए, क्योंकि हर चीज़ वैसी नहीं होगी जैसी दिखती है। पहले अधूरे काम खत्म कीजिए और अगले साल की नई शुरुआत के लिए खुद को तैयार रखिए।",te:"మీరు కొత్త ప్రారంభాల కంటే పాత పనులను పూర్తి చేయడానికి అనుకూలమైన సంవత్సరంలోకి అడుగుపెడుతున్నారు. కొత్త అవకాశాలను లేదా వ్యక్తులను వెంటనే నమ్మకండి, ఎందుకంటే కనిపించే ప్రతి విషయం నిజం కాకపోవచ్చు. పెండింగ్ పనులను పూర్తి చేసి, వచ్చే సంవత్సరం కొత్త ప్రారంభాలకు సిద్ధంగా ఉండండి."},
+    6:{rating:"bad",en:"You are entering a difficult year where delays, confusion, and disappointments can test your patience. Avoid starting anything new, be careful of false promises, and think twice before making any major decision. The smarter you act this year, the fewer problems you will carry into the next cycle.",hi:"आप ऐसे साल में प्रवेश कर रहे हैं जहाँ रुकावटें, उलझनें और निराशा का सामना करना पड़ सकता है। इस साल कोई नई शुरुआत करने से बचिए, किसी की बातों पर जल्दी भरोसा मत कीजिए और बड़ा फैसला लेने से पहले दो बार सोचिए। जितनी समझदारी से काम लेंगे, अगले साल उतना हल्का महसूस करेंगे।",te:"మీరు ఆలస్యాలు, గందరగోళం మరియు నిరాశలను ఎదుర్కొనే అవకాశాలు ఉన్న సంవత్సరంలోకి అడుగుపెడుతున్నారు. ఈ సంవత్సరం కొత్త పనులు ప్రారంభించకుండా ఉండండి, ఎవరి మాటనైనా వెంటనే నమ్మకండి మరియు పెద్ద నిర్ణయాలు తీసుకునే ముందు రెండుసార్లు ఆలోచించండి. ఈ సంవత్సరం ఎంత జాగ్రత్తగా వ్యవహరిస్తే, వచ్చే సంవత్సరం అంత మంచి ప్రారంభం లభిస్తుంది."},
+    7:{rating:"bad",en:"You are entering a difficult year where delays, confusion, and disappointments can test your patience. Avoid starting anything new, be careful of false promises, and think twice before making any major decision. The smarter you act this year, the fewer problems you will carry into the next cycle.",hi:"आप ऐसे साल में प्रवेश कर रहे हैं जहाँ रुकावटें, उलझनें और निराशा का सामना करना पड़ सकता है। इस साल कोई नई शुरुआत करने से बचिए, किसी की बातों पर जल्दी भरोसा मत कीजिए और बड़ा फैसला लेने से पहले दो बार सोचिए। जितनी समझदारी से काम लेंगे, अगले साल उतना हल्का महसूस करेंगे।",te:"మీరు ఆలస్యాలు, గందరగోళం మరియు నిరాశలను ఎదుర్కొనే అవకాశాలు ఉన్న సంవత్సరంలోకి అడుగుపెడుతున్నారు. ఈ సంవత్సరం కొత్త పనులు ప్రారంభించకుండా ఉండండి, ఎవరి మాటనైనా వెంటనే నమ్మకండి మరియు పెద్ద నిర్ణయాలు తీసుకునే ముందు రెండుసార్లు ఆలోచించండి. ఈ సంవత్సరం ఎంత జాగ్రత్తగా వ్యవహరిస్తే, వచ్చే సంవత్సరం అంత మంచి ప్రారంభం లభిస్తుంది."},
+    8:{rating:"mod",en:"You are entering a year that is best used for closing old chapters rather than starting new ones. Be extra careful before trusting people or accepting new opportunities because not everything will be as genuine as it appears. Finish your pending work, clear unfinished responsibilities, and prepare yourself for a fresh beginning next year.",hi:"आप ऐसे साल में प्रवेश कर रहे हैं जहाँ पुराने काम पूरे करना ज़्यादा ज़रूरी है, नई शुरुआत करना नहीं। किसी पर जल्दी भरोसा मत कीजिए और हर नए मौके को अच्छी तरह समझकर ही आगे बढ़िए, क्योंकि हर चीज़ वैसी नहीं होगी जैसी दिखती है। पहले अधूरे काम खत्म कीजिए और अगले साल की नई शुरुआत के लिए खुद को तैयार रखिए।",te:"మీరు కొత్త ప్రారంభాల కంటే పాత పనులను పూర్తి చేయడానికి అనుకూలమైన సంవత్సరంలోకి అడుగుపెడుతున్నారు. కొత్త అవకాశాలను లేదా వ్యక్తులను వెంటనే నమ్మకండి, ఎందుకంటే కనిపించే ప్రతి విషయం నిజం కాకపోవచ్చు. పెండింగ్ పనులను పూర్తి చేసి, వచ్చే సంవత్సరం కొత్త ప్రారంభాలకు సిద్ధంగా ఉండండి."},
+    9:{rating:"mod",en:"You are entering a year that is best used for closing old chapters rather than starting new ones. Be extra careful before trusting people or accepting new opportunities because not everything will be as genuine as it appears. Finish your pending work, clear unfinished responsibilities, and prepare yourself for a fresh beginning next year.",hi:"आप ऐसे साल में प्रवेश कर रहे हैं जहाँ पुराने काम पूरे करना ज़्यादा ज़रूरी है, नई शुरुआत करना नहीं। किसी पर जल्दी भरोसा मत कीजिए और हर नए मौके को अच्छी तरह समझकर ही आगे बढ़िए, क्योंकि हर चीज़ वैसी नहीं होगी जैसी दिखती है। पहले अधूरे काम खत्म कीजिए और अगले साल की नई शुरुआत के लिए खुद को तैयार रखिए।",te:"మీరు కొత్త ప్రారంభాల కంటే పాత పనులను పూర్తి చేయడానికి అనుకూలమైన సంవత్సరంలోకి అడుగుపెడుతున్నారు. కొత్త అవకాశాలను లేదా వ్యక్తులను వెంటనే నమ్మకండి, ఎందుకంటే కనిపించే ప్రతి విషయం నిజం కాకపోవచ్చు. పెండింగ్ పనులను పూర్తి చేసి, వచ్చే సంవత్సరం కొత్త ప్రారంభాలకు సిద్ధంగా ఉండండి."},
+  },
+};
+
+const PY_SPECIAL_NOTE={
+  '4-2':{heading:{en:'⚠️ Important For You',hi:'⚠️ आपके लिए ज़रूरी बात',te:'⚠️ మీ కోసం ముఖ్యమైన సూచన'},text:{en:'This year, you may feel emotionally low more often than usual. If you feel sad for a long time, lose interest in daily life, or start isolating yourself, do not ignore it. Talk to someone you trust and take care of your emotional well-being.',hi:'इस साल आपका मन ज़्यादा परेशान रह सकता है। अगर लंबे समय तक उदासी रहे, किसी काम में मन न लगे या सबसे दूर रहने का मन करे, तो इसे हल्के में न लें। अपने किसी भरोसेमंद इंसान से बात करें और अपने मन का ध्यान रखें।',te:'ఈ సంవత్సరం మీ మనసు సాధారణం కంటే ఎక్కువగా బాధపడే అవకాశం ఉంది. ఎక్కువ రోజులు బాధగా అనిపించినా, ఏ పనిలో ఆసక్తి లేకపోయినా లేదా అందరికీ దూరంగా ఉండాలని అనిపించినా దానిని నిర్లక్ష్యం చేయకండి. నమ్మకమైన వ్యక్తితో మాట్లాడండి మరియు మీ మనసును జాగ్రత్తగా చూసుకోండి.'}},
+};
+
 // Returns {type:'positive'|'caution'|'warning', msg:{en,hi,te}} or null for neutral
+
 // ── PERSONAL YEAR COMBINATION RATING TABLE ──
 // Returns rating 0-100 or -1 for dangerous combos
 // For Driver 3 and 7: uses average of education + money/career
@@ -2129,9 +2251,9 @@ const PROF_DRIVER={
     te:['రెడీమేడ్ దుస్తులు','ఆభరణాలు','ఫ్యాషన్ డిజైనింగ్','మీడియా','అందం పరిశ్రమ','లగ్జరీ పరిశ్రమ','వినోద పరిశ్రమ'],
   },
   7:{
-    en:['Consultancy','Education','Researcher','Research','Administrative Roles','Motivational Speaking'],
-    hi:['Consultancy','Education','Researcher','Research','Administrative Roles','Motivational Speaking'],
-    te:['Consultancy','Education','Researcher','Research','Administrative Roles','Motivational Speaking'],
+    en:['Consultancy','Education','Researcher','Administrative Roles','Motivational Speaking'],
+    hi:['Consultancy','Education','Researcher','Administrative Roles','Motivational Speaking'],
+    te:['Consultancy','Education','Researcher','Administrative Roles','Motivational Speaking'],
   },
   8:{
     en:['Financial Management','Judiciary','Leather Industry','Iron Industry','Law','Banking','Footwear Industry','Sports'],
@@ -2162,7 +2284,7 @@ const PROF_DC={
   '5-3':{en:['Counsellor','Education'],hi:['Counsellor','Education'],te:['Counsellor','Education']},
   '5-6':{en:['Real Estate','Property'],hi:['रियल एस्टेट','संपत्ति'],te:['రియల్ ఎస్టేట్','ఆస్తి']},
   '6-5':{en:['Teaching','Luxury Industry','Glamour Industry'],hi:['शिक्षण','लग्जरी उद्योग','ग्लैमर उद्योग'],te:['బోధన','లగ్జరీ పరిశ్రమ','గ్లామర్ పరిశ్రమ']},
-  '7-6':{en:['Research','Researcher','Education'],hi:['Research','Researcher','Education'],te:['Research','Researcher','Education']},
+  '7-6':{en:['Researcher','Education'],hi:['Researcher','Education'],te:['Researcher','Education']},
   '8-3':{en:['Law','Planning'],hi:['कानून','योजना'],te:['న్యాయం','ప్రణాళిక']},
   '8-5':{en:['Real Estate','Property'],hi:['रियल एस्टेट','संपत्ति'],te:['రియల్ ఎస్టేట్','ఆస్తి']},
   '8-8':{en:['Law','Legal Professional','Investigator'],hi:['Law','Legal Professional','Investigator'],te:['Law','Legal Professional','Investigator']},
@@ -2178,7 +2300,7 @@ const PROF_BY_NUM={
   4:['Sales & Marketing','Natural Science','Singing','Sports','Law','Engineering','Leadership Positions'],
   5:['Real Estate','Finance','Administrative Work','Government Sector'],
   6:['Ready-made Garments','Jewellery','Fashion Designing','Media','Beauty Industry','Luxury Industry','Entertainment Industry'],
-  7:['Consultancy','Education','Researcher','Research','Administrative Roles','Motivational Speaking'],
+  7:['Consultancy','Education','Researcher','Administrative Roles','Motivational Speaking'],
   8:['Financial Management','Judiciary','Leather Industry','Iron Industry','Law','Banking','Footwear Industry','Sports'],
   9:['Education','Psychologist','Police','Army','NGO & Social Service','Consultancy'],
 };
@@ -2556,11 +2678,11 @@ function calcCompat(myDriver,myConductor,myMissing,myPresence,partnerDay,partner
 
   const VERDICTS={
     high:{
-      label:{en:'Highly Compatible',hi:'बेहतरीन जोड़ी',te:'అధిక అనుకూలత'},
+      label:{en:'Highly Compatible',hi:'बेहतरीन मेल',te:'అద్భుతమైన కలయిక'},
       body:{
         en:'Your charts naturally support each other. Areas that are weaker in one chart are strengthened by the other. This relationship has strong indicators for understanding, support and long-term stability.',
-        hi:'आप दोनों की ऊर्जाएं एक-दूसरे के साथ अच्छी तरह मेल खाती हैं। जहाँ एक कमज़ोर है, वहाँ दूसरा मज़बूत है। इस रिश्ते में समझ, सहयोग और लंबे समय तक साथ निभाने के अच्छे संकेत हैं।',
-        te:'మీ చార్ట్‌లు సహజంగా ఒకరినొకరు మద్దతు ఇస్తాయి. ఒక చార్ట్‌లో బలహీనంగా ఉన్న రంగాలు మరొకటి బలపరుస్తుంది. ఈ సంబంధానికి అవగాహన, మద్దతు మరియు దీర్ఘకాలిక స్థిరత్వానికి బలమైన సంకేతాలు ఉన్నాయి.',
+        hi:'यह नंबर कॉम्बिनेशन शादीशुदा जीवन के लिए बहुत अच्छे संकेत देता है। आप दोनों हर परिस्थिति में एक-दूसरे का साथ देने और रिश्ते को मज़बूती से निभाने की अच्छी क्षमता रखते हैं।',
+        te:'ఈ సంఖ్యల కలయిక వైవాహిక జీవితం మరియు సంబంధానికి చాలా మంచి సూచనలు ఇస్తుంది. మీరు ఇద్దరూ ప్రతి పరిస్థితిలో ఒకరికొకరు అండగా నిలబడి, బలమైన మరియు స్థిరమైన సంబంధాన్ని కొనసాగించే మంచి సామర్థ్యం కలిగి ఉంటారు.',
       },
       strengths:{
         en:'The energy between you and your partner moves in a complementary direction. There is a natural ease in how you understand each other, and the relationship tends to feel supportive rather than draining. Long-term goals and values are likely to align more than they conflict. Trust tends to build steadily over time in this combination.',
@@ -2590,11 +2712,11 @@ function calcCompat(myDriver,myConductor,myMissing,myPresence,partnerDay,partner
       color:'#4D9E63', bg:'#F1FAF3', border:'#8BCF9B',
     },
     moderate:{
-      label:{en:'Moderately Compatible',hi:'ठीक-ठाक अनुकूलता',te:'మధ్యస్థ అనుకూలత'},
+      label:{en:'Moderately Compatible',hi:'सामान्य मेल',te:'సాధారణ కలయిక'},
       body:{
         en:'This relationship contains both strengths and challenges. There are several supportive indicators, but some differences may require patience and understanding. The relationship can work well when both partners communicate openly and respect each other\'s differences.',
-        hi:'इस रिश्ते में अच्छी बातें भी हैं और मुश्किलें भी। कई चीजें सही दिशा में हैं, लेकिन कुछ मतभेदों के लिए धैर्य और समझ की ज़रूरत होगी। जब दोनों खुलकर बात करें और एक-दूसरे की अलग सोच को स्वीकार करें, तो यह रिश्ता अच्छे से चल सकता है।',
-        te:'ఈ సంబంధంలో బలాలు మరియు సవాళ్లు రెండూ ఉన్నాయి. అనేక సహాయక సంకేతాలు ఉన్నాయి, కానీ కొన్ని తేడాలకు సహనం మరియు అవగాహన అవసరమవుతుంది. ఇద్దరు భాగస్వాములు బహిరంగంగా సంభాషించి ఒకరి తేడాలను గౌరవించినప్పుడు సంబంధం బాగా పని చేయగలదు.',
+        hi:'यह नंबर कॉम्बिनेशन शादीशुदा जीवन और रिश्ते में अच्छे और चुनौतीपूर्ण दोनों तरह के संकेत देता है। समय-समय पर कुछ मतभेद आ सकते हैं, लेकिन ज़्यादातर परिस्थितियों में इन्हें आसानी से संभाला जा सकता है।',
+        te:'ఈ సంఖ్యల కలయిక వైవాహిక జీవితం మరియు సంబంధంలో మంచి అంశాలతో పాటు కొన్ని సవాళ్లను కూడా సూచిస్తుంది. అప్పుడప్పుడు అభిప్రాయ భేదాలు రావచ్చు, కానీ చాలా సందర్భాల్లో వాటిని సులభంగా ఎదుర్కొని పరిష్కరించుకోవచ్చు.',
       },
       strengths:{
         en:'There are genuine points of connection in this relationship. Shared interests, mutual care and certain complementary qualities can create a meaningful bond. When both partners are willing to understand each other, this combination has real potential.',
@@ -2624,11 +2746,11 @@ function calcCompat(myDriver,myConductor,myMissing,myPresence,partnerDay,partner
       color:'#7A7A7A', bg:'#F7F7F7', border:'#CFCFCF',
     },
     challenging:{
-      label:{en:'Challenging Compatibility',hi:'चुनौतीपूर्ण अनुकूलता',te:'సవాలుగా ఉన్న అనుకూలత'},
+      label:{en:'Challenging Compatibility',hi:'चुनौतीपूर्ण मेल',te:'సవాళ్లతో కూడిన కలయిక'},
       body:{
         en:'This relationship creates strong attraction and emotional pull between both partners. However, important compatibility conflicts are present. Repeated misunderstandings, emotional ups and downs, trust issues and recurring relationship challenges may occur. This relationship usually requires significantly more effort, compromise and maturity.',
-        hi:'यह रिश्ता दोनों साथियों के बीच तीव्र आकर्षण और भावनात्मक खिंचाव पैदा करता है। हालांकि, महत्वपूर्ण अनुकूलता संघर्ष मौजूद हैं। बार-बार गलतफहमियां, भावनात्मक उतार-चढ़ाव, विश्वास की समस्याएं और बार-बार आने वाली रिश्ते की चुनौतियां हो सकती हैं।',
-        te:'ఈ సంబంధం ఇద్దరు భాగస్వాముల మధ్య బలమైన ఆకర్షణ మరియు భావోద్వేగ లాగుడు సృష్టిస్తుంది. అయితే, ముఖ్యమైన అనుకూలత వైరుధ్యాలు ఉన్నాయి. పదే పదే అపార్థాలు, భావోద్వేగ హెచ్చుతగ్గులు, నమ్మకం సమస్యలు సంభవించవచ్చు.',
+        hi:'यह नंबर कॉम्बिनेशन शादीशुदा जीवन में गंभीर परेशानियाँ ला सकता है। अगर आपकी अभी तक शादी नहीं हुई है, तो जिस व्यक्ति के साथ यह मैच बना है, उससे शादी करने से बचें।',
+        te:'ఈ సంఖ్యల కలయిక వైవాహిక జీవితం మరియు సంబంధంలో తీవ్రమైన సమస్యలను తీసుకురావచ్చు. మీకు ఇంకా వివాహం కాలేదంటే, ఈ సంఖ్యల కలయిక ఉన్న వ్యక్తిని వివాహం చేసుకోవడం నివారించడం మంచిది.',
       },
       strengths:{
         en:'Despite the compatibility challenges, there is often a strong emotional pull and sense of intensity in this combination. Moments of genuine connection do exist, and when both partners are in alignment, the relationship can feel powerful.',
@@ -2722,11 +2844,11 @@ function calcCompat(myDriver,myConductor,myMissing,myPresence,partnerDay,partner
       <div style="font-size:.87rem;color:#444;line-height:1.72">${verdictBody}</div>
     </div>
 
-    <!-- Relationship Guidance card -->
-    <div style="background:${V.bg};border:1px solid ${V.border};border-radius:10px;padding:1.1rem 1.3rem">
+    <!-- Relationship Guidance card — English only -->
+    ${L==='en'?`<div style="background:${V.bg};border:1px solid ${V.border};border-radius:10px;padding:1.1rem 1.3rem">
       <div style="font-size:.58rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:${V.color};margin-bottom:.45rem">${guideLabel}</div>
       <div style="font-size:.86rem;color:#444;line-height:1.72">${verdictGuide}</div>
-    </div>
+    </div>`:''}
 
   </div>`;
   } catch(e){
@@ -2739,10 +2861,10 @@ function calcCompat(myDriver,myConductor,myMissing,myPresence,partnerDay,partner
         <div style="font-family:'DM Serif Display',serif;font-size:1.2rem;color:#2c3e6b;font-style:italic;margin-bottom:.6rem">${_fl}</div>
         <div style="font-size:.87rem;color:#444;line-height:1.72">${_fb}</div>
       </div>
-      <div style="background:#F8F5F0;border:1px solid #D9CFC4;border-radius:10px;padding:.95rem 1.3rem">
+      ${L==='en'?`<div style="background:#F8F5F0;border:1px solid #D9CFC4;border-radius:10px;padding:.95rem 1.3rem">
         <div style="font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#2c3e6b;margin-bottom:.38rem">${_gl}</div>
         <div style="font-size:.86rem;color:#555;line-height:1.7">${_fg}</div>
-      </div>
+      </div>`:''}
     </div>`;
   }
 }
@@ -2957,9 +3079,6 @@ function gen(){
     '5-5':{en:'Your laziness may stop you from using your full potential.',
       hi:'आपका आलस आपको अपनी पूरी काबिलियत इस्तेमाल करने से रोक सकता है।',
       te:'మీ బద్ధకం మీ పూర్తి సామర్థ్యాన్ని ఉపయోగించుకోకుండా అడ్డుకోవచ్చు.'},
-    '6-6':{en:'Teaching may not be the right profession for you.',
-      hi:'शिक्षण (टीचिंग) आपके लिए सही पेशा नहीं हो सकता।',
-      te:'బోధన (టీచింగ్) మీకు సరైన వృత్తి కాకపోవచ్చు.'},
     '6-9':{en:'You may face unnecessary controversies and challenges in your married life or relationships.',
       hi:'आपको बेवजह के विवादों और अपनी शादीशुदा ज़िंदगी या रिश्तों में मुश्किलों का सामना करना पड़ सकता है।',
       te:'మీరు అనవసరమైన వివాదాలు మరియు మీ వైవాహిక జీవితంలో, సంబంధాల్లో సవాళ్లు ఎదుర్కోవచ్చు.'},
@@ -3025,7 +3144,6 @@ function gen(){
   </div>`:'';
 
   const sub1HTML=`<div class="subsec">
-    <div class="subsec-title">Strengths From Your Driver Number</div>
     <div class="subsec-body">
       ${_drvStrTraits.map(tr=>`<p>${tr}</p>`).join('')}
     </div>
@@ -3378,7 +3496,6 @@ function gen(){
 
   <!-- Driver weaknesses -->
   <div class="subsec">
-    <div class="subsec-title">Challenges From Your Driver Number</div>
     <div class="subsec-body">
       <div class="weak-card">
         <div class="weak-card-title">Driver ${driver} · ${NC[driver]?.p||''}</div>
@@ -3537,21 +3654,47 @@ function gen(){
     }
     const dcProfs=(PROF_DC[dcKey]||PROF_DC[dcKeyRev])?.en||null;
 
+    // Priority-first profession rule: for these specific Driver Numbers, the very first
+    // recommendation must always be the given profession, ahead of DC-rule professions too.
+    const _priorityFirst=driver===2?'Film & Television Industry':(driver===4||driver===9)?'Sports':null;
+
+    // Merge priority-first (if any), then DC profs, then driver profs (no duplicate)
+    const dcProfSet=new Set((dcProfs||[]).map(p=>p.toLowerCase()));
+    const mergedProfsRaw=[
+      ...(_priorityFirst?[_priorityFirst]:[]),
+      ...(dcProfs||[]),
+      ...driverProfs.filter(p=>!dcProfSet.has(p.toLowerCase()))
+    ];
+    // Final safeguard: collapse any remaining duplicates (case-insensitive) from any source rule,
+    // keeping only the first (highest-priority) occurrence — DC-rule profs rank above Driver-rule profs
+    const _seenMerged=new Set();
+    const mergedProfs=mergedProfsRaw.filter(p=>{
+      const pl=p.toLowerCase();
+      if(_seenMerged.has(pl)) return false;
+      _seenMerged.add(pl);
+      return true;
+    });
+
     // Professions to avoid — based on enemy numbers
     // Driver hierarchy: if profession is in driver list, never place in avoid
-    // Special exception: Sports is always favourable for Driver 4 and Driver 9
+    // Special exception: Sports is always favourable for Driver 4 and Driver 9 (rule 3)
+    // Global safeguard: never show a profession in both recommended and avoid (rule 4)
     const SPORTS_EXCEPTION=['Sports'];
     const comp=getComp(driver);
     const enemyNums=comp.e||[];
     const enemyProfs=[];
     const driverProfSet=new Set((PROF_DRIVER[driver]?.en||[]).map(p=>p.toLowerCase()));
+    // Full recommended set includes all dynamically added profs (Engineering, Stock Market, DC profs)
+    const allRecommendedSet=new Set(mergedProfs.map(p=>p.toLowerCase()));
     enemyNums.forEach(en=>{
       const epList=PROF_BY_NUM[en]||[];
       epList.forEach(p=>{
         const pLower=p.toLowerCase();
+        // Global safeguard: skip if already in the recommended list (rule 4 — also covers rule 2 for Engineering)
+        if(allRecommendedSet.has(pLower)) return;
         // Skip if strongly supported by driver
         if(driverProfSet.has(pLower)) return;
-        // Skip sports exception for driver 4 and 9
+        // Skip sports exception for driver 4 and 9 (rule 3)
         if(SPORTS_EXCEPTION.some(s=>pLower.includes(s.toLowerCase()))&&(driver===4||driver===9)) return;
         // Skip if sports appears for any driver that lists it
         if(SPORTS_EXCEPTION.some(s=>pLower.includes(s.toLowerCase()))&&driverProfSet.has(pLower)) return;
@@ -3571,13 +3714,6 @@ function gen(){
       ?'ఈ వృత్తులు శత్రు అంకాల శక్తితో అనుసంధానించబడి ఉన్నాయి. వీటిలో ముందుకు సాగడం అసాధ్యం కాదు, కానీ అదనపు కృషి మరియు అనుకూలత అవసరమవుతుంది.'
       :'These fields are aligned with your enemy number energies. They are not impossible, but they are likely to require significantly more effort and adaptation than fields aligned with your Driver.';
 
-    // Merge DC profs at top of driver list, then driver profs (no duplicate)
-    const dcProfSet=new Set((dcProfs||[]).map(p=>p.toLowerCase()));
-    const mergedProfs=[
-      ...(dcProfs||[]),
-      ...driverProfs.filter(p=>!dcProfSet.has(p.toLowerCase()))
-    ];
-
     return `
     <div class="prof-section">
       <div class="prof-section-title">${t('profDriverTitle')}</div>
@@ -3586,7 +3722,6 @@ function gen(){
     ${uniqueAvoid.length?`<div class="prof-section">
       <div class="prof-section-title">${t('profAvoidTitle')}</div>
       <div class="profs">${uniqueAvoid.map(({prof})=>`<div class="prof avoid">${prof}</div>`).join('')}</div>
-      <div class="prof-avoid-note">${avoidNote}</div>
     </div>`:''}`;
   })()}
 
@@ -3774,18 +3909,27 @@ function gen(){
 
   <!-- ── PERSONAL YEAR ── -->
   ${sec('secPY')}
-  <div class="tl">
+  <div class="py-roadmap">
     ${years.map(({y,py})=>{
-      const pd=PY[py]||{theme:'',en:'',hi:'',te:''};
-      const yearLabel='Personal Year';
-      const comboKey=`${driver}-${py}`;
-      const useCaution=PY_CAUTION_SET.has(comboKey);
-      const descText=useCaution
-        ?(LANG==='hi'?PY_CAUTION_DESC.hi:LANG==='te'?PY_CAUTION_DESC.te:PY_CAUTION_DESC.en)
-        :(LANG==='hi'?pd.hi:LANG==='te'?pd.te:pd.en)||pd.en;
-      return`<div class="titem">
-        <div class="ttitle">${yearLabel} ${py} (${y})</div>
-        <div class="tdesc"${useCaution?' style="color:#c0525a"':''}>${descText}</div>
+      // Look up driver-specific description: PY first, then driver
+      const pyRow=PY_NEW_DESC[py]||{};
+      const nd=pyRow[driver]||null;
+      const rating=nd?nd.rating:'mod';
+      const ratingClass=rating==='good'?'py-good':rating==='bad'?'py-bad':'py-mod';
+      const yearLabel=rating==='good'?'Outstanding Year':rating==='bad'?'Challenging Year':'Balanced Year';
+      const descText=nd
+        ?(LANG==='hi'?nd.hi:LANG==='te'?nd.te:nd.en)||nd.en
+        :(LANG==='hi'?'':LANG==='te'?'':'');
+      // Check for special note — when present, it fully replaces the normal description
+      const noteKey=`${driver}-${py}`;
+      const specialNote=PY_SPECIAL_NOTE[noteKey]||null;
+      const finalDescText=specialNote
+        ?((LANG==='hi'?specialNote.text.hi:LANG==='te'?specialNote.text.te:specialNote.text.en)||descText)
+        :descText;
+      return`<div class="py-item ${ratingClass}">
+        <div class="py-item-year">${y}</div>
+        <div class="py-item-label">${yearLabel}</div>
+        <div class="py-item-desc">${finalDescText}</div>
       </div>`;
     }).join('')}
   </div>
