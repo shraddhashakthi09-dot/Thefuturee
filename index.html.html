@@ -41,7 +41,7 @@ body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;f
 #report{display:none;max-width:820px;margin:0 auto;padding:2rem 1rem 5rem}
 
 /* ── COVER PAGE ── */
-.cover-page{background:var(--ink);border-radius:16px;padding:2.8rem 2rem 2.4rem;text-align:center;margin-bottom:2.5rem}
+.cover-page{background:var(--ink);border-radius:16px;padding:3.6rem 2rem 2.6rem;text-align:center;margin-bottom:2.5rem}
 .cover-brand{font-size:.6rem;letter-spacing:.42em;color:rgba(150,150,150,0.65);text-transform:uppercase;margin-bottom:1.6rem}
 .cover-name{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,5vw,2.8rem);font-style:italic;color:#E5E5E5;margin-bottom:.3rem}
 .cover-dob{font-size:.78rem;letter-spacing:.18em;color:rgba(255,255,255,0.35);text-transform:uppercase;margin-bottom:2rem}
@@ -384,7 +384,7 @@ footer{text-align:center;padding:2rem;color:var(--muted);font-size:.78rem;border
     <div class="compat-panel" id="compat-panel">
       <div class="compat-card">
         <div class="compat-card-label" id="lbl-partner">♡ Partner Information</div>
-        <div class="compat-card-desc" id="lbl-compat-desc">Add your partner's details to unlock a complete compatibility analysis based on Birth Chart Matching, Driver-Conductor Compatibility and Number Sharing.</div>
+        <div class="compat-card-desc" id="lbl-compat-desc">Add your partner's details to unlock a complete compatibility analysis based on Birth Chart Matching, Number Compatibility and Number Sharing.</div>
         <div class="compat-fields">
           <div class="compat-field-full">
             <label class="compat-label" id="lbl-pname">Partner's Full Name</label>
@@ -450,7 +450,7 @@ let LANG='en';
 const TL={
   en:{ft:'Enter Your Details',fn:'First Name',ln:'Last Name',dy:'Date',dm:'Month',yr:'Year',gn:'Gender',btn:'Generate My Report',
     foot:'TheFuturee · Chaldean Numerology · For guidance purposes only',
-    driver:'Driver',conductor:'Conductor',kua:'KUA',nameVib:'Name',male:'Male',female:'Female',
+    driver:'Number',conductor:'Number',kua:'KUA',nameVib:'Name',male:'Male',female:'Female',
     secCover:'Birth Chart & Core Numbers',
     secStrengths:'Your Strengths',
     secWeaknesses:'Your Weaknesses',
@@ -477,24 +477,24 @@ const TL={
     profDCTitle:'Career Indicators From Your Number Combination',
     profAvoidTitle:'Professions To Approach With Caution',
     curYr:'Current Year',
-    pyNote:'Important: Follow your Personal Year energy. Do not act against it. Personal Year is governed by your Driver number only.',
+    pyNote:'Important: Follow your Personal Year energy. Do not act against it. Personal Year is governed by your number only.',
     luckyNote:'Favour these dates and numbers for important decisions, new starts and partnerships.',
     enemyNote:'Avoid contracts and major financial decisions on these dates.',
-    enemyRel:'Never enter a long-term partnership or marriage with someone whose Driver is your enemy number.',
+    enemyRel:'Never enter a long-term partnership or marriage with someone whose number is your enemy number.',
     neutralNote:'Neither favourable nor unfavourable. Proceed with awareness.',
     pyShort:'Enemy Personal Year challenges are short-term only. Long-term relationships are a different matter.',
-    profNote:'Your Driver Number is the primary guide for your career direction. The combination of your Driver and Conductor may further highlight specific fields that suit you.',
+    profNote:'Your Number is the primary guide for your career direction. The combination of your numbers may further highlight specific fields that suit you.',
     friend:'Friend',enemy:'Enemy',neutral:'Neutral',
     compatFriend:'Compatible for business, friendship and long-term relationships.',
     compatEnemy:'Avoid long-term partnership, marriage or deep financial ties.',
     compatNeutral:'Proceed with awareness — neither strongly positive nor negative.',
     sub1:'Strengths From Your Date of Birth',
-    sub2:'Strengths From Your Birth Number Combination',
+    sub2:'Strengths From Your Number Combination',
     sub3:'Strengths From Your Active Planes',
     sub4:'Strengths From Your Master Numbers',
     sub5:'The Influence of Each Number',
     sub6:'Strengths From Your Repeated Numbers',
-    subBN:'Challenges From Your Birth Numbers',
+    subBN:'Challenges From Your Numbers',
     missTitle:'Growth Area',
     presTitle:'Numbers Present In Your Chart',
     repTitle:'Strongly Repeated Energies',
@@ -502,7 +502,7 @@ const TL={
   },
   hi:{ft:'अपना विवरण भरें',fn:'पहला नाम',ln:'अंतिम नाम',dy:'तारीख',dm:'महीना',yr:'साल',gn:'लिंग',btn:'मेरी रिपोर्ट तैयार करें',
     foot:'TheFuturee · चाल्डियन अंक ज्योतिष · केवल मार्गदर्शन के लिए',
-    driver:'Driver',conductor:'Conductor',kua:'KUA',nameVib:'Name',male:'पुरुष',female:'महिला',
+    driver:'Number',conductor:'Number',kua:'KUA',nameVib:'Name',male:'पुरुष',female:'महिला',
     secCover:'Birth Chart & Core Numbers',
     secStrengths:'Your Strengths',
     secWeaknesses:'Your Weaknesses',
@@ -529,24 +529,24 @@ const TL={
     profDCTitle:'Career Indicators From Your Number Combination',
     profAvoidTitle:'Professions To Approach With Caution',
     curYr:'Current Year',
-    pyNote:'ज़रूरी बात: अपने व्यक्तिगत वर्ष की ऊर्जा के साथ चलें। उसके खिलाफ जाने से फायदा कम और नुकसान ज़्यादा होता है। व्यक्तिगत वर्ष सिर्फ आपके चालक अंक से तय होता है।',
+    pyNote:'ज़रूरी बात: अपने व्यक्तिगत वर्ष की ऊर्जा के साथ चलें। उसके खिलाफ जाने से फायदा कम और नुकसान ज़्यादा होता है। व्यक्तिगत वर्ष सिर्फ आपके अंक से तय होता है।',
     luckyNote:'बड़े फैसले लेने, कुछ नया शुरू करने या किसी के साथ मिलकर काम करने के लिए इन तारीखों और अंकों को अपनाएं।',
     enemyNote:'इन तारीखों पर कोई अहम सौदा या आर्थिक फैसला न लें।',
-    enemyRel:'जिसका चालक अंक आपका शत्रु अंक हो, उसके साथ लंबे समय की साझेदारी या शादी न करें।',
+    enemyRel:'जिसका अंक आपका शत्रु अंक हो, उसके साथ लंबे समय की साझेदारी या शादी न करें।',
     neutralNote:'न खास फायदेमंद, न नुकसानदेह। सोच-समझकर आगे बढ़ें।',
     pyShort:'शत्रु व्यक्तिगत वर्ष केवल कुछ समय की चुनौती होती है। लंबे समय के रिश्ते अलग मामला हैं।',
-    profNote:'करियर की दिशा तय करने में आपका चालक अंक सबसे अहम है। चालक और संचालक का मेल और भी क्षेत्रों की पहचान करने में मदद करता है।',
+    profNote:'करियर की दिशा तय करने में आपका अंक सबसे अहम है। आपके अंकों का मेल और भी क्षेत्रों की पहचान करने में मदद करता है।',
     friend:'Friend',enemy:'Enemy',neutral:'Neutral',
     compatFriend:'व्यापार, दोस्ती और लंबे रिश्तों के लिए अनुकूल।',
     compatEnemy:'लंबे समय की साझेदारी, शादी या गहरे आर्थिक संबंध से बचें।',
     compatNeutral:'सावधानी के साथ आगे बढ़ें — न बहुत अनुकूल, न प्रतिकूल।',
     sub1:'Strengths From Your Date of Birth',
-    sub2:'Strengths From Your Birth Number Combination',
+    sub2:'Strengths From Your Number Combination',
     sub3:'Strengths From Your Active Planes',
     sub4:'Strengths From Your Master Numbers',
     sub5:'The Influence of Each Number',
     sub6:'Strengths From Your Repeated Numbers',
-    subBN:'Challenges From Your Birth Numbers',
+    subBN:'Challenges From Your Numbers',
     missTitle:'Growth Area',
     presTitle:'Numbers Present In Your Chart',
     repTitle:'Strongly Repeated Energies',
@@ -554,7 +554,7 @@ const TL={
   },
   te:{ft:'మీ వివరాలు నమోదు చేయండి',fn:'మొదటి పేరు',ln:'చివరి పేరు',dy:'తేదీ',dm:'నెల',yr:'సంవత్సరం',gn:'లింగం',btn:'నా నివేదిక రూపొందించండి',
     foot:'TheFuturee · చాల్డియన్ అంకశాస్త్రం · మార్గదర్శకత్వం కోసం మాత్రమే',
-    driver:'Driver',conductor:'Conductor',kua:'KUA',nameVib:'Name',male:'పురుషుడు',female:'స్త్రీ',
+    driver:'Number',conductor:'Number',kua:'KUA',nameVib:'Name',male:'పురుషుడు',female:'స్త్రీ',
     secCover:'Birth Chart & Core Numbers',
     secStrengths:'Your Strengths',
     secWeaknesses:'Your Weaknesses',
@@ -581,24 +581,24 @@ const TL={
     profDCTitle:'Career Indicators From Your Number Combination',
     profAvoidTitle:'Professions To Approach With Caution',
     curYr:'Current Year',
-    pyNote:'ముఖ్యమైనది: మీ వ్యక్తిగత సంవత్సరం శక్తిని అనుసరించండి. దానికి వ్యతిరేకంగా నిర్ణయాలు తీసుకోకండి. వ్యక్తిగత సంవత్సరం మీ చాలక అంకం ద్వారా మాత్రమే నిర్ణయించబడుతుంది.',
+    pyNote:'ముఖ్యమైనది: మీ వ్యక్తిగత సంవత్సరం శక్తిని అనుసరించండి. దానికి వ్యతిరేకంగా నిర్ణయాలు తీసుకోకండి. వ్యక్తిగత సంవత్సరం మీ అంకం ద్వారా మాత్రమే నిర్ణయించబడుతుంది.',
     luckyNote:'ముఖ్యమైన నిర్ణయాలు, కొత్త ప్రారంభాలు మరియు భాగస్వామ్యాల కోసం ఈ తేదీలు మరియు అంకాలకు ప్రాధాన్యత ఇవ్వండి.',
     enemyNote:'ఈ తేదీలలో ముఖ్యమైన ఒప్పందాలు లేదా పెద్ద ఆర్థిక నిర్ణయాలు తీసుకోకండి.',
-    enemyRel:'మీ శత్రు అంకం చాలక అంకంగా ఉన్న వ్యక్తితో దీర్ఘకాలిక అనుబంధం లేదా వివాహం నివారించండి.',
+    enemyRel:'ఎవరి అంకం మీ శత్రు అంకంగా ఉంటుందో, ఆ వ్యక్తితో దీర్ఘకాలిక అనుబంధం లేదా వివాహం నివారించండి.',
     neutralNote:'అనుకూలమూ కాదు, ప్రతికూలమూ కాదు. అవగాహనతో ముందుకు సాగండి.',
     pyShort:'శత్రు వ్యక్తిగత సంవత్సరం స్వల్పకాలిక సవాలు మాత్రమే. దీర్ఘకాలిక సంబంధాలు వేరే విషయం.',
-    profNote:'మీ కెరీర్ దిశను నిర్ణయించడంలో మీ చాలక అంకం అత్యంత ముఖ్యమైన పాత్ర పోషిస్తుంది. చాలక మరియు నిర్వాహక సమ్మేళనం మరిన్ని అనుకూల రంగాలను గుర్తించడంలో సహాయపడుతుంది.',
+    profNote:'మీ కెరీర్ దిశను నిర్ణయించడంలో మీ అంకం అత్యంత ముఖ్యమైన పాత్ర పోషిస్తుంది. మీ అంకాల సమ్మేళనం మరిన్ని అనుకూల రంగాలను గుర్తించడంలో సహాయపడుతుంది.',
     friend:'Friend',enemy:'Enemy',neutral:'Neutral',
     compatFriend:'వ్యాపారం, స్నేహం మరియు దీర్ఘకాలిక అనుబంధాలకు అనుకూలం.',
     compatEnemy:'దీర్ఘకాలిక భాగస్వామ్యం, వివాహం లేదా లోతైన ఆర్థిక సంబంధాలు నివారించండి.',
     compatNeutral:'జాగ్రత్తగా ముందుకు సాగండి — అతిగా అనుకూలమూ కాదు, ప్రతికూలమూ కాదు.',
     sub1:'Strengths From Your Date of Birth',
-    sub2:'Strengths From Your Birth Number Combination',
+    sub2:'Strengths From Your Number Combination',
     sub3:'Strengths From Your Active Planes',
     sub4:'Strengths From Your Master Numbers',
     sub5:'The Influence of Each Number',
     sub6:'Strengths From Your Repeated Numbers',
-    subBN:'Challenges From Your Birth Numbers',
+    subBN:'Challenges From Your Numbers',
     missTitle:'Growth Area',
     presTitle:'Numbers Present In Your Chart',
     repTitle:'Strongly Repeated Energies',
@@ -619,7 +619,7 @@ function setLang(l){
   const compatLabels={
     'compat-toggle':{en:'Include Relationship Compatibility',hi:'रिश्ते की अनुकूलता जोड़ें',te:'సంబంధ అనుకూలత చేర్చండి'},
     'partner':{en:'♡ Partner Information',hi:'♡ साथी की जानकारी',te:'♡ భాగస్వామి సమాచారం'},
-    'compat-desc':{en:"Add your partner's details to unlock a complete compatibility analysis based on Birth Chart Matching, Driver-Conductor Compatibility and Number Sharing.",hi:'जन्म चार्ट मिलान, चालक-संचालक अनुकूलता और अंक साझाकरण पर आधारित पूर्ण अनुकूलता विश्लेषण अनलॉक करने के लिए अपने साथी का विवरण जोड़ें।',te:'బర్త్ చార్ట్ మ్యాచింగ్, చాలక-నిర్వాహక అనుకూలత మరియు నంబర్ షేరింగ్ ఆధారంగా పూర్తి అనుకూలత విశ్లేషణ అన్‌లాక్ చేయడానికి మీ భాగస్వామి వివరాలు జోడించండి.'},
+    'compat-desc':{en:"Add your partner's details to unlock a complete compatibility analysis based on Birth Chart Matching, Number Compatibility and Number Sharing.",hi:'जन्म चार्ट मिलान, अंक अनुकूलता और अंक साझाकरण पर आधारित पूर्ण अनुकूलता विश्लेषण अनलॉक करने के लिए अपने साथी का विवरण जोड़ें।',te:'బర్త్ చార్ట్ మ్యాచింగ్, అంక అనుకూలత మరియు నంబర్ షేరింగ్ ఆధారంగా పూర్తి అనుకూలత విశ్లేషణ అన్‌లాక్ చేయడానికి మీ భాగస్వామి వివరాలు జోడించండి.'},
     'pname':{en:"Partner's Full Name",hi:'साथी का पूरा नाम',te:'భాగస్వామి పూర్తి పేరు'},
     'pdob':{en:'Date of Birth',hi:'जन्म तारीख',te:'పుట్టిన తేదీ'},
     'pgender':{en:'Gender',hi:'लिंग',te:'లింగం'},
@@ -958,7 +958,7 @@ const PERSONALITY_DB={
 // ── MASTER NUMBER INFO ──
 const MASTER_INFO={
   11:{
-    label:'Master Number 11',
+    label:'Your Master Number is 11',
     en:{
       traits:['Visionary thinker.','Dreamer with strong potential.','Highly intuitive.','Can inspire others.'],
       obs:'People with Master Number 11 often achieve their best results when they have strong support from another person. This support may come from a father, mother, spouse, mentor, business partner, friend or guide. Success is usually accelerated when trusted support systems are in place. Working completely alone may feel more challenging than it does for most people.',
@@ -972,7 +972,7 @@ const MASTER_INFO={
     },
   },
   22:{
-    label:'Master Number 22',
+    label:'Your Master Number is 22',
     en:{
       traits:['Dreamer and doer.','Visionary with execution ability.','Action-oriented.','Hard-working.','Strong builder mentality.','Rarely gives up on goals.'],
       obs:'Master Number 22 carries the ability to turn large ideas into practical, lasting results. This is one of the most powerful energies a person can carry.',
@@ -986,17 +986,17 @@ const MASTER_INFO={
     },
   },
   33:{
-    label:'Master Number 33',
+    label:'Your Master Number is 33',
     en:{
       traits:['Unconditional love.','Service-oriented.','Humanitarian mindset.','Leads by example.','Practices what they preach.','Strong desire to help others.'],
-      obs:'Master Number 33 as a Conductor carries the energy of a natural teacher, guide or mentor. The ability to inspire and serve others is central to this energy.',
+      obs:'Master Number 33 carries the energy of a natural teacher, guide or mentor. The ability to inspire and serve others is central to this energy.',
     },
     hi:{
       para:'आपके दिल में सभी लोगों के लिए निस्वार्थ प्रेम और समाज की सेवा करने की गहरी भावना होती है। आप खुद सही रास्ते पर चलकर दूसरों के लिए प्रेरणा बनते हैं। आप जो कहते हैं, उसे अपने कर्मों से साबित भी करते हैं। दूसरों की मदद करना, उन्हें सही दिशा दिखाना और एक सच्चे गुरु की तरह मार्गदर्शन करना आपकी जन्मजात विशेषता है।',
     },
     te:{
       traits:['షరతులు లేని ప్రేమ.','సేవాభావం కలిగిన వ్యక్తి.','మానవతావాద దృష్టికోణం.','స్వయంగా చేసి ఇతరులకు చూపిస్తారు.','చెప్పింది చేస్తారు.','ఇతరులకు సహాయపడడమంటే నిజంగా ఇష్టం.'],
-      obs:'కండక్టర్‌గా మాస్టర్ నంబర్ 33 సహజమైన ఉపాధ్యాయుడు, మార్గదర్శి లేదా మెంటర్ శక్తిని కలిగి ఉంటుంది. ఇతరులను స్ఫూర్తిపరచడం మరియు సేవ చేయడం ఈ శక్తికి మూలస్తంభం.',
+      obs:'మాస్టర్ నంబర్ 33 సహజమైన ఉపాధ్యాయుడు, మార్గదర్శి లేదా మెంటర్ శక్తిని కలిగి ఉంటుంది. ఇతరులను స్ఫూర్తిపరచడం మరియు సేవ చేయడం ఈ శక్తికి మూలస్తంభం.',
     },
   },
 };
@@ -1962,9 +1962,9 @@ const PY_COMBO={
   te:{opp:'విద్య మరియు నైపుణ్య అభివృద్ధికి మద్దతు ఉంది.',att:'ఫలితాల వేగంతో అసహనం నివారించండి.',guide:'స్పష్టమైన లక్ష్యాలపై స్థిరమైన కృషి ఉత్తమ ఫలితాలు ఇస్తుంది.'},
 },
 '4-4':{
-  en:{opp:'This is one of the strongest combinations for Driver 4. Goals can be achieved at an exceptional level. Career and personal achievements may feel life-changing. Extreme discipline is rewarded with extraordinary results.',att:'If major mistakes are made, the consequences can feel unusually intense. The same energy that creates great results can create setbacks when misdirected.',guide:'Set goals with complete clarity and pursue them with full commitment. The effort you invest this year will define a significant portion of your future trajectory.'},
-  hi:{opp:'यह चालक अंक 4 के लिए सबसे मजबूत मेलों में से एक है। लक्ष्य इस साल असाधारण स्तर पर हासिल किए जा सकते हैं।',att:'बड़ी गलतियां होने पर परिणाम असामान्य रूप से तीव्र हो सकते हैं।',guide:'पूरी स्पष्टता के साथ लक्ष्य तय करें।'},
-  te:{opp:'ఇది చాలక అంకం 4 కోసం అత్యంత బలమైన సమ్మేళనాలలో ఒకటి. లక్ష్యాలు అసాధారణ స్థాయిలో సాధించబడవచ్చు.',att:'పెద్ద తప్పులు జరిగినప్పుడు పరిణామాలు అసాధారణంగా తీవ్రంగా అనిపించవచ్చు.',guide:'పూర్తి స్పష్టతతో లక్ష్యాలు నిర్ణయించండి.'},
+  en:{opp:'This is one of the strongest combinations for Number 4. Goals can be achieved at an exceptional level. Career and personal achievements may feel life-changing. Extreme discipline is rewarded with extraordinary results.',att:'If major mistakes are made, the consequences can feel unusually intense. The same energy that creates great results can create setbacks when misdirected.',guide:'Set goals with complete clarity and pursue them with full commitment. The effort you invest this year will define a significant portion of your future trajectory.'},
+  hi:{opp:'यह अंक 4 के लिए सबसे मजबूत मेलों में से एक है। लक्ष्य इस साल असाधारण स्तर पर हासिल किए जा सकते हैं।',att:'बड़ी गलतियां होने पर परिणाम असामान्य रूप से तीव्र हो सकते हैं।',guide:'पूरी स्पष्टता के साथ लक्ष्य तय करें।'},
+  te:{opp:'ఇది అంకం 4 కోసం అత్యంత బలమైన సమ్మేళనాలలో ఒకటి. లక్ష్యాలు అసాధారణ స్థాయిలో సాధించబడవచ్చు.',att:'పెద్ద తప్పులు జరిగినప్పుడు పరిణామాలు అసాధారణంగా తీవ్రంగా అనిపించవచ్చు.',guide:'పూర్తి స్పష్టతతో లక్ష్యాలు నిర్ణయించండి.'},
 },
 '4-5':{
   en:{opp:'Change and new opportunities support growth. Movement and new experiences produce results.',att:'Impulsive actions can undermine strong progress.',guide:'Stay open to change but evaluate each opportunity carefully before committing.'},
@@ -2004,7 +2004,7 @@ const PY_COMBO={
   te:{opp:'సహనం మరియు ప్రణాళిక అవసరం.',att:'నెమ్మది పురోగతి నుండి అశాంతి తప్పు నిర్ణయాలకు దారితీయవచ్చు.',guide:'సహనంగా ఉండండి మరియు సన్నద్ధతపై దృష్టి పెట్టండి.'},
 },
 '5-3':{
-  en:{opp:'Learning, communication and personal growth combine with Driver 5 movement energy to create strong potential. Recognition and skill development are well-supported.',att:'Consistency matters. Distractions can reduce results.',guide:'Use this year to expand your knowledge and visibility.'},
+  en:{opp:'Learning, communication and personal growth combine with Number 5 movement energy to create strong potential. Recognition and skill development are well-supported.',att:'Consistency matters. Distractions can reduce results.',guide:'Use this year to expand your knowledge and visibility.'},
   hi:{opp:'इस साल पढ़ाई, बातचीत और खुद को बेहतर बनाने के अच्छे मौके हैं।',att:'एक जगह टिके रहना ज़रूरी है।',guide:'इस साल अपनी जानकारी बढ़ाएं और लोगों के सामने खुद को साबित करें।'},
   te:{opp:'నేర్చుకోవడం, కమ్యూనికేషన్ మరియు వ్యక్తిగత వికాసం బలమైన సామర్థ్యాన్ని సృష్టిస్తాయి.',att:'స్థిరత్వం ముఖ్యం.',guide:'జ్ఞానం మరియు దృశ్యమానత విస్తరించడానికి ఈ సంవత్సరాన్ని ఉపయోగించండి.'},
 },
@@ -2066,9 +2066,9 @@ const PY_COMBO={
   te:{opp:'సంబంధాలు, కుటుంబం మరియు వ్యక్తిగత స్వేచ్ఛ అన్నీ బలంగా మద్దతు పొందుతాయి.',att:'స్వేచ్ఛ మరియు బాధ్యత మధ్య సమతుల్యత అవసరం.',guide:'ఈ సంవత్సరం వ్యక్తిగత మరియు సంబంధ రంగాలు రెండింటిలో పెరగడానికి అవకాశం ఇస్తుంది.'},
 },
 '6-6':{
-  en:{opp:'This is one of the strongest combinations for Driver 6. Family growth, relationships, marriage, children, home improvements and foreign travel are all strongly favoured.',att:'Emotional over-investment in relationships can lead to disappointment if expectations are not managed.',guide:'This is a year to celebrate and deepen what matters most to you personally.'},
-  hi:{opp:'यह चालक अंक 6 के लिए सबसे मजबूत मेलों में से एक है। परिवार, रिश्ते, विवाह, बच्चे सब को मजबूत समर्थन मिलता है।',att:'रिश्तों में भावनात्मक अत्यधिक निवेश निराशा पैदा कर सकता है।',guide:'यह आपके लिए सबसे महत्वपूर्ण चीजों का जश्न मनाने का साल है।'},
-  te:{opp:'ఇది చాలక అంకం 6 కోసం అత్యంత బలమైన సమ్మేళనాలలో ఒకటి. కుటుంబ వికాసం, సంబంధాలు, వివాహం అన్నీ బలంగా అనుకూలం.',att:'సంబంధాలలో భావోద్వేగ అతి పెట్టుబడి నిరాశకు దారితీయవచ్చు.',guide:'ఇది మీకు అత్యంత ముఖ్యమైన విషయాలను జరుపుకోవడానికి సంవత్సరం.'},
+  en:{opp:'This is one of the strongest combinations for Number 6. Family growth, relationships, marriage, children, home improvements and foreign travel are all strongly favoured.',att:'Emotional over-investment in relationships can lead to disappointment if expectations are not managed.',guide:'This is a year to celebrate and deepen what matters most to you personally.'},
+  hi:{opp:'यह अंक 6 के लिए सबसे मजबूत मेलों में से एक है। परिवार, रिश्ते, विवाह, बच्चे सब को मजबूत समर्थन मिलता है।',att:'रिश्तों में भावनात्मक अत्यधिक निवेश निराशा पैदा कर सकता है।',guide:'यह आपके लिए सबसे महत्वपूर्ण चीजों का जश्न मनाने का साल है।'},
+  te:{opp:'ఇది అంకం 6 కోసం అత్యంత బలమైన సమ్మేళనాలలో ఒకటి. కుటుంబ వికాసం, సంబంధాలు, వివాహం అన్నీ బలంగా అనుకూలం.',att:'సంబంధాలలో భావోద్వేగ అతి పెట్టుబడి నిరాశకు దారితీయవచ్చు.',guide:'ఇది మీకు అత్యంత ముఖ్యమైన విషయాలను జరుపుకోవడానికి సంవత్సరం.'},
 },
 '6-7':{
   en:{opp:'Spiritual growth, deep learning and inner reflection are strongly supported. Strengthening relationships through understanding is also well-favoured.',att:'External results may feel limited. This year rewards depth over speed.',guide:'Invest in understanding yourself and your relationships.'},
@@ -2081,9 +2081,9 @@ const PY_COMBO={
   te:{opp:'కుటుంబ బాధ్యతలు, ఆర్థిక స్థిరత్వం పురోగతి యొక్క సాధ్యమైన రంగాలు.',att:'ఆరోగ్యాన్ని నిర్లక్ష్యం చేయకూడదు.',guide:'ఆచరణాత్మక విషయాలపై స్థిరంగా కృషి చేయండి.'},
 },
 '6-9':{type:'danger',
-  en:{warn:'This is one of the weakest combinations for Driver 6. Relationship disappointments, emotional strain, misleading situations and poor judgement are more likely this year. Major new commitments in relationships should be approached very carefully.',guide:'Keep your expectations realistic in all relationship matters. Trust what you see, not what people promise. Protect your emotional wellbeing.'},
-  hi:{warn:'यह चालक अंक 6 के लिए सबसे कमज़ोर मेलों में से एक है। इस साल रिश्तों में निराशा और गलत फैसलों की ज़्यादा संभावना है।',guide:'रिश्तों में बहुत ज़्यादा उम्मीदें न रखें। जो दिखे उस पर भरोसा करें, सिर्फ वादों पर नहीं।'},
-  te:{warn:'ఇది చాలక అంకం 6 కోసం అత్యంత బలహీనమైన సమ్మేళనాలలో ఒకటి. సంబంధ నిరాశలు ఈ సంవత్సరం ఎక్కువగా సాధ్యం.',guide:'అన్ని సంబంధ విషయాలలో అంచనాలు వాస్తవంగా ఉంచుకోండి.'},
+  en:{warn:'This is one of the weakest combinations for Number 6. Relationship disappointments, emotional strain, misleading situations and poor judgement are more likely this year. Major new commitments in relationships should be approached very carefully.',guide:'Keep your expectations realistic in all relationship matters. Trust what you see, not what people promise. Protect your emotional wellbeing.'},
+  hi:{warn:'यह अंक 6 के लिए सबसे कमज़ोर मेलों में से एक है। इस साल रिश्तों में निराशा और गलत फैसलों की ज़्यादा संभावना है।',guide:'रिश्तों में बहुत ज़्यादा उम्मीदें न रखें। जो दिखे उस पर भरोसा करें, सिर्फ वादों पर नहीं।'},
+  te:{warn:'ఇది అంకం 6 కోసం అత్యంత బలహీనమైన సమ్మేళనాలలో ఒకటి. సంబంధ నిరాశలు ఈ సంవత్సరం ఎక్కువగా సాధ్యం.',guide:'అన్ని సంబంధ విషయాలలో అంచనాలు వాస్తవంగా ఉంచుకోండి.'},
 },
 
 // ═══ DRIVER 7 ═══
@@ -2098,9 +2098,9 @@ const PY_COMBO={
   te:{opp:'వ్యక్తిగత అభివృద్ధి, పరిశోధనకు మద్దతు ఉంది.',att:'ఒంటరితనం నిరుత్సాహంగా అనిపించవచ్చు.',guide:'మద్దతు ఉన్న వ్యక్తులతో అనుసంధానంగా ఉండండి.'},
 },
 '7-3':{
-  en:{opp:'This is one of the strongest learning combinations for Driver 7. Education, research and academic achievement are strongly supported.',att:'Financial results may be limited. Use this year for knowledge, not income.',guide:'Invest fully in learning. The depth of knowledge you gain now creates significant advantages ahead.'},
-  hi:{opp:'यह चालक अंक 7 के लिए सबसे मजबूत सीखने के मेलों में से एक है।',att:'आर्थिक नतीजे सीमित हो सकते हैं।',guide:'सीखने में पूरी तरह निवेश करें।'},
-  te:{opp:'ఇది చాలక అంకం 7 కోసం అత్యంత బలమైన నేర్చుకోవడం సమ్మేళనాలలో ఒకటి.',att:'ఆర్థిక ఫలితాలు పరిమితంగా ఉండవచ్చు.',guide:'నేర్చుకోవడంలో పూర్తిగా పెట్టుబడి పెట్టండి.'},
+  en:{opp:'This is one of the strongest learning combinations for Number 7. Education, research and academic achievement are strongly supported.',att:'Financial results may be limited. Use this year for knowledge, not income.',guide:'Invest fully in learning. The depth of knowledge you gain now creates significant advantages ahead.'},
+  hi:{opp:'यह अंक 7 के लिए सबसे मजबूत सीखने के मेलों में से एक है।',att:'आर्थिक नतीजे सीमित हो सकते हैं।',guide:'सीखने में पूरी तरह निवेश करें।'},
+  te:{opp:'ఇది అంకం 7 కోసం అత్యంత బలమైన నేర్చుకోవడం సమ్మేళనాలలో ఒకటి.',att:'ఆర్థిక ఫలితాలు పరిమితంగా ఉండవచ్చు.',guide:'నేర్చుకోవడంలో పూర్తిగా పెట్టుబడి పెట్టండి.'},
 },
 '7-4':{
   en:{opp:'Education, knowledge and long-term planning are strongly supported. Career preparation and structured learning produce meaningful results.',att:'Patience is needed. External results may take longer to appear.',guide:'Build knowledge and plan carefully for the future.'},
@@ -2170,9 +2170,9 @@ const PY_COMBO={
   te:{opp:'నేర్చుకోవడానికి మధ్యస్థ మద్దతు ఉంది.',att:'ఆర్థిక మరియు కెరీర్ ఫలితాలు పరిమితంగా ఉంటాయి.',guide:'నేర్చుకోవడానికి మరియు జ్ఞానం నిర్మించడానికి ఈ సంవత్సరాన్ని ఉపయోగించండి.'},
 },
 '8-8':{
-  en:{opp:'This is one of the strongest combinations for Driver 8. Career growth, financial progress, property decisions and long-term success are strongly favoured.',att:'Health must not be neglected. Workload can become excessive.',guide:'This is one of your best years for practical achievement. Work with full focus and protect your health.'},
-  hi:{opp:'यह चालक अंक 8 के लिए सबसे मजबूत मेलों में से एक है।',att:'सेहत को नजरअंदाज नहीं करना चाहिए।',guide:'यह व्यावहारिक उपलब्धि के लिए आपके सबसे अच्छे सालों में से एक है।'},
-  te:{opp:'ఇది చాలక అంకం 8 కోసం అత్యంత బలమైన సమ్మేళనాలలో ఒకటి.',att:'ఆరోగ్యాన్ని నిర్లక్ష్యం చేయకూడదు.',guide:'ఇది ఆచరణాత్మక విజయం కోసం మీ ఉత్తమ సంవత్సరాలలో ఒకటి.'},
+  en:{opp:'This is one of the strongest combinations for Number 8. Career growth, financial progress, property decisions and long-term success are strongly favoured.',att:'Health must not be neglected. Workload can become excessive.',guide:'This is one of your best years for practical achievement. Work with full focus and protect your health.'},
+  hi:{opp:'यह अंक 8 के लिए सबसे मजबूत मेलों में से एक है।',att:'सेहत को नजरअंदाज नहीं करना चाहिए।',guide:'यह व्यावहारिक उपलब्धि के लिए आपके सबसे अच्छे सालों में से एक है।'},
+  te:{opp:'ఇది అంకం 8 కోసం అత్యంత బలమైన సమ్మేళనాలలో ఒకటి.',att:'ఆరోగ్యాన్ని నిర్లక్ష్యం చేయకూడదు.',guide:'ఇది ఆచరణాత్మక విజయం కోసం మీ ఉత్తమ సంవత్సరాలలో ఒకటి.'},
 },
 '8-9':{
   en:{opp:'Closure, financial settlements and completion of long-standing matters are supported.',att:'Misleading opportunities may appear. Avoid starting major new ventures.',guide:'Focus on completing, settling and releasing.'},
@@ -2207,9 +2207,9 @@ const PY_COMBO={
   te:{opp:'మార్పు మరియు అనూహ్య పరిణామాలు చురుకుగా ఉంటాయి.',att:'తప్పుదారి పట్టించే అవకాశాలు కనిపించవచ్చు.',guide:'సౌకర్యంగా కానీ జాగ్రత్తగా ఉండండి.'},
 },
 '9-6':{type:'danger',
-  en:{warn:'This is one of the weakest and most difficult combinations for Driver 9. Relationship disappointments, emotional strain, misleading promises and poor judgement are significantly more likely this year.',guide:'Protect your emotional wellbeing above all. Trust what you see, not what people promise. Avoid over-investing in uncertain situations.'},
-  hi:{warn:'यह चालक अंक 9 के लिए सबसे कमजोर मेलों में से एक है। रिश्ते में निराशा और गलत फैसले काफी ज्यादा संभव हैं।',guide:'सबसे पहले अपनी भावनात्मक तंदुरुस्ती की रक्षा करें।'},
-  te:{warn:'ఇది చాలక అంకం 9 కోసం అత్యంత బలహీనమైన సమ్మేళనాలలో ఒకటి. సంబంధ నిరాశలు ఈ సంవత్సరం గణనీయంగా ఎక్కువగా సాధ్యం.',guide:'అన్నింటికంటే మీ భావోద్వేగ శ్రేయస్సు రక్షించుకోండి.'},
+  en:{warn:'This is one of the weakest and most difficult combinations for Number 9. Relationship disappointments, emotional strain, misleading promises and poor judgement are significantly more likely this year.',guide:'Protect your emotional wellbeing above all. Trust what you see, not what people promise. Avoid over-investing in uncertain situations.'},
+  hi:{warn:'यह अंक 9 के लिए सबसे कमजोर मेलों में से एक है। रिश्ते में निराशा और गलत फैसले काफी ज्यादा संभव हैं।',guide:'सबसे पहले अपनी भावनात्मक तंदुरुस्ती की रक्षा करें।'},
+  te:{warn:'ఇది అంకం 9 కోసం అత్యంత బలహీనమైన సమ్మేళనాలలో ఒకటి. సంబంధ నిరాశలు ఈ సంవత్సరం గణనీయంగా ఎక్కువగా సాధ్యం.',guide:'అన్నింటికంటే మీ భావోద్వేగ శ్రేయస్సు రక్షించుకోండి.'},
 },
 '9-7':{
   en:{opp:'Reflection, research and inner development are supported. A slower year suited for careful review.',att:'Progress will feel slow. Extra caution before major decisions.',guide:'Use this year for deep learning and reflection.'},
@@ -3343,7 +3343,7 @@ function gen(){
   let sub2HTML='';
   if(_dcStrMatch){
     const _dcText=LANG==='hi'?_dcStrMatch.hi:LANG==='te'?_dcStrMatch.te:_dcStrMatch.en;
-    const _sub2Title='Strengths From Your Birth Number Combination';
+    const _sub2Title='Strengths From Your Number Combination';
     sub2HTML=`<div class="subsec">
       <div class="subsec-title">${_sub2Title}</div>
       <div class="subsec-body"><p>${_dcText}</p></div>
@@ -3488,10 +3488,9 @@ function gen(){
   R.innerHTML=`
   <!-- ── COVER PAGE ── -->
   <div class="cover-page">
-    <div class="cover-brand">TheFuturee · Personal Numerology Consultation</div>
     <div class="cover-name">${full}</div>
     <div class="cover-dob">${String(day).padStart(2,'0')} · ${String(mon).padStart(2,'0')} · ${year} &nbsp;·&nbsp; ${gL}</div>
-    <div class="cover-tagline">A Personal Numerology Consultation Report</div>
+    <div class="cover-tagline">Your Personalized Numerology Report</div>
   </div>
 
   <!-- ── BIRTH CHART OVERVIEW ── -->
@@ -3517,7 +3516,6 @@ function gen(){
   <div class="subsec">
     <div class="subsec-body">
       <div class="weak-card">
-        <div class="weak-card-title">Driver ${driver} · ${NC[driver]?.p||''}</div>
         <div class="weak-card-body">${tx(DRV_WEAK[driver]||{})}</div>
       </div>
       ${(()=>{
@@ -3597,15 +3595,13 @@ function gen(){
       if(!d) return '';
       const L=LANG==='hi'?'hi':LANG==='te'?'te':'en';
       const data=d[L]||d.en;
-      const srcLabel=m.type==='driver'?'Master Driver Number':'Master Conductor Number';
-      const traitsLabel='Traits';
+      const traitsLabel=L==='te'?'మీ లక్షణాలు':'Your Traits';
       const obsLabel='Important Observation';
       // Hindi: render approved single paragraph; EN/TE: render traits chips + obs
       if(L==='hi'&&data.para){
         return `<div class="km-card" style="border-left:3px solid var(--accent)">
           <div class="km-card-head">
             <div class="km-card-title">${d.label}</div>
-            <div style="font-size:.68rem;color:var(--accent);font-weight:500;letter-spacing:.1em;text-transform:uppercase">${srcLabel}</div>
           </div>
           <p style="font-size:.88rem;line-height:1.75;color:var(--ink);margin-top:.6rem">${data.para}</p>
         </div>`;
@@ -3615,7 +3611,6 @@ function gen(){
       return `<div class="km-card" style="border-left:3px solid var(--accent)">
         <div class="km-card-head">
           <div class="km-card-title">${d.label}</div>
-          <div style="font-size:.68rem;color:var(--accent);font-weight:500;letter-spacing:.1em;text-transform:uppercase">${srcLabel}</div>
         </div>
         <div class="km-sub">${traitsLabel}</div>
         <div class="master-traits">${traits.map(tr=>`<span class="master-trait">${tr}</span>`).join('')}</div>
@@ -3637,7 +3632,7 @@ function gen(){
       if(!d) return '';
       const L=LANG==='hi'?'hi':LANG==='te'?'te':'en';
       const challenges=(d.challenges[L]||d.challenges.en);
-      const srcLabel=k.source==='driver'?'Driver Number':'Conductor Number';
+      const srcLabel='Number';
       const challLabel='Potential Challenges';
       return `<div class="km-card">
         <div class="km-card-head">
@@ -3731,7 +3726,7 @@ function gen(){
       ?'इन पेशों की ऊर्जा आपके अंकों के साथ ज़्यादा मेल नहीं खाती। आगे बढ़ना नामुमकिन नहीं है, लेकिन इनमें दूसरों से ज़्यादा मेहनत लग सकती है।'
       :LANG==='te'
       ?'ఈ వృత్తులు శత్రు అంకాల శక్తితో అనుసంధానించబడి ఉన్నాయి. వీటిలో ముందుకు సాగడం అసాధ్యం కాదు, కానీ అదనపు కృషి మరియు అనుకూలత అవసరమవుతుంది.'
-      :'These fields are aligned with your enemy number energies. They are not impossible, but they are likely to require significantly more effort and adaptation than fields aligned with your Driver.';
+      :'These fields are aligned with your enemy number energies. They are not impossible, but they are likely to require significantly more effort and adaptation than fields aligned with your number.';
 
     return `
     <div class="prof-section">
