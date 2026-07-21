@@ -330,6 +330,72 @@ footer{text-align:center;padding:2rem;color:var(--muted);font-size:.78rem;border
   .form-card{padding:1.5rem 1.2rem}
   .cover-nums{grid-template-columns:repeat(2,1fr)}
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   PRINT / PDF EXPORT — true vector text via the browser's native
+   print-to-PDF, so text stays sharp at any zoom and in the printed
+   output, fonts are embedded automatically, and page breaks are
+   handled by the browser's real pagination engine instead of a
+   pixel-screenshot approximation.
+   ═══════════════════════════════════════════════════════════════ */
+@media print{
+  @page{ size:A4; margin:16mm 14mm; }
+
+  html,body{ background:#fff !important; }
+  * , *::before, *::after{
+    -webkit-print-color-adjust:exact !important;
+    print-color-adjust:exact !important;
+    color-adjust:exact !important;
+  }
+
+  /* hide everything except the generated report */
+  .hero, .form-wrap, #pdf-modal-overlay{ display:none !important; }
+  #report{ display:block !important; max-width:none !important; margin:0 !important; padding:0 !important; }
+  #report .pdf-btn-wrap,
+  #report .compat-toggle-wrap,
+  #report .compat-panel{ display:none !important; }
+
+  /* cover page gets its own dedicated first sheet */
+  .cover-page{
+    break-after:page;
+    min-height:250mm;
+    display:flex !important;
+    flex-direction:column;
+    justify-content:center;
+  }
+
+  /* never split a card / content box across pages */
+  .titem,.str-card,.weak-card,.weak-dc-card,.rem-card,
+  .km-card,.masterbox,.karmicbox,.mitem,.repcard,
+  .obs-box,.enemy-warning,.gayatri-box,
+  .name-verdict-premium-good,.name-verdict-premium-bad,
+  .dcbox,.compat-charts-grid,.compat-chart-box,
+  .loshu,.card,.prof-section,.plane-wrap,.str-grid,
+  .name-card,.miss-card,.py-item,.compat-card,
+  .loshu-outer,.matrix-wrap,.subsec{
+    break-inside:avoid;
+    page-break-inside:avoid;
+  }
+
+  /* headings always stay glued to the content that follows them */
+  .sec,.subsec-title{
+    break-after:avoid-page;
+    break-inside:avoid;
+    page-break-after:avoid;
+  }
+
+  /* orphan/widow control for body copy */
+  p,.subsec-body,.rem-remedy-text,.rem-benefit-text,.py-item-desc{
+    orphans:3;
+    widows:3;
+  }
+
+  /* crisp borders/shadows instead of soft screen-only shadows */
+  .card,.masterbox,.karmicbox,.dcbox,.compat-card,.compat-chart-box{
+    box-shadow:none !important;
+    border:1px solid var(--border,#E2DED8) !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -4018,8 +4084,8 @@ function gen(){
   <!-- ── END OF REPORT: DOWNLOAD PDF ── -->
   <div class="pdf-btn-wrap">
     <div class="pdf-btn-divider"></div>
-    <button class="pdf-btn" onclick="downloadPDF()">📄 &nbsp;${LANG==='hi'?'PDF डाउनलोड करें':LANG==='te'?'PDF డౌన్‌లోడ్ చేయండి':'Download PDF Report'}</button>
-    <div class="pdf-btn-note">${LANG==='hi'?'आपकी संपूर्ण रिपोर्ट PDF में सुरक्षित करें':LANG==='te'?'మీ సంపూర్ణ నివేదికను PDF లో సేవ్ చేయండి':'Save your complete report as a PDF'}</div>
+    <button class="pdf-btn" onclick="printReport()">📄 &nbsp;${LANG==='hi'?'PDF डाउनलोड करें':LANG==='te'?'PDF డౌన్‌లోడ్ చేయండి':'Download PDF Report'}</button>
+    <div class="pdf-btn-note">${LANG==='hi'?"'PDF के रूप में सेव करें' चुनें":LANG==='te'?"'PDFగా సేవ్ చేయండి' ఎంచుకోండి":"Choose 'Save as PDF' in the dialog that opens"}</div>
   </div>`;
 
   R.scrollIntoView({behavior:'smooth'});
@@ -4030,6 +4096,12 @@ function gen(){
    ═══════════════════════════════════════════════════════════════ */
 
 let _pdfBusy=false;
+
+function printReport(){
+  const rpt=document.getElementById('report');
+  if(!rpt||rpt.style.display==='none'){_pdfShowModal('error');return;}
+  window.print();
+}
 
 function downloadPDF(){
   if(_pdfBusy) return;
