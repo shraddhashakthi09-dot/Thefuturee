@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TheFuturee - Helping You Discover Your True Potential.</title>
-<meta name="description" content="Your strengths, weaknesses, career potential, relationship compatibility & the next five years — all in one personalized report."> 
+<meta name="description" content="Discover your strengths, challenges, and long-term relationship potential through advanced numerology."> 
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -4001,31 +4001,35 @@ function gen(_silent){
 
 /* ═══════════════════════════════════════════════════════════════
    STATE PERSISTENCE — survives Android tab discard / process
-   recreation, iOS bfcache eviction, and long backgrounding on any
-   device. The report is a pure function of these inputs, so instead
-   of trying to keep the rendered report or any in-memory object
-   alive across a suspend, we persist just the inputs and
-   deterministically regenerate the report on return.
+   recreation, iOS bfcache eviction, and backgrounding for the SAME
+   tab. The report is a pure function of these inputs, so instead of
+   trying to keep the rendered report or any in-memory object alive
+   across a suspend, we persist just the inputs and deterministically
+   regenerate the report on return.
 
-   Two storage layers, not one:
-   - localStorage is the durable source of truth. Every major browser
-     guarantees it's written to disk — it is specifically designed to
-     survive the browser process being killed and recreated by the OS,
-     which is exactly the Android/iOS scenario this needs to handle.
-     sessionStorage alone is not a safe bet here: it's tab-session
-     scoped by design, and while Chrome/Safari usually snapshot it too,
-     that isn't a guarantee across every browser, WebView, or private-
-     browsing mode.
-   - sessionStorage is kept as a fast same-tab check, and is re-synced
-     from localStorage whenever it's missing.
-   - A timestamp caps how old a saved session can be before it's
-     treated as stale (6 hours — comfortably longer than any
-     interruption this needs to cover, but short enough that closing
-     the site and returning days later on a shared device won't
-     silently resurrect someone else's report).
+   sessionStorage only — deliberately not localStorage. This is a
+   correction from an earlier version of this fix, which added
+   localStorage as a "more durable" backup. That was wrong for this
+   app specifically: localStorage persists across genuinely new
+   visits (new tab, tomorrow, next week), which would silently
+   resurrect a previously generated report — and since every report
+   here is gated behind a Razorpay payment, that's not a UX nicety
+   going wrong, it's actual paid content reappearing somewhere it
+   shouldn't. sessionStorage's whole purpose is the exact boundary
+   this needs: it survives reloads, backgrounding, and OS-triggered
+   process recreation for the SAME tab (Chrome/Android and Safari/iOS
+   both preserve it as part of their tab-restore mechanisms), but it
+   is cleared the moment that tab is actually closed. A closed tab or
+   a fresh visit in a new tab has nothing to restore, by construction
+   — no timestamp bookkeeping has to do that job.
+
+   The freshness cutoff below is kept only as a secondary guard for
+   the case where the same tab is left open for a very long time
+   without being closed — it caps how long a background interruption
+   can last before this stops treating it as "still the same visit."
    ═══════════════════════════════════════════════════════════════ */
 const _STATE_KEY='tf_report_state_v1';
-const _STATE_MAX_AGE_MS=6*60*60*1000; // 6 hours
+const _STATE_MAX_AGE_MS=2*60*60*1000; // 2 hours — comfortably covers app-switching, calls, and long backgrounding, without acting like autosave
 
 function _saveReportState(){
   try{
@@ -4045,36 +4049,24 @@ function _saveReportState(){
       pyr:compatOn?(document.getElementById('pyr')||{}).value||'':'',
       savedAt:Date.now(),
     };
-    const json=JSON.stringify(state);
-    // Write to both. Neither failing should block the other.
-    try{ localStorage.setItem(_STATE_KEY,json); }catch(e){}
-    try{ sessionStorage.setItem(_STATE_KEY,json); }catch(e){}
-  }catch(e){ /* storage unavailable (private mode / quota) — fail silently, non-critical */ }
+    sessionStorage.setItem(_STATE_KEY,JSON.stringify(state));
+  }catch(e){ /* sessionStorage unavailable (private mode / quota) — fail silently, non-critical */ }
 }
 
 function _clearReportState(){
   try{ sessionStorage.removeItem(_STATE_KEY); }catch(e){}
-  try{ localStorage.removeItem(_STATE_KEY); }catch(e){}
 }
 
 function _readStoredState(){
-  // Same-tab fast path first, then fall back to the durable layer —
-  // this is what actually protects against sessionStorage being
-  // cleared or not restored by a given browser/mode.
-  let raw=null, fromSession=true;
+  let raw=null;
   try{ raw=sessionStorage.getItem(_STATE_KEY); }catch(e){ raw=null; }
-  if(!raw){
-    fromSession=false;
-    try{ raw=localStorage.getItem(_STATE_KEY); }catch(e){ raw=null; }
-  }
   if(!raw) return null;
   let state=null;
   try{ state=JSON.parse(raw); }catch(e){ return null; }
   if(!state||typeof state!=='object') return null;
-  if(state.savedAt&&(Date.now()-state.savedAt)>_STATE_MAX_AGE_MS) return null; // stale — treat as absent
-  if(!fromSession){
-    // localStorage saved us — heal sessionStorage so the fast path works next time
-    try{ sessionStorage.setItem(_STATE_KEY,raw); }catch(e){}
+  if(state.savedAt&&(Date.now()-state.savedAt)>_STATE_MAX_AGE_MS){
+    _clearReportState(); // long-stale even for this tab — don't keep offering it back
+    return null;
   }
   return state;
 }
