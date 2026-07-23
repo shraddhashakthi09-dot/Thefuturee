@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TheFuturee - Helping You Discover Your True Potential.</title>
 <meta name="description" content="Your strengths, weaknesses, career potential, relationship compatibility & the next five years — all in one personalized report."> 
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -17,7 +17,8 @@ body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;f
 /* ── HERO ── */
 .hero{background:var(--ink);color:#F4F1EC;padding:2.5rem 1.5rem 2.8rem;text-align:center}
 .hero h1{font-family:'DM Serif Display',serif;font-size:clamp(2rem,5vw,3rem);font-style:italic;color:#B9B9B9;margin-bottom:.18rem}
-.tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;color:#D7DBE3;font-size:min(4.7vw,calc(1.05rem * 0.95));line-height:1.5;letter-spacing:.015em;text-transform:none;white-space:nowrap;margin:0 -1.5rem 1.2rem;padding:0 28px;text-align:center}
+.tagline-wrap{max-width:340px;margin:0 auto 1.2rem;padding:0 1rem;box-sizing:border-box}
+.tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;color:#D7DBE3;font-size:min(3.6vw,.85rem);line-height:1.5;letter-spacing:.015em;text-transform:none;white-space:nowrap;text-align:center;margin:0}
 .lang-btns{display:flex;justify-content:center;gap:.5rem}
 .lang-select-wrap{display:flex;flex-direction:column;align-items:center;gap:.55rem;margin-bottom:0}
 .lang-select-heading{font-family:'DM Serif Display',serif;font-style:italic;font-size:1.05rem;color:#D7DBE3;letter-spacing:.02em;margin-bottom:.15rem}
@@ -79,6 +80,8 @@ body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;f
 .subsec-body{font-size:.88rem;color:#333;line-height:1.72}
 .subsec-body p{margin-bottom:.7rem}
 .subsec-body p:last-child{margin-bottom:0}
+.subsec-note{background:var(--cream);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;padding:.75rem 1.1rem;margin-top:.7rem;font-size:.85rem;color:#444;line-height:1.55}
+.subsec-note b{font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-right:.4rem}
 
 /* ── STRENGTH CARDS ── */
 .str-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:1rem 1.2rem;margin-bottom:.55rem}
@@ -335,7 +338,7 @@ footer{text-align:center;padding:2rem;color:var(--muted);font-size:.78rem;border
 <body>
 <div class="hero">
   <h1>TheFuturee</h1>
-  <p class="tagline">Helping You Discover Your True Potential.</p>
+  <div class="tagline-wrap"><p class="tagline">Helping You Discover Your True Potential.</p></div>
   <div class="lang-select-wrap">
     <div class="lang-select-heading">Select Report Language</div>
     <div class="lang-btns">
@@ -1089,9 +1092,9 @@ const DRV_STR_NEW={
     ],
     specialNote:{
       condition:d=>d===29,
-      en:'There may be a higher chance of challenges in your married life.',
-      hi:'आपकी शादीशुदा जिंदगी में परेशानियाँ या आपसी तालमेल बैठने में थोड़ी ज़्यादा मुश्किलें आने की संभावना हो सकती है।',
-      te:'మీ వైవాహిక జీవితంలో సవాళ్లు లేదా ఒకరినొకరు అర్థం చేసుకోవడంలో ఇబ్బందులు ఎదురయ్యే అవకాశం కొంచెం ఎక్కువగా ఉండవచ్చు.',
+      en:'There may be a higher chance of challenges in your married life or relationships.',
+      hi:'आपकी शादीशुदा जिंदगी या रिश्तों में परेशानियाँ या आपसी तालमेल बैठने में थोड़ी ज़्यादा मुश्किलें आने की संभावना हो सकती है।',
+      te:'మీ వైవాహిక జీవితంలో లేదా సంబంధాల్లో సవాళ్లు లేదా ఒకరినొకరు అర్థం చేసుకోవడంలో ఇబ్బందులు ఎదురయ్యే అవకాశం కొంచెం ఎక్కువగా ఉండవచ్చు.',
     },
   },
   3:{
@@ -3070,12 +3073,12 @@ function gen(_silent){
     '7-7':{en:'You may face challenges in your married life or relationships.',
       hi:'आपको अपनी शादीशुदा ज़िंदगी या रिश्तों में मुश्किलें आ सकती हैं।',
       te:'మీ వైవాహిక జీవితంలో లేదా సంబంధాల్లో సవాళ్లు ఎదురవ్వచ్చు.'},
-    '8-1':{en:'You may face challenges related to your health, finances and married life.',
-      hi:'आपको सेहत, पैसों और अपनी शादीशुदा ज़िंदगी से जुड़ी मुश्किलें आ सकती हैं।',
-      te:'మీకు ఆరోగ్యం, ఆర్థిక విషయాలు మరియు వైవాహిక జీవితానికి సంబంధించిన సవాళ్లు ఎదురవ్వచ్చు.'},
-    '8-2':{en:'You may face challenges related to your health, finances and married life.',
-      hi:'आपको सेहत, पैसों और अपनी शादीशुदा ज़िंदगी से जुड़ी मुश्किलें आ सकती हैं।',
-      te:'మీకు ఆరోగ్యం, ఆర్థిక విషయాలు మరియు వైవాహిక జీవితానికి సంబంధించిన సవాళ్లు ఎదురవ్వచ్చు.'},
+    '8-1':{en:'You may face challenges related to your health, finances and married life or relationships.',
+      hi:'आपको सेहत, पैसों और अपनी शादीशुदा ज़िंदगी या रिश्तों से जुड़ी मुश्किलें आ सकती हैं।',
+      te:'మీకు ఆరోగ్యం, ఆర్థిక విషయాలు మరియు వైవాహిక జీవితం లేదా సంబంధాలకు సంబంధించిన సవాళ్లు ఎదురవ్వచ్చు.'},
+    '8-2':{en:'You may face challenges related to your health, finances and married life or relationships.',
+      hi:'आपको सेहत, पैसों और अपनी शादीशुदा ज़िंदगी या रिश्तों से जुड़ी मुश्किलें आ सकती हैं।',
+      te:'మీకు ఆరోగ్యం, ఆర్థిక విషయాలు మరియు వైవాహిక జీవితం లేదా సంబంధాలకు సంబంధించిన సవాళ్లు ఎదురవ్వచ్చు.'},
     '9-2':{en:'You may face challenges in your married life or relationships.',
       hi:'आपको अपनी शादीशुदा ज़िंदगी या रिश्तों में मुश्किलें आ सकती हैं।',
       te:'మీ వైవాహిక జీవితంలో లేదా సంబంధాల్లో సవాళ్లు ఎదురవ్వచ్చు.'},
@@ -3553,6 +3556,7 @@ function gen(_silent){
         </div>`;
       }).join('')}
     </div>
+    <div class="subsec-note">${LANG==='hi'?'<b>नोट</b> इन चुनौतियों के लिए उपाय इस रिपोर्ट में आगे दिए गए हैं।':LANG==='te'?'<b>గమనిక</b> ఈ సవాళ్లకు సంబంధించిన పరిహారాలు ఈ నివేదికలో తరువాత ఇవ్వబడ్డాయి.':'<b>NOTE</b> Remedies for these challenges are included later in this report.'}</div>
   </div>`:''}
 
   <!-- ── ENEMY DC WARNING (if applicable) ── -->
@@ -4015,13 +4019,28 @@ function gen(_silent){
    resurrect a previously generated report — and since every report
    here is gated behind a Razorpay payment, that's not a UX nicety
    going wrong, it's actual paid content reappearing somewhere it
-   shouldn't. sessionStorage's whole purpose is the exact boundary
-   this needs: it survives reloads, backgrounding, and OS-triggered
-   process recreation for the SAME tab (Chrome/Android and Safari/iOS
-   both preserve it as part of their tab-restore mechanisms), but it
-   is cleared the moment that tab is actually closed. A closed tab or
-   a fresh visit in a new tab has nothing to restore, by construction
-   — no timestamp bookkeeping has to do that job.
+   shouldn't.
+
+   CONFIRMED BUG (real-world testing): sessionStorage alone is NOT a
+   reliable "this tab was actually closed" signal. It is spec-cleared
+   on a real tab close, but several ordinary, spec-compliant browser
+   behaviors bypass that and hand it back on a genuinely new visit:
+     - "Continue where you left off" / crash recovery restores
+       sessionStorage for every tab the browser reopens on relaunch —
+       exactly what happened when this file was closed and reopened.
+     - Duplicating a tab, or the OS/browser reusing an existing
+       renderer when this file is opened again, can inherit the
+       previous tab's storage.
+   So sessionStorage having data is necessary but not sufficient proof
+   of "same visit." _isSameSessionNavigation() below cross-checks the
+   Navigation Timing API's navigation type before ever restoring, and
+   only 'reload' (refresh, or the browser re-fetching this exact tab
+   after an Android discard / iOS bfcache eviction) or 'back_forward'
+   count as a continuation of the same visit. Anything else — notably
+   'navigate', which covers a fresh load, a new tab/window, or this
+   file being reopened — is treated as a new visit and any leftover
+   sessionStorage is discarded rather than restored, no matter how it
+   survived.
 
    The freshness cutoff below is kept only as a secondary guard for
    the case where the same tab is left open for a very long time
@@ -4071,7 +4090,24 @@ function _readStoredState(){
   return state;
 }
 
+/* See the header comment above for why this check exists — only a
+   'reload' or 'back_forward' navigation counts as the same visit. */
+function _isSameSessionNavigation(){
+  try{
+    const entries=performance.getEntriesByType&&performance.getEntriesByType('navigation');
+    let navType=entries&&entries[0]&&entries[0].type;
+    if(!navType&&performance.navigation){ // legacy fallback for older engines
+      navType=['navigate','reload','back_forward'][performance.navigation.type]||'navigate';
+    }
+    return navType==='reload'||navType==='back_forward';
+  }catch(e){ return false; } // can't tell → don't trust it, start blank
+}
+
 function _restoreReportState(){
+  if(!_isSameSessionNavigation()){
+    _clearReportState(); // a new visit — wipe any leftover state instead of reviving it
+    return;
+  }
   const state=_readStoredState();
   if(!state||!state.fn||!state.ln) return;
   try{
