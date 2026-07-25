@@ -3526,9 +3526,8 @@ function gen(_silent){
   <!-- DC combination weaknesses -->
   ${(()=>{
     const dcwKey=`${driver}-${conductor}`;
-    const dcwKeyRev=`${conductor}-${driver}`;
     if(dcwKey==='1-7'||dcwKey==='7-1') return '';
-    const dcw=DC_WEAK[dcwKey]||DC_WEAK[dcwKeyRev]||null;
+    const dcw=DC_WEAK[dcwKey]||null;
     if(!dcw) return '';
     return `<div class="subsec">
       <div class="subsec-title">Challenges From Your Number Combination</div>
