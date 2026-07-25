@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TheFuturee - Helping You Discover Your True Potential.</title>
 <meta name="description" content="Your strengths, weaknesses, career potential, relationship compatibility & the next five years — all in one personalized report."> 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -14,11 +16,26 @@
 }
 body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6}
 
+/* Metric-matched fallback: makes the system-font stand-in occupy the same
+   width as Cormorant Garamond italic 600, so swapping to the real webfont
+   causes zero layout shift — this is what lets nowrap hold on a single
+   line consistently, regardless of load timing. */
+@font-face{
+  font-family:'Cormorant Garamond Fallback';
+  src:local('Georgia'),local('Times New Roman'),local('Times');
+  font-style:italic;
+  font-weight:600;
+  size-adjust:92%;
+  ascent-override:100%;
+  descent-override:32%;
+  line-gap-override:0%;
+}
+
 /* ── HERO ── */
 .hero{background:var(--ink);color:#F4F1EC;padding:2.5rem 1.5rem 2.8rem;text-align:center}
 .hero h1{font-family:'DM Serif Display',serif;font-size:clamp(2rem,5vw,3rem);font-style:italic;color:#B9B9B9;margin-bottom:.18rem}
-.tagline-wrap{display:flex;justify-content:center;align-items:center;width:100%;margin:0 0 1.2rem;padding:0 .85rem;box-sizing:border-box}
-.tagline{flex:0 1 auto;min-width:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;color:#D7DBE3;font-size:min(4.2vw,1rem);line-height:1.5;letter-spacing:.015em;text-transform:none;white-space:nowrap;text-align:center;margin:0}
+.tagline-wrap{width:100%;margin:0 0 1.2rem;padding:0 .85rem;box-sizing:border-box;text-align:center}
+.tagline{display:inline-block;max-width:100%;font-family:'Cormorant Garamond','Cormorant Garamond Fallback',serif;font-style:italic;font-weight:600;color:#D7DBE3;font-size:min(4.2vw,1rem);line-height:1.5;letter-spacing:.015em;text-transform:none;white-space:nowrap;margin:0}
 .lang-btns{display:flex;justify-content:center;gap:.5rem}
 .lang-select-wrap{display:flex;flex-direction:column;align-items:center;gap:.55rem;margin-bottom:0}
 .lang-select-heading{font-family:'DM Serif Display',serif;font-style:italic;font-size:1.05rem;color:#D7DBE3;letter-spacing:.02em;margin-bottom:.15rem}
@@ -1218,7 +1235,6 @@ const DRV_STR_NEW={
       'You are a fighter and know how to come back, even after difficult situations or failures.',
       'You have a kind heart and genuinely enjoy helping people whenever you can.',
       'You may not always express your emotions openly, but you deeply care about the people you love.',
-      'Your romantic side depends a lot on your mood. At times you may be very affectionate, while at other times you may not express your feelings at all.',
     ],
     hi:[
       'ज़िंदगी में चाहे कितनी भी मुश्किलें आएँ, आप हार मानने वालों में से नहीं होते। ज़रूरत पड़ने पर आप हमेशा दूसरों का साथ देने की कोशिश करते हैं। आप अपनी भावनाएँ हमेशा खुलकर व्यक्त नहीं करते, लेकिन जिन लोगों से आप प्यार करते हैं, उनकी आपको हमेशा परवाह रहती है।',
@@ -1539,9 +1555,9 @@ const YOGA_STR=[
     hi:'आपके Chart में 4, 5 और 6 का मेल 1st Raj Yog बनाता है। इसे सफलता के लिए एक मजबूत मेल माना जाता है। यह मेल नौकरी की तुलना में Entrepreneurship और स्वतंत्र कामों को अधिक समर्थन देता है। यदि आप पारंपरिक नौकरी में हैं, तो यह भी सफलता में देरी का एक कारण हो सकता है।',
     te:'మీ Chart లో 4, 5 మరియు 6 సంఖ్యల కలయిక 1st Raj Yog ను ఏర్పరుస్తుంది. ఇది విజయానికి బలమైన కలయికగా పరిగణించబడుతుంది. ఈ కలయిక ఉద్యోగం కంటే Entrepreneurship మరియు స్వతంత్ర పనులకు ఎక్కువ మద్దతు ఇస్తుంది. మీరు సాధారణ ఉద్యోగంలో ఉంటే, అది కూడా ఫలితాలు ఆలస్యంగా రావడానికి ఒక కారణం కావచ్చు.'},
   {n:[2,5,8],name:'2nd Raj Yog',
-    en:'The combination of 2, 5 and 6 in your Chart forms the 2nd Raj Yog. This combination is linked with success and growth. It also has a strong connection with the Earth element. Opportunities related to land, property and Real Estate may be beneficial for you and can play an important role in your financial growth.',
-    hi:'आपके Chart में 2, 5 और 6 का मेल 2nd Raj Yog बनाता है। यह मेल सफलता और प्रगति से जुड़ा माना जाता है। इसमें Earth Element का प्रभाव मजबूत माना जाता है। ज़मीन, प्रॉपर्टी और Real Estate से जुड़े अवसर आपके लिए लाभदायक साबित हो सकते हैं।',
-    te:'మీ Chart లో 2, 5 మరియు 6 సంఖ్యల కలయిక 2nd Raj Yog ను ఏర్పరుస్తుంది. ఈ కలయిక విజయం మరియు అభివృద్ధితో అనుసంధానించబడుతుంది. ఇందులో Earth Element ప్రభావం బలంగా ఉంటుంది. భూమి, ఆస్తి మరియు Real Estate కు సంబంధించిన అవకాశాలు మీకు లాభదాయకంగా ఉండవచ్చు.'},
+    en:'The combination of 2, 5 and 8 in your Chart forms the 2nd Raj Yog. This combination is linked with success and growth. It also has a strong connection with the Earth element. Opportunities related to land, property and Real Estate may be beneficial for you and can play an important role in your financial growth.',
+    hi:'आपके Chart में 2, 5 और 8 का मेल 2nd Raj Yog बनाता है। यह मेल सफलता और प्रगति से जुड़ा माना जाता है। इसमें Earth Element का प्रभाव मजबूत माना जाता है। ज़मीन, प्रॉपर्टी और Real Estate से जुड़े अवसर आपके लिए लाभदायक साबित हो सकते हैं।',
+    te:'మీ Chart లో 2, 5 మరియు 8 సంఖ్యల కలయిక 2nd Raj Yog ను ఏర్పరుస్తుంది. ఈ కలయిక విజయం మరియు అభివృద్ధితో అనుసంధానించబడుతుంది. ఇందులో Earth Element ప్రభావం బలంగా ఉంటుంది. భూమి, ఆస్తి మరియు Real Estate కు సంబంధించిన అవకాశాలు మీకు లాభదాయకంగా ఉండవచ్చు.'},
 ];
 
 // ── PY DATA ──
