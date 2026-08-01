@@ -34,8 +34,11 @@ body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;f
 /* ── HERO ── */
 .hero{background:var(--ink);color:#F4F1EC;padding:2.5rem 1.5rem 2.8rem;text-align:center}
 .hero h1{font-family:'DM Serif Display',serif;font-size:clamp(2rem,5vw,3rem);font-style:italic;color:#B9B9B9;margin-bottom:.18rem}
-.tagline-wrap{width:100%;margin:0 0 1.2rem;padding:0 .85rem;box-sizing:border-box;text-align:center}
-.tagline{display:inline-block;max-width:100%;font-family:'Cormorant Garamond','Cormorant Garamond Fallback',serif;font-style:italic;font-weight:600;color:#D7DBE3;font-size:min(4.2vw,1rem);line-height:1.5;letter-spacing:.015em;text-transform:none;white-space:nowrap;margin:0}
+.tagline-wrap{width:100%;margin:.55rem 0 1.2rem;padding:0 .85rem;box-sizing:border-box;text-align:center}
+.tagline{display:inline-block;max-width:100%;font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;color:#D7DBE3;font-size:clamp(.9375rem,2.6vw,1.375rem);line-height:1.5;letter-spacing:.02em;text-transform:none;white-space:nowrap;margin:0}
+@media(max-width:359px){
+  .tagline{font-size:min(3.4vw,.9375rem)}
+}
 .lang-btns{display:flex;justify-content:center;gap:.5rem}
 .lang-select-wrap{display:flex;flex-direction:column;align-items:center;gap:.55rem;margin-bottom:0}
 .lang-select-heading{font-family:'DM Serif Display',serif;font-style:italic;font-size:1.05rem;color:#D7DBE3;letter-spacing:.02em;margin-bottom:.15rem}
@@ -3325,9 +3328,9 @@ function gen(_silent){
       te:'మీకు వ్యాపారం మరియు రాజకీయాలు (పాలిటిక్స్) రెండింటిలోనూ పెద్ద పేరు సంపాదించే అవకాశం ఉంది. మీరు గొప్ప నాయకుడిగా మారి సమాజంపై మీ ప్రభావాన్ని చూపించగలరు.',
     },
     '9-3':{
-      en:'You have good potential in education, healing and numerology-related fields. You can guide and support others through your knowledge and insight.',
-      hi:'लोगों का दुख-दर्द दूर करने (Healing), पढ़ाई-लिखाई और न्यूमरोलॉजी (अंकशास्त्र) जैसी गुप्त विद्याओं को सीखने और सिखाने के लिए आपका योग बहुत अच्छा है।',
-      te:'ప్రజల బాధలను తగ్గించడం (హీలింగ్), విద్య మరియు న్యూమరాలజీ (సంఖ్యాశాస్త్రం) వంటి రహస్య విద్యలను నేర్చుకోవడం మరియు నేర్పించడం కోసం మీ యోగం చాలా బాగుంది.',
+      en:'You have good potential in education, healing, counselling, and guidance-oriented fields. Your knowledge and insight can positively influence others.',
+      hi:'आप लोगों को सही दिशा दिखाने और उनकी मदद करने में अच्छे हो सकते हैं। टीचिंग, काउंसलिंग, हीलिंग और कोचिंग जैसे क्षेत्र आपके लिए अच्छे साबित हो सकते हैं।',
+      te:'ఇతరులకు సరైన దారి చూపించి వారికి సహాయం చేయడంలో మీరు మంచి నైపుణ్యం కలిగి ఉండవచ్చు. టీచింగ్, కౌన్సెలింగ్, హీలింగ్ మరియు కోచింగ్ వంటి రంగాలు మీకు అనుకూలంగా ఉండవచ్చు.',
     },
   };
   const _dcKey=`${driver}-${conductor}`;
