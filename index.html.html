@@ -986,20 +986,20 @@ const MASTER_INFO={
     label:'Your Master Number is 11',
     en:{
       traits:['Visionary thinker.','Dreamer with strong potential.','Highly intuitive.','Can inspire others.'],
-      obs:'People with Master Number 11 often achieve their best results when they have strong support from another person. This support may come from a father, mother, spouse, mentor, business partner, friend or guide. Success is usually accelerated when trusted support systems are in place. Working completely alone may feel more challenging than it does for most people.',
+      obs:'You have big dreams, but you may not always take the necessary action to achieve them. A strong support system from family, friends, or a mentor is essential for your success.',
     },
     hi:{
-      para:'आप आगे की सोच रखने वाले और बड़े सपने देखने वाले व्यक्ति हैं। आपके अंदर चीजों को पहले से महसूस करने की गहरी क्षमता होती है। आप दूसरों को प्रेरित करने की शक्ति रखते हैं और अध्यात्म की ओर स्वाभाविक रूप से आकर्षित रहते हैं। जब आपको माता-पिता, जीवनसाथी, गुरु, पार्टनर या किसी अच्छे दोस्त का मजबूत सहयोग मिलता है, तब आपके लिए जीवन में आगे बढ़ना और सफलता हासिल करना काफी आसान हो जाता है।',
+      para:'आप बड़े सपने देखते हैं, लेकिन उन्हें सच करने के लिए अक्सर सही कदम नहीं उठा पाते। परिवार, दोस्तों या किसी अच्छे मार्गदर्शक का साथ आपकी सफलता के लिए बहुत ज़रूरी है।',
     },
     te:{
-      para:'మీరు ముందుచూపు కలిగిన, పెద్ద కలలు కనే వ్యక్తి. మీలో విషయాలను ముందుగానే గ్రహించే లోతైన సామర్థ్యం ఉంటుంది. మీరు ఇతరులను స్ఫూర్తిపరిచే శక్తిని కలిగి ఉంటారు మరియు ఆధ్యాత్మికత వైపు సహజంగా మొగ్గు చూపుతారు. మీకు తల్లిదండ్రులు, జీవిత భాగస్వామి, గురువు, పార్ట్‌నర్ లేదా ఏదైనా మంచి స్నేహితుడి నుండి బలమైన మద్దతు లభించినప్పుడు, జీవితంలో ముందుకు సాగడం మరియు విజయం సాధించడం మీకు చాలా సులభం అవుతుంది.',
+      para:'మీకు పెద్ద కలలు ఉంటాయి, కానీ వాటిని నిజం చేసుకోవడానికి అవసరమైన అడుగులు ఎప్పుడూ వేయలేకపోవచ్చు. కుటుంబం, స్నేహితులు లేదా మంచి మార్గదర్శకుడి సహాయం మీ విజయానికి చాలా అవసరం.',
     },
   },
   22:{
     label:'Your Master Number is 22',
     en:{
       traits:['Dreamer and doer.','Visionary with execution ability.','Action-oriented.','Hard-working.','Strong builder mentality.','Rarely gives up on goals.'],
-      obs:'Master Number 22 carries the ability to turn large ideas into practical, lasting results. This is one of the most powerful energies a person can carry.',
+      obs:'You dream big and have the determination to turn your dreams into reality. No matter how difficult the situation becomes, you do not give up easily. Your strong determination helps you achieve what you truly want.',
     },
     hi:{
       para:'आप केवल सपने देखने वाले नहीं हैं, बल्कि उन्हें हकीकत में बदलने की क्षमता भी रखते हैं। आप मेहनती हैं और बातों से ज्यादा काम पर विश्वास करते हैं। आपके अंदर शून्य से शुरुआत करके कुछ बहुत बड़ा बनाने की ताकत है। आप अपने लक्ष्यों को आसानी से नहीं छोड़ते और किसी भी योजना को सफल परिणाम तक पहुंचाने का दम रखते हैं।',
@@ -1012,7 +1012,7 @@ const MASTER_INFO={
     label:'Your Master Number is 33',
     en:{
       traits:['Unconditional love.','Service-oriented.','Humanitarian mindset.','Leads by example.','Practices what they preach.','Strong desire to help others.'],
-      obs:'Master Number 33 carries the energy of a natural teacher, guide or mentor. The ability to inspire and serve others is central to this energy.',
+      obs:'You have a heart full of unconditional love and a natural desire to help others. You believe in leading by example and always practice what you preach. Guiding people in the right direction comes naturally to you, and your kindness can positively transform many lives.',
     },
     hi:{
       para:'आपके दिल में सभी लोगों के लिए निस्वार्थ प्रेम और समाज की सेवा करने की गहरी भावना होती है। आप खुद सही रास्ते पर चलकर दूसरों के लिए प्रेरणा बनते हैं। आप जो कहते हैं, उसे अपने कर्मों से साबित भी करते हैं। दूसरों की मदद करना, उन्हें सही दिशा दिखाना और एक सच्चे गुरु की तरह मार्गदर्शन करना आपकी जन्मजात विशेषता है।',
@@ -2474,6 +2474,25 @@ function getRemedies(missing, driver, conductor){
   return result.filter(Boolean);
 }
 
+// ── ADDITIONAL HEALTH REMEDY — Driver/Conductor & Current Personal Year triggers ──
+const HEALTH_REMEDY_DC=new Set(['2-8','3-6','4-2','6-3','8-1','8-2','9-4']);
+const HEALTH_REMEDY_PY=new Set(['1-8','2-8','2-4','3-6','4-2','6-3','8-1','8-2','9-6']);
+function isHealthRemedyEligible(driver,conductor,currentPY){
+  return HEALTH_REMEDY_DC.has(`${driver}-${conductor}`) || HEALTH_REMEDY_PY.has(`${driver}-${currentPY}`);
+}
+const HEALTH_REMEDY_DATA={
+  remedy:{
+    en:'Chant the Gayatri Mantra every morning immediately after waking up. Continue this practice for 60 consecutive days without missing a single day.',
+    hi:'हर सुबह उठते ही गायत्री मंत्र का जाप करें। इसे लगातार 60 दिनों तक बिना किसी रुकावट के करें।',
+    te:'ప్రతి ఉదయం నిద్రలేవగానే గాయత్రి మంత్రాన్ని జపించండి. ఈ సాధనను వరుసగా 60 రోజుల పాటు ఎలాంటి విరామం లేకుండా కొనసాగించండి.',
+  },
+  benefit:{
+    en:'This practice is believed to help reduce negative energy and support better physical, mental, and emotional well-being.',
+    hi:'यह अभ्यास नकारात्मक ऊर्जा को कम करने और बेहतर शारीरिक, मानसिक व भावनात्मक स्वास्थ्य बनाए रखने में सहायक माना जाता है।',
+    te:'ఈ సాధన ప్రతికూలతను తగ్గించి, శారీరక, మానసిక మరియు భావోద్వేగ ఆరోగ్యానికి తోడ్పడుతుందని విశ్వసిస్తారు.',
+  },
+};
+
 
 function nameDesc(totRed,rating){
   if(LANG==='hi'){
@@ -2723,7 +2742,7 @@ function calcCompat(myDriver,myConductor,myMissing,myPresence,partnerDay,partner
     moderate:{
       label:{en:'Moderately Compatible',hi:'सामान्य मेल',te:'సాధారణ కలయిక'},
       body:{
-        en:'This relationship contains both strengths and challenges. There are several supportive indicators, but some differences may require patience and understanding. The relationship can work well when both partners communicate openly and respect each other\'s differences.',
+        en:'This relationship has good potential, but some challenges may arise due to differences in personality or approach. These challenges can be managed successfully only if both partners are willing to understand, communicate, and support each other.',
         hi:'यह नंबर कॉम्बिनेशन शादीशुदा जीवन और रिश्ते में अच्छे और चुनौतीपूर्ण दोनों तरह के संकेत देता है। समय-समय पर कुछ मतभेद आ सकते हैं, लेकिन ज़्यादातर परिस्थितियों में इन्हें आसानी से संभाला जा सकता है।',
         te:'ఈ సంఖ్యల కలయిక వైవాహిక జీవితం మరియు సంబంధంలో మంచి అంశాలతో పాటు కొన్ని సవాళ్లను కూడా సూచిస్తుంది. అప్పుడప్పుడు అభిప్రాయ భేదాలు రావచ్చు, కానీ చాలా సందర్భాల్లో వాటిని సులభంగా ఎదుర్కొని పరిష్కరించుకోవచ్చు.',
       },
@@ -2743,7 +2762,7 @@ function calcCompat(myDriver,myConductor,myMissing,myPresence,partnerDay,partner
         te:'మీ మధ్య పూరక శక్తి యొక్క కొన్ని ప్రాంతాలు ఉన్నాయి. ప్రతి భాగస్వామి తీసుకొచ్చే సంఖ్యలు మరియు లక్షణాలు మరొకటి సహజంగా కలిగి ఉండకపోవచ్చు. ఇది పరస్పర వృద్ధికి అవకాశాలను కలిగిస్తుంది, అయినప్పటికీ ఒకరి సహజ లయలలో పని చేయడం నేర్చుకోవడంలో సర్దుబాటు అవసరం కావచ్చు.',
       },
       guidance:{
-        en:'Focus on communication, compromise and emotional maturity. The strengths are capable of outweighing the challenges.',
+        en:'Mutual understanding, honest communication, and consistent effort will strengthen this relationship.',
         hi:'खुलकर बात करें, थोड़ा-थोड़ा झुकना सीखें और भावनाओं को समझदारी से संभालें। इस रिश्ते में ताकत चुनौतियों से ज़्यादा है।',
         te:'కమ్యూనికేషన్, రాజీ మరియు భావోద్వేగ పరిపక్వతపై దృష్టి పెట్టండి. బలాలు సవాళ్లను అధిగమించగల సామర్థ్యం కలిగి ఉన్నాయి.',
       },
@@ -3000,6 +3019,10 @@ function gen(_silent){
 
   // PY 5 years
   const years=[];for(let y=curYear+1;y<=curYear+5;y++)years.push({y,py:pyCalc(day,mon,y)});
+
+  // Current Personal Year & additional health remedy eligibility
+  const currentPY=pyCalc(day,mon,curYear);
+  const showHealthRemedy=isHealthRemedyEligible(driver,conductor,currentPY);
 
   // Remedies
   const remedies=getRemedies(missing,driver,conductor);
@@ -3369,7 +3392,7 @@ function gen(_silent){
     </div>`;
   }
 
-  // SUB 4: Master numbers (in strengths — show traits only)
+  // SUB 4: Master numbers (heading + description paragraph only)
   let sub4HTML='';
   if(masterList.length){
     sub4HTML=`<div class="subsec">
@@ -3380,11 +3403,8 @@ function gen(_silent){
           if(!d) return '';
           const L=LANG==='hi'?'hi':LANG==='te'?'te':'en';
           const data=d[L]||d.en;
-          // Hindi and Telugu both use a single approved paragraph; EN uses traits chips
-          if((L==='hi'||L==='te')&&data.para){
-            return `<div class="masterbox"><h4>${d.label}</h4><p style="font-size:.88rem;line-height:1.7;color:var(--ink);margin-top:.5rem">${data.para}</p></div>`;
-          }
-          return `<div class="masterbox"><h4>${d.label}</h4><div class="master-traits">${(data.traits||[]).map(tr=>`<span class="master-trait">${tr}</span>`).join('')}</div></div>`;
+          const descText=data.para||data.obs||'';
+          return `<div class="masterbox"><h4>${d.label}</h4><p style="font-size:.88rem;line-height:1.7;color:var(--ink);margin-top:.5rem">${descText}</p></div>`;
         }).join('')}
       </div>
     </div>`;
@@ -3592,27 +3612,12 @@ function gen(_silent){
       if(!d) return '';
       const L=LANG==='hi'?'hi':LANG==='te'?'te':'en';
       const data=d[L]||d.en;
-      const traitsLabel=L==='te'?'మీ లక్షణాలు':'Your Traits';
-      const obsLabel='Important Observation';
-      // Hindi and Telugu both render the approved single paragraph; EN renders traits chips + obs
-      if((L==='hi'||L==='te')&&data.para){
-        return `<div class="km-card" style="border-left:3px solid var(--accent)">
-          <div class="km-card-head">
-            <div class="km-card-title">${d.label}</div>
-          </div>
-          <p style="font-size:.88rem;line-height:1.75;color:var(--ink);margin-top:.6rem">${data.para}</p>
-        </div>`;
-      }
-      const traits=data.traits||[];
-      const obs=data.obs||'';
+      const descText=data.para||data.obs||'';
       return `<div class="km-card" style="border-left:3px solid var(--accent)">
         <div class="km-card-head">
           <div class="km-card-title">${d.label}</div>
         </div>
-        <div class="km-sub">${traitsLabel}</div>
-        <div class="master-traits">${traits.map(tr=>`<span class="master-trait">${tr}</span>`).join('')}</div>
-        <div class="km-sub">${obsLabel}</div>
-        <div class="km-obs">${obs}</div>
+        <p style="font-size:.88rem;line-height:1.75;color:var(--ink);margin-top:.6rem">${descText}</p>
       </div>`;
     }).join('')}
     </div>
@@ -3944,13 +3949,20 @@ function gen(_silent){
   <!-- ── REMEDIES ── -->
   ${sec('secRem')}
   ${(()=>{
-    if(!remedies.length){
-      const noMissLabel=LANG==='hi'?'आपके चार्ट में सभी नौ अंक उपस्थित हैं। कोई अनुपस्थित अंक नहीं है, इसलिए इस समय कोई विशेष उपाय आवश्यक नहीं है।':LANG==='te'?'మీ చార్ట్‌లో తొమ్మిది అంకాలు అన్నీ ఉన్నాయి. ఏ అంకమూ లేదు కాబట్టి ఇప్పుడు ప్రత్యేక పరిష్కారాలు అవసరం లేదు.':'All nine numbers are present in your chart. No numbers are missing, so no specific remedies are required at this time.';
-      return `<div class="rem-empty">${noMissLabel}</div>`;
-    }
     const L=LANG==='hi'?'hi':LANG==='te'?'te':'en';
     const remLabel='Recommended Remedy';
     const benLabel='Potential Benefits';
+    const healthCardHtml=showHealthRemedy?`<div class="rem-card" style="background:#fdf6f5;border:1px solid rgba(196,142,130,.35);border-left:3px solid #c08b80">
+        <div class="rem-card-title" style="color:#5e050f">Special Recommendation for You</div>
+        <div class="rem-sub">${remLabel}</div>
+        <div class="rem-remedy-text">${HEALTH_REMEDY_DATA.remedy[L]||HEALTH_REMEDY_DATA.remedy.en}</div>
+        <div class="rem-sub" style="margin-top:.9rem">${benLabel}</div>
+        <div class="rem-benefit-text">${HEALTH_REMEDY_DATA.benefit[L]||HEALTH_REMEDY_DATA.benefit.en}</div>
+      </div>`:'';
+    if(!remedies.length){
+      const noMissLabel=LANG==='hi'?'आपके चार्ट में सभी नौ अंक उपस्थित हैं। कोई अनुपस्थित अंक नहीं है, इसलिए इस समय कोई विशेष उपाय आवश्यक नहीं है।':LANG==='te'?'మీ చార్ట్‌లో తొమ్మిది అంకాలు అన్నీ ఉన్నాయి. ఏ అంకమూ లేదు కాబట్టి ఇప్పుడు ప్రత్యేక పరిష్కారాలు అవసరం లేదు.':'All nine numbers are present in your chart. No numbers are missing, so no specific remedies are required at this time.';
+      return `<div class="rem-empty">${noMissLabel}</div>${healthCardHtml}`;
+    }
     const forNumLabel=(n)=>`For Number ${n}`;
     // Group cards by identical remedy text
     const grouped=[];
@@ -3995,7 +4007,7 @@ function gen(_silent){
         <div class="rem-sub" style="margin-top:.9rem">${benLabel}</div>
         ${benefitsHtml}
       </div>`;
-    }).join('');
+    }).join('')+healthCardHtml;
   })()}
 
   <!-- ── RELATIONSHIP COMPATIBILITY ── -->
