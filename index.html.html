@@ -3213,8 +3213,8 @@ function gen(_silent){
     },
     '1-6':{
       en:'You have strong business potential. Hospitality, luxury and lifestyle industries can bring good opportunities.',
-      hi:'आप खुद का काम बहुत अच्छे से संभाल सकते हैं। होटल, घूमना-फिरना (Hospitality) और फैशन या लाइफस्टाइल से जुड़े कामों में आपका भाग्य अच्छा रहेगा।',
-      te:'మీరు మీ సొంత వ్యాపారాన్ని చాలా బాగా నిర్వహించగలరు. హోటల్, ట్రావెల్ (హాస్పిటాలిటీ) మరియు ఫ్యాషన్ లేదా లైఫ్‌స్టైల్‌కు సంబంధించిన పనుల్లో మీ అదృష్టం బాగుంటుంది.',
+      hi:'आप बिज़नेस के क्षेत्र में अच्छा कर सकते हैं। हॉस्पिटैलिटी, लग्ज़री और लाइफस्टाइल से जुड़े कामों में भी आपके लिए अच्छे अवसर बन सकते हैं।',
+      te:'మీరు వ్యాపార రంగంలో మంచి విజయాన్ని సాధించగలరు. హాస్పిటాలిటీ, లగ్జరీ మరియు లైఫ్‌స్టైల్‌కు సంబంధించిన రంగాల్లో కూడా మీకు మంచి అవకాశాలు లభించవచ్చు.',
     },
     '1-9':{
       en:'This is one of the strongest combinations, indicating high potential for success, leadership and influence.',
@@ -3262,9 +3262,9 @@ function gen(_silent){
       te:'మీరు సైన్యం (మిలిటరీ), పోలీసు లేదా చాలా క్రమశిక్షణ మరియు బాధ్యత అవసరమయ్యే ఏ ఉద్యోగానికైనా సరిగ్గా సరిపోతారు.',
     },
     '4-1':{
-      en:'You have strong potential in sales and marketing-related fields.',
-      hi:'आप किसी भी चीज को बेचने (Sales) और उसका प्रचार करने (Marketing) के काम में सबसे एक्सपर्ट साबित हो सकते हैं।',
-      te:'మీరు ఏదైనా వస్తువును అమ్మడం (సేల్స్) మరియు దాన్ని ప్రచారం చేయడం (మార్కెటింగ్) పనిలో అత్యంత నిపుణులుగా నిరూపించుకోగలరు.',
+      en:'',
+      hi:'',
+      te:'',
     },
     '4-6':{
       en:'Hospitality, luxury and lifestyle industries can be favourable for your growth and success.',
@@ -3362,11 +3362,13 @@ function gen(_silent){
   let sub2HTML='';
   if(_dcStrMatch){
     const _dcText=LANG==='hi'?_dcStrMatch.hi:LANG==='te'?_dcStrMatch.te:_dcStrMatch.en;
+    if(_dcText){
     const _sub2Title='Strengths From Your Number Combination';
     sub2HTML=`<div class="subsec">
       <div class="subsec-title">${_sub2Title}</div>
       <div class="subsec-body"><p>${_dcText}</p></div>
     </div>`;
+    }
   }
 
   // SUB 2B: Yogas (separate section, only if active yogas exist)
@@ -3962,7 +3964,6 @@ function gen(_silent){
       const noMissLabel=LANG==='hi'?'आपके चार्ट में सभी नौ अंक उपस्थित हैं। कोई अनुपस्थित अंक नहीं है, इसलिए इस समय कोई विशेष उपाय आवश्यक नहीं है।':LANG==='te'?'మీ చార్ట్‌లో తొమ్మిది అంకాలు అన్నీ ఉన్నాయి. ఏ అంకమూ లేదు కాబట్టి ఇప్పుడు ప్రత్యేక పరిష్కారాలు అవసరం లేదు.':'All nine numbers are present in your chart. No numbers are missing, so no specific remedies are required at this time.';
       return `<div class="rem-empty">${noMissLabel}</div>${healthCardHtml}`;
     }
-    const forNumLabel=(n)=>`For Number ${n}`;
     // Group cards by identical remedy text
     const grouped=[];
     const seen=new Map();
@@ -3991,13 +3992,7 @@ function gen(_silent){
       // Build benefits block
       const benefitsHtml=grp.benefits.map(b=>{
         const benefitText=b.benefit[L]||b.benefit.en;
-        if(b.nums.length===1){
-          return `<div class="rem-sub" style="margin-top:.55rem">${forNumLabel(b.nums[0])}</div><div class="rem-benefit-text">${benefitText}</div>`;
-        } else {
-          const nl=b.nums.slice(0,-1).join(', ')+' & '+b.nums[b.nums.length-1];
-          const forLbl=`For Numbers ${nl}`;
-          return `<div class="rem-sub" style="margin-top:.55rem">${forLbl}</div><div class="rem-benefit-text">${benefitText}</div>`;
-        }
+        return `<div class="rem-benefit-text">${benefitText}</div>`;
       }).join('');
       return `<div class="rem-card">
         <div class="rem-card-title">${titleText}</div>
