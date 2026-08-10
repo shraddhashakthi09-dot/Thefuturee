@@ -2539,7 +2539,7 @@ const REL_EXTREME={
 };
 
 // Raj Yoga / chart lines to check for completion
-const CHART_LINES=[[1,2,3],[4,5,6],[7,8,9],[1,5,9],[3,5,7],[2,5,8],[4,5,6]];
+const CHART_LINES=[[4,3,8],[9,5,1],[2,7,6],[4,9,2],[3,5,7],[8,1,6],[4,5,6],[2,5,8]];
 
 function buildPresenceMap(day,mon,year,gender){
   // Rule: DOB digits + driver (day 10-31 only) + conductor always + kua always
@@ -2615,16 +2615,23 @@ function calcCompat(myDriver,myConductor,myMissing,myPresence,partnerDay,partner
   const iAlsoFill=myPresArr.filter(n=>partnerMissingSet.has(n));
   const totalFills=partnerFills.length+iAlsoFill.length;
 
-  // ── CHECKLIST 3: Line/Plane completion — symmetric (new lines for EITHER person) ──
-  const combined=new Set([...myPresArr,...pPresent]);
-  const completedLines=CHART_LINES.filter(line=>line.every(n=>combined.has(n)));
-  const alreadyCompleteByMe=CHART_LINES.filter(line=>line.every(n=>myPresArr.includes(n)));
-  const alreadyCompleteByPartner=CHART_LINES.filter(line=>line.every(n=>pPresent.includes(n)));
-  const alreadyCompleteKeys=new Set([
-    ...alreadyCompleteByMe.map(l=>l.join()),
-    ...alreadyCompleteByPartner.map(l=>l.join())
-  ]);
-  const newlyCompletedLines=completedLines.filter(l=>!alreadyCompleteKeys.has(l.join()));
+  // ── CHECKLIST 3: Line/Plane completion — directional partner-completion rule ──
+  // A line counts only when one person has 2 of the 3 numbers and the OTHER person
+  // supplies the specific missing 3rd number. A line already complete in either
+  // person's own chart alone never counts. Each qualifying line counts once,
+  // even if both directions independently satisfy it.
+  const newlyCompletedLines=CHART_LINES.filter(line=>{
+    const myHas=line.filter(n=>myPresArr.includes(n));
+    const pHas=line.filter(n=>pPresent.includes(n));
+    if(myHas.length===3||pHas.length===3) return false; // already complete alone — not a relationship completion
+    const missingFromMine=line.filter(n=>!myPresArr.includes(n));
+    const missingFromPartner=line.filter(n=>!pPresent.includes(n));
+    // Person 2 completes Person 1's line: I have 2, partner has the missing 1
+    const partnerCompletesMe = myHas.length===2 && missingFromMine.length===1 && pPresent.includes(missingFromMine[0]);
+    // Person 1 completes Person 2's line: partner has 2, I have the missing 1
+    const iCompletePartner = pHas.length===2 && missingFromPartner.length===1 && myPresArr.includes(missingFromPartner[0]);
+    return partnerCompletesMe||iCompletePartner;
+  });
 
   // ── CHECKLIST 4: Chart DC quality — symmetric (both charts evaluated) ──
   const pEnemyDC=(REL_ENEMY[pDriver]||[]).includes(pConductor);
