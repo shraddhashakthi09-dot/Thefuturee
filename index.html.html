@@ -2522,14 +2522,14 @@ function nameDesc(totRed,rating){
 // Driver enemy table (strict per document)
 const REL_ENEMY={
   1:[8],
-  2:[8,4,9,6,7],
-  3:[6,4,8,9,7],
-  4:[4,8,2,9,3],
-  5:[7,8,9,4],
-  6:[3,8,9,2,4],
-  7:[8,2,9,7],
-  8:[1,4,8,2,9],
-  9:[4,2,6,7,8,9],
+  2:[8,4,9],
+  3:[6],
+  4:[4,8,2,9],
+  5:[],
+  6:[3],
+  7:[],
+  8:[1,2,4,8],
+  9:[4,2],
 };
 // Special extreme warnings
 const REL_EXTREME={
@@ -2537,6 +2537,24 @@ const REL_EXTREME={
   8:{1:true,4:true},
   9:{4:true,2:true},
 };
+
+// Pairwise Driver-vs-Driver relationship classification (Enemy > Neutral > Friendly priority
+// already resolved per approved table — symmetric by construction, used ONLY for the
+// Driver vs Driver checklist; REL_ENEMY above remains separately used for DC-quality checks).
+const DRIVER_PAIR_CLASS={
+  1:{1:'friendly',2:'friendly',3:'friendly',4:'neutral',5:'friendly',6:'friendly',7:'neutral',8:'enemy',9:'friendly'},
+  2:{1:'friendly',2:'friendly',3:'friendly',4:'enemy',5:'friendly',6:'neutral',7:'neutral',8:'enemy',9:'enemy'},
+  3:{1:'friendly',2:'friendly',3:'friendly',4:'neutral',5:'friendly',6:'enemy',7:'friendly',8:'neutral',9:'neutral'},
+  4:{1:'neutral',2:'enemy',3:'neutral',4:'enemy',5:'neutral',6:'neutral',7:'friendly',8:'enemy',9:'enemy'},
+  5:{1:'friendly',2:'friendly',3:'friendly',4:'neutral',5:'friendly',6:'friendly',7:'neutral',8:'neutral',9:'neutral'},
+  6:{1:'friendly',2:'neutral',3:'enemy',4:'neutral',5:'friendly',6:'friendly',7:'friendly',8:'neutral',9:'neutral'},
+  7:{1:'neutral',2:'neutral',3:'friendly',4:'friendly',5:'neutral',6:'friendly',7:'neutral',8:'neutral',9:'neutral'},
+  8:{1:'enemy',2:'enemy',3:'neutral',4:'enemy',5:'neutral',6:'neutral',7:'neutral',8:'enemy',9:'neutral'},
+  9:{1:'friendly',2:'enemy',3:'neutral',4:'enemy',5:'neutral',6:'neutral',7:'neutral',8:'neutral',9:'neutral'},
+};
+function driverPairClass(a,b){
+  return (DRIVER_PAIR_CLASS[a]&&DRIVER_PAIR_CLASS[a][b])||'neutral';
+}
 
 // Raj Yoga / chart lines to check for completion
 const CHART_LINES=[[4,3,8],[9,5,1],[2,7,6],[4,9,2],[3,5,7],[8,1,6],[4,5,6],[2,5,8]];
@@ -2600,10 +2618,10 @@ function calcCompat(myDriver,myConductor,myMissing,myPresence,partnerDay,partner
   const pMissing=[1,2,3,4,5,6,7,8,9].filter(n=>!pPresenceSet.has(n));
 
 
-  // ── CHECKLIST 1: Driver vs Driver — symmetric (conflict if EITHER sees the other as enemy) ──
-  const myEnemies=REL_ENEMY[myDriver]||[];
-  const pEnemies=REL_ENEMY[pDriver]||[];
-  const driverConflict=myEnemies.includes(pDriver)||pEnemies.includes(myDriver);
+  // ── CHECKLIST 1: Driver vs Driver — pairwise classification (Enemy > Neutral > Friendly) ──
+  const driverPair=driverPairClass(myDriver,pDriver);
+  const driverConflict=driverPair==='enemy';
+  const driverFriendly=driverPair==='friendly';
   const extremeConflict=(REL_EXTREME[myDriver]&&REL_EXTREME[myDriver][pDriver])||
                         (REL_EXTREME[pDriver]&&REL_EXTREME[pDriver][myDriver]);
 
@@ -2643,8 +2661,21 @@ function calcCompat(myDriver,myConductor,myMissing,myPresence,partnerDay,partner
   const myHas5or6=myPresArr.includes(5)||myPresArr.includes(6);
   const eitherHas5or6=partnerHas5or6||myHas5or6;
 
+  // ── CHECKLIST 5: Special 5/6 Partner-Filling Rule ──
+  // Strong signal ONLY when one person is missing 5 and/or 6 and the other specifically
+  // supplies it (direction-agnostic), AND the two Drivers are NOT Enemy numbers. This is
+  // independent of ordinary Number Sharing (which is left untouched) and is a flat signal —
+  // filling one of 5/6 or both counts the same, no extra bonus for filling both.
+  const myMissing56 = myMissing.filter(n=>n===5||n===6);
+  const partnerFillsMy56 = myMissing56.filter(n=>pPresent.includes(n));
+  const pMissing56 = pMissing.filter(n=>n===5||n===6);
+  const iFillPartner56 = pMissing56.filter(n=>myPresArr.includes(n));
+  const filled56 = new Set([...partnerFillsMy56, ...iFillPartner56]);
+  const has5or6PartnerFill = filled56.size >= 1 && !driverConflict;
+
   // ── VERDICT ENGINE — criteria-based, never shown to client ──
   const hasDriverConflict  = driverConflict;
+  const hasDriverFriendly  = driverFriendly;
   const hasExtremeConflict = extremeConflict;
   const strongSharing      = (partnerFills.length + iAlsoFill.length) >= 3;
   const someSharing        = (partnerFills.length + iAlsoFill.length) >= 1;
@@ -2654,13 +2685,14 @@ function calcCompat(myDriver,myConductor,myMissing,myPresence,partnerDay,partner
   const has5or6            = eitherHas5or6; // either chart has 5 or 6
 
   let positives = 0;
-  if(!hasDriverConflict)   positives++;
+  if(hasDriverFriendly)    positives++;
   if(strongSharing)        positives += 2;
   else if(someSharing)     positives++;
   if(hasLineCompletion)    positives++;
   if(strongLineCompletion) positives++;
   if(goodPartnerDC)        positives++;
   if(has5or6)              positives++;
+  if(has5or6PartnerFill)   positives += 2;
 
   let negatives = 0;
   if(hasDriverConflict)    negatives++;
@@ -2685,8 +2717,8 @@ function calcCompat(myDriver,myConductor,myMissing,myPresence,partnerDay,partner
   else if(!hasDriverConflict && goodPartnerDC && someSharing && hasLineCompletion && has5or6){
     verdictKey='high';
   }
-  // HIGHLY COMPATIBLE: no conflict + strong sharing + good DC + 5or6
-  else if(!hasDriverConflict && goodPartnerDC && strongSharing && has5or6){
+  // HIGHLY COMPATIBLE: no conflict + strong sharing OR strong 5/6 partner-fill + good DC + 5or6
+  else if(!hasDriverConflict && goodPartnerDC && (strongSharing||has5or6PartnerFill) && has5or6){
     verdictKey='high';
   }
   // MODERATELY COMPATIBLE: no conflict + sharing + no major danger + 5or6
@@ -2709,6 +2741,12 @@ function calcCompat(myDriver,myConductor,myMissing,myPresence,partnerDay,partner
   else{
     verdictKey=negatives>positives?'risk':'challenging';
   }
+
+  // User-facing categories are limited to exactly three: Highly Compatible, Moderately
+  // Compatible, Challenging Compatibility. The internal 'risk' branch above is a scoring
+  // classification only — it must always display under Challenging Compatibility, using
+  // the SAME 'challenging' label/content, not a separate fourth category.
+  if(verdictKey==='risk') verdictKey='challenging';
 
   const VERDICTS={
     high:{
