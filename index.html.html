@@ -2661,18 +2661,6 @@ function calcCompat(myDriver,myConductor,myMissing,myPresence,partnerDay,partner
   const myHas5or6=myPresArr.includes(5)||myPresArr.includes(6);
   const eitherHas5or6=partnerHas5or6||myHas5or6;
 
-  // ── CHECKLIST 5: Special 5/6 Partner-Filling Rule ──
-  // Strong signal ONLY when one person is missing 5 and/or 6 and the other specifically
-  // supplies it (direction-agnostic), AND the two Drivers are NOT Enemy numbers. This is
-  // independent of ordinary Number Sharing (which is left untouched) and is a flat signal —
-  // filling one of 5/6 or both counts the same, no extra bonus for filling both.
-  const myMissing56 = myMissing.filter(n=>n===5||n===6);
-  const partnerFillsMy56 = myMissing56.filter(n=>pPresent.includes(n));
-  const pMissing56 = pMissing.filter(n=>n===5||n===6);
-  const iFillPartner56 = pMissing56.filter(n=>myPresArr.includes(n));
-  const filled56 = new Set([...partnerFillsMy56, ...iFillPartner56]);
-  const has5or6PartnerFill = filled56.size >= 1 && !driverConflict;
-
   // ── VERDICT ENGINE — criteria-based, never shown to client ──
   const hasDriverConflict  = driverConflict;
   const hasDriverFriendly  = driverFriendly;
@@ -2692,7 +2680,6 @@ function calcCompat(myDriver,myConductor,myMissing,myPresence,partnerDay,partner
   if(strongLineCompletion) positives++;
   if(goodPartnerDC)        positives++;
   if(has5or6)              positives++;
-  if(has5or6PartnerFill)   positives += 2;
 
   let negatives = 0;
   if(hasDriverConflict)    negatives++;
@@ -2717,8 +2704,8 @@ function calcCompat(myDriver,myConductor,myMissing,myPresence,partnerDay,partner
   else if(!hasDriverConflict && goodPartnerDC && someSharing && hasLineCompletion && has5or6){
     verdictKey='high';
   }
-  // HIGHLY COMPATIBLE: no conflict + strong sharing OR strong 5/6 partner-fill + good DC + 5or6
-  else if(!hasDriverConflict && goodPartnerDC && (strongSharing||has5or6PartnerFill) && has5or6){
+  // HIGHLY COMPATIBLE: no conflict + strong sharing + good DC + 5or6
+  else if(!hasDriverConflict && goodPartnerDC && strongSharing && has5or6){
     verdictKey='high';
   }
   // MODERATELY COMPATIBLE: no conflict + sharing + no major danger + 5or6
