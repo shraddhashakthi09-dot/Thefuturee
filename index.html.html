@@ -3940,6 +3940,33 @@ function gen(_silent){
     </div>`;
   })()}
 
+  <!-- ── PERSONAL YEAR ── -->
+  ${sec('secPY')}
+  <div class="py-roadmap">
+    ${years.map(({y,py})=>{
+      // Look up driver-specific description: PY first, then driver
+      const pyRow=PY_NEW_DESC[py]||{};
+      const nd=pyRow[driver]||null;
+      const rating=nd?nd.rating:'mod';
+      const ratingClass=rating==='good'?'py-good':rating==='bad'?'py-bad':'py-mod';
+      const yearLabel=rating==='good'?'Outstanding Year':rating==='bad'?'Challenging Year':'Balanced Year';
+      const descText=nd
+        ?(LANG==='hi'?nd.hi:LANG==='te'?nd.te:nd.en)||nd.en
+        :(LANG==='hi'?'':LANG==='te'?'':'');
+      // Check for special note — when present, it fully replaces the normal description
+      const noteKey=`${driver}-${py}`;
+      const specialNote=PY_SPECIAL_NOTE[noteKey]||null;
+      const finalDescText=specialNote
+        ?((LANG==='hi'?specialNote.text.hi:LANG==='te'?specialNote.text.te:specialNote.text.en)||descText)
+        :descText;
+      return`<div class="py-item ${ratingClass}">
+        <div class="py-item-year">${y}</div>
+        <div class="py-item-label">${yearLabel}</div>
+        <div class="py-item-desc">${finalDescText}</div>
+      </div>`;
+    }).join('')}
+  </div>
+
   <!-- ── REMEDIES ── -->
   ${sec('secRem')}
   ${(()=>{
@@ -3996,33 +4023,6 @@ function gen(_silent){
       </div>`;
     }).join('')+healthCardHtml;
   })()}
-
-  <!-- ── PERSONAL YEAR ── -->
-  ${sec('secPY')}
-  <div class="py-roadmap">
-    ${years.map(({y,py})=>{
-      // Look up driver-specific description: PY first, then driver
-      const pyRow=PY_NEW_DESC[py]||{};
-      const nd=pyRow[driver]||null;
-      const rating=nd?nd.rating:'mod';
-      const ratingClass=rating==='good'?'py-good':rating==='bad'?'py-bad':'py-mod';
-      const yearLabel=rating==='good'?'Outstanding Year':rating==='bad'?'Challenging Year':'Balanced Year';
-      const descText=nd
-        ?(LANG==='hi'?nd.hi:LANG==='te'?nd.te:nd.en)||nd.en
-        :(LANG==='hi'?'':LANG==='te'?'':'');
-      // Check for special note — when present, it fully replaces the normal description
-      const noteKey=`${driver}-${py}`;
-      const specialNote=PY_SPECIAL_NOTE[noteKey]||null;
-      const finalDescText=specialNote
-        ?((LANG==='hi'?specialNote.text.hi:LANG==='te'?specialNote.text.te:specialNote.text.en)||descText)
-        :descText;
-      return`<div class="py-item ${ratingClass}">
-        <div class="py-item-year">${y}</div>
-        <div class="py-item-label">${yearLabel}</div>
-        <div class="py-item-desc">${finalDescText}</div>
-      </div>`;
-    }).join('')}
-  </div>
 
   <!-- ── RELATIONSHIP COMPATIBILITY ── -->
   ${(()=>{
