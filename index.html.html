@@ -259,6 +259,7 @@ body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;f
 .rem-challenges li::before{content:'·';position:absolute;left:0;color:var(--red)}
 .rem-remedy-text{font-size:.9rem;color:var(--ink);line-height:1.65;font-weight:500;background:var(--cream);border-radius:8px;padding:.6rem .85rem}
 .rem-benefit-text{font-size:.86rem;color:#2d6a4f;line-height:1.65;background:#f4fff6;border-radius:8px;padding:.6rem .85rem;border-left:2px solid #a8d8a0}
+.rem-benefit-text+.rem-benefit-text{margin-top:.5rem}
 .rem-empty{font-size:.88rem;color:var(--muted);padding:.6rem 0}
 .profs{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:.45rem;margin-bottom:.5rem}
 .prof{background:var(--cream);border:1px solid var(--border);border-radius:8px;padding:.45rem .8rem;font-size:.84rem;text-align:center;color:var(--accent)}
@@ -516,7 +517,7 @@ const TL={
     sub2:'Strengths From Your Number Combination',
     sub3:'Strengths From Your Active Planes',
     sub4:'Strengths From Your Master Numbers',
-    sub5:'The Influence of Each Number',
+    sub5:'The Influence of Each Number in Your Chart',
     sub6:'Strengths From Your Repeated Numbers',
     subBN:'Challenges From Your Numbers',
     missTitle:'Growth Area',
@@ -568,7 +569,7 @@ const TL={
     sub2:'Strengths From Your Number Combination',
     sub3:'Strengths From Your Active Planes',
     sub4:'Strengths From Your Master Numbers',
-    sub5:'The Influence of Each Number',
+    sub5:'The Influence of Each Number in Your Chart',
     sub6:'Strengths From Your Repeated Numbers',
     subBN:'Challenges From Your Numbers',
     missTitle:'Growth Area',
@@ -620,7 +621,7 @@ const TL={
     sub2:'Strengths From Your Number Combination',
     sub3:'Strengths From Your Active Planes',
     sub4:'Strengths From Your Master Numbers',
-    sub5:'The Influence of Each Number',
+    sub5:'The Influence of Each Number in Your Chart',
     sub6:'Strengths From Your Repeated Numbers',
     subBN:'Challenges From Your Numbers',
     missTitle:'Growth Area',
@@ -3930,19 +3931,6 @@ function gen(_silent){
       <div class="name-entered-label">${enteredL}</div>
       <div class="name-display">${fn} ${ln}</div>
 
-      <div class="name-cards">
-        <div class="name-card">
-          <div class="name-card-label">${fnLabel}</div>
-          ${fnRaw!==fnRed?`<div class="name-card-compound">${fnRaw} →</div>`:''}
-          <div class="name-card-number">${fnRed}</div>
-        </div>
-        <div class="name-card">
-          <div class="name-card-label">${fullLabel}</div>
-          ${fullRaw!==fullRed?`<div class="name-card-compound">${fullRaw} →</div>`:''}
-          <div class="name-card-number">${fullRed}</div>
-        </div>
-      </div>
-
       <div class="name-assessment-label">${assessLabel}</div>
       <div class="${isGood?'name-verdict-premium-good':'name-verdict-premium-bad'}">
         <div class="nvp-title">${isGood?'✦ '+assessLabel:assessLabel}</div>
@@ -3952,40 +3940,13 @@ function gen(_silent){
     </div>`;
   })()}
 
-  <!-- ── PERSONAL YEAR ── -->
-  ${sec('secPY')}
-  <div class="py-roadmap">
-    ${years.map(({y,py})=>{
-      // Look up driver-specific description: PY first, then driver
-      const pyRow=PY_NEW_DESC[py]||{};
-      const nd=pyRow[driver]||null;
-      const rating=nd?nd.rating:'mod';
-      const ratingClass=rating==='good'?'py-good':rating==='bad'?'py-bad':'py-mod';
-      const yearLabel=rating==='good'?'Outstanding Year':rating==='bad'?'Challenging Year':'Balanced Year';
-      const descText=nd
-        ?(LANG==='hi'?nd.hi:LANG==='te'?nd.te:nd.en)||nd.en
-        :(LANG==='hi'?'':LANG==='te'?'':'');
-      // Check for special note — when present, it fully replaces the normal description
-      const noteKey=`${driver}-${py}`;
-      const specialNote=PY_SPECIAL_NOTE[noteKey]||null;
-      const finalDescText=specialNote
-        ?((LANG==='hi'?specialNote.text.hi:LANG==='te'?specialNote.text.te:specialNote.text.en)||descText)
-        :descText;
-      return`<div class="py-item ${ratingClass}">
-        <div class="py-item-year">${y}</div>
-        <div class="py-item-label">${yearLabel}</div>
-        <div class="py-item-desc">${finalDescText}</div>
-      </div>`;
-    }).join('')}
-  </div>
-
   <!-- ── REMEDIES ── -->
   ${sec('secRem')}
   ${(()=>{
     const L=LANG==='hi'?'hi':LANG==='te'?'te':'en';
     const remLabel='Recommended Remedy';
     const benLabel='Potential Benefits';
-    const healthCardHtml=showHealthRemedy?`<div class="rem-card" style="background:#fdf6f5;border:1px solid rgba(196,142,130,.35);border-left:3px solid #c08b80">
+    const healthCardHtml=showHealthRemedy?`<div class="rem-card">
         <div class="rem-card-title" style="color:#5e050f">Special Recommendation for You</div>
         <div class="rem-sub">${remLabel}</div>
         <div class="rem-remedy-text">${HEALTH_REMEDY_DATA.remedy[L]||HEALTH_REMEDY_DATA.remedy.en}</div>
@@ -4035,6 +3996,33 @@ function gen(_silent){
       </div>`;
     }).join('')+healthCardHtml;
   })()}
+
+  <!-- ── PERSONAL YEAR ── -->
+  ${sec('secPY')}
+  <div class="py-roadmap">
+    ${years.map(({y,py})=>{
+      // Look up driver-specific description: PY first, then driver
+      const pyRow=PY_NEW_DESC[py]||{};
+      const nd=pyRow[driver]||null;
+      const rating=nd?nd.rating:'mod';
+      const ratingClass=rating==='good'?'py-good':rating==='bad'?'py-bad':'py-mod';
+      const yearLabel=rating==='good'?'Outstanding Year':rating==='bad'?'Challenging Year':'Balanced Year';
+      const descText=nd
+        ?(LANG==='hi'?nd.hi:LANG==='te'?nd.te:nd.en)||nd.en
+        :(LANG==='hi'?'':LANG==='te'?'':'');
+      // Check for special note — when present, it fully replaces the normal description
+      const noteKey=`${driver}-${py}`;
+      const specialNote=PY_SPECIAL_NOTE[noteKey]||null;
+      const finalDescText=specialNote
+        ?((LANG==='hi'?specialNote.text.hi:LANG==='te'?specialNote.text.te:specialNote.text.en)||descText)
+        :descText;
+      return`<div class="py-item ${ratingClass}">
+        <div class="py-item-year">${y}</div>
+        <div class="py-item-label">${yearLabel}</div>
+        <div class="py-item-desc">${finalDescText}</div>
+      </div>`;
+    }).join('')}
+  </div>
 
   <!-- ── RELATIONSHIP COMPATIBILITY ── -->
   ${(()=>{
@@ -4169,17 +4157,32 @@ function _restoreReportState(){
   const state=_readStoredState();
   if(!state||!state.fn||!state.ln) return;
   try{
-    const set=(id,val)=>{const el=document.getElementById(id); if(el&&val!==undefined&&val!=='') el.value=val;};
+    // Only fill a field that is still blank. If the user has already typed
+    // into it (or the browser's own reload-restore already populated it)
+    // by the time this runs, that value must win — this restore exists to
+    // recover state after a genuine tab discard/bfcache eviction where the
+    // DOM comes back empty, not to overwrite whatever the user currently
+    // has entered with an older saved value.
+    const set=(id,val)=>{const el=document.getElementById(id); if(el&&val!==undefined&&val!==''&&!el.value) el.value=val;};
     set('fn',state.fn); set('ln',state.ln);
-    set('dd',state.dd); set('dm',state.dm); set('dy',state.dy);
+    // DOB fields (day/month/year — self and partner) are deliberately never
+    // auto-restored here. They feed the numerology calculations directly,
+    // so silently repopulating them from a previous session is exactly what
+    // was replacing a freshly entered year (e.g. 2006) with an old saved one
+    // (e.g. 1992). The user must always re-enter DOB after a same-session
+    // reload; nothing but the user's own typing may ever set these fields.
     if(state.dg) set('dg',state.dg);
     if(state.lang&&state.lang!==LANG) setLang(state.lang);
     if(state.compatOn){
       const sw=document.getElementById('compat-switch');
       if(sw&&!sw.classList.contains('on')) toggleCompat();
-      set('pname',state.pname); set('pdd',state.pdd); set('pmm',state.pmm); set('pyr',state.pyr);
+      set('pname',state.pname);
     }
-    gen(true);
+    // Only auto-generate if DOB (self) is already present in the DOM —
+    // which, per the above, can now only be true because the user typed
+    // it. Never call gen() off restored/synthetic DOB data.
+    const _dd=document.getElementById('dd').value,_dm=document.getElementById('dm').value,_dy=document.getElementById('dy').value;
+    if(_dd&&_dm&&_dy) gen(true);
   }catch(e){ /* corrupted/incompatible saved state — ignore and leave the form blank */ }
 }
 
