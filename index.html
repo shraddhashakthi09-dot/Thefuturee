@@ -401,7 +401,7 @@ footer{text-align:center;padding:2rem;color:var(--muted);font-size:.78rem;border
       <div class="compat-toggle-row">
         <div class="compat-toggle-text-col">
           <div class="compat-toggle-title" id="lbl-compat-title">Relationship Compatibility Analysis ♡</div>
-          <div class="compat-toggle-sub" id="lbl-compat-sub">Discover your relationship strengths, challenges and long-term relationship potential through advanced numerology matching.</div>
+          <div class="compat-toggle-sub" id="lbl-compat-sub">Open to explore your compatibility with your potential partner.</div>
         </div>
         <button class="compat-switch" id="compat-switch" onclick="toggleCompat()" role="switch" aria-checked="false" aria-label="Enable Relationship Compatibility">
           <span class="compat-switch-thumb"></span>
@@ -413,7 +413,7 @@ footer{text-align:center;padding:2rem;color:var(--muted);font-size:.78rem;border
     <div class="compat-panel" id="compat-panel">
       <div class="compat-card">
         <div class="compat-card-label" id="lbl-partner">♡ Partner Information</div>
-        <div class="compat-card-desc" id="lbl-compat-desc">Add your partner's details to unlock a complete compatibility analysis based on Birth Chart Matching, Number Compatibility and Number Sharing.</div>
+        <div class="compat-card-desc" id="lbl-compat-desc">Enter your potential partner's details to explore your compatibility.</div>
         <div class="compat-fields">
           <div class="compat-field-full">
             <label class="compat-label" id="lbl-pname">Partner's Full Name</label>
@@ -450,8 +450,8 @@ footer{text-align:center;padding:2rem;color:var(--muted);font-size:.78rem;border
         </div>
       </div>
     </div>
-    <button class="btn" id="gen-btn" onclick="gen()">Unlock Your Complete Report — ₹96</button>
-    <div class="pay-secure-note" id="lbl-pay-secure">🔒 Secure payment powered by Razorpay</div>
+    <button class="btn" id="gen-btn" onclick="gen()">Unlock My Complete Report — ₹96</button>
+    <div class="pay-secure-note" id="lbl-pay-secure">🔒 Secure payment via Razorpay</div>
     <div class="pay-note" id="pay-note" style="display:none"></div>
   </div>
 </div>
@@ -479,10 +479,10 @@ for(let i=1;i<=31;i++){const o=document.createElement('option');o.value=i;o.text
 // ── LANGUAGE ──
 let LANG='en';
 const TL={
-  en:{ft:'Enter Your Details',fn:'First Name',ln:'Last Name',dy:'Date',dm:'Month',yr:'Year',gn:'Gender',btn:'Unlock Your Complete Report — ₹96',
+  en:{ft:'Enter Your Details',fn:'First Name',ln:'Last Name',dy:'Date',dm:'Month',yr:'Year',gn:'Gender',btn:'Unlock My Complete Report — ₹96',
     foot:'TheFuturee · Chaldean Numerology · For guidance purposes only',
     priceLine:'Complete Personalised Report — ₹96',
-    paySecure:'🔒 Secure payment powered by Razorpay',
+    paySecure:'🔒 Secure payment via Razorpay',
     payWait:'Please wait…',
     payVerifying:'Verifying your payment…',
     payCancelled:'Payment cancelled — your details are safe. Try again anytime.',
@@ -680,7 +680,7 @@ function setLang(l){
   const compatLabels={
     'compat-toggle':{en:'Include Relationship Compatibility',hi:'रिश्ते की अनुकूलता जोड़ें',te:'సంబంధ అనుకూలత చేర్చండి'},
     'partner':{en:'♡ Partner Information',hi:'♡ साथी की जानकारी',te:'♡ భాగస్వామి సమాచారం'},
-    'compat-desc':{en:"Add your partner's details to unlock a complete compatibility analysis based on Birth Chart Matching, Number Compatibility and Number Sharing.",hi:'जन्म चार्ट मिलान, अंक अनुकूलता और अंक साझाकरण पर आधारित पूर्ण अनुकूलता विश्लेषण अनलॉक करने के लिए अपने साथी का विवरण जोड़ें।',te:'బర్త్ చార్ట్ మ్యాచింగ్, అంక అనుకూలత మరియు నంబర్ షేరింగ్ ఆధారంగా పూర్తి అనుకూలత విశ్లేషణ అన్‌లాక్ చేయడానికి మీ భాగస్వామి వివరాలు జోడించండి.'},
+    'compat-desc':{en:"Enter your potential partner's details to explore your compatibility.",hi:'जन्म चार्ट मिलान, अंक अनुकूलता और अंक साझाकरण पर आधारित पूर्ण अनुकूलता विश्लेषण अनलॉक करने के लिए अपने साथी का विवरण जोड़ें।',te:'బర్త్ చార్ట్ మ్యాచింగ్, అంక అనుకూలత మరియు నంబర్ షేరింగ్ ఆధారంగా పూర్తి అనుకూలత విశ్లేషణ అన్‌లాక్ చేయడానికి మీ భాగస్వామి వివరాలు జోడించండి.'},
     'pname':{en:"Partner's Full Name",hi:'साथी का पूरा नाम',te:'భాగస్వామి పూర్తి పేరు'},
     'pdob':{en:'Date of Birth',hi:'जन्म तारीख',te:'పుట్టిన తేదీ'},
     'pgender':{en:'Gender',hi:'लिंग',te:'లింగం'},
