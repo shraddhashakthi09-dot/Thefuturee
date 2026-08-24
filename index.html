@@ -1361,6 +1361,9 @@ const DC_WEAK={
   '9-9':{en:'Marriage-related challenges are more likely with your combination. Long-term relationships may experience recurring difficulties that require patience and committed effort.',
     hi:'आपके मेल के साथ शादी में मुश्किलें आने की ज़्यादा संभावना है। लंबे रिश्तों में एक ही तरह की तकलीफें बार-बार सामने आती हैं, जिनके लिए धैर्य और पक्का इरादा ज़रूरी है।',
     te:'మీ సమ్మేళనంతో వివాహానికి సంబంధించిన సవాళ్లు ఎక్కువగా వచ్చే అవకాశం ఉంది. దీర్ఘకాలిక సంబంధాల్లో పదే పదే ఇబ్బందులు ఎదురవచ్చు, వీటికి ఓపిక మరియు నిబద్ధత అవసరం.'},
+  '1-8':{en:'You may face difficulties in matters related to money, health, or married life.',
+    hi:'आपके मेल के साथ शादी, सेहत और पैसों से जुड़ी चुनौतियां आने की ज़्यादा संभावना है।',
+    te:'మీ కలయికతో వివాహం, ఆరోగ్యం మరియు ఆర్థిక విషయాలకు సంబంధించిన సవాళ్లు ఎదురయ్యే అవకాశం ఎక్కువగా ఉంటుంది.'},
 };
 
 // ── MISSING NUMBER WEAKNESSES ──
@@ -3420,6 +3423,9 @@ function _renderReport(_silent){
     '9-9':{en:'You may face challenges in your married life or relationships.',
       hi:'आपको अपनी शादीशुदा ज़िंदगी या रिश्तों में मुश्किलें आ सकती हैं।',
       te:'మీ వైవాహిక జీవితంలో లేదా సంబంధాల్లో సవాళ్లు ఎదురవ్వచ్చు.'},
+    '6-3':{en:'You may face health problems or challenges in your married life or relationships.',
+      hi:'आपको सेहत से जुड़ी परेशानियां या अपनी शादीशुदा ज़िंदगी और रिश्तों में मुश्किलें आ सकती हैं।',
+      te:'మీకు ఆరోగ్య సమస్యలు లేదా వైవాహిక జీవితంలో, సంబంధాల్లో సవాళ్లు ఎదురవ్వచ్చు.'},
   };
   const _dcGKey=`${driver}-${conductor}`;
   const _dcGRule=DC_GUIDANCE[_dcGKey];
@@ -3841,7 +3847,7 @@ function _renderReport(_silent){
   <!-- DC combination weaknesses -->
   ${(()=>{
     const dcwKey=`${driver}-${conductor}`;
-    if(dcwKey==='1-7'||dcwKey==='7-1') return '';
+    if(dcwKey==='1-7'||dcwKey==='7-1'||dcwKey==='3-6') return '';
     const dcw=DC_WEAK[dcwKey]||null;
     if(!dcw) return '';
     return `<div class="subsec">
