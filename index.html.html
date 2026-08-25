@@ -58,6 +58,10 @@ body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;f
 .btn{width:100%;margin-top:1.4rem;padding:.85rem;border:none;border-radius:12px;background:var(--ink);color:#F4F1EC;font-family:'DM Serif Display',serif;font-size:1.05rem;font-style:italic;cursor:pointer;transition:opacity .2s,box-shadow .2s;box-shadow:0 4px 18px rgba(26,35,60,0.15)}
 .btn:hover{opacity:.88;box-shadow:0 6px 22px rgba(26,35,60,0.18)}
 .btn:focus{outline:none;box-shadow:0 4px 18px rgba(26,35,60,0.15)}
+.btn:disabled{cursor:default}
+.pay-secure-note{margin-top:.65rem;text-align:center;font-size:.74rem;color:var(--muted);font-family:'DM Sans',sans-serif}
+.pay-note{margin-top:.85rem;padding:.7rem .9rem;border-radius:10px;font-size:.82rem;line-height:1.5;text-align:center;font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);border:1px solid var(--border)}
+.pay-note.err{background:#FBEAEA;color:var(--red);border-color:#F2C9C9}
 
 /* ── REPORT WRAPPER ── */
 #report{display:none;max-width:820px;margin:0 auto;padding:2rem 1rem 5rem}
@@ -397,7 +401,7 @@ footer{text-align:center;padding:2rem;color:var(--muted);font-size:.78rem;border
       <div class="compat-toggle-row">
         <div class="compat-toggle-text-col">
           <div class="compat-toggle-title" id="lbl-compat-title">Relationship Compatibility Analysis ♡</div>
-          <div class="compat-toggle-sub" id="lbl-compat-sub">Discover your relationship strengths, challenges and long-term relationship potential through advanced numerology matching.</div>
+          <div class="compat-toggle-sub" id="lbl-compat-sub">Open to explore your compatibility with your potential partner.</div>
         </div>
         <button class="compat-switch" id="compat-switch" onclick="toggleCompat()" role="switch" aria-checked="false" aria-label="Enable Relationship Compatibility">
           <span class="compat-switch-thumb"></span>
@@ -409,7 +413,7 @@ footer{text-align:center;padding:2rem;color:var(--muted);font-size:.78rem;border
     <div class="compat-panel" id="compat-panel">
       <div class="compat-card">
         <div class="compat-card-label" id="lbl-partner">♡ Partner Information</div>
-        <div class="compat-card-desc" id="lbl-compat-desc">Add your partner's details to unlock a complete compatibility analysis based on Birth Chart Matching, Number Compatibility and Number Sharing.</div>
+        <div class="compat-card-desc" id="lbl-compat-desc">Enter your potential partner's details to explore your compatibility.</div>
         <div class="compat-fields">
           <div class="compat-field-full">
             <label class="compat-label" id="lbl-pname">Partner's Full Name</label>
@@ -446,7 +450,9 @@ footer{text-align:center;padding:2rem;color:var(--muted);font-size:.78rem;border
         </div>
       </div>
     </div>
-    <button class="btn" id="gen-btn" onclick="gen()">Generate My Report</button>
+    <button class="btn" id="gen-btn" onclick="gen()">Unlock My Complete Report — ₹96</button>
+    <div class="pay-secure-note" id="lbl-pay-secure">🔒 Secure payment via Razorpay</div>
+    <div class="pay-note" id="pay-note" style="display:none"></div>
   </div>
 </div>
 <section id="report"></section>
@@ -473,8 +479,18 @@ for(let i=1;i<=31;i++){const o=document.createElement('option');o.value=i;o.text
 // ── LANGUAGE ──
 let LANG='en';
 const TL={
-  en:{ft:'Enter Your Details',fn:'First Name',ln:'Last Name',dy:'Date',dm:'Month',yr:'Year',gn:'Gender',btn:'Generate My Report',
+  en:{ft:'Enter Your Details',fn:'First Name',ln:'Last Name',dy:'Date',dm:'Month',yr:'Year',gn:'Gender',btn:'Unlock My Complete Report — ₹96',
     foot:'TheFuturee · Chaldean Numerology · For guidance purposes only',
+    priceLine:'Complete Personalised Report — ₹96',
+    paySecure:'🔒 Secure payment via Razorpay',
+    payWait:'Please wait…',
+    payVerifying:'Verifying your payment…',
+    payCancelled:'Payment cancelled — your details are safe. Try again anytime.',
+    payFailed:'Payment failed. Please try again.',
+    payStartError:'Could not start payment. Please try again.',
+    payNotConfirmed:'We could not confirm this payment. If any amount was deducted, it will be auto-refunded. For help, share this Payment ID: ',
+    payNetworkIssue:'A network issue stopped us confirming this. Please reload the page — we will safely re-check your payment.',
+    payRecoverFailed:"We couldn't confirm your last payment. Please pay again, or contact support with your Payment ID.",
     driver:'Number',conductor:'Number',kua:'KUA',nameVib:'Name',male:'Male',female:'Female',
     secCover:'Birth Chart & Core Numbers',
     secStrengths:'Your Strengths',
@@ -525,8 +541,18 @@ const TL={
     repTitle:'Strongly Repeated Energies',
     absTitle:'Missing Energies',
   },
-  hi:{ft:'अपना विवरण भरें',fn:'पहला नाम',ln:'अंतिम नाम',dy:'तारीख',dm:'महीना',yr:'साल',gn:'लिंग',btn:'मेरी रिपोर्ट तैयार करें',
+  hi:{ft:'अपना विवरण भरें',fn:'पहला नाम',ln:'अंतिम नाम',dy:'तारीख',dm:'महीना',yr:'साल',gn:'लिंग',btn:'अपनी संपूर्ण रिपोर्ट अनलॉक करें — ₹96',
     foot:'TheFuturee · चाल्डियन अंक ज्योतिष · केवल मार्गदर्शन के लिए',
+    priceLine:'संपूर्ण व्यक्तिगत रिपोर्ट — ₹96',
+    paySecure:'🔒 Razorpay द्वारा सुरक्षित भुगतान',
+    payWait:'कृपया प्रतीक्षा करें…',
+    payVerifying:'आपके भुगतान की पुष्टि की जा रही है…',
+    payCancelled:'भुगतान रद्द किया गया — आपकी जानकारी सुरक्षित है। जब चाहें दोबारा प्रयास करें।',
+    payFailed:'भुगतान विफल रहा। कृपया दोबारा प्रयास करें।',
+    payStartError:'भुगतान शुरू नहीं हो सका। कृपया दोबारा प्रयास करें।',
+    payNotConfirmed:'हम इस भुगतान की पुष्टि नहीं कर सके। यदि कोई राशि कटी है, तो वह स्वतः वापस हो जाएगी। सहायता के लिए यह Payment ID साझा करें: ',
+    payNetworkIssue:'नेटवर्क समस्या के कारण पुष्टि नहीं हो सकी। कृपया पेज रीलोड करें — हम आपके भुगतान की सुरक्षित रूप से दोबारा जांच करेंगे।',
+    payRecoverFailed:'हम आपके पिछले भुगतान की पुष्टि नहीं कर सके। कृपया दोबारा भुगतान करें, या Payment ID के साथ सहायता से संपर्क करें।',
     driver:'Number',conductor:'Number',kua:'KUA',nameVib:'Name',male:'पुरुष',female:'महिला',
     secCover:'Birth Chart & Core Numbers',
     secStrengths:'Your Strengths',
@@ -577,8 +603,18 @@ const TL={
     repTitle:'Strongly Repeated Energies',
     absTitle:'Missing Energies',
   },
-  te:{ft:'మీ వివరాలు నమోదు చేయండి',fn:'మొదటి పేరు',ln:'చివరి పేరు',dy:'తేదీ',dm:'నెల',yr:'సంవత్సరం',gn:'లింగం',btn:'నా నివేదిక రూపొందించండి',
+  te:{ft:'మీ వివరాలు నమోదు చేయండి',fn:'మొదటి పేరు',ln:'చివరి పేరు',dy:'తేదీ',dm:'నెల',yr:'సంవత్సరం',gn:'లింగం',btn:'మీ సంపూర్ణ నివేదికను అన్‌లాక్ చేయండి — ₹96',
     foot:'TheFuturee · చాల్డియన్ అంకశాస్త్రం · మార్గదర్శకత్వం కోసం మాత్రమే',
+    priceLine:'సంపూర్ణ వ్యక్తిగత నివేదిక — ₹96',
+    paySecure:'🔒 Razorpay ద్వారా సురక్షిత చెల్లింపు',
+    payWait:'దయచేసి వేచి ఉండండి…',
+    payVerifying:'మీ చెల్లింపు ధృవీకరించబడుతోంది…',
+    payCancelled:'చెల్లింపు రద్దు చేయబడింది — మీ వివరాలు సురక్షితం. మీకు నచ్చినప్పుడు మళ్ళీ ప్రయత్నించండి.',
+    payFailed:'చెల్లింపు విఫలమైంది. దయచేసి మళ్ళీ ప్రయత్నించండి.',
+    payStartError:'చెల్లింపు ప్రారంభం కాలేదు. దయచేసి మళ్ళీ ప్రయత్నించండి.',
+    payNotConfirmed:'ఈ చెల్లింపును మేము నిర్ధారించలేకపోయాము. ఏదైనా మొత్తం తీసివేయబడితే, అది స్వయంచాలకంగా వాపసు అవుతుంది. సహాయం కోసం ఈ Payment ID ఇవ్వండి: ',
+    payNetworkIssue:'నెట్‌వర్క్ సమస్య వల్ల నిర్ధారణ కాలేదు. దయచేసి పేజీని రీలోడ్ చేయండి — మేము మీ చెల్లింపును సురక్షితంగా మళ్ళీ తనిఖీ చేస్తాము.',
+    payRecoverFailed:'మీ మునుపటి చెల్లింపును మేము నిర్ధారించలేకపోయాము. దయచేసి మళ్ళీ చెల్లించండి లేదా Payment ID తో మద్దతును సంప్రదించండి.',
     driver:'Number',conductor:'Number',kua:'KUA',nameVib:'Name',male:'పురుషుడు',female:'స్త్రీ',
     secCover:'Birth Chart & Core Numbers',
     secStrengths:'Your Strengths',
@@ -644,7 +680,7 @@ function setLang(l){
   const compatLabels={
     'compat-toggle':{en:'Include Relationship Compatibility',hi:'रिश्ते की अनुकूलता जोड़ें',te:'సంబంధ అనుకూలత చేర్చండి'},
     'partner':{en:'♡ Partner Information',hi:'♡ साथी की जानकारी',te:'♡ భాగస్వామి సమాచారం'},
-    'compat-desc':{en:"Add your partner's details to unlock a complete compatibility analysis based on Birth Chart Matching, Number Compatibility and Number Sharing.",hi:'जन्म चार्ट मिलान, अंक अनुकूलता और अंक साझाकरण पर आधारित पूर्ण अनुकूलता विश्लेषण अनलॉक करने के लिए अपने साथी का विवरण जोड़ें।',te:'బర్త్ చార్ట్ మ్యాచింగ్, అంక అనుకూలత మరియు నంబర్ షేరింగ్ ఆధారంగా పూర్తి అనుకూలత విశ్లేషణ అన్‌లాక్ చేయడానికి మీ భాగస్వామి వివరాలు జోడించండి.'},
+    'compat-desc':{en:"Enter your potential partner's details to explore your compatibility.",hi:'जन्म चार्ट मिलान, अंक अनुकूलता और अंक साझाकरण पर आधारित पूर्ण अनुकूलता विश्लेषण अनलॉक करने के लिए अपने साथी का विवरण जोड़ें।',te:'బర్త్ చార్ట్ మ్యాచింగ్, అంక అనుకూలత మరియు నంబర్ షేరింగ్ ఆధారంగా పూర్తి అనుకూలత విశ్లేషణ అన్‌లాక్ చేయడానికి మీ భాగస్వామి వివరాలు జోడించండి.'},
     'pname':{en:"Partner's Full Name",hi:'साथी का पूरा नाम',te:'భాగస్వామి పూర్తి పేరు'},
     'pdob':{en:'Date of Birth',hi:'जन्म तारीख',te:'పుట్టిన తేదీ'},
     'pgender':{en:'Gender',hi:'लिंग',te:'లింగం'},
@@ -657,7 +693,13 @@ function setLang(l){
   if(pnameEl)pnameEl.placeholder=l==='hi'?'साथी का पूरा नाम लिखें':l==='te'?'భాగస్వామి పూర్తి పేరు నమోదు చేయండి':"Enter partner's full name";
   const pyrEl=document.getElementById('pyr');
   if(pyrEl)pyrEl.placeholder=l==='hi'?'वर्ष':l==='te'?'సంవత్సరం':'Year';
-  if(document.getElementById('report').style.display!=='none')gen();
+  const priceEl=document.getElementById('lbl-price');
+  if(priceEl)priceEl.textContent=t('priceLine');
+  const secureEl=document.getElementById('lbl-pay-secure');
+  if(secureEl)secureEl.textContent=t('paySecure');
+  // Only re-render (never re-charge) — the report is only ever visible here
+  // because payment was already confirmed earlier in this same visit.
+  if(document.getElementById('report').style.display!=='none')_renderReport();
 }
 
 // ── CORE MATH ──
@@ -1319,6 +1361,9 @@ const DC_WEAK={
   '9-9':{en:'Marriage-related challenges are more likely with your combination. Long-term relationships may experience recurring difficulties that require patience and committed effort.',
     hi:'आपके मेल के साथ शादी में मुश्किलें आने की ज़्यादा संभावना है। लंबे रिश्तों में एक ही तरह की तकलीफें बार-बार सामने आती हैं, जिनके लिए धैर्य और पक्का इरादा ज़रूरी है।',
     te:'మీ సమ్మేళనంతో వివాహానికి సంబంధించిన సవాళ్లు ఎక్కువగా వచ్చే అవకాశం ఉంది. దీర్ఘకాలిక సంబంధాల్లో పదే పదే ఇబ్బందులు ఎదురవచ్చు, వీటికి ఓపిక మరియు నిబద్ధత అవసరం.'},
+  '1-8':{en:'You may face difficulties in matters related to money, health, or married life.',
+    hi:'आपके मेल के साथ शादी, सेहत और पैसों से जुड़ी चुनौतियां आने की ज़्यादा संभावना है।',
+    te:'మీ కలయికతో వివాహం, ఆరోగ్యం మరియు ఆర్థిక విషయాలకు సంబంధించిన సవాళ్లు ఎదురయ్యే అవకాశం ఎక్కువగా ఉంటుంది.'},
 };
 
 // ── MISSING NUMBER WEAKNESSES ──
@@ -2954,8 +2999,222 @@ function toggleCompat(){
   }
 }
 
-// ── MAIN GEN FUNCTION ──
+/* ═══════════════════════════════════════════════════════════════
+   PAYMENT GATE — Razorpay Standard Checkout
+   NO PAYMENT = NO REPORT. Every path that can reach the report — the
+   CTA click, and same-tab recovery after a reload — funnels through
+   this section, and nothing here ever unlocks the report off a value
+   the browser produced on its own. The browser's job is only ever to
+   tell the server "this is what Checkout returned"; the server is what
+   decides whether that was real.
+   ═══════════════════════════════════════════════════════════════ */
+let _payBusy=false;
+const _RZP_SRC='https://checkout.razorpay.com/v1/checkout.js';
+const _PAID_STATE_KEY='tf_paid_state_v1';
+const _PAID_STATE_MAX_AGE_MS=30*60*1000; // 30 min — mid-transaction recovery only, not a "welcome back" feature
+
+function _validateInputs(){
+  const fn=document.getElementById('fn').value.trim();
+  const ln=document.getElementById('ln').value.trim();
+  const day=parseInt(document.getElementById('dd').value);
+  const mon=parseInt(document.getElementById('dm').value);
+  const year=parseInt(document.getElementById('dy').value);
+  if(!fn||!ln||isNaN(day)||isNaN(mon)||isNaN(year)||year<1900){
+    alert(LANG==='hi'?'कृपया सभी फ़ील्ड सही तरह से भरें।':LANG==='te'?'దయచేసి అన్ని ఫీల్డ్‌లు సరిగ్గా నింపండి.':'Please fill all fields correctly.');
+    return null;
+  }
+  return {fn,ln};
+}
+
+function _rzpLib(){
+  return new Promise((res,rej)=>{
+    if(typeof Razorpay!=='undefined'){res();return;}
+    const s=document.createElement('script');
+    s.src=_RZP_SRC; s.onload=res; s.onerror=rej;
+    document.head.appendChild(s);
+  });
+}
+
+function _setPayBusy(busy,label){
+  _payBusy=busy;
+  const b=document.getElementById('gen-btn');
+  if(b){
+    b.disabled=busy;
+    b.style.opacity=busy?'.6':'';
+    b.textContent=label||t('btn');
+  }
+}
+
+function _showPayNote(msg,isErr){
+  const el=document.getElementById('pay-note');
+  if(!el) return;
+  el.textContent=msg;
+  el.style.display='block';
+  el.classList.toggle('err',!!isErr);
+}
+function _hidePayNote(){
+  const el=document.getElementById('pay-note');
+  if(el) el.style.display='none';
+}
+
+// The ONLY entry point the "Unlock" button calls. Every click here is a
+// fresh, full round trip to the server: a fresh Order, a fresh signature
+// check, and a fresh status check against Razorpay's own records — never
+// a shortcut based on anything remembered from earlier.
 function gen(_silent){
+  if(_payBusy) return;
+  const v=_validateInputs();
+  if(!v) return;
+  _hidePayNote();
+  _startPayment(v);
+}
+
+async function _startPayment(v){
+  _setPayBusy(true,t('payWait'));
+  try{
+    await _rzpLib();
+    const resp=await fetch('/api/create-order',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({name:(v.fn+' '+v.ln).trim()})
+    });
+    if(!resp.ok) throw new Error('create-order failed');
+    const order=await resp.json();
+    if(!order||!order.orderId) throw new Error('no order id in response');
+
+    const rzp=new Razorpay({
+      key:order.keyId,
+      amount:order.amount,
+      currency:order.currency,
+      order_id:order.orderId,
+      name:'TheFuturee',
+      description:LANG==='hi'?'संपूर्ण व्यक्तिगत अंक ज्योतिष रिपोर्ट':LANG==='te'?'పూర్తి వ్యక్తిగత అంకశాస్త్ర నివేదిక':'Complete Personalised Numerology Report',
+      prefill:{name:(v.fn+' '+v.ln).trim()},
+      theme:{color:'#1a1a2e'},
+      modal:{ondismiss:function(){
+        _setPayBusy(false);
+        _showPayNote(t('payCancelled'));
+      }},
+      handler:function(response){
+        _verifyAndUnlock(order.orderId,response);
+      }
+    });
+    rzp.on('payment.failed',function(){
+      _setPayBusy(false);
+      _showPayNote(t('payFailed'),true);
+    });
+    rzp.open();
+  }catch(err){
+    console.error('startPayment error',err);
+    _setPayBusy(false);
+    _showPayNote(t('payStartError'),true);
+  }
+}
+
+function _savePendingPaymentState(orderId){
+  try{
+    const compatOn=document.getElementById('compat-switch').classList.contains('on');
+    sessionStorage.setItem(_PAID_STATE_KEY,JSON.stringify({
+      orderId,verified:false,
+      fn:document.getElementById('fn').value,
+      ln:document.getElementById('ln').value,
+      dd:document.getElementById('dd').value,
+      dm:document.getElementById('dm').value,
+      dy:document.getElementById('dy').value,
+      dg:document.getElementById('dg').value,
+      compatOn,
+      pname:compatOn?(document.getElementById('pname')||{}).value||'':'',
+      pdd:compatOn?(document.getElementById('pdd')||{}).value||'':'',
+      pmm:compatOn?(document.getElementById('pmm')||{}).value||'':'',
+      pyr:compatOn?(document.getElementById('pyr')||{}).value||'':'',
+      lang:LANG,
+      savedAt:Date.now(),
+    }));
+  }catch(e){ /* sessionStorage unavailable — recovery just won't be offered */ }
+}
+function _markPaymentVerified(orderId,paymentId){
+  try{
+    const raw=sessionStorage.getItem(_PAID_STATE_KEY);
+    if(!raw) return;
+    const st=JSON.parse(raw);
+    st.verified=true; st.paymentId=paymentId; st.orderId=orderId;
+    sessionStorage.setItem(_PAID_STATE_KEY,JSON.stringify(st));
+  }catch(e){}
+}
+function _clearPaidState(){
+  try{ sessionStorage.removeItem(_PAID_STATE_KEY); }catch(e){}
+}
+
+async function _verifyAndUnlock(orderId,response){
+  _setPayBusy(true,t('payVerifying'));
+  // Persist enough to recover if THIS SAME TAB gets discarded/reloaded right
+  // now, before we've heard back — see _recoverPaidReport() below.
+  _savePendingPaymentState(orderId);
+  try{
+    const resp=await fetch('/api/verify-payment',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        razorpay_order_id:response.razorpay_order_id,
+        razorpay_payment_id:response.razorpay_payment_id,
+        razorpay_signature:response.razorpay_signature,
+      })
+    });
+    const data=await resp.json().catch(()=>({}));
+    if(resp.ok&&data.verified){
+      _markPaymentVerified(orderId,response.razorpay_payment_id);
+      _setPayBusy(false);
+      _hidePayNote();
+      _renderReport(false);
+    }else{
+      _setPayBusy(false);
+      _showPayNote(t('payNotConfirmed')+response.razorpay_payment_id,true);
+    }
+  }catch(err){
+    console.error('verify-payment error',err);
+    _setPayBusy(false);
+    _showPayNote(t('payNetworkIssue'),true);
+  }
+}
+
+// Same-tab recovery only — see _isSameSessionNavigation() below. Handles
+// "paid, then the tab was discarded/lost connection before the report
+// rendered." Re-confirms with the server every time; the sessionStorage
+// flag is only ever a hint about which order to ask about, never proof.
+async function _recoverPaidReport(){
+  let raw=null;
+  try{ raw=sessionStorage.getItem(_PAID_STATE_KEY); }catch(e){ return false; }
+  if(!raw) return false;
+  let st=null;
+  try{ st=JSON.parse(raw); }catch(e){ _clearPaidState(); return false; }
+  if(!st||!st.orderId||(st.savedAt&&(Date.now()-st.savedAt)>_PAID_STATE_MAX_AGE_MS)){
+    _clearPaidState();
+    return false;
+  }
+  const set=(id,val)=>{const el=document.getElementById(id); if(el&&val!==undefined) el.value=val;};
+  set('fn',st.fn); set('ln',st.ln); set('dd',st.dd); set('dm',st.dm); set('dy',st.dy); set('dg',st.dg);
+  if(st.lang&&st.lang!==LANG) setLang(st.lang);
+  if(st.compatOn){
+    const sw=document.getElementById('compat-switch');
+    if(sw&&!sw.classList.contains('on')) toggleCompat();
+    set('pname',st.pname); set('pdd',st.pdd); set('pmm',st.pmm); set('pyr',st.pyr);
+  }
+  try{
+    const resp=await fetch('/api/order-status?order_id='+encodeURIComponent(st.orderId));
+    const data=await resp.json();
+    if(data&&data.paid){
+      _renderReport(true);
+      return true;
+    }
+  }catch(e){ /* network hiccup — fall through to the "couldn't confirm" note */ }
+  _showPayNote(t('payRecoverFailed')+(st.paymentId?(' ('+st.paymentId+')'):''),true);
+  _clearPaidState();
+  return false;
+}
+
+// ── MAIN RENDER FUNCTION ── (only ever reached after payment is confirmed —
+// by gen() → _verifyAndUnlock(), or by _recoverPaidReport() above)
+function _renderReport(_silent){
   const fn=document.getElementById('fn').value.trim();
   const ln=document.getElementById('ln').value.trim();
   const day=parseInt(document.getElementById('dd').value);
@@ -3103,20 +3362,6 @@ function gen(_silent){
   const _impGuidanceTitle='Important Guidance';
   const _guidanceItems=[];
 
-  // Stock Market override: driver or conductor 4/8 always shows stock market warning (highest priority)
-  const _stockWarnNums=new Set([4,8]);
-  const _showStockWarn=_stockWarnNums.has(driver)||_stockWarnNums.has(conductor);
-  const _stockWarnText={
-    en:'It is strongly recommended that you stay away from the stock market. However, you may be highly successful in guiding and advising others in this field.',
-    hi:'शेयर बाज़ार से दूर रहना आपके लिए बेहतर रहेगा। हालांकि, इस क्षेत्र में आप दूसरों का सफलतापूर्वक मार्गदर्शन कर सकते हैं।',
-    te:'స్టాక్ మార్కెట్‌కు దూరంగా ఉండడం మీకు మంచిది. అయితే, ఈ రంగంలో మీరు ఇతరులకు సరైన దారి చూపించి విజయవంతంగా మార్గనిర్దేశం చేయగలరు.',
-  };
-  if(_showStockWarn){
-    _guidanceItems.push(LANG==='hi'?_stockWarnText.hi:LANG==='te'?_stockWarnText.te:_stockWarnText.en);
-  } else if(_drvAreas){
-    _guidanceItems.push(LANG==='hi'?_drvAreas.hi:LANG==='te'?_drvAreas.te:_drvAreas.en);
-  }
-
   // Driver-Conductor combination guidance rules
   const DC_GUIDANCE={
     '2-8':{en:'You may face health problems, and the chances of experiencing depression can also be high.',
@@ -3164,6 +3409,9 @@ function gen(_silent){
     '9-9':{en:'You may face challenges in your married life or relationships.',
       hi:'आपको अपनी शादीशुदा ज़िंदगी या रिश्तों में मुश्किलें आ सकती हैं।',
       te:'మీ వైవాహిక జీవితంలో లేదా సంబంధాల్లో సవాళ్లు ఎదురవ్వచ్చు.'},
+    '6-3':{en:'You may face health problems or challenges in your married life or relationships.',
+      hi:'आपको सेहत से जुड़ी परेशानियां या अपनी शादीशुदा ज़िंदगी और रिश्तों में मुश्किलें आ सकती हैं।',
+      te:'మీకు ఆరోగ్య సమస్యలు లేదా వైవాహిక జీవితంలో, సంబంధాల్లో సవాళ్లు ఎదురవ్వచ్చు.'},
   };
   const _dcGKey=`${driver}-${conductor}`;
   const _dcGRule=DC_GUIDANCE[_dcGKey];
@@ -3176,9 +3424,6 @@ function gen(_silent){
     3:{en:'Avoid consuming non-vegetarian food, alcohol and smoking, as they may have a more negative impact on your life.',
       hi:'मांसाहार, शराब और सिगरेट-तंबाकू से दूर रहें, क्योंकि इनका असर आपकी ज़िंदगी पर ज़्यादा नकारात्मक पड़ सकता है।',
       te:'మాంసాహారం, మద్యం మరియు ధూమపానానికి దూరంగా ఉండండి, ఎందుకంటే ఇవి మీ జీవితంపై ఎక్కువ ప్రతికూల ప్రభావం చూపవచ్చు.'},
-    4:{en:'It is strongly recommended that you stay away from the stock market. However, you may be highly successful in guiding and advising others in this field.',
-      hi:'शेयर बाज़ार से दूर रहना आपके लिए बेहतर रहेगा। हालांकि, इस क्षेत्र में आप दूसरों का सफलतापूर्वक मार्गदर्शन कर सकते हैं।',
-      te:'స్టాక్ మార్కెట్‌కు దూరంగా ఉండడం మీకు మంచిది. అయితే, ఈ రంగంలో మీరు ఇతరులకు సరైన దారి చూపించి విజయవంతంగా మార్గనిర్దేశం చేయగలరు.'},
     7:{en:'Avoid business partnerships whenever possible, as they may create unnecessary challenges or disappointments.',
       hi:'जहां तक हो सके बिज़नेस पार्टनरशिप से बचें, क्योंकि इनसे बेवजह की मुश्किलें या निराशा हो सकती है।',
       te:'వీలైనంత వరకు వ్యాపార భాగస్వామ్యాలకు దూరంగా ఉండండి, ఎందుకంటే ఇవి అనవసరమైన సవాళ్లు లేదా నిరాశను కలిగించవచ్చు.'},
@@ -3209,7 +3454,8 @@ function gen(_silent){
     return true;
   });
 
-  const importantGuidanceHTML=_dedupedGuidance.length?`<div class="subsec">
+  const _suppressImportantGuidance=(driver===8&&conductor===1);
+  const importantGuidanceHTML=(!_suppressImportantGuidance&&_dedupedGuidance.length)?`<div class="subsec">
     <div class="subsec-title" style="color:#5e050f">${_impGuidanceTitle}</div>
     <div class="subsec-body"><div class="obs-box"><ul class="guidance-list">${_dedupedGuidance.map(t=>`<li>${t}</li>`).join('')}</ul></div></div>
   </div>`:'';
@@ -3585,7 +3831,7 @@ function gen(_silent){
   <!-- DC combination weaknesses -->
   ${(()=>{
     const dcwKey=`${driver}-${conductor}`;
-    if(dcwKey==='1-7'||dcwKey==='7-1') return '';
+    if(dcwKey==='1-7'||dcwKey==='7-1'||dcwKey==='3-6') return '';
     const dcw=DC_WEAK[dcwKey]||null;
     if(!dcw) return '';
     return `<div class="subsec">
@@ -3607,9 +3853,9 @@ function gen(_silent){
     const triggered=riskNums.filter(n=>presMap[n]&&presMap[n]>=3);
     if(!triggered.length) return '';
     const numList=triggered.join(', ');
-    const en=`A high concentration of Number${triggered.length>1?'s':''} ${numList} has been identified in your birth chart. When a single energy appears more than three times, it can increase the likelihood of emotional extremes, mental pressure, emotional burnout, anxiety or depressive phases during life. These phases may occur once or may repeat across different stages of life, depending on circumstances and personal choices.`;
-    const hi=`आपके जन्म चार्ट में अंक ${numList} दो से ज़्यादा बार मौजूद है। जब कोई एक अंक जन्म चार्ट में दो से ज़्यादा बार आता है, तो कई बार भावनात्मक उतार-चढ़ाव, मानसिक दबाव, ज़रूरत से ज़्यादा चिंता या डिप्रेशन जैसी समस्याओं की संभावना बढ़ सकती है।`;
-    const te=`మీ జన్మ చార్ట్‌లో అంక${triggered.length>1?'లు':''} ${numList} యొక్క అధిక సాంద్రత గుర్తించబడింది. ఒకే శక్తి మూడు కంటే ఎక్కువసార్లు కనిపించినప్పుడు, అది జీవితంలో భావోద్వేగ తీవ్రతలు, మానసిక ఒత్తిడి, భావోద్వేగ అలసట, ఆందోళన లేదా నిరాశ దశల సాధ్యతను పెంచవచ్చు. ఈ దశలు ఒకసారి సంభవించవచ్చు లేదా పరిస్థితులు మరియు వ్యక్తిగత ఎంపికలను బట్టి జీవితంలోని వివిధ దశలలో పునరావృతం కావచ్చు.`;
+    const en=`Your chart suggests that you may go through periods of mental pressure, emotional extremes, anxiety, or depressive phases at different stages of life.`;
+    const hi=`आपके चार्ट के अनुसार, जीवन के अलग-अलग पड़ावों पर आपको मानसिक दबाव, भावनात्मक उतार-चढ़ाव, चिंता या डिप्रेसिव फेज़ से गुजरना पड़ सकता है।`;
+    const te=`మీ చార్ట్ ప్రకారం, జీవితంలోని వివిధ దశల్లో మీరు మానసిక ఒత్తిడి, భావోద్వేగ తీవ్రత, ఆందోళన లేదా డిప్రెసివ్ దశలను ఎదుర్కొనే అవకాశం ఉంది.`;
     return `<div class="obs-box">
       <strong>Special Observation</strong><br><br>
       ${LANG==='hi'?hi:LANG==='te'?te:en}
@@ -4151,38 +4397,45 @@ function _isSameSessionNavigation(){
 function _restoreReportState(){
   if(!_isSameSessionNavigation()){
     _clearReportState(); // a new visit — wipe any leftover state instead of reviving it
+    _clearPaidState();   // a new visit must never resurrect a previously paid-for report
     return;
   }
-  const state=_readStoredState();
-  if(!state||!state.fn||!state.ln) return;
-  try{
-    // Only fill a field that is still blank. If the user has already typed
-    // into it (or the browser's own reload-restore already populated it)
-    // by the time this runs, that value must win — this restore exists to
-    // recover state after a genuine tab discard/bfcache eviction where the
-    // DOM comes back empty, not to overwrite whatever the user currently
-    // has entered with an older saved value.
-    const set=(id,val)=>{const el=document.getElementById(id); if(el&&val!==undefined&&val!==''&&!el.value) el.value=val;};
-    set('fn',state.fn); set('ln',state.ln);
-    // DOB fields (day/month/year — self and partner) are deliberately never
-    // auto-restored here. They feed the numerology calculations directly,
-    // so silently repopulating them from a previous session is exactly what
-    // was replacing a freshly entered year (e.g. 2006) with an old saved one
-    // (e.g. 1992). The user must always re-enter DOB after a same-session
-    // reload; nothing but the user's own typing may ever set these fields.
-    if(state.dg) set('dg',state.dg);
-    if(state.lang&&state.lang!==LANG) setLang(state.lang);
-    if(state.compatOn){
-      const sw=document.getElementById('compat-switch');
-      if(sw&&!sw.classList.contains('on')) toggleCompat();
-      set('pname',state.pname);
-    }
-    // Only auto-generate if DOB (self) is already present in the DOM —
-    // which, per the above, can now only be true because the user typed
-    // it. Never call gen() off restored/synthetic DOB data.
-    const _dd=document.getElementById('dd').value,_dm=document.getElementById('dm').value,_dy=document.getElementById('dy').value;
-    if(_dd&&_dm&&_dy) gen(true);
-  }catch(e){ /* corrupted/incompatible saved state — ignore and leave the form blank */ }
+  // Payment recovery takes priority. If this tab has an order that was
+  // paid (or was mid-verification) when it got interrupted, resolve that
+  // first — never fall through to silently regenerating a free draft below.
+  _recoverPaidReport().then(function(recovered){
+    if(recovered) return;
+    const state=_readStoredState();
+    if(!state||!state.fn||!state.ln) return;
+    try{
+      // Only fill a field that is still blank. If the user has already typed
+      // into it (or the browser's own reload-restore already populated it)
+      // by the time this runs, that value must win — this restore exists to
+      // recover state after a genuine tab discard/bfcache eviction where the
+      // DOM comes back empty, not to overwrite whatever the user currently
+      // has entered with an older saved value.
+      const set=(id,val)=>{const el=document.getElementById(id); if(el&&val!==undefined&&val!==''&&!el.value) el.value=val;};
+      set('fn',state.fn); set('ln',state.ln);
+      // DOB fields (day/month/year — self and partner) are deliberately never
+      // auto-restored here. They feed the numerology calculations directly,
+      // so silently repopulating them from a previous session is exactly what
+      // was replacing a freshly entered year (e.g. 2006) with an old saved one
+      // (e.g. 1992). The user must always re-enter DOB after a same-session
+      // reload; nothing but the user's own typing may ever set these fields.
+      if(state.dg) set('dg',state.dg);
+      if(state.lang&&state.lang!==LANG) setLang(state.lang);
+      if(state.compatOn){
+        const sw=document.getElementById('compat-switch');
+        if(sw&&!sw.classList.contains('on')) toggleCompat();
+        set('pname',state.pname);
+      }
+      // Deliberately no auto-render here. Every report is gated behind
+      // payment (see the PAYMENT GATE section above), so restoring typed
+      // fields is purely a typing convenience — it must never by itself be
+      // a way back into the report. The customer always goes through
+      // gen() → Razorpay Checkout → server verification.
+    }catch(e){ /* corrupted/incompatible saved state — ignore and leave the form blank */ }
+  });
 }
 
 /* Defensive recovery for the returning-from-background case:
