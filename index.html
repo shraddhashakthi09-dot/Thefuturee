@@ -3362,20 +3362,6 @@ function _renderReport(_silent){
   const _impGuidanceTitle='Important Guidance';
   const _guidanceItems=[];
 
-  // Stock Market override: driver or conductor 4/8 always shows stock market warning (highest priority)
-  const _stockWarnNums=new Set([4,8]);
-  const _showStockWarn=_stockWarnNums.has(driver)||_stockWarnNums.has(conductor);
-  const _stockWarnText={
-    en:'It is strongly recommended that you stay away from the stock market. However, you may be highly successful in guiding and advising others in this field.',
-    hi:'शेयर बाज़ार से दूर रहना आपके लिए बेहतर रहेगा। हालांकि, इस क्षेत्र में आप दूसरों का सफलतापूर्वक मार्गदर्शन कर सकते हैं।',
-    te:'స్టాక్ మార్కెట్‌కు దూరంగా ఉండడం మీకు మంచిది. అయితే, ఈ రంగంలో మీరు ఇతరులకు సరైన దారి చూపించి విజయవంతంగా మార్గనిర్దేశం చేయగలరు.',
-  };
-  if(_showStockWarn){
-    _guidanceItems.push(LANG==='hi'?_stockWarnText.hi:LANG==='te'?_stockWarnText.te:_stockWarnText.en);
-  } else if(_drvAreas){
-    _guidanceItems.push(LANG==='hi'?_drvAreas.hi:LANG==='te'?_drvAreas.te:_drvAreas.en);
-  }
-
   // Driver-Conductor combination guidance rules
   const DC_GUIDANCE={
     '2-8':{en:'You may face health problems, and the chances of experiencing depression can also be high.',
@@ -3438,9 +3424,6 @@ function _renderReport(_silent){
     3:{en:'Avoid consuming non-vegetarian food, alcohol and smoking, as they may have a more negative impact on your life.',
       hi:'मांसाहार, शराब और सिगरेट-तंबाकू से दूर रहें, क्योंकि इनका असर आपकी ज़िंदगी पर ज़्यादा नकारात्मक पड़ सकता है।',
       te:'మాంసాహారం, మద్యం మరియు ధూమపానానికి దూరంగా ఉండండి, ఎందుకంటే ఇవి మీ జీవితంపై ఎక్కువ ప్రతికూల ప్రభావం చూపవచ్చు.'},
-    4:{en:'It is strongly recommended that you stay away from the stock market. However, you may be highly successful in guiding and advising others in this field.',
-      hi:'शेयर बाज़ार से दूर रहना आपके लिए बेहतर रहेगा। हालांकि, इस क्षेत्र में आप दूसरों का सफलतापूर्वक मार्गदर्शन कर सकते हैं।',
-      te:'స్టాక్ మార్కెట్‌కు దూరంగా ఉండడం మీకు మంచిది. అయితే, ఈ రంగంలో మీరు ఇతరులకు సరైన దారి చూపించి విజయవంతంగా మార్గనిర్దేశం చేయగలరు.'},
     7:{en:'Avoid business partnerships whenever possible, as they may create unnecessary challenges or disappointments.',
       hi:'जहां तक हो सके बिज़नेस पार्टनरशिप से बचें, क्योंकि इनसे बेवजह की मुश्किलें या निराशा हो सकती है।',
       te:'వీలైనంత వరకు వ్యాపార భాగస్వామ్యాలకు దూరంగా ఉండండి, ఎందుకంటే ఇవి అనవసరమైన సవాళ్లు లేదా నిరాశను కలిగించవచ్చు.'},
@@ -3471,7 +3454,8 @@ function _renderReport(_silent){
     return true;
   });
 
-  const importantGuidanceHTML=_dedupedGuidance.length?`<div class="subsec">
+  const _suppressImportantGuidance=(driver===8&&conductor===1);
+  const importantGuidanceHTML=(!_suppressImportantGuidance&&_dedupedGuidance.length)?`<div class="subsec">
     <div class="subsec-title" style="color:#5e050f">${_impGuidanceTitle}</div>
     <div class="subsec-body"><div class="obs-box"><ul class="guidance-list">${_dedupedGuidance.map(t=>`<li>${t}</li>`).join('')}</ul></div></div>
   </div>`:'';
@@ -3869,9 +3853,9 @@ function _renderReport(_silent){
     const triggered=riskNums.filter(n=>presMap[n]&&presMap[n]>=3);
     if(!triggered.length) return '';
     const numList=triggered.join(', ');
-    const en=`A high concentration of Number${triggered.length>1?'s':''} ${numList} has been identified in your birth chart. When a single energy appears more than three times, it can increase the likelihood of emotional extremes, mental pressure, emotional burnout, anxiety or depressive phases during life. These phases may occur once or may repeat across different stages of life, depending on circumstances and personal choices.`;
-    const hi=`आपके जन्म चार्ट में अंक ${numList} दो से ज़्यादा बार मौजूद है। जब कोई एक अंक जन्म चार्ट में दो से ज़्यादा बार आता है, तो कई बार भावनात्मक उतार-चढ़ाव, मानसिक दबाव, ज़रूरत से ज़्यादा चिंता या डिप्रेशन जैसी समस्याओं की संभावना बढ़ सकती है।`;
-    const te=`మీ జన్మ చార్ట్‌లో అంక${triggered.length>1?'లు':''} ${numList} యొక్క అధిక సాంద్రత గుర్తించబడింది. ఒకే శక్తి మూడు కంటే ఎక్కువసార్లు కనిపించినప్పుడు, అది జీవితంలో భావోద్వేగ తీవ్రతలు, మానసిక ఒత్తిడి, భావోద్వేగ అలసట, ఆందోళన లేదా నిరాశ దశల సాధ్యతను పెంచవచ్చు. ఈ దశలు ఒకసారి సంభవించవచ్చు లేదా పరిస్థితులు మరియు వ్యక్తిగత ఎంపికలను బట్టి జీవితంలోని వివిధ దశలలో పునరావృతం కావచ్చు.`;
+    const en=`Your chart suggests that you may go through periods of mental pressure, emotional extremes, anxiety, or depressive phases at different stages of life.`;
+    const hi=`आपके चार्ट के अनुसार, जीवन के अलग-अलग पड़ावों पर आपको मानसिक दबाव, भावनात्मक उतार-चढ़ाव, चिंता या डिप्रेसिव फेज़ से गुजरना पड़ सकता है।`;
+    const te=`మీ చార్ట్ ప్రకారం, జీవితంలోని వివిధ దశల్లో మీరు మానసిక ఒత్తిడి, భావోద్వేగ తీవ్రత, ఆందోళన లేదా డిప్రెసివ్ దశలను ఎదుర్కొనే అవకాశం ఉంది.`;
     return `<div class="obs-box">
       <strong>Special Observation</strong><br><br>
       ${LANG==='hi'?hi:LANG==='te'?te:en}
