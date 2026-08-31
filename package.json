@@ -2,9 +2,8 @@
   "name": "thefuturee-numerology",
   "private": true,
   "type": "module",
-  "description": "TheFuturee — Razorpay payment backend for the numerology report site.",
+  "description": "TheFuturee — Cashfree payment backend for the numerology report site.",
   "dependencies": {
-    "razorpay": "^2.9.8",
     "@upstash/redis": "^1.38.2"
   }
 }
