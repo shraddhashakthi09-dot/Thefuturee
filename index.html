@@ -292,7 +292,7 @@ body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;f
 .compat-toggle-wrap{margin-top:1.4rem;padding-top:1.2rem;border-top:1px solid var(--border)}
 .compat-toggle-row{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}
 .compat-toggle-text-col{flex:1;min-width:0}
-.compat-toggle-title{font-family:'DM Serif Display',serif;font-size:.98rem;color:var(--ink);font-style:italic;margin-bottom:.3rem;letter-spacing:.01em}
+.compat-toggle-title{font-family:'DM Serif Display',serif;font-size:1.05rem;color:var(--ink);font-style:italic;margin-bottom:.3rem;letter-spacing:normal}
 .compat-toggle-sub{font-size:.78rem;color:var(--muted);line-height:1.5}
 .compat-switch{flex-shrink:0;width:44px;height:24px;background:#ddd;border:none;border-radius:12px;cursor:pointer;position:relative;transition:background .25s ease;padding:0;margin-top:.15rem;outline:none}
 .compat-switch:focus-visible{box-shadow:0 0 0 3px rgba(138,138,138,.25)}
@@ -322,6 +322,27 @@ body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;f
   .compat-charts-grid{grid-template-columns:1fr}
 }
 footer{text-align:center;padding:2rem;color:var(--muted);font-size:.78rem;border-top:1px solid var(--border);margin-top:2rem}
+
+/* ── LEGAL / TRUST PAGES ──
+   Plain static content, no JS — About/Contact/Pricing/Terms/Privacy/Refund,
+   linked from the footer. Exists purely as business-verification info
+   (the kind a payment gateway checks for), so deliberately kept simple and
+   separate from the report flow above it — nothing here touches gen()/
+   _startPayment()/anything on the payment path. */
+.legal-nav{text-align:center;padding:0 1rem 1.5rem;font-size:.78rem}
+.legal-nav a{color:var(--accent);text-decoration:none;margin:0 .25rem}
+.legal-nav a:hover{text-decoration:underline}
+.legal-nav .sep{color:var(--border)}
+.legal-back-wrap{max-width:640px;margin:0 auto;padding:1.75rem 1.25rem 0}
+.legal-back{font-family:'DM Sans',sans-serif;font-size:.85rem;color:var(--accent);text-decoration:none}
+.legal-back:hover{text-decoration:underline}
+#legal-pages{max-width:640px;margin:0 auto;padding:0 1.25rem 3rem}
+.legal-block{padding:2rem 0;border-top:1px solid var(--border)}
+.legal-block:first-child{border-top:none}
+.legal-block h2{font-family:'DM Serif Display',serif;font-style:italic;font-size:1.4rem;color:var(--ink);margin-bottom:.9rem}
+.legal-block p,.legal-block li{color:var(--ink);font-size:.9rem;line-height:1.7;margin-bottom:.7rem}
+.legal-block ul{padding-left:1.2rem}
+.legal-block a{color:var(--accent)}
 
 /* ── TOP ACTION BAR ── */
 
@@ -362,6 +383,7 @@ footer{text-align:center;padding:2rem;color:var(--muted);font-size:.78rem;border
 </style>
 </head>
 <body>
+<div id="home-view">
 <div class="hero">
   <h1>TheFuturee</h1>
   <div class="tagline-wrap"><p class="tagline">Helping You Discover Your True Potential.</p></div>
@@ -457,6 +479,69 @@ footer{text-align:center;padding:2rem;color:var(--muted);font-size:.78rem;border
 </div>
 <section id="report"></section>
 <footer id="footer-txt">TheFuturee · Chaldean Numerology · For guidance purposes only</footer>
+<nav class="legal-nav">
+  <a href="#about-us">About Us</a><span class="sep"> · </span><a href="#contact-us">Contact Us</a><span class="sep"> · </span><a href="#pricing">Pricing</a><span class="sep"> · </span><a href="#terms">Terms &amp; Conditions</a><span class="sep"> · </span><a href="#privacy-policy">Privacy Policy</a><span class="sep"> · </span><a href="#refund-policy">Refund Policy</a>
+</nav>
+</div><!-- /home-view -->
+
+<!-- ── ABOUT / CONTACT / PRICING / TERMS / PRIVACY / REFUND ──
+     Static business-verification pages, linked from the footer above.
+     Hidden by default; _syncLegalView() (near the end of the script below)
+     shows this whole view — with only the one matching block visible —
+     whenever the URL hash matches one of these ids, and switches back to
+     home-view otherwise. Pure show/hide of existing content; nothing here
+     touches the report/payment flow. -->
+<div id="legal-view" style="display:none">
+  <div class="legal-back-wrap"><a href="#" class="legal-back" onclick="location.hash='';return false;">← Back</a></div>
+  <section id="legal-pages">
+  <div class="legal-block" id="about-us">
+    <h2>About Us</h2>
+    <p>TheFuturee is a numerology consultation platform that generates personalized reports using Chaldean numerology — covering your strengths and weaknesses, career potential, relationship compatibility, and a five-year personal outlook, based on your name and date of birth.</p>
+    <p>Reports are generated instantly online, available in English, Hindi, and Telugu. TheFuturee is operated from Hyderabad, Telangana, India.</p>
+  </div>
+  <div class="legal-block" id="contact-us">
+    <h2>Contact Us</h2>
+    <p>For any questions, support, or payment-related concerns, reach us at:</p>
+    <p>Email: <a href="mailto:shraddhashakthi09@gmail.com">shraddhashakthi09@gmail.com</a><br>Location: Hyderabad, Telangana, India</p>
+    <p>We typically respond within 24-48 hours.</p>
+  </div>
+  <div class="legal-block" id="pricing">
+    <h2>Pricing</h2>
+    <p>TheFuturee offers a Complete Personalised Numerology Report for a one-time payment of <strong>₹96</strong>. There is no subscription and no recurring charge — you pay once and receive your full report immediately.</p>
+    <p>Payments are processed securely via Razorpay.</p>
+  </div>
+  <div class="legal-block" id="terms">
+    <h2>Terms &amp; Conditions</h2>
+    <ul>
+      <li>By using TheFuturee, you agree to these terms.</li>
+      <li>Reports are provided for guidance and self-reflection purposes only, and are not a substitute for professional medical, legal, or financial advice.</li>
+      <li>You are responsible for providing accurate name and date-of-birth details, as your report is calculated directly from this information.</li>
+      <li>Reports are for your personal use only and may not be resold, redistributed, or published elsewhere.</li>
+      <li>We reserve the right to update pricing, content, or availability of the service at any time, without prior notice.</li>
+      <li>Continued use of the website after changes to these terms constitutes acceptance of the updated terms.</li>
+    </ul>
+  </div>
+  <div class="legal-block" id="privacy-policy">
+    <h2>Privacy Policy</h2>
+    <ul>
+      <li>We collect only the information you enter on the form — name, date of birth, and gender — solely to calculate and generate your report.</li>
+      <li>We do not collect or require a phone number to use this website.</li>
+      <li>Payments are processed securely by Razorpay. We never see or store your card, UPI, or bank account details.</li>
+      <li>We do not sell or share your personal information with third parties, other than the payment processor required to complete your transaction.</li>
+      <li>Basic order records (order ID, payment status, amount, and timestamp) are retained for support and accounting purposes.</li>
+      <li>To request access to or deletion of your data, email <a href="mailto:shraddhashakthi09@gmail.com">shraddhashakthi09@gmail.com</a>.</li>
+    </ul>
+  </div>
+  <div class="legal-block" id="refund-policy">
+    <h2>Refund &amp; Cancellation Policy</h2>
+    <ul>
+      <li>Your report is generated instantly upon successful payment. Because the service is delivered immediately, we do not offer refunds once a report has been successfully generated and unlocked.</li>
+      <li>If an amount was deducted from your account but your report did not unlock due to a technical error, email <a href="mailto:shraddhashakthi09@gmail.com">shraddhashakthi09@gmail.com</a> with your Order ID. We will investigate and issue a refund if the payment was not fulfilled.</li>
+      <li>Approved refunds are processed to the original payment method within 5-7 business days.</li>
+    </ul>
+  </div>
+  </section>
+</div><!-- /legal-view -->
 
 <!-- ── PDF VIEWER SCREEN ── -->
 <!-- ── PDF LOADING MODAL ── -->
@@ -805,9 +890,9 @@ const NC={
     hi:['घर, परिवार और अपने प्रिय लोग आपकी दुनिया का केंद्र हैं। जो आपको प्यारे हैं, उनकी रक्षा आप पूरी जान लगाकर करते हैं।','आप स्वाभाविक रूप से आकर्षक हैं और सुंदरता की गहरी समझ रखते हैं।','आपकी वफादारी बहुत गहरी है। आपके करीबी लोगों को पता है कि आप हमेशा उनके साथ खड़े रहेंगे।','व्यावहारिक मामलों में आप काफी समझदार हैं — मूल्य और लंबे समय की कीमत को आप सहज ही समझ लेते हैं।'],
     te:['ఇల్లు, కుటుంబం మరియు ప్రియులు మీ ప్రపంచానికి కేంద్రం. మీరు ప్రేమించేవారిని అసాధారణ అంకితభావంతో రక్షిస్తారు.','మీరు సహజంగా ఆకర్షణీయంగా ఉంటారు మరియు అందం పట్ల మీకు సహజమైన అభిరుచి ఉంటుంది.','మీ నిష్టా లోతుగా ఉంటుంది. మీ అంతరంగ సమూహంలోని వ్యక్తులకు ఎల్లప్పుడూ నమ్మదగిన చాంపియన్ ఉంటారు.','ఆచరణాత్మక విషయాలలో మీరు తెలివైనవారు — విలువ మరియు దీర్ఘకాలిక ప్రాముఖ్యతను సహజంగా అర్థం చేసుకుంటారు.']},
   7:{p:'Ketu',
-    en:['You are a deep researcher by nature — you dig until the full truth is uncovered. Surface-level answers never satisfy you.','Your spiritual awareness is genuine and profound. You believe through understanding, not just ritual.','You are a natural scholar of the unseen — the occult, the metaphysical and the deeply spiritual hold real meaning for you.','Your innocence is a strength. You bring sincerity to everything you do, and people sense that authenticity.'],
-    hi:['आप स्वभाव से गहराई से खोजने वाले हैं — जब तक पूरी सच्चाई सामने न आ जाए, आप रुकते नहीं।','आपकी आध्यात्मिक समझ सच्ची और गहरी है।','आप रहस्यमयी और आध्यात्मिक दुनिया के स्वाभाविक जानकार हैं।','आपकी सादगी एक ताकत है। आप जो भी करते हैं, उसमें खरापन लाते हैं।'],
-    te:['మీరు స్వభావంగా లోతైన పరిశోధకులు — పూర్తి సత్యం బయటపడే వరకు మీరు వెతుకుతారు.','మీ ఆధ్యాత్మిక అవగాహన నిజమైనది మరియు లోతైనది.','మీరు అగోచరంపై సహజ పండితులు.','మీ నిష్కపటత ఒక బలం. మీరు చేసే ప్రతిదానిలో నిజాయితీ తీసుకువస్తారు.']},
+    en:['You are a deep researcher by nature — you dig until the full truth is uncovered. Surface-level answers never satisfy you.','Your spiritual awareness is genuine and profound. You believe through understanding, not just ritual.','You may have a natural interest in spirituality and understanding yourself better.','Your innocence is a strength. You bring sincerity to everything you do, and people sense that authenticity.'],
+    hi:['आप स्वभाव से गहराई से खोजने वाले हैं — जब तक पूरी सच्चाई सामने न आ जाए, आप रुकते नहीं।','आपकी आध्यात्मिक समझ सच्ची और गहरी है।','आपको आध्यात्मिकता में रुचि हो सकती है और आप खुद को बेहतर तरीके से समझना चाह सकते हैं।','आपकी सादगी एक ताकत है। आप जो भी करते हैं, उसमें खरापन लाते हैं।'],
+    te:['మీరు స్వభావంగా లోతైన పరిశోధకులు — పూర్తి సత్యం బయటపడే వరకు మీరు వెతుకుతారు.','మీ ఆధ్యాత్మిక అవగాహన నిజమైనది మరియు లోతైనది.','మీకు ఆధ్యాత్మికతపై ఆసక్తి ఉండవచ్చు మరియు మిమ్మల్ని మీరు మరింత బాగా అర్థం చేసుకోవాలని అనిపించవచ్చు।','మీ నిష్కపటత ఒక బలం. మీరు చేసే ప్రతిదానిలో నిజాయితీ తీసుకువస్తారు.']},
   8:{p:'Saturn',
     en:['You have an exceptional financial mind. Money, value, assets and long-term wealth are areas where you naturally excel.','You are tenacious. Once committed to a goal, you stay the course with a persistence that others find extraordinary.','Delay never means defeat for you — results come, always after consistent effort, and your track record proves it.','You are a builder. You create things that last — businesses, systems, legacies.'],
     hi:['आपके पास एक कमाल का आर्थिक दिमाग है। पैसा, संपत्ति और लंबे समय की दौलत — इन सब में आप स्वाभाविक रूप से आगे रहते हैं।','आप पक्के इरादे वाले हैं। एक बार जब किसी लक्ष्य को ठान लेते हैं, तो ऐसे डटे रहते हैं जो दूसरों को हैरान कर दे।','देरी का मतलब आपके लिए हार नहीं है।','आप बनाने वाले हैं। आप ऐसी चीजें खड़ी करते हैं जो लंबे समय तक टिकती हैं।'],
@@ -976,7 +1061,7 @@ const PERSONALITY_DB={
       te:['మీ రిలేషన్స్ స్ట్రాంగ్‌గా ఉండాలంటే కొంచెం ఎక్కువ కేర్, అండర్‌స్టాండింగ్ అవసరం.','మీకు ఆధ్యాత్మికత, రహస్య విద్యలపై చాలా ఎక్కువ ఇంట్రెస్ట్ ఉంటుంది.','మీకు బిజినెస్ పార్ట్‌నర్‌షిప్స్ అంతగా సెట్ అవ్వవు, వాటికి దూరంగా ఉండడమే మంచిది.'],
     },
     3:{
-      en:['Your marriage or long-term relationship may require extra attention and care.','There may be a possibility of extra-marital attractions or affairs if personal boundaries are not maintained.','You may sometimes struggle with low self-confidence.','You can develop deep knowledge and achieve remarkable progress in occult or spiritual studies.','Love, health and financial matters may bring recurring challenges and therefore require extra care.'],
+      en:['Your marriage or long-term relationship may require extra attention and care.','There may be a possibility of extra-marital attractions or affairs if personal boundaries are not maintained.','You may sometimes struggle with low self-confidence.','You can develop deep knowledge and achieve remarkable progress in spirituality or spiritual studies.','Love, health and financial matters may bring recurring challenges and therefore require extra care.'],
       hi:['आपकी शादीशुदा जिंदगी या लंबे समय के रिश्तों को बहुत ज्यादा संभाल कर रखने और ध्यान देने की ज़रूरत होती है।','यदि अपनी मर्यादा और सीमाएं न रखी जाएं, तो बाहरी आकर्षणों या अफेयर की तरफ झुकाव होने की संभावना रहती है।','कभी-कभी आप कम आत्मविश्वास (low self-confidence) से जूझ सकते हैं।','हालाँकि, आप रहस्यमयी या आध्यात्मिक पढ़ाई में बहुत गहरा ज्ञान हासिल कर सकते हैं और बड़ी तरक्की पा सकते हैं।','प्यार, सेहत और पैसों के मामलों में बार-बार चुनौतियाँ आ सकती हैं, इसलिए इनमें बहुत सावधानी बरतनी चाहिए।'],
       te:['మీ మ్యారేజ్ లైఫ్ లేదా లాంగ్ టర్మ్ రిలేషన్‌షిప్‌ని చాలా జాగ్రత్తగా చూసుకోవాలి.','హద్దులు దాటితే బయటి వ్యక్తుల వైపు ఆకర్షితులయ్యే లేదా అఫైర్స్ పెట్టుకునే ఛాన్స్ ఉంటుంది.','కొన్నిసార్లు మీలో కాన్ఫిడెన్స్ తగ్గిపోతుంది.','కానీ, ఆధ్యాత్మిక లేదా రహస్య శాస్త్రాల చదువులో మీరు చాలా గొప్ప నాలెడ్జ్ సంపాదిస్తారు, మంచి ఎదుగుదల ఉంటుంది.','లవ్, హెల్త్, మనీ విషయాల్లో పదే పదే ఛాలెంజెస్ వస్తాయి, కాబట్టి చాలా జాగ్రత్తగా ఉండాలి.'],
     },
@@ -4513,6 +4598,36 @@ document.addEventListener('visibilitychange',function(){
 });
 
 _restoreReportState();
+
+/* ═══════════════════════════════════════════════════════════════
+   LEGAL / TRUST PAGES — show/hide only, driven by the URL hash.
+   Clicking a footer link (e.g. href="#terms") is a normal browser
+   navigation — it changes location.hash and pushes a history entry on
+   its own, so the browser Back/Forward buttons work without any extra
+   code here. This listener just keeps the right content visible
+   whenever the hash changes, however it changed.
+   ═══════════════════════════════════════════════════════════════ */
+const _LEGAL_IDS=['about-us','contact-us','pricing','terms','privacy-policy','refund-policy'];
+function _syncLegalView(){
+  const hash=(location.hash||'').slice(1);
+  const homeView=document.getElementById('home-view');
+  const legalView=document.getElementById('legal-view');
+  if(!homeView||!legalView) return;
+  if(_LEGAL_IDS.indexOf(hash)!==-1){
+    _LEGAL_IDS.forEach(function(id){
+      const el=document.getElementById(id);
+      if(el) el.style.display=(id===hash)?'':'none';
+    });
+    homeView.style.display='none';
+    legalView.style.display='block';
+    window.scrollTo(0,0);
+  }else{
+    legalView.style.display='none';
+    homeView.style.display='';
+  }
+}
+window.addEventListener('hashchange',_syncLegalView);
+_syncLegalView();
 
 /* ═══════════════════════════════════════════════════════════════
    PDF EXPORT — Deep-walk atomic renderer
