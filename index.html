@@ -3028,6 +3028,23 @@ function _validateInputs(){
   return {fn,ln};
 }
 
+// Razorpay Checkout's own first screen asks the customer for a mobile
+// number before it'll show payment methods — even though nothing on this
+// site's form collects one. Passing a placeholder in `prefill.contact`
+// (below) skips that screen entirely, same idea as the placeholder phone
+// generated for Cashfree previously: not a real contact number, never
+// shown to or used to reach the customer, exists purely so Razorpay's
+// widget doesn't stop and ask for one. Randomized per attempt rather than
+// a single fixed value, for the same reason as before — one repeating
+// number behind every transaction is a fraud-system red flag; unique ones
+// aren't.
+function _generatePlaceholderContact(){
+  const firstDigit=String(6+Math.floor(Math.random()*4));
+  let rest='';
+  for(let i=0;i<9;i++) rest+=String(Math.floor(Math.random()*10));
+  return firstDigit+rest;
+}
+
 function _rzpLib(){
   return new Promise((res,rej)=>{
     if(typeof Razorpay!=='undefined'){ res(); return; }
@@ -3098,6 +3115,10 @@ async function _startPayment(v){
       order_id:order.razorpayOrderId,
       name:'TheFuturee',
       description:'Complete Personalised Numerology Report',
+      prefill:{
+        name:(v.fn+' '+v.ln).trim(),
+        contact:_generatePlaceholderContact(),
+      },
       handler:function(response){
         // Fires only on a genuinely successful payment — but the browser
         // is still never trusted on its own; verify-payment recomputes
