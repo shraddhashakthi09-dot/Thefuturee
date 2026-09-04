@@ -451,7 +451,7 @@ footer{text-align:center;padding:2rem;color:var(--muted);font-size:.78rem;border
       </div>
     </div>
     <button class="btn" id="gen-btn" onclick="gen()">Unlock My Complete Report — ₹96</button>
-    <div class="pay-secure-note" id="lbl-pay-secure">🔒 Secure payment via Cashfree</div>
+    <div class="pay-secure-note" id="lbl-pay-secure">🔒 Secure payment via Razorpay</div>
     <div class="pay-note" id="pay-note" style="display:none"></div>
   </div>
 </div>
@@ -482,7 +482,7 @@ const TL={
   en:{ft:'Enter Your Details',fn:'First Name',ln:'Last Name',dy:'Date',dm:'Month',yr:'Year',gn:'Gender',btn:'Unlock My Complete Report — ₹96',
     foot:'TheFuturee · Chaldean Numerology · For guidance purposes only',
     priceLine:'Complete Personalised Report — ₹96',
-    paySecure:'🔒 Secure payment via Cashfree',
+    paySecure:'🔒 Secure payment via Razorpay',
     payWait:'Please wait…',
     payVerifying:'Verifying your payment…',
     payCancelled:'Payment cancelled — your details are safe. Try again anytime.',
@@ -544,7 +544,7 @@ const TL={
   hi:{ft:'अपना विवरण भरें',fn:'पहला नाम',ln:'अंतिम नाम',dy:'तारीख',dm:'महीना',yr:'साल',gn:'लिंग',btn:'अपनी संपूर्ण रिपोर्ट अनलॉक करें — ₹96',
     foot:'TheFuturee · चाल्डियन अंक ज्योतिष · केवल मार्गदर्शन के लिए',
     priceLine:'संपूर्ण व्यक्तिगत रिपोर्ट — ₹96',
-    paySecure:'🔒 Cashfree द्वारा सुरक्षित भुगतान',
+    paySecure:'🔒 Razorpay द्वारा सुरक्षित भुगतान',
     payWait:'कृपया प्रतीक्षा करें…',
     payVerifying:'आपके भुगतान की पुष्टि की जा रही है…',
     payCancelled:'भुगतान रद्द किया गया — आपकी जानकारी सुरक्षित है। जब चाहें दोबारा प्रयास करें।',
@@ -606,7 +606,7 @@ const TL={
   te:{ft:'మీ వివరాలు నమోదు చేయండి',fn:'మొదటి పేరు',ln:'చివరి పేరు',dy:'తేదీ',dm:'నెల',yr:'సంవత్సరం',gn:'లింగం',btn:'మీ సంపూర్ణ నివేదికను అన్‌లాక్ చేయండి — ₹96',
     foot:'TheFuturee · చాల్డియన్ అంకశాస్త్రం · మార్గదర్శకత్వం కోసం మాత్రమే',
     priceLine:'సంపూర్ణ వ్యక్తిగత నివేదిక — ₹96',
-    paySecure:'🔒 Cashfree ద్వారా సురక్షిత చెల్లింపు',
+    paySecure:'🔒 Razorpay ద్వారా సురక్షిత చెల్లింపు',
     payWait:'దయచేసి వేచి ఉండండి…',
     payVerifying:'మీ చెల్లింపు ధృవీకరించబడుతోంది…',
     payCancelled:'చెల్లింపు రద్దు చేయబడింది — మీ వివరాలు సురక్షితం. మీకు నచ్చినప్పుడు మళ్ళీ ప్రయత్నించండి.',
@@ -3000,19 +3000,18 @@ function toggleCompat(){
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   PAYMENT GATE — Cashfree Checkout
+   PAYMENT GATE — Razorpay Checkout
    NO PAYMENT = NO REPORT. Every path that can reach the report — the
    CTA click, and same-tab recovery after a reload — funnels through
    this section, and nothing here ever unlocks the report off a value
-   the browser produced on its own. Cashfree's checkout does not hand
-   the browser a signature to relay back (unlike some gateways) — so
-   the browser's job here is even narrower: it only ever gets to say
-   "please check on order X." Whether that order actually got paid is
-   always re-fetched by the server directly from Cashfree, never taken
-   on the browser's word.
+   the browser produced on its own. Razorpay Checkout DOES hand the
+   browser a signature after payment (razorpay_payment_id/order_id/
+   signature) — but that signature is only ever a claim until the
+   server independently recomputes it with the Key Secret and confirms
+   it matches. The browser is never trusted on its own word.
    ═══════════════════════════════════════════════════════════════ */
 let _payBusy=false;
-const _CF_SRC='https://sdk.cashfree.com/js/v3/cashfree.js';
+const _RZP_SRC='https://checkout.razorpay.com/v1/checkout.js';
 const _PAID_STATE_KEY='tf_paid_state_v1';
 const _PAID_STATE_MAX_AGE_MS=30*60*1000; // 30 min — mid-transaction recovery only, not a "welcome back" feature
 
@@ -3029,16 +3028,12 @@ function _validateInputs(){
   return {fn,ln};
 }
 
-let _cfInstance=null;
-function _cfLib(mode){
+function _rzpLib(){
   return new Promise((res,rej)=>{
-    if(typeof Cashfree!=='undefined'){ _cfInstance=Cashfree({mode}); res(_cfInstance); return; }
+    if(typeof Razorpay!=='undefined'){ res(); return; }
     const s=document.createElement('script');
-    s.src=_CF_SRC;
-    s.onload=function(){
-      try{ _cfInstance=Cashfree({mode}); res(_cfInstance); }
-      catch(e){ rej(e); }
-    };
+    s.src=_RZP_SRC;
+    s.onload=function(){ res(); };
     s.onerror=rej;
     document.head.appendChild(s);
   });
@@ -3067,9 +3062,9 @@ function _hidePayNote(){
 }
 
 // The ONLY entry point the "Unlock" button calls. Every click here is a
-// fresh, full round trip to the server: a fresh Order, and a fresh status
-// check against Cashfree's own records — never a shortcut based on
-// anything remembered from earlier.
+// fresh, full round trip to the server: a fresh Order, and a fresh
+// signature check against Razorpay's own records — never a shortcut based
+// on anything remembered from earlier.
 function gen(_silent){
   if(_payBusy) return;
   const v=_validateInputs();
@@ -3088,27 +3083,52 @@ async function _startPayment(v){
     });
     if(!resp.ok) throw new Error('create-order failed');
     const order=await resp.json();
-    if(!order||!order.orderId||!order.paymentSessionId) throw new Error('no payment session in response');
+    if(!order||!order.orderId||!order.razorpayOrderId||!order.key) throw new Error('no payment session in response');
 
-    const cashfree=await _cfLib(order.environment==='production'?'production':'sandbox');
-    const result=await cashfree.checkout({
-      paymentSessionId:order.paymentSessionId,
-      redirectTarget:'_modal',
+    await _rzpLib();
+
+    // Opens Razorpay's own checkout popup in-page — no redirect, no extra
+    // tab, no new fields for the customer to fill in. UPI/cards/wallets
+    // are all handled inside this one popup, in as few clicks as Razorpay
+    // itself offers.
+    const rzp=new Razorpay({
+      key:order.key,
+      amount:Math.round(order.amount*100),
+      currency:order.currency,
+      order_id:order.razorpayOrderId,
+      name:'TheFuturee',
+      description:'Complete Personalised Numerology Report',
+      handler:function(response){
+        // Fires only on a genuinely successful payment — but the browser
+        // is still never trusted on its own; verify-payment recomputes
+        // the signature server-side before anything unlocks.
+        _verifyAndUnlock(order.orderId,{
+          razorpayPaymentId:response.razorpay_payment_id,
+          razorpayOrderId:response.razorpay_order_id,
+          razorpaySignature:response.razorpay_signature,
+        });
+      },
+      modal:{
+        ondismiss:function(){
+          // Customer closed the popup without paying — no charge went
+          // through, so this always maps to the same safe, non-scary
+          // "cancelled" note used below for a declined attempt.
+          _setPayBusy(false);
+          _showPayNote(t('payCancelled'));
+        },
+      },
+      theme:{color:'#0b1030'},
     });
 
-    if(result&&result.error){
+    rzp.on('payment.failed',function(){
       _setPayBusy(false);
-      // Cashfree reports both "user closed the popup" and a genuinely
-      // failed attempt through this same error shape — either way, no
-      // charge went through, so this always maps to a safe, non-scary
-      // "cancelled" note rather than guessing at which one it was.
       _showPayNote(t('payCancelled'));
-      return;
-    }
-    // result.paymentDetails / result.redirect both just mean "the customer
-    // finished the checkout flow" — NOT that the payment succeeded. The
-    // browser is never trusted on that; the server re-checks with Cashfree.
-    _verifyAndUnlock(order.orderId);
+    });
+
+    // Stays "busy" (button disabled) for as long as the popup is open —
+    // it's reset to false by whichever of the three callbacks above fires
+    // (dismiss / failed / handler → _verifyAndUnlock).
+    rzp.open();
   }catch(err){
     console.error('startPayment error',err);
     _setPayBusy(false);
@@ -3150,7 +3170,7 @@ function _clearPaidState(){
   try{ sessionStorage.removeItem(_PAID_STATE_KEY); }catch(e){}
 }
 
-async function _verifyAndUnlock(orderId){
+async function _verifyAndUnlock(orderId,rzpDetails){
   _setPayBusy(true,t('payVerifying'));
   // Persist enough to recover if THIS SAME TAB gets discarded/reloaded right
   // now, before we've heard back — see _recoverPaidReport() below.
@@ -3159,7 +3179,7 @@ async function _verifyAndUnlock(orderId){
     const resp=await fetch('/api/verify-payment',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({orderId})
+      body:JSON.stringify({orderId,...rzpDetails})
     });
     const data=await resp.json().catch(()=>({}));
     if(resp.ok&&data.verified){
@@ -4319,7 +4339,7 @@ function _renderReport(_silent){
    app specifically: localStorage persists across genuinely new
    visits (new tab, tomorrow, next week), which would silently
    resurrect a previously generated report — and since every report
-   here is gated behind a Cashfree payment, that's not a UX nicety
+   here is gated behind a Razorpay payment, that's not a UX nicety
    going wrong, it's actual paid content reappearing somewhere it
    shouldn't.
 
@@ -4444,7 +4464,7 @@ function _restoreReportState(){
       // payment (see the PAYMENT GATE section above), so restoring typed
       // fields is purely a typing convenience — it must never by itself be
       // a way back into the report. The customer always goes through
-      // gen() → Cashfree Checkout → server verification.
+      // gen() → Razorpay Checkout → server verification.
     }catch(e){ /* corrupted/incompatible saved state — ignore and leave the form blank */ }
   });
 }
