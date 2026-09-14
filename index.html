@@ -555,6 +555,21 @@ footer{text-align:center;padding:2rem;color:var(--muted);font-size:.78rem;border
   </div>
 </div>
 <script>
+(function(){
+// Everything below runs inside this closure instead of the page's global
+// scope. Reason: this app calculates and renders the paid report entirely
+// client-side (no backend "generate report" endpoint — see the payment
+// security audit notes near the top of the payment-gate section below for
+// the full explanation). That means every internal function/variable used
+// to be directly callable/readable from the browser DevTools console by
+// name (e.g. typing `_renderReport()` or `_reportUnlocked=true` and hitting
+// Enter) — a technical unpaid visitor did not need to find any bug at all,
+// just the console. Wrapping the whole script in this closure removes that:
+// nothing declared inside is reachable from the console any more. Only the
+// five functions actually invoked from inline HTML `onclick="..."`
+// attributes are re-attached to `window` at the very end of this closure —
+// everything else (including _renderReport, _reportUnlocked, and every
+// numerology lookup table) is private to this script.
 // ── DAYS DROPDOWN ──
 const ddEl=document.getElementById('dd');
 const d0=document.createElement('option');d0.value='';d0.textContent='Day';ddEl.appendChild(d0);
@@ -782,9 +797,20 @@ function setLang(l){
   if(priceEl)priceEl.textContent=t('priceLine');
   const secureEl=document.getElementById('lbl-pay-secure');
   if(secureEl)secureEl.textContent=t('paySecure');
-  // Only re-render (never re-charge) — the report is only ever visible here
-  // because payment was already confirmed earlier in this same visit.
-  if(document.getElementById('report').style.display!=='none')_renderReport();
+  // Only re-render (never re-charge) — and only when THIS session's payment
+  // has actually been verified by the server (_reportUnlocked). This used to
+  // check `document.getElementById('report').style.display!=='none'`, which
+  // was a security bug: the report section is hidden by a CSS rule
+  // (`#report{display:none}` in the stylesheet), not an inline style, so its
+  // *inline* .style.display was '' (not 'none') from page load — before any
+  // payment, before the report ever rendered. '' !== 'none' is true, so this
+  // check always passed, and switching language while sitting on the payment
+  // screen — no payment made — called _renderReport() directly and rendered
+  // the full paid report for free. _reportUnlocked fixes this: it is a plain
+  // in-memory flag that only _verifyAndUnlock() and _recoverPaidReport() are
+  // allowed to set true, and only right after the SERVER has confirmed the
+  // payment — never inferred from DOM state, never trusted from storage.
+  if(_reportUnlocked)_renderReport();
 }
 
 // ── CORE MATH ──
@@ -3098,6 +3124,17 @@ function toggleCompat(){
 let _payBusy=false;
 const _RZP_SRC='https://checkout.razorpay.com/v1/checkout.js';
 const _PAID_STATE_KEY='tf_paid_state_v1';
+
+// Whether the report has been unlocked in THIS page life via a payment the
+// SERVER has already verified. This is the only thing allowed to gate a
+// re-render (e.g. on a language switch) — never DOM visibility, never
+// sessionStorage on its own. It is set to true in exactly two places,
+// both immediately after a successful server response: _verifyAndUnlock()
+// (fresh payment, /api/verify-payment confirms it) and _recoverPaidReport()
+// (same-tab recovery, /api/order-status confirms it). A page reload resets
+// this to false in memory; recovery must re-confirm with the server before
+// it can become true again — it is never restored from storage directly.
+let _reportUnlocked=false;
 const _PAID_STATE_MAX_AGE_MS=30*60*1000; // 30 min — mid-transaction recovery only, not a "welcome back" feature
 
 function _validateInputs(){
@@ -3290,6 +3327,7 @@ async function _verifyAndUnlock(orderId,rzpDetails){
     const data=await resp.json().catch(()=>({}));
     if(resp.ok&&data.verified){
       _markPaymentVerified(orderId);
+      _reportUnlocked=true; // server just confirmed this payment — only place besides _recoverPaidReport() allowed to flip this true
       _setPayBusy(false);
       _hidePayNote();
       _renderReport(false);
@@ -3330,6 +3368,7 @@ async function _recoverPaidReport(){
     const resp=await fetch('/api/order-status?order_id='+encodeURIComponent(st.orderId));
     const data=await resp.json();
     if(data&&data.paid){
+      _reportUnlocked=true; // server just confirmed this order is paid — only place besides _verifyAndUnlock() allowed to flip this true
       _renderReport(true);
       return true;
     }
@@ -4638,7 +4677,9 @@ let _pdfBusy=false;
 function downloadPDF(){
   if(_pdfBusy) return;
   const rpt=document.getElementById('report');
-  if(!rpt||rpt.style.display==='none'){_pdfShowModal('error');return;}
+  // _reportUnlocked (server-verified), not DOM style — see setLang() above
+  // for why an inline-style check here would be unreliable/bypassable too.
+  if(!rpt||!_reportUnlocked){_pdfShowModal('error');return;}
   _pdfBusy=true;
   _pdfShowModal('loading');
   const nm=(document.getElementById('fn').value||'Numerology').trim().replace(/\s+/g,'_');
@@ -5003,7 +5044,20 @@ function closePdfModal(){
   if(ov) ov.classList.remove('active');
 }
 
+// Only these five are ever called from an inline HTML onclick="..."
+// attribute (checked by grepping the whole file for every onclick= — see
+// the audit notes above), so only these five need to exist on `window`.
+// Everything else this closure declares (_renderReport, _reportUnlocked,
+// _verifyAndUnlock, _recoverPaidReport, every PERSONALITY_DB/PROF_*/DRV_*
+// lookup table, etc.) stays private — not readable or callable from the
+// browser console.
+window.setLang=setLang;
+window.toggleCompat=toggleCompat;
+window.gen=gen;
+window.downloadPDF=downloadPDF;
+window.closePdfModal=closePdfModal;
 
+})();
 
 
 
