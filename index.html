@@ -379,7 +379,36 @@ footer{text-align:center;padding:2rem;color:var(--muted);font-size:.78rem;border
   .lc{height:64px}
   .form-card{padding:1.5rem 1.2rem}
   .cover-nums{grid-template-columns:repeat(2,1fr)}
+  .rp-card{padding:1.4rem 1.1rem}
+  .rp-heading{font-size:1.28rem}
 }
+
+/* ── REPORT-SCOPE PREVIEW (pre-purchase "what's inside" section) ──
+   Sits between the details form and the real #report element. Shows ONLY
+   topic titles from the paid report — never actual personalised content —
+   reusing the exact same card/list/button components as the rest of the
+   site (.form-wrap sizing, .form-card-style surface, .btn CTA) so it reads
+   as a native continuation of the page rather than a bolted-on section.
+   Hidden until the visitor clicks "Continue" — continueToPreview() (below)
+   is the only thing that ever reveals it, right before it smooth-scrolls
+   there. Nothing about the real report/payment gating depends on this; it's
+   purely "don't show the scope section before it's asked for". */
+#report-preview{display:none}
+.rp-heading-wrap{text-align:center;margin-bottom:1.3rem}
+.rp-heading{font-family:'DM Serif Display',serif;font-style:italic;font-weight:600;font-size:clamp(1.3rem,4.2vw,1.6rem);color:var(--ink);letter-spacing:.01em;line-height:1.35}
+.rp-card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:1.8rem 1.8rem .3rem}
+.rp-cat{margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+.rp-cat:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.rp-cat-title{font-family:'DM Serif Display',serif;font-style:italic;font-size:1.05rem;color:var(--accent);margin-bottom:.65rem}
+.rp-list{list-style:none;padding:0;margin:0}
+.rp-list li{font-size:.87rem;color:#333;line-height:1.55;padding:.3rem 0 .3rem 1rem;position:relative}
+.rp-list li::before{content:'·';position:absolute;left:0;color:var(--accent)}
+.rp-more{display:block;font-size:.72rem;font-weight:400;font-style:italic;color:var(--muted);margin-top:.1rem}
+.rp-cta-wrap{margin-top:1.6rem}
+.rp-cta-line1{display:block;font-size:1.05rem}
+.rp-cta-line2{display:block;font-family:'DM Sans',sans-serif;font-style:normal;font-size:.78rem;font-weight:400;margin-top:.4rem;opacity:.92}
+.rp-price-old{color:#B9B9B9;text-decoration-line:line-through;text-decoration-color:#B9B9B9;text-decoration-thickness:1.5px;text-decoration-skip-ink:none;margin-right:.35rem}
+.rp-price-new{font-family:'DM Serif Display',serif;font-style:normal;font-weight:700;font-size:1.3rem;color:#F4F1EC;margin-left:.1rem}
 </style>
 </head>
 <body>
@@ -472,7 +501,56 @@ footer{text-align:center;padding:2rem;color:var(--muted);font-size:.78rem;border
         </div>
       </div>
     </div>
-    <button class="btn" id="gen-btn" onclick="gen()">Unlock My Complete Report — ₹96</button>
+    <button class="btn" id="continue-btn" onclick="continueToPreview()">Continue</button>
+  </div>
+</div>
+<div class="form-wrap" id="report-preview">
+  <div class="rp-heading-wrap">
+    <h2 class="rp-heading" id="rp-heading">WHAT YOUR FULL REPORT UNCOVERS</h2>
+  </div>
+  <div class="rp-card">
+    <div class="rp-cat">
+      <div class="rp-cat-title" id="rp-cat1-title">Your Core Personality</div>
+      <ul class="rp-list">
+        <li id="rp-cat1-i1">Your Strengths</li>
+        <li id="rp-cat1-i2">Your Weaknesses</li>
+        <li><span id="rp-cat1-i3-text">The Potential Within You</span><span class="rp-more" id="rp-cat1-i3-more">(More Personalised)</span></li>
+        <li><span id="rp-cat1-i4-text">Your Challenges to Overcome</span><span class="rp-more" id="rp-cat1-i4-more">(More Personalised)</span></li>
+      </ul>
+    </div>
+    <div class="rp-cat">
+      <div class="rp-cat-title" id="rp-cat2-title">Hidden Patterns in Your Chart</div>
+      <ul class="rp-list">
+        <li id="rp-cat2-i1">Hidden Signs of Success &amp; How to Activate Them</li>
+        <li id="rp-cat2-i2">Special Insights on Your Career, Relationships, Health &amp; Finances</li>
+        <li id="rp-cat2-i3">Your Karmic Numbers &amp; the Lessons They Bring (If Any)</li>
+        <li id="rp-cat2-i4">Your Master Numbers &amp; Their Impact (If Any)</li>
+      </ul>
+    </div>
+    <div class="rp-cat">
+      <div class="rp-cat-title" id="rp-cat4-title">Career &amp; Life Direction</div>
+      <ul class="rp-list">
+        <li id="rp-cat4-i1">Careers That Suit You</li>
+        <li id="rp-cat4-i2">The Influence of Your Name</li>
+        <li id="rp-cat4-i3">Your Next Five Years</li>
+      </ul>
+    </div>
+    <div class="rp-cat">
+      <div class="rp-cat-title" id="rp-cat5-title">Personalised Guidance</div>
+      <ul class="rp-list">
+        <li id="rp-cat5-i1">Ways to Improve Your Weak Areas</li>
+      </ul>
+    </div>
+    <div class="rp-cat">
+      <div class="rp-cat-title" id="rp-cat3-title">Love &amp; Relationships</div>
+      <ul class="rp-list">
+        <li id="rp-cat3-i1">Your Relationship Insights</li>
+        <li id="rp-cat3-i2">Compatibility With Your Partner</li>
+      </ul>
+    </div>
+  </div>
+  <div class="rp-cta-wrap">
+    <button class="btn" id="gen-btn" onclick="gen()"><span class="rp-cta-line1">Get Your Complete Report</span><span class="rp-cta-line2" id="rp-cta-line2">For Just <span class="rp-price-old">₹196</span> <span class="rp-price-new">₹96</span></span></button>
     <div class="pay-secure-note" id="lbl-pay-secure">🔒 Secure payment via Razorpay</div>
     <div class="pay-note" id="pay-note" style="display:none"></div>
   </div>
@@ -579,7 +657,7 @@ for(let i=1;i<=31;i++){const o=document.createElement('option');o.value=i;o.text
 // ── LANGUAGE ──
 let LANG='en';
 const TL={
-  en:{ft:'Enter Your Details',fn:'First Name',ln:'Last Name',dy:'Date',dm:'Month',yr:'Year',gn:'Gender',btn:'Unlock My Complete Report — ₹96',
+  en:{ft:'Enter Your Details',fn:'First Name',ln:'Last Name',dy:'Date',dm:'Month',yr:'Year',gn:'Gender',btn:'Continue',
     foot:'TheFuturee · Chaldean Numerology · For guidance purposes only',
     priceLine:'Complete Personalised Report — ₹96',
     paySecure:'🔒 Secure payment via Razorpay',
@@ -641,7 +719,7 @@ const TL={
     repTitle:'Strongly Repeated Energies',
     absTitle:'Missing Energies',
   },
-  hi:{ft:'अपना विवरण भरें',fn:'पहला नाम',ln:'अंतिम नाम',dy:'तारीख',dm:'महीना',yr:'साल',gn:'लिंग',btn:'अपनी संपूर्ण रिपोर्ट अनलॉक करें — ₹96',
+  hi:{ft:'अपना विवरण भरें',fn:'पहला नाम',ln:'अंतिम नाम',dy:'तारीख',dm:'महीना',yr:'साल',gn:'लिंग',btn:'जारी रखें',
     foot:'TheFuturee · चाल्डियन अंक ज्योतिष · केवल मार्गदर्शन के लिए',
     priceLine:'संपूर्ण व्यक्तिगत रिपोर्ट — ₹96',
     paySecure:'🔒 Razorpay द्वारा सुरक्षित भुगतान',
@@ -703,7 +781,7 @@ const TL={
     repTitle:'Strongly Repeated Energies',
     absTitle:'Missing Energies',
   },
-  te:{ft:'మీ వివరాలు నమోదు చేయండి',fn:'మొదటి పేరు',ln:'చివరి పేరు',dy:'తేదీ',dm:'నెల',yr:'సంవత్సరం',gn:'లింగం',btn:'మీ సంపూర్ణ నివేదికను అన్‌లాక్ చేయండి — ₹96',
+  te:{ft:'మీ వివరాలు నమోదు చేయండి',fn:'మొదటి పేరు',ln:'చివరి పేరు',dy:'తేదీ',dm:'నెల',yr:'సంవత్సరం',gn:'లింగం',btn:'కొనసాగించండి',
     foot:'TheFuturee · చాల్డియన్ అంకశాస్త్రం · మార్గదర్శకత్వం కోసం మాత్రమే',
     priceLine:'సంపూర్ణ వ్యక్తిగత నివేదిక — ₹96',
     paySecure:'🔒 Razorpay ద్వారా సురక్షిత చెల్లింపు',
@@ -766,16 +844,87 @@ const TL={
     absTitle:'Missing Energies',
   }
 };
+
+// ── REPORT-SCOPE PREVIEW CONTENT ──
+// Pure topic titles for the "WHAT YOUR FULL REPORT UNCOVERS" section — no
+// personalised results, no interpretations, just the same five category
+// labels and item titles in all three languages. Separate from TL above
+// because none of this is reused by the real (paid) report renderer.
+const RP={
+  en:{
+    heading:'WHAT YOUR FULL REPORT UNCOVERS',
+    c1t:'Your Core Personality',
+    c1i1:'Your Strengths', c1i2:'Your Weaknesses',
+    c1i3:'The Potential Within You', c1i3m:'(More Personalised)',
+    c1i4:'Your Challenges to Overcome', c1i4m:'(More Personalised)',
+    c2t:'Hidden Patterns in Your Chart',
+    c2i1:'Hidden Signs of Success & How to Activate Them',
+    c2i2:'Special Insights on Your Career, Relationships, Health & Finances',
+    c2i3:'Your Karmic Numbers & the Lessons They Bring (If Any)',
+    c2i4:'Your Master Numbers & Their Impact (If Any)',
+    c3t:'Love & Relationships',
+    c3i1:'Your Relationship Insights', c3i2:'Compatibility With Your Partner',
+    c4t:'Career & Life Direction',
+    c4i1:'Careers That Suit You', c4i2:'The Influence of Your Name', c4i3:'Your Next Five Years',
+    c5t:'Personalised Guidance',
+    c5i1:'Ways to Improve Your Weak Areas',
+    ctaLine1:'Get Your Complete Report', ctaPre:'For Just', ctaOld:'₹196', ctaNew:'₹96', ctaSuf:'',
+  },
+  hi:{
+    heading:'आपकी पूरी रिपोर्ट में क्या-क्या शामिल है',
+    c1t:'आपका मूल व्यक्तित्व',
+    c1i1:'आपकी खूबियाँ', c1i2:'आपकी कमज़ोरियाँ',
+    c1i3:'आपके भीतर की खास क्षमताएँ', c1i3m:'आपके चार्ट के अनुसार',
+    c1i4:'आपकी चुनौतियाँ', c1i4m:'आपके चार्ट के अनुसार',
+    c2t:'आपके चार्ट के छिपे हुए पैटर्न',
+    c2i1:'सफलता के छिपे संकेत और उन्हें सक्रिय करने के तरीके',
+    c2i2:'आपके करियर, रिश्तों, स्वास्थ्य और धन से जुड़े विशेष संकेत',
+    c2i3:'आपके कर्मिक नंबर और उनसे मिलने वाले जीवन के सबक (यदि हों)',
+    c2i4:'आपके मास्टर नंबर और उनका प्रभाव (यदि हों)',
+    c3t:'प्यार और रिश्ते',
+    c3i1:'आपके रिश्तों से जुड़े विशेष संकेत', c3i2:'आपके और आपके पार्टनर का मेल',
+    c4t:'करियर और जीवन की दिशा',
+    c4i1:'आपके लिए उपयुक्त करियर', c4i2:'आपके नाम का प्रभाव', c4i3:'आपके आने वाले पाँच वर्ष',
+    c5t:'व्यक्तिगत मार्गदर्शन',
+    c5i1:'आपकी कमज़ोरियों को बेहतर बनाने के तरीके',
+    ctaLine1:'अपनी संपूर्ण रिपोर्ट पाएं', ctaPre:'सिर्फ', ctaOld:'₹196', ctaNew:'₹96', ctaSuf:'में',
+  },
+  te:{
+    heading:'మీ పూర్తి నివేదికలో ఏమి ఉంటుంది',
+    c1t:'మీ ప్రధాన వ్యక్తిత్వం',
+    c1i1:'మీ బలాలు', c1i2:'మీ బలహీనతలు',
+    c1i3:'మీలో దాగి ఉన్న సామర్థ్యం', c1i3m:'మీ చార్ట్ ఆధారంగా',
+    c1i4:'మీరు అధిగమించాల్సిన సవాళ్ళు', c1i4m:'మీ చార్ట్ ఆధారంగా',
+    c2t:'మీ చార్ట్‌లోని దాగి ఉన్న నమూనాలు',
+    c2i1:'విజయానికి దాగి ఉన్న సంకేతాలు మరియు వాటిని సక్రియం చేసే మార్గాలు',
+    c2i2:'మీ కెరీర్, సంబంధాలు, ఆరోగ్యం మరియు ఆర్థిక విషయాలపై ప్రత్యేక అంతర్దృష్టులు',
+    c2i3:'మీ కార్మిక్ సంఖ్యలు మరియు అవి తెచ్చే జీవిత పాఠాలు (ఏమైనా ఉంటే)',
+    c2i4:'మీ మాస్టర్ సంఖ్యలు మరియు వాటి ప్రభావం (ఏమైనా ఉంటే)',
+    c3t:'ప్రేమ మరియు సంబంధాలు',
+    c3i1:'మీ సంబంధాలకు సంబంధించిన ప్రత్యేక అంతర్దృష్టులు', c3i2:'మీకు మరియు మీ భాగస్వామికి మధ్య అనుకూలత',
+    c4t:'కెరీర్ మరియు జీవిత దిశ',
+    c4i1:'మీకు సరిపోయే కెరీర్‌లు', c4i2:'మీ పేరు ప్రభావం', c4i3:'మీ రాబోయే ఐదు సంవత్సరాలు',
+    c5t:'వ్యక్తిగత మార్గదర్శకత్వం',
+    c5i1:'మీ బలహీన అంశాలను మెరుగుపరచుకునే మార్గాలు',
+    ctaLine1:'మీ సంపూర్ణ నివేదికను పొందండి', ctaPre:'కేవలం', ctaOld:'₹196', ctaNew:'₹96', ctaSuf:'కే',
+  },
+};
+
 const t=k=>TL[LANG][k]||TL.en[k]||k;
 function setLang(l){
   LANG=l;
   document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById('btn-'+l).classList.add('active');
   /* Invalidate narration cache — will rebuild on next play */
+  // 'btn' now refers to the top "Continue" button (continue-btn) — the
+  // report-scope preview's own CTA (still id="gen-btn", still calling
+  // gen()) is localized separately by _renderPreviewTexts() below, since it
+  // needs real HTML (a strikethrough price), not a plain textContent swap.
   ['ft','fn','ln','dy','dm','yr','gn','btn','foot'].forEach(k=>{
-    const el=document.getElementById(k==='btn'?'gen-btn':k==='foot'?'footer-txt':'lbl-'+k);
+    const el=document.getElementById(k==='btn'?'continue-btn':k==='foot'?'footer-txt':'lbl-'+k);
     if(el)el.textContent=t(k);
   });
+  _renderPreviewTexts();
   // Partner section labels
   const compatLabels={
     'compat-toggle':{en:'Include Relationship Compatibility',hi:'रिश्ते की अनुकूलता जोड़ें',te:'సంబంధ అనుకూలత చేర్చండి'},
@@ -807,9 +956,10 @@ function setLang(l){
   // check always passed, and switching language while sitting on the payment
   // screen — no payment made — called _renderReport() directly and rendered
   // the full paid report for free. _reportUnlocked fixes this: it is a plain
-  // in-memory flag that only _verifyAndUnlock() and _recoverPaidReport() are
-  // allowed to set true, and only right after the SERVER has confirmed the
-  // payment — never inferred from DOM state, never trusted from storage.
+  // in-memory flag that only _verifyAndUnlock() is allowed to set true, and
+  // only right after the SERVER has confirmed the payment — never inferred
+  // from DOM state, never trusted from storage (nothing is ever written to
+  // storage in the first place — see the PAYMENT GATE section below).
   if(_reportUnlocked)_renderReport();
 }
 
@@ -3112,30 +3262,35 @@ function toggleCompat(){
 
 /* ═══════════════════════════════════════════════════════════════
    PAYMENT GATE — Razorpay Checkout
-   NO PAYMENT = NO REPORT. Every path that can reach the report — the
-   CTA click, and same-tab recovery after a reload — funnels through
-   this section, and nothing here ever unlocks the report off a value
-   the browser produced on its own. Razorpay Checkout DOES hand the
+   NO PAYMENT = NO REPORT. Every path that can reach the report funnels
+   through this section, and nothing here ever unlocks the report off a
+   value the browser produced on its own. Razorpay Checkout DOES hand the
    browser a signature after payment (razorpay_payment_id/order_id/
    signature) — but that signature is only ever a claim until the
    server independently recomputes it with the Key Secret and confirms
    it matches. The browser is never trusted on its own word.
+
+   NOTHING in this flow is persisted to sessionStorage/localStorage/
+   cookies/URL — by design. There is deliberately no "resume after
+   refresh" or "recover my paid report" feature: a refresh, a closed
+   tab, a new tab, or a cleared/incognito session all mean the visitor
+   starts over from a blank details form and goes through gen() →
+   Razorpay → server verification again, even if an earlier attempt in
+   this same browser already succeeded. See _reportUnlocked below.
    ═══════════════════════════════════════════════════════════════ */
 let _payBusy=false;
 const _RZP_SRC='https://checkout.razorpay.com/v1/checkout.js';
-const _PAID_STATE_KEY='tf_paid_state_v1';
 
 // Whether the report has been unlocked in THIS page life via a payment the
 // SERVER has already verified. This is the only thing allowed to gate a
 // re-render (e.g. on a language switch) — never DOM visibility, never
-// sessionStorage on its own. It is set to true in exactly two places,
-// both immediately after a successful server response: _verifyAndUnlock()
-// (fresh payment, /api/verify-payment confirms it) and _recoverPaidReport()
-// (same-tab recovery, /api/order-status confirms it). A page reload resets
-// this to false in memory; recovery must re-confirm with the server before
-// it can become true again — it is never restored from storage directly.
+// storage of any kind. It is set to true in exactly one place, immediately
+// after a successful server response: _verifyAndUnlock(), right after
+// /api/verify-payment confirms the signature. It lives only in memory —
+// nothing writes it to sessionStorage/localStorage, so a reload, a closed
+// tab, or a new tab always starts at false and the report is inaccessible
+// again until the visitor pays once more in that fresh page life.
 let _reportUnlocked=false;
-const _PAID_STATE_MAX_AGE_MS=30*60*1000; // 30 min — mid-transaction recovery only, not a "welcome back" feature
 
 function _validateInputs(){
   const fn=document.getElementById('fn').value.trim();
@@ -3148,6 +3303,66 @@ function _validateInputs(){
     return null;
   }
   return {fn,ln};
+}
+
+// "Continue" (the top button, right under the details form) no longer
+// generates the report or starts payment — it only smooth-scrolls the
+// visitor down to the report-scope preview section further down this same
+// page. It reuses the exact same field validation gen() always used, just
+// so nobody lands on a pricing CTA with an empty/invalid form above it;
+// that validation has no effect on payment or report-unlock logic. The
+// actual purchase action is the separate CTA inside the preview section,
+// which still calls gen() exactly as it always did.
+function continueToPreview(){
+  const v=_validateInputs();
+  if(!v) return;
+  const el=document.getElementById('report-preview');
+  if(!el) return;
+  // #report-preview is display:none until this exact moment — reveal it
+  // first, then scroll, so there's something visible to scroll to rather
+  // than a jump into empty space.
+  el.style.display='block';
+  el.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+// Rebuilds the "Get Your Complete Report / For Just ₹196 ₹96" CTA button's
+// two-line markup for the current LANG, with a real CSS strikethrough on
+// the old price (never the literal characters "~~"). Pulled out into its
+// own function because _setPayBusy() (below) has to temporarily replace
+// this same button's content with a plain status label like "Please
+// wait…" while a payment is in flight, exactly like it always did for this
+// button — this is what restores the real two-line CTA afterwards.
+function _renderCtaBtnContent(btn){
+  const r=RP[LANG]||RP.en;
+  const suf=r.ctaSuf?(LANG==='te'?r.ctaSuf:(' '+r.ctaSuf)):'';
+  btn.innerHTML=
+    '<span class="rp-cta-line1">'+r.ctaLine1+'</span>'+
+    '<span class="rp-cta-line2" id="rp-cta-line2">'+r.ctaPre+' <span class="rp-price-old">'+r.ctaOld+'</span> <span class="rp-price-new">'+r.ctaNew+'</span>'+suf+'</span>';
+}
+
+// Localizes the report-scope preview section (headings, the five category
+// titles, every item under them, and the final CTA) for the current LANG.
+// Pure topic titles only — see the RP object above — never personalised
+// report content. Called from setLang() below, same as every other
+// on-page label.
+function _renderPreviewTexts(){
+  const r=RP[LANG]||RP.en;
+  const setT=(id,val)=>{const el=document.getElementById(id); if(el)el.textContent=val;};
+  setT('rp-heading',r.heading);
+  setT('rp-cat1-title',r.c1t); setT('rp-cat1-i1',r.c1i1); setT('rp-cat1-i2',r.c1i2);
+  setT('rp-cat1-i3-text',r.c1i3); setT('rp-cat1-i3-more',r.c1i3m);
+  setT('rp-cat1-i4-text',r.c1i4); setT('rp-cat1-i4-more',r.c1i4m);
+  setT('rp-cat2-title',r.c2t); setT('rp-cat2-i1',r.c2i1); setT('rp-cat2-i2',r.c2i2); setT('rp-cat2-i3',r.c2i3); setT('rp-cat2-i4',r.c2i4);
+  setT('rp-cat3-title',r.c3t); setT('rp-cat3-i1',r.c3i1); setT('rp-cat3-i2',r.c3i2);
+  setT('rp-cat4-title',r.c4t); setT('rp-cat4-i1',r.c4i1); setT('rp-cat4-i2',r.c4i2); setT('rp-cat4-i3',r.c4i3);
+  setT('rp-cat5-title',r.c5t); setT('rp-cat5-i1',r.c5i1);
+  // Don't clobber an in-flight "Please wait…" / "Verifying…" status label
+  // if someone switches language mid-payment — _setPayBusy(false,...) will
+  // restore the real CTA content itself once the payment settles.
+  if(!_payBusy){
+    const ctaBtn=document.getElementById('gen-btn');
+    if(ctaBtn) _renderCtaBtnContent(ctaBtn);
+  }
 }
 
 // Razorpay Checkout's own first screen asks the customer for a mobile
@@ -3184,7 +3399,14 @@ function _setPayBusy(busy,label){
   if(b){
     b.disabled=busy;
     b.style.opacity=busy?'.6':'';
-    b.textContent=label||t('btn');
+    // gen-btn now holds the two-line "Get Your Complete Report / For Just
+    // ₹196 ₹96" CTA (real HTML, not plain text) — a status label during
+    // payment still just overwrites it with plain text same as before,
+    // but the idle state has to rebuild that HTML rather than reuse the
+    // old single-line t('btn') (which is now the unrelated "Continue"
+    // button's text).
+    if(label) b.textContent=label;
+    else _renderCtaBtnContent(b);
   }
 }
 
@@ -3279,45 +3501,8 @@ async function _startPayment(v){
   }
 }
 
-function _savePendingPaymentState(orderId){
-  try{
-    const compatOn=document.getElementById('compat-switch').classList.contains('on');
-    sessionStorage.setItem(_PAID_STATE_KEY,JSON.stringify({
-      orderId,verified:false,
-      fn:document.getElementById('fn').value,
-      ln:document.getElementById('ln').value,
-      dd:document.getElementById('dd').value,
-      dm:document.getElementById('dm').value,
-      dy:document.getElementById('dy').value,
-      dg:document.getElementById('dg').value,
-      compatOn,
-      pname:compatOn?(document.getElementById('pname')||{}).value||'':'',
-      pdd:compatOn?(document.getElementById('pdd')||{}).value||'':'',
-      pmm:compatOn?(document.getElementById('pmm')||{}).value||'':'',
-      pyr:compatOn?(document.getElementById('pyr')||{}).value||'':'',
-      lang:LANG,
-      savedAt:Date.now(),
-    }));
-  }catch(e){ /* sessionStorage unavailable — recovery just won't be offered */ }
-}
-function _markPaymentVerified(orderId){
-  try{
-    const raw=sessionStorage.getItem(_PAID_STATE_KEY);
-    if(!raw) return;
-    const st=JSON.parse(raw);
-    st.verified=true; st.orderId=orderId;
-    sessionStorage.setItem(_PAID_STATE_KEY,JSON.stringify(st));
-  }catch(e){}
-}
-function _clearPaidState(){
-  try{ sessionStorage.removeItem(_PAID_STATE_KEY); }catch(e){}
-}
-
 async function _verifyAndUnlock(orderId,rzpDetails){
   _setPayBusy(true,t('payVerifying'));
-  // Persist enough to recover if THIS SAME TAB gets discarded/reloaded right
-  // now, before we've heard back — see _recoverPaidReport() below.
-  _savePendingPaymentState(orderId);
   try{
     const resp=await fetch('/api/verify-payment',{
       method:'POST',
@@ -3326,8 +3511,7 @@ async function _verifyAndUnlock(orderId,rzpDetails){
     });
     const data=await resp.json().catch(()=>({}));
     if(resp.ok&&data.verified){
-      _markPaymentVerified(orderId);
-      _reportUnlocked=true; // server just confirmed this payment — only place besides _recoverPaidReport() allowed to flip this true
+      _reportUnlocked=true; // server just confirmed this payment — the only place allowed to flip this true, and it lives only in memory for this page life
       _setPayBusy(false);
       _hidePayNote();
       _renderReport(false);
@@ -3342,44 +3526,9 @@ async function _verifyAndUnlock(orderId,rzpDetails){
   }
 }
 
-// Same-tab recovery only — see _isSameSessionNavigation() below. Handles
-// "paid, then the tab was discarded/lost connection before the report
-// rendered." Re-confirms with the server every time; the sessionStorage
-// flag is only ever a hint about which order to ask about, never proof.
-async function _recoverPaidReport(){
-  let raw=null;
-  try{ raw=sessionStorage.getItem(_PAID_STATE_KEY); }catch(e){ return false; }
-  if(!raw) return false;
-  let st=null;
-  try{ st=JSON.parse(raw); }catch(e){ _clearPaidState(); return false; }
-  if(!st||!st.orderId||(st.savedAt&&(Date.now()-st.savedAt)>_PAID_STATE_MAX_AGE_MS)){
-    _clearPaidState();
-    return false;
-  }
-  const set=(id,val)=>{const el=document.getElementById(id); if(el&&val!==undefined) el.value=val;};
-  set('fn',st.fn); set('ln',st.ln); set('dd',st.dd); set('dm',st.dm); set('dy',st.dy); set('dg',st.dg);
-  if(st.lang&&st.lang!==LANG) setLang(st.lang);
-  if(st.compatOn){
-    const sw=document.getElementById('compat-switch');
-    if(sw&&!sw.classList.contains('on')) toggleCompat();
-    set('pname',st.pname); set('pdd',st.pdd); set('pmm',st.pmm); set('pyr',st.pyr);
-  }
-  try{
-    const resp=await fetch('/api/order-status?order_id='+encodeURIComponent(st.orderId));
-    const data=await resp.json();
-    if(data&&data.paid){
-      _reportUnlocked=true; // server just confirmed this order is paid — only place besides _verifyAndUnlock() allowed to flip this true
-      _renderReport(true);
-      return true;
-    }
-  }catch(e){ /* network hiccup — fall through to the "couldn't confirm" note */ }
-  _showPayNote(t('payRecoverFailed')+(st.orderId?(' ('+st.orderId+')'):''),true);
-  _clearPaidState();
-  return false;
-}
-
-// ── MAIN RENDER FUNCTION ── (only ever reached after payment is confirmed —
-// by gen() → _verifyAndUnlock(), or by _recoverPaidReport() above)
+// ── MAIN RENDER FUNCTION ── (only ever reached after payment is confirmed
+// in THIS page life, via gen() → _verifyAndUnlock() above — there is no
+// other path in)
 function _renderReport(_silent){
   const fn=document.getElementById('fn').value.trim();
   const ln=document.getElementById('ln').value.trim();
@@ -4466,153 +4615,23 @@ function _renderReport(_silent){
     <div class="pdf-btn-note">${LANG==='hi'?'आपकी संपूर्ण रिपोर्ट PDF में सुरक्षित करें':LANG==='te'?'మీ సంపూర్ణ నివేదికను PDF లో సేవ్ చేయండి':'Save your complete report as a PDF.'}</div>
   </div>`;
 
-  _saveReportState();
   if(!_silent) R.scrollIntoView({behavior:'smooth'});
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   STATE PERSISTENCE — survives Android tab discard / process
-   recreation, iOS bfcache eviction, and backgrounding for the SAME
-   tab. The report is a pure function of these inputs, so instead of
-   trying to keep the rendered report or any in-memory object alive
-   across a suspend, we persist just the inputs and deterministically
-   regenerate the report on return.
-
-   sessionStorage only — deliberately not localStorage. This is a
-   correction from an earlier version of this fix, which added
-   localStorage as a "more durable" backup. That was wrong for this
-   app specifically: localStorage persists across genuinely new
-   visits (new tab, tomorrow, next week), which would silently
-   resurrect a previously generated report — and since every report
-   here is gated behind a Razorpay payment, that's not a UX nicety
-   going wrong, it's actual paid content reappearing somewhere it
-   shouldn't.
-
-   CONFIRMED BUG (real-world testing): sessionStorage alone is NOT a
-   reliable "this tab was actually closed" signal. It is spec-cleared
-   on a real tab close, but several ordinary, spec-compliant browser
-   behaviors bypass that and hand it back on a genuinely new visit:
-     - "Continue where you left off" / crash recovery restores
-       sessionStorage for every tab the browser reopens on relaunch —
-       exactly what happened when this file was closed and reopened.
-     - Duplicating a tab, or the OS/browser reusing an existing
-       renderer when this file is opened again, can inherit the
-       previous tab's storage.
-   So sessionStorage having data is necessary but not sufficient proof
-   of "same visit." _isSameSessionNavigation() below cross-checks the
-   Navigation Timing API's navigation type before ever restoring, and
-   only 'reload' (refresh, or the browser re-fetching this exact tab
-   after an Android discard / iOS bfcache eviction) or 'back_forward'
-   count as a continuation of the same visit. Anything else — notably
-   'navigate', which covers a fresh load, a new tab/window, or this
-   file being reopened — is treated as a new visit and any leftover
-   sessionStorage is discarded rather than restored, no matter how it
-   survived.
-
-   The freshness cutoff below is kept only as a secondary guard for
-   the case where the same tab is left open for a very long time
-   without being closed — it caps how long a background interruption
-   can last before this stops treating it as "still the same visit."
+   NO SESSION PERSISTENCE — BY DESIGN.
+   Nothing about the form, the preview, or the generated report is
+   ever written to sessionStorage/localStorage/cookies/URL. A page
+   refresh, a closed-and-reopened tab, a new tab, a new browser, or
+   a cleared/incognito session must always come back to a completely
+   blank form — even for a visitor who already paid successfully a
+   moment earlier in this same browser. There is deliberately no
+   "resume my report" / "recover after refresh" feature of any kind:
+   the only way back into a report is to fill the form again and go
+   through gen() → Razorpay Checkout → server verification again.
+   See the PAYMENT GATE section above and _reportUnlocked for the
+   in-memory-only unlock flag this relies on.
    ═══════════════════════════════════════════════════════════════ */
-const _STATE_KEY='tf_report_state_v1';
-const _STATE_MAX_AGE_MS=2*60*60*1000; // 2 hours — comfortably covers app-switching, calls, and long backgrounding, without acting like autosave
-
-function _saveReportState(){
-  try{
-    const compatOn=document.getElementById('compat-switch').classList.contains('on');
-    const state={
-      fn:document.getElementById('fn').value,
-      ln:document.getElementById('ln').value,
-      dd:document.getElementById('dd').value,
-      dm:document.getElementById('dm').value,
-      dy:document.getElementById('dy').value,
-      dg:document.getElementById('dg').value,
-      lang:LANG,
-      compatOn:compatOn,
-      pname:compatOn?(document.getElementById('pname')||{}).value||'':'',
-      pdd:compatOn?(document.getElementById('pdd')||{}).value||'':'',
-      pmm:compatOn?(document.getElementById('pmm')||{}).value||'':'',
-      pyr:compatOn?(document.getElementById('pyr')||{}).value||'':'',
-      savedAt:Date.now(),
-    };
-    sessionStorage.setItem(_STATE_KEY,JSON.stringify(state));
-  }catch(e){ /* sessionStorage unavailable (private mode / quota) — fail silently, non-critical */ }
-}
-
-function _clearReportState(){
-  try{ sessionStorage.removeItem(_STATE_KEY); }catch(e){}
-}
-
-function _readStoredState(){
-  let raw=null;
-  try{ raw=sessionStorage.getItem(_STATE_KEY); }catch(e){ raw=null; }
-  if(!raw) return null;
-  let state=null;
-  try{ state=JSON.parse(raw); }catch(e){ return null; }
-  if(!state||typeof state!=='object') return null;
-  if(state.savedAt&&(Date.now()-state.savedAt)>_STATE_MAX_AGE_MS){
-    _clearReportState(); // long-stale even for this tab — don't keep offering it back
-    return null;
-  }
-  return state;
-}
-
-/* See the header comment above for why this check exists — only a
-   'reload' or 'back_forward' navigation counts as the same visit. */
-function _isSameSessionNavigation(){
-  try{
-    const entries=performance.getEntriesByType&&performance.getEntriesByType('navigation');
-    let navType=entries&&entries[0]&&entries[0].type;
-    if(!navType&&performance.navigation){ // legacy fallback for older engines
-      navType=['navigate','reload','back_forward'][performance.navigation.type]||'navigate';
-    }
-    return navType==='reload'||navType==='back_forward';
-  }catch(e){ return false; } // can't tell → don't trust it, start blank
-}
-
-function _restoreReportState(){
-  if(!_isSameSessionNavigation()){
-    _clearReportState(); // a new visit — wipe any leftover state instead of reviving it
-    _clearPaidState();   // a new visit must never resurrect a previously paid-for report
-    return;
-  }
-  // Payment recovery takes priority. If this tab has an order that was
-  // paid (or was mid-verification) when it got interrupted, resolve that
-  // first — never fall through to silently regenerating a free draft below.
-  _recoverPaidReport().then(function(recovered){
-    if(recovered) return;
-    const state=_readStoredState();
-    if(!state||!state.fn||!state.ln) return;
-    try{
-      // Only fill a field that is still blank. If the user has already typed
-      // into it (or the browser's own reload-restore already populated it)
-      // by the time this runs, that value must win — this restore exists to
-      // recover state after a genuine tab discard/bfcache eviction where the
-      // DOM comes back empty, not to overwrite whatever the user currently
-      // has entered with an older saved value.
-      const set=(id,val)=>{const el=document.getElementById(id); if(el&&val!==undefined&&val!==''&&!el.value) el.value=val;};
-      set('fn',state.fn); set('ln',state.ln);
-      // DOB fields (day/month/year — self and partner) are deliberately never
-      // auto-restored here. They feed the numerology calculations directly,
-      // so silently repopulating them from a previous session is exactly what
-      // was replacing a freshly entered year (e.g. 2006) with an old saved one
-      // (e.g. 1992). The user must always re-enter DOB after a same-session
-      // reload; nothing but the user's own typing may ever set these fields.
-      if(state.dg) set('dg',state.dg);
-      if(state.lang&&state.lang!==LANG) setLang(state.lang);
-      if(state.compatOn){
-        const sw=document.getElementById('compat-switch');
-        if(sw&&!sw.classList.contains('on')) toggleCompat();
-        set('pname',state.pname);
-      }
-      // Deliberately no auto-render here. Every report is gated behind
-      // payment (see the PAYMENT GATE section above), so restoring typed
-      // fields is purely a typing convenience — it must never by itself be
-      // a way back into the report. The customer always goes through
-      // gen() → Razorpay Checkout → server verification.
-    }catch(e){ /* corrupted/incompatible saved state — ignore and leave the form blank */ }
-  });
-}
 
 /* Defensive recovery for the returning-from-background case:
    - resets a PDF export flag that could otherwise get stuck if the
@@ -4635,8 +4654,6 @@ window.addEventListener('pageshow',function(e){
 document.addEventListener('visibilitychange',function(){
   if(document.visibilityState==='visible') _onReturnToForeground();
 });
-
-_restoreReportState();
 
 /* ═══════════════════════════════════════════════════════════════
    LEGAL / TRUST PAGES — show/hide only, driven by the URL hash.
@@ -5044,18 +5061,18 @@ function closePdfModal(){
   if(ov) ov.classList.remove('active');
 }
 
-// Only these five are ever called from an inline HTML onclick="..."
+// Only these six are ever called from an inline HTML onclick="..."
 // attribute (checked by grepping the whole file for every onclick= — see
-// the audit notes above), so only these five need to exist on `window`.
+// the audit notes above), so only these six need to exist on `window`.
 // Everything else this closure declares (_renderReport, _reportUnlocked,
-// _verifyAndUnlock, _recoverPaidReport, every PERSONALITY_DB/PROF_*/DRV_*
-// lookup table, etc.) stays private — not readable or callable from the
-// browser console.
+// _verifyAndUnlock, every PERSONALITY_DB/PROF_*/DRV_* lookup table, etc.)
+// stays private — not readable or callable from the browser console.
 window.setLang=setLang;
 window.toggleCompat=toggleCompat;
 window.gen=gen;
 window.downloadPDF=downloadPDF;
 window.closePdfModal=closePdfModal;
+window.continueToPreview=continueToPreview;
 
 })();
 
